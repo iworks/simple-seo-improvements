@@ -34,28 +34,174 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 
 	public function __construct( $iworks ) {
 		$this->iworks = $iworks;
-		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'admin_init', array( $this, 'admin_init' ), PHP_INT_MAX );
+		add_action( 'wp_head', array( $this, 'add_robots' ) );
+		add_filter( 'document_title_parts', array( $this, 'change_wp_title' ) );
 	}
 
-	public function add_meta_boxes() {
-		// $args = apply_filters(
-			// 'iworks_simple_seo_improvements_get_post_types_args',
-			// array(
-				// 'public' => true,
-			// )
-		// );
-		// $post_types = get_post_types( $post_types );
-		// foreach( $post_types as $post_type ) {
-			// add_meta_box( 'iworks_simple_seo_improvements', __( 'Simple SEO Improvements', 'Simple' ), array( $this, 'meta_box_html' ), $post_type );
-		// }
+	public function admin_init() {
+		$args       = apply_filters(
+			'iworks_simple_seo_improvements_get_taxonomies_args',
+			array(
+				'public' => true,
+			)
+		);
+		$taxonomies = get_taxonomies( $args );
+
+		foreach ( $taxonomies as $taxonomy ) {
+			add_action( $taxonomy . '_add_form_fields', array( $this, 'add_fields_to_add_form' ) );
+			add_action( $taxonomy . '_edit_form_fields', array( $this, 'add_fields_to_edit_form' ), 10, 2 );
+			add_action( 'edited_' . $taxonomy, array( $this, 'save_data' ), 10, 2 );
+			add_action( 'create_' . $taxonomy, array( $this, 'save_data' ), 10, 2 );
+		}
 	}
 
-	public function meta_box_html( $a ) {
+	private function get_data( $term_id ) {
+		return wp_parse_args(
+			get_term_meta( $term_id, $this->field_name, true ),
+			array(
+				'robots' => array(),
+				'title'  => get_term_meta( $term_id, 'custom_title', true ),
+			)
+		);
 	}
 
-	public function save_data( $element ) {
+	private function get_title_label() {
+		return sprintf(
+			'<label for="iworks_simple_seo_improvements_html_title">%s</label>',
+			esc_html__( 'HTML Title', 'simple-seo-improvements' )
+		);
 	}
 
+	private function get_title_field( $data ) {
+		return sprintf(
+			'<input type="text" name="%s[title]" value="%s" id="iworks_simple_seo_improvements_html_title" class="large-text" autocomplete="off" />',
+			esc_attr( $this->field_name ),
+			esc_attr( $data['title'] )
+		);
+	}
+
+	private function get_robots_label() {
+		return esc_html__( 'Robots', 'simple-seo-improvements' );
+	}
+
+	private function get_robots_field( $data ) {
+		$content = '<ul>';
+		$options = array(
+			'noindex',
+			'nofollow',
+			'noimageindex',
+			'noarchive',
+			'nocache',
+			'nosnippet',
+			'notranslate',
+			'noyaca',
+		);
+		foreach ( $options as $key ) {
+			$value = false;
+			if ( isset( $data['robots'] ) && isset( $data['robots'][ $key ] ) ) {
+				$value = true;
+			}
+			$content .= '<li><label>';
+			$content .= sprintf(
+				'<input type="checkbox" name="%s[robots][%s]" value="1" %s /> %s',
+				esc_attr( $this->field_name ),
+				esc_attr( $key ),
+				checked( $value, 1, false ),
+				sprintf(
+					esc_html__( 'Add "%s".', 'simple-seo-improvements' ),
+					$key
+				)
+			);
+			$content .= '</label></li>';
+		}
+		$content .= '</ul>';
+		return $content;
+	}
+
+	public function add_fields_to_add_form( $taxonomy ) {
+		$this->add_nonce();
+		$data = array(
+			'title'  => '',
+			'robots' => array(),
+		);
+		?>
+<div class="form-field">
+		<?php echo $this->get_title_label(); ?>
+		<?php echo $this->get_title_field( $data ); ?>
+</div>
+<div class="form-field">
+	<h3><?php echo $this->get_robots_label(); ?></h3>
+		<?php echo $this->get_robots_field( $data ); ?>
+</div>
+		<?php
+	}
+
+	public function add_fields_to_edit_form( $tag, $taxonomy ) {
+		$data = $this->get_data( $tag->term_id );
+		?>
+<tr class="form-field">
+	<th scope="row" valign="top"><?php echo $this->get_title_label(); ?></th>
+	<td>
+		<?php
+		echo $this->get_title_field( $data );
+		$this->add_nonce();
+		?>
+	</td>
+</tr>
+<tr class="form-field">
+	<th scope="row" valign="top"><?php echo $this->get_robots_label(); ?></th>
+	<td><?php echo $this->get_robots_field( $data ); ?></td>
+</tr>
+		<?php
+	}
+
+	public function save_data( $term_id, $tt_id ) {
+		if ( ! $this->check_nonce() ) {
+			return;
+		}
+		$data = $this->get_post_data();
+		$this->update_single_term_meta( $term_id, $this->field_name, $data );
+	}
+
+	public function change_wp_title( $parts ) {
+		if ( is_admin() || ! is_tax() ) {
+			return $parts;
+		}
+		$data = $this->get_data( get_queried_object_id() );
+		if (
+			empty( $data )
+			|| ! is_array( $data )
+			|| ! isset( $data['title'] )
+			|| ! is_string( $data['title'] )
+			|| empty( $data['title'] )
+		) {
+			return $parts;
+		}
+		$parts['title'] = $data['title'];
+		return $parts;
+	}
+
+	public function add_robots() {
+		if ( is_admin() || ! is_tax() ) {
+			return;
+		}
+		$data = $this->get_data( get_queried_object_id() );
+		if (
+			empty( $data )
+			|| ! is_array( $data )
+			|| ! isset( $data['robots'] )
+			|| ! is_array( $data['robots'] )
+			|| empty( $data['robots'] )
+		) {
+			return;
+		}
+		printf(
+			'<meta name="robots" content="%s" />%',
+			esc_attr( implode( ', ', array_keys( $data['robots'] ) ) ),
+			PHP_EOL
+		);
+	}
 }
 
 

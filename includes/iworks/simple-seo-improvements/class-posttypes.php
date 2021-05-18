@@ -42,12 +42,12 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		add_filter( 'document_title_parts', array( $this, 'change_wp_title' ) );
 	}
 
-	private function get_data( $post_ID ) {
+	private function get_data( $post_id ) {
 		return wp_parse_args(
-			get_post_meta( $post_ID, $this->field_name, true ),
+			get_post_meta( $post_id, $this->field_name, true ),
 			array(
 				'robots' => array(),
-				'title'  => get_post_meta( $post_ID, '_yoast_wpseo_title' ),
+				'title'  => get_post_meta( $post_id, '_yoast_wpseo_title', true ),
 			)
 		);
 	}
@@ -90,7 +90,6 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 			PHP_EOL
 		);
 	}
-
 
 	public function add_meta_boxes() {
 		$args       = apply_filters(
@@ -152,12 +151,12 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 
 	}
 
-	public function save_data( $post_ID ) {
+	public function save_data( $post_id ) {
 		if ( ! $this->check_nonce() ) {
 			return;
 		}
 		$data = $this->get_post_data();
-		$this->update_single_post_meta( $post_ID, $this->field_name, $data );
+		$this->update_single_post_meta( $post_id, $this->field_name, $data );
 	}
 }
 

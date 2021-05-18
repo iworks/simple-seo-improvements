@@ -28,9 +28,6 @@ if ( class_exists( 'iworks_simple_seo_improvements_base' ) ) {
 
 
 abstract class iworks_simple_seo_improvements_base {
-	abstract public function add_meta_boxes();
-	abstract public function meta_box_html( $post );
-	abstract public function save_data( $element );
 
 	private $nonce_name   = 'iworks_simple_seo_improvements_nonce';
 	protected $field_name = 'iworks_simple_seo_improvements';

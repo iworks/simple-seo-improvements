@@ -24,25 +24,12 @@ module.exports = function( grunt ) {
 
 		// Concatenate those JS files into a single file (target: [source, source, ...]).
 		js_files_concat: {
-			'assets/scripts/admin/fleet.js': [
-				'assets/scripts/admin/src/datepicker.js',
-				'assets/scripts/admin/src/boat.js',
-				'assets/scripts/admin/src/person.js',
-				'assets/scripts/admin/src/result.js',
-				'assets/scripts/admin/src/select2.js'
-			]
 		},
 
 		// SASS files to process. Resulting CSS files will be minified as well.
 		css_files_compile: {
-			'assets/styles/admin/post-type-boat.css': 'assets/sass/admin/post-type-boat.scss',
-			'assets/styles/frontend/post-type-result.css': 'assets/sass/frontend/post-type-result.scss',
-			'assets/styles/frontend/post-type-person.css': 'assets/sass/frontend/post-type-person.scss',
-			'assets/styles/frontend/post-type-boat.css': 'assets/sass/frontend/post-type-boat.scss',
 		},
 		css_files_concat: {
-			'assets/styles/fleet-admin.css': [ 'assets/styles/admin/*.css' ],
-			'assets/styles/fleet.css': [ 'assets/styles/frontend/*.css' ]
 		},
 
 
@@ -58,18 +45,36 @@ module.exports = function( grunt ) {
 				'tests/.*',		// Unit testing.
 			],
 			pot_dir: 'languages/', // With trailing slash.
-			textdomain: 'fleet',
+			textdomain: 'simple-seo-improvements',
 		},
 
-		dev_plugin_file: 'fleet.php',
-		dev_plugin_dir: 'fleet/',
+		dev_plugin_file: 'simple-seo-improvements.php',
+		dev_plugin_dir: 'simple-seo-improvements/',
 
 		// BUILD patterns to exclude code for specific builds.
-		replaces: {
-			patterns: [
-				{ match: /PLUGIN_VERSION/g, replace: '<%= pkg.version %>' },
-				{ match: /BUILDTIME/g, replace: buildtime }
-			],
+        replaces: {
+            patterns: [{
+                match: /PLUGIN_VERSION/g,
+                replace: '<%= pkg.version %>'
+            }, {
+                match: /BUILDTIME/g,
+                replace: buildtime
+            }, {
+                match: /PLUGIN_TILL_YEAR/g,
+                replace: buildyear
+            }, {
+                match: /PLUGIN_DESCRIPTION/g,
+                replace: '<%= pkg.description %>'
+            }, {
+                match: /PLUGIN_TITLE/g,
+                replace: '<%= pkg.title %>'
+            }, {
+                match: /IWORKS_OPTIONS_TEXTDOMAIN/g,
+                replace: '<%= pkg.name %>'
+            }, {
+                match: /IWORKS_RATE_TEXTDOMAIN/g,
+                replace: '<%= pkg.name %>'
+            }],
 
 			// Files to apply above patterns to (not only php files).
 			files: {
@@ -286,8 +291,8 @@ module.exports = function( grunt ) {
 
 			po2mo: {
 				files: {
-					src: conf.translation.pot_dir + 'fleet-pl_PL.po',
-					desc: conf.translation.pot_dir + 'fleet-pl_PL.mo'
+					src: conf.translation.pot_dir + 'simple-seo-improvements-pl_PL.po',
+					desc: conf.translation.pot_dir + 'simple-seo-improvements-pl_PL.mo'
                 }
 			}
 		},
@@ -364,8 +369,8 @@ module.exports = function( grunt ) {
 
 		po2mo: {
 			files: {
-				src: 'languages/fleet-pl_PL.po',
-				dest: 'languages/fleet-pl_PL.mo',
+				src: 'languages/simple-seo-improvements-pl_PL.po',
+				dest: 'languages/simple-seo-improvements-pl_PL.mo',
 			},
 		},
 
@@ -388,7 +393,7 @@ module.exports = function( grunt ) {
 		},
 
         eslint: {
-            target: conf.js_files_concat['assets/scripts/admin/fleet.js']
+            target: conf.js_files_concat['assets/scripts/admin/simple-seo-improvements.js']
         },
 
 	} );
