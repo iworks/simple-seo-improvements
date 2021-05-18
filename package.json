@@ -20,6 +20,7 @@
         "grunt": ">1.0.0",
         "grunt-autoprefixer": ">3.0.0",
         "grunt-clear": "~0.2.1",
+        "grunt-concat-css": "^0.3.1",
         "grunt-contrib-clean": "^1.1.0",
         "grunt-contrib-compass": "^1.1.1",
         "grunt-contrib-compress": "^1.4.3",
@@ -38,11 +39,10 @@
         "grunt-phpcs": "^0.4.0",
         "grunt-phplint": "^0.1.0",
         "grunt-phpunit": "^0.3.5",
+        "grunt-po2mo": "~0.1.2",
         "grunt-replace": "^1.0.1",
         "grunt-wp-i18n": "^1.0.2",
         "load-grunt-tasks": "^4.0.0",
-        "time-grunt": "^0.2.3",
-        "grunt-concat-css": "^0.3.1",
-        "grunt-po2mo": "~0.1.2"
+        "time-grunt": "^0.2.3"
     }
 }
