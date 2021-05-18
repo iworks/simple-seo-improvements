@@ -1,2 +1,2 @@
-# simple-seo-mprovements
+# simple-seo-improvements
 Simple SEO Improvements
