@@ -39,6 +39,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_data' ) );
 		add_action( 'wp_head', array( $this, 'add_robots' ) );
+		add_action( 'wp_head', array( $this, 'add_meta_description' ) );
 		add_filter( 'document_title_parts', array( $this, 'change_wp_title' ) );
 	}
 
@@ -46,14 +47,22 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		return wp_parse_args(
 			get_post_meta( $post_id, $this->field_name, true ),
 			array(
-				'robots' => array(),
-				'title'  => get_post_meta( $post_id, '_yoast_wpseo_title', true ),
+				'robots'      => array(),
+				'title'       => get_post_meta( $post_id, '_yoast_wpseo_title', true ),
+				'description' => get_post_meta( $post_id, '_yoast_wpseo_metadesc', true ),
 			)
 		);
 	}
 
+	private function should_we_change_anything() {
+		if ( is_admin() ) {
+			return false;
+		}
+		return is_singular();
+	}
+
 	public function change_wp_title( $parts ) {
-		if ( is_admin() || ! is_singular() ) {
+		if ( ! $this->should_we_change_anything() ) {
 			return $parts;
 		}
 		$data = $this->get_data( get_the_ID() );
@@ -68,6 +77,31 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		}
 		$parts['title'] = $data['title'];
 		return $parts;
+	}
+
+	public function add_meta_description() {
+		if ( ! $this->should_we_change_anything() ) {
+			return;
+		}
+		$value = get_the_excerpt();
+		$data  = get_post_meta( get_the_ID(), $this->field_name, true );
+		if (
+			! empty( $data )
+			&& is_array( $data )
+			&& isset( $data['description'] )
+			&& is_string( $data['description'] )
+			&& ! empty( $data['description'] )
+		) {
+			$value = $data['description'];
+		}
+		if ( empty( $value ) ) {
+			return;
+		}
+		printf(
+			'<meta name="description" content="%s" />%s',
+			esc_attr( $value ),
+			PHP_EOL
+		);
 	}
 
 	public function add_robots() {
@@ -85,7 +119,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 			return;
 		}
 		printf(
-			'<meta name="robots" content="%s" />%',
+			'<meta name="robots" content="%s" />%s',
 			esc_attr( implode( ', ', array_keys( $data['robots'] ) ) ),
 			PHP_EOL
 		);
@@ -146,6 +180,10 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		}
 		?>
 	</ul>
+</div>
+<div>
+	<h3><label for="iworks_simple_seo_improvements_html_description"><?php esc_html_e( 'HTML description', 'simple-seo-improvements' ); ?></label></h3>
+	<textarea rows="6" name="<?php echo esc_attr( $this->field_name ); ?>[description]" id="iworks_simple_seo_improvements_html_description" class="large-text" autocomplete="off"><?php echo esc_attr( $data['description'] ); ?></textarea>
 </div>
 		<?php
 

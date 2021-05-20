@@ -49,6 +49,9 @@ I do not know... but some times we have to.
 
 == Screenshots ==
 
+1. PLUGIN_TITLE on entry
+2. PLUGIN_TITLE on term
+
 == Changelog ==
 
 = 1.0.0 =

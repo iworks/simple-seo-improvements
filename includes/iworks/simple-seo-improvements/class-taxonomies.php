@@ -36,6 +36,7 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		$this->iworks = $iworks;
 		add_action( 'admin_init', array( $this, 'admin_init' ), PHP_INT_MAX );
 		add_action( 'wp_head', array( $this, 'add_robots' ) );
+		add_action( 'wp_head', array( $this, 'add_meta_description' ) );
 		add_filter( 'document_title_parts', array( $this, 'change_wp_title' ) );
 	}
 
@@ -60,8 +61,9 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		return wp_parse_args(
 			get_term_meta( $term_id, $this->field_name, true ),
 			array(
-				'robots' => array(),
-				'title'  => get_term_meta( $term_id, 'custom_title', true ),
+				'robots'      => array(),
+				'title'       => get_term_meta( $term_id, 'custom_title', true ),
+				'description' => get_term_meta( $term_id, 'custom_description', true ),
 			)
 		);
 	}
@@ -81,8 +83,26 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		);
 	}
 
+	private function get_description_label() {
+		return sprintf(
+			'<label for="iworks_simple_seo_improvements_html_description">%s</label>',
+			esc_html__( 'HTML description', 'simple-seo-improvements' )
+		);
+	}
+
+	private function get_description_field( $data ) {
+		return sprintf(
+			'<textarea rows=6" name="%s[description]" id="iworks_simple_seo_improvements_html_description" class="large-text" autocomplete="off">%s</textarea>',
+			esc_attr( $this->field_name ),
+			esc_attr( $data['description'] )
+		);
+	}
+
 	private function get_robots_label() {
-		return esc_html__( 'Robots', 'simple-seo-improvements' );
+		return sprintf(
+			'<label>%s</label>',
+			esc_html__( 'Robots', 'simple-seo-improvements' )
+		);
 	}
 
 	private function get_robots_field( $data ) {
@@ -131,7 +151,11 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		<?php echo $this->get_title_field( $data ); ?>
 </div>
 <div class="form-field">
-	<h3><?php echo $this->get_robots_label(); ?></h3>
+		<?php echo $this->get_description_label(); ?>
+		<?php echo $this->get_description_field( $data ); ?>
+</div>
+<div class="form-field">
+		<?php echo $this->get_robots_label(); ?>
 		<?php echo $this->get_robots_field( $data ); ?>
 </div>
 		<?php
@@ -150,6 +174,10 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 	</td>
 </tr>
 <tr class="form-field">
+	<th scope="row" valign="top"><?php echo $this->get_description_label(); ?></th>
+	<td><?php echo $this->get_description_field( $data ); ?></td>
+</tr>
+<tr class="form-field">
 	<th scope="row" valign="top"><?php echo $this->get_robots_label(); ?></th>
 	<td><?php echo $this->get_robots_field( $data ); ?></td>
 </tr>
@@ -164,8 +192,15 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		$this->update_single_term_meta( $term_id, $this->field_name, $data );
 	}
 
+	private function should_we_change_anything() {
+		if ( is_admin() ) {
+			return false;
+		}
+		return is_tag() || is_category() || is_tax();
+	}
+
 	public function change_wp_title( $parts ) {
-		if ( is_admin() || ! is_tax() ) {
+		if ( ! $this->should_we_change_anything() ) {
 			return $parts;
 		}
 		$data = $this->get_data( get_queried_object_id() );
@@ -180,6 +215,32 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		}
 		$parts['title'] = $data['title'];
 		return $parts;
+	}
+
+	public function add_meta_description() {
+		if ( ! $this->should_we_change_anything() ) {
+			return;
+		}
+		$data  = $this->get_data( get_queried_object_id() );
+		$value = get_the_excerpt();
+		$data  = get_post_meta( get_the_ID(), $this->field_name, true );
+		if (
+			! empty( $data )
+			&& is_array( $data )
+			&& isset( $data['description'] )
+			&& is_string( $data['description'] )
+			&& ! empty( $data['description'] )
+		) {
+			$value = $data['description'];
+		}
+		if ( empty( $value ) ) {
+			return;
+		}
+		printf(
+			'<meta name="description" content="%s" />%s',
+			esc_attr( $value ),
+			PHP_EOL
+		);
 	}
 
 	public function add_robots() {
@@ -197,7 +258,7 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 			return;
 		}
 		printf(
-			'<meta name="robots" content="%s" />%',
+			'<meta name="robots" content="%s" />%s',
 			esc_attr( implode( ', ', array_keys( $data['robots'] ) ) ),
 			PHP_EOL
 		);
