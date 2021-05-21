@@ -50,8 +50,32 @@ class iworks_simple_seo_improvements extends iworks {
 		 */
 		require_once $this->base . '/iworks/simple-seo-improvements/class-taxonomies.php';
 		new iworks_simple_seo_improvements_taxonomies( $this );
+		/**
+		 * change logo for rate
+		 */
+		add_filter( 'iworks_rate_notice_logo_style', array( $this, 'iworks_rate_notice_logo_style' ), 10, 2 );
 	}
 
+	/**
+	 * change logo for rate
+	 */
+	public function iworks_rate_notice_logo_style( $style, $plugin ) {
+		if (
+			is_object( $plugin )
+			&& property_exists( $plugin, 'slug' )
+			&& 'simple-seo-improvements' === $plugin->slug
+		) {
+			if ( ! empty( $style ) ) {
+				$style .= ';';
+			}
+			$style .= sprintf(
+				'background-image:url(%sassets/images/logo.svg)',
+				plugin_dir_url( $this->base )
+			);
+			$style .= ';background-color:#fff';
+		}
+		return $style;
+	}
 
 }
 
