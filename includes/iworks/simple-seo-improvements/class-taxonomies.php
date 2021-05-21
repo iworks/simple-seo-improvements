@@ -48,7 +48,6 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 			)
 		);
 		$taxonomies = get_taxonomies( $args );
-
 		foreach ( $taxonomies as $taxonomy ) {
 			add_action( $taxonomy . '_add_form_fields', array( $this, 'add_fields_to_add_form' ) );
 			add_action( $taxonomy . '_edit_form_fields', array( $this, 'add_fields_to_edit_form' ), 10, 2 );
@@ -142,8 +141,9 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 	public function add_fields_to_add_form( $taxonomy ) {
 		$this->add_nonce();
 		$data = array(
-			'title'  => '',
-			'robots' => array(),
+			'title'       => '',
+			'robots'      => array(),
+			'description' => '',
 		);
 		?>
 <div class="form-field">
@@ -222,8 +222,7 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 			return;
 		}
 		$data  = $this->get_data( get_queried_object_id() );
-		$value = get_the_excerpt();
-		$data  = get_post_meta( get_the_ID(), $this->field_name, true );
+		$value = '';
 		if (
 			! empty( $data )
 			&& is_array( $data )
