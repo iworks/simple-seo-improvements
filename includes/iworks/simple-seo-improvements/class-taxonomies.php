@@ -57,12 +57,24 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 	}
 
 	private function get_data( $term_id ) {
+		$description = get_term_meta( $term_id, 'custom_description', true );
+		if ( empty( $description ) ) {
+			$description = html_entity_decode( strip_tags( term_description() ) );
+		}
+		$data = get_term_meta( $term_id, $this->field_name, true );
+		if ( ! empty( $data ) && is_array( $data ) ) {
+			foreach ( $data as $key => $value ) {
+				if ( empty( $value ) ) {
+					unset( $data[ $key ] );
+				}
+			}
+		}
 		return wp_parse_args(
-			get_term_meta( $term_id, $this->field_name, true ),
+			$data,
 			array(
 				'robots'      => array(),
 				'title'       => get_term_meta( $term_id, 'custom_title', true ),
-				'description' => get_term_meta( $term_id, 'custom_description', true ),
+				'description' => is_wp_error( $description ) ? '' : $description,
 			)
 		);
 	}

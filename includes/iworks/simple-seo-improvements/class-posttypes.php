@@ -44,14 +44,27 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	}
 
 	private function get_data( $post_id ) {
-		return wp_parse_args(
-			get_post_meta( $post_id, $this->field_name, true ),
+		$data = get_post_meta( $post_id, $this->field_name, true );
+		if ( ! empty( $data ) && is_array( $data ) ) {
+			foreach ( $data as $key => $value ) {
+				if ( empty( $value ) ) {
+					unset( $data[ $key ] );
+				}
+			}
+		}
+		$description = get_post_meta( $post_id, '_yoast_wpseo_metadesc', true );
+		if ( empty( $description ) ) {
+			$description = html_entity_decode( get_the_excerpt() );
+		}
+		$data = wp_parse_args(
+			$data,
 			array(
 				'robots'      => array(),
 				'title'       => get_post_meta( $post_id, '_yoast_wpseo_title', true ),
-				'description' => get_post_meta( $post_id, '_yoast_wpseo_metadesc', true ),
+				'description' => $description,
 			)
 		);
+		return $data;
 	}
 
 	private function should_we_change_anything() {
