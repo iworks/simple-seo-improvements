@@ -57,6 +57,6 @@ include_once $includes . '/iworks/rate/rate.php';
 do_action(
 	'iworks-register-plugin',
 	plugin_basename( __FILE__ ),
-	__( 'Simple SEO Improvements Manager', 'simple-seo-improvements' ),
+	__( 'Simple SEO Improvements', 'simple-seo-improvements' ),
 	'simple-seo-improvements'
 );

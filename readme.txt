@@ -5,7 +5,7 @@ Tags: SEO, robots
 Requires at least: 5.0
 Tested up to: 5.7
 Stable tag: PLUGIN_VERSION
-Requires PHP: 7.2
+Requires PHP: 7.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -49,12 +49,12 @@ I do not know... but some times we have to.
 
 == Screenshots ==
 
-1. PLUGIN_TITLE on entry
-2. PLUGIN_TITLE on term
+1. Entry edit screen.
+1. Taxonomy edit screen.
 
 == Changelog ==
 
-= 1.0.0 =
+= 1.0.0 (2021-05-22) =
 
 * Added `country` field in regatta table.
 * Added the boat list on a sailor page.
@@ -65,6 +65,4 @@ I do not know... but some times we have to.
 * Add year to a single result slug on save.
 
 == Upgrade Notice ==
-
-This is an upgrade notice.
 
