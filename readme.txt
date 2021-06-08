@@ -59,13 +59,14 @@ I do not know... but some times we have to.
 = 1.0.1 (2021-06-08) =
 * Added integration with [OG Plugin](https://wordpress.org/plugins/og/) to use the same custom title for `og:title`.
 
-* Added `country` field in regatta table.
-* Added the boat list on a sailor page.
-* Added shortcode "dinghy_regattas_list".
-* Added shortcode "dinghy_stats".
-* Added shortcode "dinghy_boats_list".
-* Added "Series" taxonomy for results.
-* Add year to a single result slug on save.
+= 1.0.0 (2021-05-21) =
+* First release.
+* Added HTML custom title for entries.
+* Added HTML custom title for taxonomies.
+* Added HTML meta `description` for entries.
+* Added HTML meta `description` for taxonomies.
+* Added HTML meta `robots` for entries.
+* Added HTML meta `robots` for taxonomies.
 
 == Upgrade Notice ==
 
