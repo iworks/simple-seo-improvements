@@ -41,8 +41,19 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		add_action( 'wp_head', array( $this, 'add_robots' ) );
 		add_action( 'wp_head', array( $this, 'add_meta_description' ) );
 		add_filter( 'document_title_parts', array( $this, 'change_wp_title' ) );
+		/**
+		 * integration with OG plugin
+		 *
+		 * @since 1.0.1
+		 */
+		add_filter( 'og_array', array( $this, 'filter_og_array' ) );
 	}
 
+	/**
+	 * get data
+	 *
+	 * @since 1.0.0
+	 */
 	private function get_data( $post_id ) {
 		$data = get_post_meta( $post_id, $this->field_name, true );
 		if ( ! empty( $data ) && is_array( $data ) ) {
@@ -67,6 +78,11 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		return $data;
 	}
 
+	/**
+	 * check shuld we change?
+	 *
+	 * @since 1.0.0
+	 */
 	private function should_we_change_anything() {
 		if ( is_admin() ) {
 			return false;
@@ -74,9 +90,14 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		return is_singular();
 	}
 
-	public function change_wp_title( $parts ) {
+	/**
+	 * get custom title from meta
+	 *
+	 * @since 1.0.1
+	 */
+	private function get_custom_title_of_current_post() {
 		if ( ! $this->should_we_change_anything() ) {
-			return $parts;
+			return;
 		}
 		$data = $this->get_data( get_the_ID() );
 		if (
@@ -86,9 +107,26 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 			|| ! is_string( $data['title'] )
 			|| empty( $data['title'] )
 		) {
+			return;
+		}
+		return $data['title'];
+	}
+
+
+	/**
+	 * Change HTML title element
+	 *
+	 * @since 1.0.0
+	 */
+	public function change_wp_title( $parts ) {
+		if ( ! $this->should_we_change_anything() ) {
 			return $parts;
 		}
-		$parts['title'] = $data['title'];
+		$title = $this->get_custom_title_of_current_post();
+		if ( empty( $title ) ) {
+			return $parts;
+		}
+		$parts['title'] = $title;
 		return $parts;
 	}
 
@@ -117,6 +155,11 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		);
 	}
 
+	/**
+	 * Add meta "robots" tag.
+	 *
+	 * @since 1.0.0
+	 */
 	public function add_robots() {
 		if ( is_admin() || ! is_singular() ) {
 			return;
@@ -138,6 +181,11 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		);
 	}
 
+	/**
+	 * Add entry edit metabox.
+	 *
+	 * @since 1.0.0
+	 */
 	public function add_meta_boxes() {
 		$args       = apply_filters(
 			'iworks_simple_seo_improvements_get_post_types_args',
@@ -151,6 +199,11 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		}
 	}
 
+	/**
+	 * entry metabox html content
+	 *
+	 * @since 1.0.0
+	 */
 	public function meta_box_html( $post ) {
 		$this->add_nonce();
 		$data = $this->get_data( $post->ID );
@@ -199,15 +252,32 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	<textarea rows="6" name="<?php echo esc_attr( $this->field_name ); ?>[description]" id="iworks_simple_seo_improvements_html_description" class="large-text" autocomplete="off"><?php echo esc_attr( $data['description'] ); ?></textarea>
 </div>
 		<?php
-
 	}
 
+	/**
+	 * save custom data
+	 *
+	 * @since 1.0.0
+	 */
 	public function save_data( $post_id ) {
 		if ( ! $this->check_nonce() ) {
 			return;
 		}
 		$data = $this->get_post_data();
 		$this->update_single_post_meta( $post_id, $this->field_name, $data );
+	}
+
+	/**
+	 * Filter OG array from OG plugin
+	 *
+	 * @since 1.0.1
+	 */
+	public function filter_og_array( $og ) {
+		$title = $this->get_custom_title_of_current_post();
+		if ( ! empty( $title ) ) {
+			$og['og']['title'] = $title;
+		}
+		return $og;
 	}
 }
 

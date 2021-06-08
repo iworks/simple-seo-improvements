@@ -54,7 +54,8 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
-= 1.0.0 (2021-05-22) =
+= 1.0.1 (2021-06-08) =
+* Added integration with [OG Plugin](https://wordpress.org/plugins/og/) to use the same custom title for `og:title`.
 
 * Added `country` field in regatta table.
 * Added the boat list on a sailor page.
