@@ -60,6 +60,14 @@ abstract class iworks_simple_seo_improvements_base {
 		if ( isset( $_POST[ $this->field_name ] ) ) {
 			$data = $this->filter_input_filter_sanitize_string( $_POST[ $this->field_name ] );
 		}
+		foreach ( $data as $key => $value ) {
+			switch ( $key ) {
+				case 'description':
+				case 'title':
+					$data[ $key ] = strip_tags( $value );
+					break;
+			}
+		}
 		return $data;
 	}
 
@@ -94,6 +102,15 @@ abstract class iworks_simple_seo_improvements_base {
 			return;
 		}
 		update_term_meta( $term_ID, $meta_key, $meta_value );
+	}
+
+	/**
+	 * Compress all whitespaces and trim string.
+	 *
+	 * @since 1.0.2
+	 */
+	protected function compress_all_whitespaces( $value ) {
+		return trim( preg_replace( '/\s+/', ' ', $value ) );
 	}
 }
 

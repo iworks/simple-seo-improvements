@@ -225,7 +225,7 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		) {
 			return $parts;
 		}
-		$parts['title'] = $data['title'];
+		$parts['title'] = $this->compress_all_whitespaces( $data['title'] );
 		return $parts;
 	}
 
@@ -249,7 +249,7 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		}
 		printf(
 			'<meta name="description" content="%s" />%s',
-			esc_attr( $value ),
+			esc_attr( $this->compress_all_whitespaces( $value ) ),
 			PHP_EOL
 		);
 	}

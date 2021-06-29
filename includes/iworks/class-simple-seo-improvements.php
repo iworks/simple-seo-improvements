@@ -53,29 +53,25 @@ class iworks_simple_seo_improvements extends iworks {
 		/**
 		 * change logo for rate
 		 */
-		add_filter( 'iworks_rate_notice_logo_style', array( $this, 'iworks_rate_notice_logo_style' ), 10, 2 );
+		add_filter( 'iworks_rate_notice_logo_style', array( $this, 'filter_plugin_logo' ), 10, 2 );
 	}
 
 	/**
-	 * change logo for rate
+	 * Plugin logo for rate messages
+	 *
+	 * @since 1.0.1
+	 *
+	 * @param string $logo Logo, can be empty.
+	 * @param object $plugin Plugin basic data.
 	 */
-	public function iworks_rate_notice_logo_style( $style, $plugin ) {
-		if (
-			is_object( $plugin )
-			&& property_exists( $plugin, 'slug' )
-			&& 'simple-seo-improvements' === $plugin->slug
-		) {
-			if ( ! empty( $style ) ) {
-				$style .= ';';
-			}
-			$style .= sprintf(
-				'background-image:url(%sassets/images/logo.svg)',
-				plugin_dir_url( $this->base )
-			);
-			$style .= ';background-color:#fff';
+	public function filter_plugin_logo( $logo, $plugin ) {
+		if ( is_object( $plugin ) ) {
+			$plugin = (array) $plugin;
 		}
-		return $style;
+		if ( 'simple-seo-improvements' === $plugin['slug'] ) {
+			return plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . '/assets/images/logo.svg';
+		}
+		return $logo;
 	}
-
 }
 

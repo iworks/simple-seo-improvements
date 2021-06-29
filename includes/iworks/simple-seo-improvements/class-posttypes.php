@@ -109,9 +109,8 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		) {
 			return;
 		}
-		return $data['title'];
+		return $this->compress_all_whitespaces( $data['title'] );
 	}
-
 
 	/**
 	 * Change HTML title element
@@ -150,7 +149,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		}
 		printf(
 			'<meta name="description" content="%s" />%s',
-			esc_attr( $value ),
+			esc_attr( $this->compress_all_whitespaces( $value ) ),
 			PHP_EOL
 		);
 	}
