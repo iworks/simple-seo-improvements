@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2021-06-29 17:50:31+00:00\n"
+"POT-Creation-Date: 2021-09-04 07:56:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -105,22 +105,22 @@ msgstr ""
 msgid "Simple SEO Improvements"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:211
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:220
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:85
 msgid "HTML Title"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:215
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:224
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:115
 msgid "Robots"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:240
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:249
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:143
 msgid "Add \"%s\"."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:250
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:259
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:100
 msgid "HTML description"
 msgstr ""

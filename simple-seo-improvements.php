@@ -4,13 +4,13 @@ Plugin Name: Simple SEO Improvements
 Text Domain: simple-seo-improvements
 Plugin URI: http://iworks.pl/simple-seo-improvements/
 Description: Simple SEO improvements - only super necessary elements.
-Version: 1.0.2
+Version: PLUGIN_VERSION
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Copyright 2021-2021 Marcin Pietrzak (marcin@iworks.pl)
+Copyright 2021-PLUGIN_TILL_YEAR Marcin Pietrzak (marcin@iworks.pl)
 
 this program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
