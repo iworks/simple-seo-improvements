@@ -87,7 +87,13 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		if ( is_admin() ) {
 			return false;
 		}
-		return is_singular();
+		if ( is_singular() ) {
+			return true;
+		}
+		if ( is_home() ) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -99,7 +105,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		if ( ! $this->should_we_change_anything() ) {
 			return;
 		}
-		$data = $this->get_data( get_the_ID() );
+		$data = $this->get_custom_data();
 		if (
 			empty( $data )
 			|| ! is_array( $data )
@@ -133,8 +139,8 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		if ( ! $this->should_we_change_anything() ) {
 			return;
 		}
-		$value = get_the_excerpt();
-		$data  = get_post_meta( get_the_ID(), $this->field_name, true );
+		$value = '';
+		$data  = $this->get_custom_data();
 		if (
 			! empty( $data )
 			&& is_array( $data )
@@ -143,6 +149,9 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 			&& ! empty( $data['description'] )
 		) {
 			$value = $data['description'];
+		}
+		if ( empty( $value ) ) {
+			$value = get_the_excerpt();
 		}
 		if ( empty( $value ) ) {
 			return;
@@ -277,6 +286,22 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 			$og['og']['title'] = $title;
 		}
 		return $og;
+	}
+
+	/**
+	 * get data
+	 *
+	 * @since 1.0.3
+	 */
+	private function get_custom_data() {
+		if ( is_home() ) {
+			$post_id = intval( get_option( 'page_for_posts' ) );
+			if ( empty( $post_id ) ) {
+				return array();
+			}
+			return $this->get_data( $post_id );
+		}
+		return $this->get_data( get_the_ID() );
 	}
 }
 

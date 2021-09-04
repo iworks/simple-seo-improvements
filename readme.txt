@@ -54,6 +54,10 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
+= 1.0.3 (2021-09-04) =
+* Fixed missing data on blog posts page.
+* Updated iWorks Rate to 2.0.4.
+
 = 1.0.2 (2021-06-29) =
 * Strip tags from title and description fields.
 * Updated iWorks Rate to 2.0.2.
