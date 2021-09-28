@@ -54,6 +54,9 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
+= 1.0.4 (2021-09-28) =
+* Added ability to publish images on Sitemap XML.
+
 = 1.0.3 (2021-09-04) =
 * Fixed missing data on blog posts page.
 * Updated iWorks Rate to 2.0.4.

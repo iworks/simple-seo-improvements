@@ -51,6 +51,11 @@ class iworks_simple_seo_improvements extends iworks {
 		require_once $this->base . '/iworks/simple-seo-improvements/class-taxonomies.php';
 		new iworks_simple_seo_improvements_taxonomies( $this );
 		/**
+		 * sitemap
+		 */
+		require_once $this->base . '/iworks/simple-seo-improvements/class-sitemap.php';
+		new iworks_simple_seo_improvements_sitemap( $this );
+		/**
 		 * change logo for rate
 		 */
 		add_filter( 'iworks_rate_notice_logo_style', array( $this, 'filter_plugin_logo' ), 10, 2 );
