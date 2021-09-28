@@ -73,42 +73,16 @@ class iworks_simple_seo_improvements_sitemaps_attachements extends WP_Sitemaps_P
 			$post_type,
 			$page_num
 		);
-
 		if ( null !== $url_list ) {
 			return $url_list;
 		}
-
 		$args          = $this->get_posts_query_args( $post_type );
 		$args['paged'] = $page_num;
-
-		$query = new WP_Query( $args );
-
-		$url_list = array();
-
-		/*
-		 * Add a URL for the homepage in the pages sitemap.
-		 * Shows only on the first page if the reading settings are set to display latest posts.
-		 */
-		if ( 'page' === $post_type && 1 === $page_num && 'posts' === get_option( 'show_on_front' ) ) {
-			// Extract the data needed for home URL to add to the array.
-			$sitemap_entry = array(
-				'loc' => home_url( '/' ),
-			);
-
-			/**
-			 * Filters the sitemap entry for the home page when the 'show_on_front' option equals 'posts'.
-			 *
-			 * @since 5.5.0
-			 *
-			 * @param array $sitemap_entry Sitemap entry for the home page.
-			 */
-			$sitemap_entry = apply_filters( 'wp_sitemaps_posts_show_on_front_entry', $sitemap_entry );
-			$url_list[]    = $sitemap_entry;
-		}
-
+		$query         = new WP_Query( $args );
+		$url_list      = array();
 		foreach ( $query->posts as $post ) {
 			$sitemap_entry = array(
-				'loc' => get_permalink( $post ),
+				'loc' => wp_get_attachment_url( $post->ID ),
 			);
 			/**
 			 * Filters the sitemap entry for an individual post.
@@ -186,7 +160,7 @@ class iworks_simple_seo_improvements_sitemaps_attachements extends WP_Sitemaps_P
 		 * @param string $post_type Post type name.
 		 */
 		$args = apply_filters(
-			'wp_sitemaps_posts_query_args',
+			'iworks_simple_seo_improvements_sitemaps_attachements_query_args',
 			array(
 				'orderby'                => 'ID',
 				'order'                  => 'ASC',
@@ -196,6 +170,7 @@ class iworks_simple_seo_improvements_sitemaps_attachements extends WP_Sitemaps_P
 				'no_found_rows'          => true,
 				'update_post_term_cache' => false,
 				'update_post_meta_cache' => false,
+				'post_mime_type'         => 'image',
 			),
 			$post_type
 		);

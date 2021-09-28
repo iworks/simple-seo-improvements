@@ -54,6 +54,10 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
+= 1.0.5 (2021-09-28) =
+* Changed attachment URL to direct URL to file.
+* Filter attachments on sitemap XML only to images.
+
 = 1.0.4 (2021-09-28) =
 * Added ability to publish images on Sitemap XML.
 
