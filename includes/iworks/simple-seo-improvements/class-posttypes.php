@@ -47,6 +47,10 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		 * @since 1.0.1
 		 */
 		add_filter( 'og_array', array( $this, 'filter_og_array' ) );
+		/**
+		 * options
+		 */
+		$this->options = get_iworks_simple_seo_improvements_options();
 	}
 
 	/**
@@ -54,19 +58,53 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 *
 	 * @since 1.0.0
 	 */
-	private function get_data( $post_id ) {
-		$data = get_post_meta( $post_id, $this->field_name, true );
-		if ( ! empty( $data ) && is_array( $data ) ) {
-			foreach ( $data as $key => $value ) {
-				if ( empty( $value ) ) {
-					unset( $data[ $key ] );
-				}
-			}
-		}
+	private function get_data( $post_id, $mode = 'front' ) {
+		$data = wp_parse_args(
+			get_post_meta( $post_id, $this->field_name, true ),
+			array(
+				'robots'      => array(),
+				'title'       => '',
+				'description' => '',
+			)
+		);
+		/**
+		 * set params
+		 */
+		$options     = iworks_iworks_seo_improvements_options_get_robots_params();
 		$description = get_post_meta( $post_id, '_yoast_wpseo_metadesc', true );
 		if ( empty( $description ) ) {
 			$description = html_entity_decode( get_the_excerpt() );
 		}
+		/**
+		 * force?
+		 */
+		if ( 'front' === $mode ) {
+			$name = sprintf( '%s_mode', get_post_type() );
+			if ( 'force' === $this->options->get_option( $name ) ) {
+				foreach ( $options as $key ) {
+					$data['robots'][ $key ] = intval( $this->options->get_option( sprintf( '%s_%s', get_post_type(), $key ) ) );
+				}
+			}
+		}
+		/**
+		 * always for auto draw
+		 */
+		if ( 'auto-draft' === get_post_status() ) {
+			foreach ( $options as $key ) {
+				$data['robots'][ $key ] = intval( $this->options->get_option( sprintf( '%s_%s', get_post_type(), $key ) ) );
+			}
+		}
+		/**
+		 * defaults
+		 */
+		foreach ( $options as $key ) {
+			if ( ! isset( $data['robots'][ $key ] ) ) {
+				$data['robots'][ $key ] = 0;
+			}
+		}
+		/**
+		 * return
+		 */
 		$data = wp_parse_args(
 			$data,
 			array(
@@ -172,19 +210,20 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		if ( is_admin() || ! is_singular() ) {
 			return;
 		}
-		$data = get_post_meta( get_the_ID(), $this->field_name, true );
-		if (
-			empty( $data )
-			|| ! is_array( $data )
-			|| ! isset( $data['robots'] )
-			|| ! is_array( $data['robots'] )
-			|| empty( $data['robots'] )
-		) {
+		$data    = $this->get_data( get_the_ID() );
+		$value   = array();
+		$options = iworks_iworks_seo_improvements_options_get_robots_params();
+		foreach ( $options as $key ) {
+			if ( isset( $data['robots'][ $key ] ) && $data['robots'][ $key ] ) {
+				$value[] = $key;
+			}
+		}
+		if ( empty( $value ) ) {
 			return;
 		}
 		printf(
 			'<meta name="robots" content="%s" />%s',
-			esc_attr( implode( ', ', array_keys( $data['robots'] ) ) ),
+			esc_attr( implode( ', ', $value ) ),
 			PHP_EOL
 		);
 	}
@@ -214,7 +253,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 */
 	public function meta_box_html( $post ) {
 		$this->add_nonce();
-		$data = $this->get_data( $post->ID );
+		$data = $this->get_data( $post->ID, 'admin' );
 		?>
 <div>
 	<h3><label for="iworks_simple_seo_improvements_html_title"><?php esc_html_e( 'HTML Title', 'simple-seo-improvements' ); ?></label></h3>
@@ -224,21 +263,9 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	<h3><?php esc_html_e( 'Robots', 'simple-seo-improvements' ); ?></h3>
 	<ul>
 		<?php
-		$options = array(
-			'noindex',
-			'nofollow',
-			'noimageindex',
-			'noarchive',
-			'nocache',
-			'nosnippet',
-			'notranslate',
-			'noyaca',
-		);
+		$options = iworks_iworks_seo_improvements_options_get_robots_params();
 		foreach ( $options as $key ) {
-			$value = false;
-			if ( isset( $data['robots'] ) && isset( $data['robots'][ $key ] ) ) {
-				$value = true;
-			}
+			$value = isset( $data['robots'][ $key ] ) ? $data['robots'][ $key ] : 0;
 			echo '<li><label>';
 			printf(
 				'<input type="checkbox" name="%s[robots][%s]" value="1" %s /> %s',

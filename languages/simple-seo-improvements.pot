@@ -1,15 +1,15 @@
-# Copyright (C) 2021 Marcin Pietrzak
+# Copyright (C) 2022 Marcin Pietrzak
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2021-09-28 08:24:21+00:00\n"
+"POT-Creation-Date: 2022-01-14 14:28:11+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
@@ -25,8 +25,106 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
+#: etc/options.php:11
+msgid "Simple SEO Improvements Configuration"
+msgstr ""
+
+#: etc/options.php:12
+msgid "SEO Improvements"
+msgstr ""
+
+#: etc/options.php:19 etc/options.php:99
+msgid "We are waiting for your message"
+msgstr ""
+
+#: etc/options.php:25
+msgid "I love what I do!"
+msgstr ""
+
+#: etc/options.php:63
+msgid "Below are some links to help spread this plugin to other users"
+msgstr ""
+
+#: etc/options.php:65
+msgid "Give it a five stars on WordPress.org"
+msgstr ""
+
+#: etc/options.php:66
+msgid "Link to it so others can easily find it"
+msgstr ""
+
+#: etc/options.php:101
+msgid "WordPress Help Forum"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:115
 #: includes/iworks/rate/rate.php:111
 msgid "Settings"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:162
+msgid "Single entry"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:165
+msgid ""
+"Allow to set for entries separately. Seeting will apply as default for new "
+"entries."
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:168
+msgid "Force setting to all entries"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:183
+#: includes/iworks/class-simple-seo-improvements.php:213
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:276
+#: includes/iworks/simple-seo-improvements/class-taxonomies.php:134
+msgid "Add \"%s\"."
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:200
+msgid "Add meta tags for %s."
+msgstr ""
+
+#: includes/iworks/options/options.php:237
+msgid "An error occurred while getting the configuration."
+msgstr ""
+
+#: includes/iworks/options/options.php:734
+msgid "Upload image"
+msgstr ""
+
+#: includes/iworks/options/options.php:740
+msgid "Delete image"
+msgstr ""
+
+#: includes/iworks/options/options.php:826
+msgid "Save Changes"
+msgstr ""
+
+#: includes/iworks/options/options.php:1626
+msgid "Country"
+msgstr ""
+
+#: includes/iworks/options/options.php:1627
+msgid "City"
+msgstr ""
+
+#: includes/iworks/options/options.php:1628
+msgid "Street"
+msgstr ""
+
+#: includes/iworks/options/options.php:1629
+msgid "ZIP code"
+msgstr ""
+
+#: includes/iworks/options/options.php:1780
+msgid "OFF"
+msgstr ""
+
+#: includes/iworks/options/options.php:1781
+msgid "ON"
 msgstr ""
 
 #: includes/iworks/rate/rate.php:117
@@ -105,22 +203,17 @@ msgstr ""
 msgid "Simple SEO Improvements"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:220
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:259
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:85
 msgid "HTML Title"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:224
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:263
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:115
 msgid "Robots"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:249
-#: includes/iworks/simple-seo-improvements/class-taxonomies.php:143
-msgid "Add \"%s\"."
-msgstr ""
-
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:259
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:286
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:100
 msgid "HTML description"
 msgstr ""
@@ -147,6 +240,16 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://iworks.pl/"
+msgstr ""
+
+#: etc/options.php:66
+msgctxt "plugin home page on WordPress.org"
+msgid "https://wordpress.org/plugins/simple-seo-improvements/"
+msgstr ""
+
+#: etc/options.php:101
+msgctxt "link to support forum on WordPress.org"
+msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
 msgstr ""
 
 #: includes/iworks/rate/rate.php:365

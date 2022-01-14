@@ -27,6 +27,7 @@ There are 3 ways to install this plugin:
 1. Click to install
 1. Activate the plugin
 1. A new box `Simple SEO Improvements` will appear in entry and taxonomy screen
+1. A new menu `SEO Improvements` in `Appearance` will appear in your Admin Settings Menu
 
 = 2. The easy way =
 1. Download the plugin (.zip file) on the right column of this page
@@ -35,11 +36,13 @@ There are 3 ways to install this plugin:
 1. Upload the .zip file you just downloaded
 1. Activate the plugin
 1. A new box `Simple SEO Improvements` will appear in entry and taxonomy screen
+1. A new menu `SEO Improvements` in `Appearance` will appear in your Admin Settings Menu
 
 = 3. The old and reliable way (FTP) =
 1. Upload `Simple SEO Improvements` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. A new box `Simple SEO Improvements` will appear in entry and taxonomy screen
+1. A new menu `SEO Improvements` in `Appearance` will appear in your Admin Settings Menu
 
 == Frequently Asked Questions ==
 
@@ -53,6 +56,9 @@ I do not know... but some times we have to.
 1. Taxonomy edit screen.
 
 == Changelog ==
+
+= 1.0.6 (2022-01-14) =
+* Added configuration for single entries defaults.
 
 = 1.0.5 (2021-09-28) =
 * Changed attachment URL to direct URL to file.

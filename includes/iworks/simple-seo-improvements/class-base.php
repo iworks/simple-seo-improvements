@@ -32,6 +32,8 @@ abstract class iworks_simple_seo_improvements_base {
 	private $nonce_name   = 'iworks_simple_seo_improvements_nonce';
 	protected $field_name = 'iworks_simple_seo_improvements';
 
+	protected $options;
+
 	protected function add_nonce() {
 		wp_nonce_field( __CLASS__, $this->nonce_name );
 	}

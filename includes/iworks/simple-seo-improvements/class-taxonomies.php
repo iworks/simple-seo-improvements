@@ -117,17 +117,8 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 	}
 
 	private function get_robots_field( $data ) {
+		$options     = iworks_iworks_seo_improvements_options_get_robots_params();
 		$content = '<ul>';
-		$options = array(
-			'noindex',
-			'nofollow',
-			'noimageindex',
-			'noarchive',
-			'nocache',
-			'nosnippet',
-			'notranslate',
-			'noyaca',
-		);
 		foreach ( $options as $key ) {
 			$value = false;
 			if ( isset( $data['robots'] ) && isset( $data['robots'][ $key ] ) ) {

@@ -37,6 +37,21 @@ if ( ! defined( 'WPINC' ) ) {
 $base     = dirname( __FILE__ );
 $includes = $base . '/includes';
 
+
+/**
+ * get plugin settings
+ *
+ * @since 1.0.6
+ */
+include_once $base . '/etc/options.php';
+
+/**
+ * @since 1.0.6
+ */
+if ( ! class_exists( 'iworks_options' ) ) {
+	include_once $includes . '/iworks/options/options.php';
+}
+
 /**
  * require: Iworkssimple-seo-improvements Class
  */
@@ -50,6 +65,35 @@ new iworks_simple_seo_improvements();
  */
 load_plugin_textdomain( 'simple-seo-improvements', false, plugin_basename( $base ) . '/languages' );
 
+
+/**
+ * install & uninstall plugin
+ */
+register_activation_hook( __FILE__, 'iworks_iworks_simple_seo_improvements_activate' );
+register_deactivation_hook( __FILE__, 'iworks_iworks_simple_seo_improvements_deactivate' );
+
+/**
+ * load options
+ *
+ * since 2.6.8
+ *
+ */
+global $iworks_simple_seo_improvements_options;
+$iworks_simple_seo_improvements_options = null;
+
+function get_iworks_simple_seo_improvements_options() {
+	global $iworks_simple_seo_improvements_options;
+	if ( is_object( $iworks_simple_seo_improvements_options ) ) {
+		return $iworks_simple_seo_improvements_options;
+	}
+	$options = new iworks_options();
+	$options->set_option_function_name( 'iworks_simple_seo_improvements_options' );
+	$options->set_option_prefix( 'iworks_ssi_' );
+	$options->init();
+	$iworks_simple_seo_improvements_options = $options;
+	return $iworks_simple_seo_improvements_options;
+}
+
 /**
  * Ask for vote
  */
@@ -60,3 +104,24 @@ do_action(
 	__( 'Simple SEO Improvements', 'simple-seo-improvements' ),
 	'simple-seo-improvements'
 );
+
+/**
+ * Activate plugin function
+ *
+ * @since 2.6.0
+ *
+ */
+function iworks_iworks_simple_seo_improvements_activate() {
+	$options = get_iworks_simple_seo_improvements_options();
+	$options->activate();
+}
+
+/**
+ * Deactivate plugin function
+ *
+ * @since 2.6.0
+ *
+ */
+function iworks_iworks_simple_seo_improvements_deactivate() {
+}
+
