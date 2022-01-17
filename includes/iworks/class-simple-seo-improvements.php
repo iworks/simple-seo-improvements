@@ -111,7 +111,7 @@ class iworks_simple_seo_improvements extends iworks {
 	 */
 	public function add_settings_link( $actions ) {
 		$page      = $this->options->get_pagehook();
-		$url       = add_query_arg( 'page', $page, admin_url( 'options.php' ) );
+		$url       = add_query_arg( 'page', $page, admin_url( 'options-general.php' ) );
 		$actions[] = sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html__( 'Settings', 'sierotki' ) );
 		return $actions;
 	}

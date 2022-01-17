@@ -57,6 +57,9 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
+= 1.0.7 (2022-01-17) =
+* Fixed link from plugins page to configuration page. Props for [Sebastian Miśniakiewicz](https://profiles.wordpress.org/sebastianm/)
+
 = 1.0.6 (2022-01-14) =
 * Added configuration for single entries defaults.
 
