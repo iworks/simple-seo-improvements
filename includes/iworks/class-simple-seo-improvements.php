@@ -162,7 +162,7 @@ class iworks_simple_seo_improvements extends iworks {
 				'th'      => esc_html__( 'Single entry', 'simple-seo-improvements' ),
 				'options' => array(
 					'allow' => array(
-						'label' => __( 'Allow to set for entries separately. Seeting will apply as default for new entries.', 'simple-seo-improvements' ),
+						'label' => __( 'Allow to set for entries separately. Settings will apply as default for new entries.', 'simple-seo-improvements' ),
 					),
 					'force' => array(
 						'label' => __( 'Force setting to all entries', 'simple-seo-improvements' ),
