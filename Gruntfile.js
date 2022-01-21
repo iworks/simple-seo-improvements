@@ -341,8 +341,6 @@ module.exports = function(grunt) {
             }
         },
 
-
-
         // BUILD - update the translation index .po file.
         makepot: {
             target: {
@@ -422,6 +420,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', ['release']);
     grunt.registerTask('js', ['jshint', 'eslint', 'concat', 'uglify']);
     grunt.registerTask('css', ['concat_css', 'sass', 'autoprefixer', 'cssmin']);
+    grunt.registerTask('i18n', ['makepot', 'po2mo']);
     grunt.registerTask('i18n', ['makepot', 'po2mo']);
     //grunt.registerTask( 'test', ['phpunit', 'jshint'] );
 

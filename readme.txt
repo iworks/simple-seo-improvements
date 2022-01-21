@@ -3,7 +3,7 @@ Contributors: iworks
 Donate link: http://iworks.pl/donate/simple-seo-improvements.php
 Tags: SEO, robots
 Requires at least: 5.0
-Tested up to: 5.8
+Tested up to: 5.9
 Stable tag: PLUGIN_VERSION
 Requires PHP: 7.3
 License: GPLv3 or later
