@@ -17,6 +17,14 @@ PLUGIN_DESCRIPTION
 
 Change HTML title and META robots fields for all post types and taxonomies.
 
+Content editing allows you to set a meta value for the page title and description, post, and your own content types.
+
+The configuration allows you to set the default values of the "robots" meta field for pages, entries, attachments and your own content types.
+
+You can block the indexing of unwanted pages, such as attachment pages, but leave the link-follow parameter.
+
+You can also choose whether the global settings will be set values for new content or be enforced for each content type.
+
 == Installation ==
 
 There are 3 ways to install this plugin:
@@ -54,8 +62,13 @@ I do not know... but some times we have to.
 
 1. Entry edit screen.
 1. Taxonomy edit screen.
+1. Plugin configuration screen - posts.
 
 == Changelog ==
+
+= 1.0.8 (2022-01-21) =
+* Updated iWorks Options to 2.8.0.
+* Updated iWorks Rate to 2.0.6.
 
 = 1.0.7 (2022-01-17) =
 * Fixed link from plugins page to configuration page. Props for [Sebastian Miśniakiewicz](https://profiles.wordpress.org/sebastianm/)

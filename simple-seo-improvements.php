@@ -86,11 +86,14 @@ function get_iworks_simple_seo_improvements_options() {
 	if ( is_object( $iworks_simple_seo_improvements_options ) ) {
 		return $iworks_simple_seo_improvements_options;
 	}
-	$options = new iworks_options();
-	$options->set_option_function_name( 'iworks_simple_seo_improvements_options' );
-	$options->set_option_prefix( 'iworks_ssi_' );
-	$options->init();
-	$iworks_simple_seo_improvements_options = $options;
+	$iworks_simple_seo_improvements_options = new iworks_options();
+	$iworks_simple_seo_improvements_options->set_option_function_name( 'iworks_simple_seo_improvements_options' );
+	$iworks_simple_seo_improvements_options->set_option_prefix( 'iworks_ssi_' );
+	if ( method_exists( $iworks_simple_seo_improvements_options, 'set_plugin' ) ) {
+		$iworks_simple_seo_improvements_options->set_plugin( basename( __FILE__ ) );
+	}
+	$iworks_simple_seo_improvements_options->init();
+	$iworks_simple_seo_improvements_options = $iworks_simple_seo_improvements_options;
 	return $iworks_simple_seo_improvements_options;
 }
 
