@@ -11,8 +11,6 @@
  */
 
 module.exports = function(grunt) {
-    // Show elapsed time at the end.
-    require('time-grunt')(grunt);
 
     // Load all grunt tasks.
     require('load-grunt-tasks')(grunt);
@@ -47,58 +45,6 @@ module.exports = function(grunt) {
 
         dev_plugin_file: 'simple-seo-improvements.php',
         dev_plugin_dir: 'simple-seo-improvements/',
-
-        // BUILD patterns to exclude code for specific builds.
-        replaces: {
-            patterns: [{
-                match: /PLUGIN_VERSION/g,
-                replace: '<%= pkg.version %>'
-            }, {
-                match: /BUILDTIME/g,
-                replace: buildtime
-            }, {
-                match: /PLUGIN_TILL_YEAR/g,
-                replace: buildyear
-            }, {
-                match: /PLUGIN_DESCRIPTION/g,
-                replace: '<%= pkg.description %>'
-            }, {
-                match: /PLUGIN_TITLE/g,
-                replace: '<%= pkg.title %>'
-            }, {
-                match: /IWORKS_OPTIONS_TEXTDOMAIN/g,
-                replace: '<%= pkg.name %>'
-            }, {
-                match: /IWORKS_RATE_TEXTDOMAIN/g,
-                replace: '<%= pkg.name %>'
-            }],
-
-            // Files to apply above patterns to (not only php files).
-            files: {
-                expand: true,
-                src: [
-                    '**/*.php',
-                    '**/*.css',
-                    '**/*.js',
-                    '**/*.html',
-                    '**/*.txt',
-                    '!node_modules/**',
-                    '!lib/**',
-                    '!docs/**',
-                    'release/**',
-                    '!Gruntfile.js',
-                    '!package-lock.json',
-                    '!build/**',
-                    '!tests/**',
-                    '!.git/**',
-                    '!stylelint.config.js',
-                    '!vendor',
-                    '!vendor/*',
-                    '!vendor/**'
-                ],
-                dest: './release/<%= pkg.name %>/'
-            }
-        }
     };
 
     // Project configuration
@@ -370,11 +316,29 @@ module.exports = function(grunt) {
 
         // BUILD: Replace conditional tags in code.
         replace: {
-            target: {
-                options: {
-                    patterns: conf.replaces.patterns
-                },
-                files: [conf.replaces.files]
+            options: {
+                patterns: [
+                    { match: /AUTHOR_NAME/g, replace: '<%= pkg.author[0].name %>' },
+                    { match: /AUTHOR_URI/g, replace: '<%= pkg.author[0].uri %>' },
+                    { match: /BUILDTIME/g, replace: buildtime },
+                    { match: /IWORKS_RATE_TEXTDOMAIN/g, replace: '<%= pkg.name %>' },
+                    { match: /PLUGIN_DESCRIPTION/g, replace: '<%= pkg.description %>' },
+                    { match: /PLUGIN_NAME/g, replace: '<%= pkg.name %>' },
+                    { match: /PLUGIN_REQUIRES_PHP/g, replace: '<%= pkg.requires.PHP %>' },
+                    { match: /PLUGIN_REQUIRES_WORDPRESS/g, replace: '<%= pkg.requires.WordPress %>' },
+                    { match: /PLUGIN_TILL_YEAR/g, replace: buildyear },
+                    { match: /PLUGIN_URI/g, replace: '<%= pkg.homepage %>' },
+                    { match: /PLUGIN_VERSION/g, replace: '<%= pkg.version %>' },
+                    { match: /^Version: .+$/g, replace: 'Version: <%= pkg.version %>' },
+                ]
+            },
+            files: {
+                expand: true,
+                src: [
+                    'release/**',
+                    '!release/**/images/**'
+                ],
+                dest: '.'
             }
         },
 
@@ -424,6 +388,5 @@ module.exports = function(grunt) {
     grunt.registerTask('i18n', ['makepot', 'po2mo']);
     //grunt.registerTask( 'test', ['phpunit', 'jshint'] );
 
-    grunt.task.run('clear');
     grunt.util.linefeed = '\n';
 };

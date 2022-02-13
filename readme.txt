@@ -1,7 +1,7 @@
 === PLUGIN_TITLE ===
 Contributors: iworks
 Donate link: http://iworks.pl/donate/simple-seo-improvements.php
-Tags: SEO, robots
+Tags: SEO, robots, meta-robots
 Requires at least: 5.0
 Tested up to: 5.9
 Stable tag: PLUGIN_VERSION
@@ -65,6 +65,15 @@ I do not know... but some times we have to.
 1. Plugin configuration screen - posts.
 
 == Changelog ==
+
+= 1.1.0 (2022-02-14) =
+* Added `fb:app_id` into configuration.
+* Added `twitter:site` into configuration,
+* Added ability to add custom code for HTML HEAD.
+* Added ability to add custom code for the begin of the BODY tag.
+* Added ability to add custom code for the end of the BODY tag.
+* Added integration with [OG — Better Share on Social Media](https://wordpress.org/plugins/og/).
+* Updated iWorks Options to 2.8.1.
 
 = 1.0.8 (2022-01-21) =
 * Updated iWorks Options to 2.8.0.

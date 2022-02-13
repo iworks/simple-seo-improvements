@@ -1,11 +1,11 @@
-# Copyright (C) 2022 Marcin Pietrzak
-# This file is distributed under the GPLv2 or later.
+# Copyright (C) 2022 AUTHOR_NAME
+# This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2022-01-21 09:21:43+00:00\n"
+"POT-Creation-Date: 2022-02-13 19:17:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -57,73 +57,147 @@ msgstr ""
 msgid "WordPress Help Forum"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:115
+#: includes/iworks/class-simple-seo-improvements.php:133
 #: includes/iworks/rate/rate.php:118
 msgid "Settings"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:162
+#: includes/iworks/class-simple-seo-improvements.php:167
+msgid "Custom code"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:168
+msgid ""
+"Use these settings to insert code from Google Tag Manager, Google Analytics "
+"or webmaster tools verification."
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:173
+msgid "Header Code"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:174
+msgid "Code entered in this box will be printed in the &lt;head&gt; section."
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:184
+msgid "Body Code"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:185
+msgid "Code entered in this box will be printed after the opening &lt;body&gt; tag."
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:195
+msgid "Footer Code"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:196
+msgid ""
+"Code entered in this box will be printed before the closing &lt;/body&gt; "
+"tag."
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:210
+msgid "Social Media"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:211
+msgid ""
+"If you are using Facebook or Twitter analytic tools, enter the details "
+"below. Omitting them has no effect on how a shared web page appears on a "
+"Facebook timeline or Twitter feed."
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:216
+msgid "Facebook app ID"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:218
+msgid ""
+"A Facebook App ID is a unique number that identifies your app when you "
+"request ads from Audience Network."
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:223
+msgid "Twitter site"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:225
+msgid "@account_name"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:226
+msgid "@username for the website used in the card footer."
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:251
 msgid "Single entry"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:165
+#: includes/iworks/class-simple-seo-improvements.php:254
 msgid ""
 "Allow to set for entries separately. Settings will apply as default for new "
 "entries."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:168
+#: includes/iworks/class-simple-seo-improvements.php:257
 msgid "Force setting to all entries"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:183
-#: includes/iworks/class-simple-seo-improvements.php:213
+#: includes/iworks/class-simple-seo-improvements.php:271
+#: includes/iworks/class-simple-seo-improvements.php:301
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:276
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:134
 msgid "Add \"%s\"."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:200
+#: includes/iworks/class-simple-seo-improvements.php:288
 msgid "Add meta tags for %s."
 msgstr ""
 
-#: includes/iworks/options/options.php:246
+#. Plugin Name of the plugin/theme
+msgid "Simple SEO Improvements"
+msgstr ""
+
+#: includes/iworks/options/options.php:251
 msgid "An error occurred while getting the configuration."
 msgstr ""
 
-#: includes/iworks/options/options.php:743
-msgid "Upload image"
+#: includes/iworks/options/options.php:754
+#: includes/iworks/options/options.php:1755
+msgid "Select Image"
 msgstr ""
 
-#: includes/iworks/options/options.php:749
+#: includes/iworks/options/options.php:759
 msgid "Delete image"
 msgstr ""
 
-#: includes/iworks/options/options.php:835
+#: includes/iworks/options/options.php:845
 msgid "Save Changes"
 msgstr ""
 
-#: includes/iworks/options/options.php:1635
+#: includes/iworks/options/options.php:1649
 msgid "Country"
 msgstr ""
 
-#: includes/iworks/options/options.php:1636
+#: includes/iworks/options/options.php:1650
 msgid "City"
 msgstr ""
 
-#: includes/iworks/options/options.php:1637
+#: includes/iworks/options/options.php:1651
 msgid "Street"
 msgstr ""
 
-#: includes/iworks/options/options.php:1638
+#: includes/iworks/options/options.php:1652
 msgid "ZIP code"
 msgstr ""
 
-#: includes/iworks/options/options.php:1789
+#: includes/iworks/options/options.php:1808
 msgid "OFF"
 msgstr ""
 
-#: includes/iworks/options/options.php:1790
+#: includes/iworks/options/options.php:1809
 msgid "ON"
 msgstr ""
 
@@ -199,10 +273,6 @@ msgid ""
 "Thank you for all the ratings, reviews and donates."
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-msgid "Simple SEO Improvements"
-msgstr ""
-
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:259
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:85
 msgid "HTML Title"
@@ -227,19 +297,19 @@ msgid "Add images to WordPress Sitemap XML?"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://iworks.pl/simple-seo-improvements/"
+msgid "PLUGIN_URI"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Simple SEO improvements - only super necessary elements."
+msgid "PLUGIN_DESCRIPTION"
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Marcin Pietrzak"
+msgid "AUTHOR_NAME"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://iworks.pl/"
+msgid "AUTHOR_URI"
 msgstr ""
 
 #: etc/options.php:66
