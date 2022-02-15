@@ -97,6 +97,11 @@ class iworks_simple_seo_improvements extends iworks {
 		require_once $this->base . '/iworks/simple-seo-improvements/class-sitemap.php';
 		new iworks_simple_seo_improvements_sitemap( $this );
 		/**
+		 * prefixes
+		 */
+		require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-prefixes.php';
+		new iworks_simple_seo_improvements_prefixes( $this );
+		/**
 		 * iWorks Rate integration - change logo for rate
 		 */
 		add_filter( 'iworks_rate_notice_logo_style', array( $this, 'filter_plugin_logo' ), 10, 2 );
@@ -156,7 +161,68 @@ class iworks_simple_seo_improvements extends iworks {
 		if ( ! empty( $options['index']['options'] ) ) {
 			return $options;
 		}
-		$opts = array();
+        $opts = array();
+        /**
+         */
+		$opts[] = array(
+			'type'        => 'heading',
+			'label'       => __( 'General', 'simple-seo-improvements' ),
+        );
+        /**
+         * category/tag prefix remove
+         */
+        $permalink_structure = get_option( 'permalink_structure' );
+        if ( ! empty( $permalink_structure ) ) {
+            $opts[] = array(
+                'type'        => 'subheading',
+                'label'       => __( 'URL prefixes', 'simple-seo-improvements' ),
+            );
+            $opts[] = array(
+                'name'              => 'category_no_slug',
+                'type'              => 'checkbox',
+                'th'                => __( 'Category prefix', 'simple-seo-improvements' ),
+                'default'           => 0,
+                'sanitize_callback' => 'absint',
+                'classes'           => array( 'switch-button' ),
+                'description' => __( 'Turn it on to remove the category prefix.', 'simple-seo-improvements' ),
+                'flush_rewrite_rules' => true,
+            );
+            $opts[] = array(
+                'name'              => 'tag_no_slug',
+                'type'              => 'checkbox',
+                'th'                => __( 'Tag prefix', 'simple-seo-improvements' ),
+                'default'           => 0,
+                'sanitize_callback' => 'absint',
+                'classes'           => array( 'switch-button' ),
+                'description' => __( 'Turn it on to remove the tag prefix.', 'simple-seo-improvements' ),
+                'flush_rewrite_rules' => true,
+            );
+        }
+		/**
+		 * Add social media
+		 *
+		 * @since 1.1.0
+		 */
+		$opts[] = array(
+			'type'        => 'subheading',
+			'label'       => __( 'Social Media', 'simple-seo-improvements' ),
+			'description' => __( 'If you are using Facebook or Twitter analytic tools, enter the details below. Omitting them has no effect on how a shared web page appears on a Facebook timeline or Twitter feed.', 'simple-seo-improvements' ),
+		);
+		$opts[] = array(
+			'name'              => 'fb:app_id',
+			'type'              => 'text',
+			'th'                => __( 'Facebook app ID', 'simple-seo-improvements' ),
+			'sanitize_callback' => 'esc_html',
+			'description'       => __( 'A Facebook App ID is a unique number that identifies your app when you request ads from Audience Network.', 'simple-seo-improvements' ),
+		);
+		$opts[] = array(
+			'name'              => 'twitter:site',
+			'type'              => 'text',
+			'th'                => __( 'Twitter site', 'simple-seo-improvements' ),
+			'sanitize_callback' => 'esc_html',
+			'placeholder'       => _x( '@account_name', 'placeholder', 'simple-seo-improvements' ),
+			'description'       => __( '@username for the website used in the card footer.', 'simple-seo-improvements' ),
+		);
 		/**
 		 * Add custom code
 		 *
@@ -201,31 +267,6 @@ class iworks_simple_seo_improvements extends iworks {
 			'rows'        => 10,
 		);
 		/**
-		 * Add social media
-		 *
-		 * @since 1.1.0
-		 */
-		$opts[] = array(
-			'type'        => 'heading',
-			'label'       => __( 'Social Media', 'simple-seo-improvements' ),
-			'description' => __( 'If you are using Facebook or Twitter analytic tools, enter the details below. Omitting them has no effect on how a shared web page appears on a Facebook timeline or Twitter feed.', 'simple-seo-improvements' ),
-		);
-		$opts[] = array(
-			'name'              => 'fb:app_id',
-			'type'              => 'text',
-			'th'                => __( 'Facebook app ID', 'simple-seo-improvements' ),
-			'sanitize_callback' => 'esc_html',
-			'description'       => __( 'A Facebook App ID is a unique number that identifies your app when you request ads from Audience Network.', 'simple-seo-improvements' ),
-		);
-		$opts[] = array(
-			'name'              => 'twitter:site',
-			'type'              => 'text',
-			'th'                => __( 'Twitter site', 'simple-seo-improvements' ),
-			'sanitize_callback' => 'esc_html',
-			'placeholder'       => __( '@account_name', 'simple-seo-improvements' ),
-			'description'       => __( '@username for the website used in the card footer.', 'simple-seo-improvements' ),
-		);
-		/**
 		 * post types
 		 */
 		$post_types = get_post_types();
@@ -244,12 +285,12 @@ class iworks_simple_seo_improvements extends iworks {
 			$opts[] = array(
 				'type'  => 'heading',
 				'label' => $post_type->label,
-			);
+            );
 			$opts[] = array(
 				'name'    => sprintf( '%s_mode', $post_type->name ),
 				'type'    => 'radio',
-				'th'      => esc_html__( 'Single entry', 'simple-seo-improvements' ),
-				'options' => array(
+                'th'      => esc_html( $post_type->labels->singular_name),
+                'options' => array(
 					'allow' => array(
 						'label' => __( 'Allow to set for entries separately. Settings will apply as default for new entries.', 'simple-seo-improvements' ),
 					),

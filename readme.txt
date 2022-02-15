@@ -66,13 +66,15 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
-= 1.1.0 (2022-02-14) =
-* Added `fb:app_id` into configuration.
-* Added `twitter:site` into configuration,
+= 1.1.0 (2022-02-15) =
 * Added ability to add custom code for HTML HEAD.
 * Added ability to add custom code for the begin of the BODY tag.
 * Added ability to add custom code for the end of the BODY tag.
+* Added ability to remove category URL prefix.
+* Added ability to remove tag URL prefix.
+* Added `fb:app_id` into configuration.
 * Added integration with [OG — Better Share on Social Media](https://wordpress.org/plugins/og/).
+* Added `twitter:site` into configuration,
 * Updated iWorks Options to 2.8.1.
 
 = 1.0.8 (2022-01-21) =
