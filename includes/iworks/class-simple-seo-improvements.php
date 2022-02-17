@@ -46,14 +46,19 @@ class iworks_simple_seo_improvements extends iworks {
 	 */
 	private $plugin_file;
 
-	private $params = array();
-
 	/**
 	 * Check for OG plugin: https://wordpress.org/plugins/og/
 	 *
 	 * @since 1.1.0
 	 */
 	private $is_og_installed = null;
+
+	/**
+	 * get robots options
+	 *
+	 * @since 1.2.0
+	 */
+	protected $robots_options = array();
 
 	public function __construct() {
 		parent::__construct();
@@ -79,8 +84,9 @@ class iworks_simple_seo_improvements extends iworks {
 		 * options
 		 */
 		$this->options = get_iworks_simple_seo_improvements_options();
-		add_filter( 'iworks_simple_seo_improvements_options', array( $this, 'set_options' ) );
-		$this->params = iworks_iworks_seo_improvements_options_get_robots_params();
+		add_filter( 'iworks_plugin_get_options', array( $this, 'filter_add_post_types_options' ), 10, 2 );
+		add_filter( 'iworks_plugin_get_options', array( $this, 'filter_maybe_add_advertising' ), 10, 2 );
+		$this->set_robots_options();
 		/**
 		 * post types
 		 */
@@ -113,6 +119,7 @@ class iworks_simple_seo_improvements extends iworks {
 		$this->check_og_plugin();
 		add_filter( 'og_twitter_site', array( $this, 'filter_og_twitter_site' ) );
 		add_filter( 'og_array', array( $this, 'filter_og_array_add_fb_app_id' ) );
+		add_filter( 'og_image_init', array( $this, 'filter_og_image_init' ) );
 	}
 
 	/**
@@ -157,115 +164,43 @@ class iworks_simple_seo_improvements extends iworks {
 		return $logo;
 	}
 
-	public function set_options( $options ) {
-		if ( ! empty( $options['index']['options'] ) ) {
+	/**
+	 * Filter options for custom added post types
+	 */
+	public function filter_add_post_types_options( $options, $plugin ) {
+		if ( 'simple-seo-improvements' !== $plugin ) {
 			return $options;
 		}
-        $opts = array();
-        /**
-         */
-		$opts[] = array(
-			'type'        => 'heading',
-			'label'       => __( 'General', 'simple-seo-improvements' ),
-        );
-        /**
-         * category/tag prefix remove
-         */
-        $permalink_structure = get_option( 'permalink_structure' );
-        if ( ! empty( $permalink_structure ) ) {
-            $opts[] = array(
-                'type'        => 'subheading',
-                'label'       => __( 'URL prefixes', 'simple-seo-improvements' ),
-            );
-            $opts[] = array(
-                'name'              => 'category_no_slug',
-                'type'              => 'checkbox',
-                'th'                => __( 'Category prefix', 'simple-seo-improvements' ),
-                'default'           => 0,
-                'sanitize_callback' => 'absint',
-                'classes'           => array( 'switch-button' ),
-                'description' => __( 'Turn it on to remove the category prefix.', 'simple-seo-improvements' ),
-                'flush_rewrite_rules' => true,
-            );
-            $opts[] = array(
-                'name'              => 'tag_no_slug',
-                'type'              => 'checkbox',
-                'th'                => __( 'Tag prefix', 'simple-seo-improvements' ),
-                'default'           => 0,
-                'sanitize_callback' => 'absint',
-                'classes'           => array( 'switch-button' ),
-                'description' => __( 'Turn it on to remove the tag prefix.', 'simple-seo-improvements' ),
-                'flush_rewrite_rules' => true,
-            );
-        }
+		$opts = $options['index']['options'];
 		/**
-		 * Add social media
-		 *
-		 * @since 1.1.0
+		 * remove 'meta-description' group
 		 */
-		$opts[] = array(
-			'type'        => 'subheading',
-			'label'       => __( 'Social Media', 'simple-seo-improvements' ),
-			'description' => __( 'If you are using Facebook or Twitter analytic tools, enter the details below. Omitting them has no effect on how a shared web page appears on a Facebook timeline or Twitter feed.', 'simple-seo-improvements' ),
-		);
-		$opts[] = array(
-			'name'              => 'fb:app_id',
-			'type'              => 'text',
-			'th'                => __( 'Facebook app ID', 'simple-seo-improvements' ),
-			'sanitize_callback' => 'esc_html',
-			'description'       => __( 'A Facebook App ID is a unique number that identifies your app when you request ads from Audience Network.', 'simple-seo-improvements' ),
-		);
-		$opts[] = array(
-			'name'              => 'twitter:site',
-			'type'              => 'text',
-			'th'                => __( 'Twitter site', 'simple-seo-improvements' ),
-			'sanitize_callback' => 'esc_html',
-			'placeholder'       => _x( '@account_name', 'placeholder', 'simple-seo-improvements' ),
-			'description'       => __( '@username for the website used in the card footer.', 'simple-seo-improvements' ),
-		);
+		if ( 'posts' !== get_option( 'show_on_front' ) ) {
+			foreach ( $opts as $key => $value ) {
+				if ( ! isset( $value['group'] ) ) {
+					continue;
+				}
+				if ( 'meta-description' !== $value['group'] ) {
+					continue;
+				}
+				unset( $opts[ $key ] );
+			}
+		}
 		/**
-		 * Add custom code
-		 *
-		 * @since 1.1.0
+		 * remove category/tag prefix remove
 		 */
-		$opts[] = array(
-			'type'        => 'heading',
-			'label'       => __( 'Custom code', 'simple-seo-improvements' ),
-			'description' => __( 'Use these settings to insert code from Google Tag Manager, Google Analytics or webmaster tools verification.', 'simple-seo-improvements' ),
-		);
-		$opts[] = array(
-			'name'        => 'html_head',
-			'type'        => 'textarea',
-			'th'          => __( 'Header Code', 'simple-seo-improvements' ),
-			'description' => __( 'Code entered in this box will be printed in the &lt;head&gt; section.', 'simple-seo-improvements' ),
-			'classes'     => array(
-				'large-text',
-				'code',
-			),
-			'rows'        => 10,
-		);
-		$opts[] = array(
-			'name'        => 'html_body_start',
-			'type'        => 'textarea',
-			'th'          => __( 'Body Code', 'simple-seo-improvements' ),
-			'description' => __( 'Code entered in this box will be printed after the opening &lt;body&gt; tag.', 'simple-seo-improvements' ),
-			'classes'     => array(
-				'large-text',
-				'code',
-			),
-			'rows'        => 10,
-		);
-		$opts[] = array(
-			'name'        => 'html_body_end',
-			'type'        => 'textarea',
-			'th'          => __( 'Footer Code', 'simple-seo-improvements' ),
-			'description' => __( 'Code entered in this box will be printed before the closing &lt;/body&gt; tag.', 'simple-seo-improvements' ),
-			'classes'     => array(
-				'large-text',
-				'code',
-			),
-			'rows'        => 10,
-		);
+		$permalink_structure = get_option( 'permalink_structure' );
+		if ( empty( $permalink_structure ) ) {
+			foreach ( $opts as $key => $value ) {
+				if ( ! isset( $value['group'] ) ) {
+					continue;
+				}
+				if ( 'prefixes' !== $value['group'] ) {
+					continue;
+				}
+				unset( $opts[ $key ] );
+			}
+		}
 		/**
 		 * post types
 		 */
@@ -285,12 +220,12 @@ class iworks_simple_seo_improvements extends iworks {
 			$opts[] = array(
 				'type'  => 'heading',
 				'label' => $post_type->label,
-            );
+			);
 			$opts[] = array(
 				'name'    => sprintf( '%s_mode', $post_type->name ),
 				'type'    => 'radio',
-                'th'      => esc_html( $post_type->labels->singular_name),
-                'options' => array(
+				'th'      => esc_html( $post_type->labels->singular_name ),
+				'options' => array(
 					'allow' => array(
 						'label' => __( 'Allow to set for entries separately. Settings will apply as default for new entries.', 'simple-seo-improvements' ),
 					),
@@ -300,7 +235,7 @@ class iworks_simple_seo_improvements extends iworks {
 				),
 				'default' => $is_attachment ? 'force' : 'allow',
 			);
-			foreach ( $this->params as $key ) {
+			foreach ( $this->robots_options as $key ) {
 				$opts[] = array(
 					'name'              => sprintf(
 						'%s_%s',
@@ -330,7 +265,7 @@ class iworks_simple_seo_improvements extends iworks {
 					strtolower( $post_type->labels->archives )
 				),
 			);
-			foreach ( $this->params as $key ) {
+			foreach ( $this->robots_options as $key ) {
 				$opts[] = array(
 					'name'              => sprintf(
 						'%s_archive_%s',
@@ -380,7 +315,7 @@ class iworks_simple_seo_improvements extends iworks {
 		 * get values
 		 */
 		$robots = array();
-		foreach ( $this->params  as $key ) {
+		foreach ( $this->robots_options as $key ) {
 			$name = sprintf( '%s_archive_%s', $post_type, $key );
 			if ( $this->options->get_option( $name ) ) {
 				$robots[] = $key;
@@ -433,46 +368,71 @@ class iworks_simple_seo_improvements extends iworks {
 			$content .= $value;
 			$content .= PHP_EOL;
 		}
-		if ( ! $this->is_og_installed ) {
-			/**
-			 * fb:app_id
-			 */
-			$value = $this->options->get_option( 'fb:app_id' );
+		if ( $this->is_og_installed ) {
+			return;
+		}
+		/**
+		 * html meta description for home with blog posts
+		 *
+		 * @since 1.2.0
+		 */
+		if ( is_home() && is_front_page() ) {
+			$value = $this->options->get_option( 'home_meta_description' );
 			if ( ! empty( $value ) ) {
 				$content .= sprintf(
-					'<meta property="fb:app_id" content="%s">%s',
+					'<meta property="description" content="%s">%s',
 					esc_attr( $value ),
 					PHP_EOL
 				);
 			}
-			/**
-			 * twitter:site
-			 */
-			$value = $this->options->get_option( 'twitter:site' );
-			if ( ! empty( $value ) ) {
-				$content .= sprintf(
-					'<meta property="twitter:site" content="%s">%s',
-					esc_attr( $value ),
-					PHP_EOL
-				);
+		}
+		/**
+		 * og:image
+		 */
+		$value = $this->get_image_for_og_image();
+		if ( ! empty( $value ) ) {
+			foreach ( $value as $key => $v ) {
+				if ( empty( $v ) ) {
+					continue;
+				}
+				$string = '<meta property="og:image:%2$s" content="%1$s" />';
+				if ( 'url' === $key ) {
+					$string = '<meta property="og:image" content="%1$s" />';
+				}
+				$content .= sprintf( $string, esc_attr( $v ), esc_attr( $key ) );
+				$content .= PHP_EOL;
 			}
+		}
+		/**
+		 * fb:app_id
+		 */
+		$value = $this->options->get_option( 'fb:app_id' );
+		if ( ! empty( $value ) ) {
+			$content .= sprintf(
+				'<meta property="fb:app_id" content="%s">%s',
+				esc_attr( $value ),
+				PHP_EOL
+			);
+		}
+		/**
+		 * twitter:site
+		 */
+		$value = $this->options->get_option( 'twitter:site' );
+		if ( ! empty( $value ) ) {
+			if ( ! preg_match( '/^@/', $value ) ) {
+				$value = '@' . $value;
+			}
+			$content .= sprintf(
+				'<meta property="twitter:site" content="%s">%s',
+				esc_attr( $value ),
+				PHP_EOL
+			);
 		}
 		if ( empty( $content ) ) {
 			return;
 		}
-		printf(
-			'%3$s<!-- %1$s - %2$s -->%3$s',
-			__( 'Simple SEO Improvements', 'simple-seo-improvements' ),
-			$this->version,
-			PHP_EOL
-		);
-		echo $content;
-		printf(
-			'<!-- /%1$s -->%3$s',
-			__( 'Simple SEO Improvements', 'simple-seo-improvements' ),
-			$this->version,
-			PHP_EOL
-		);
+		$content = apply_filters( 'simple_seo_improvements_wp_head', $content );
+		echo $this->wrap_code_in_comments( $content );
 	}
 
 	/**
@@ -482,8 +442,11 @@ class iworks_simple_seo_improvements extends iworks {
 	 */
 	public function filter_og_twitter_site( $value ) {
 		$v = $this->options->get_option( 'twitter:site' );
-		if ( ! empty( $v ) ) {
-			$value = $v;
+		if ( empty( $v ) ) {
+			return $value;
+		}
+		if ( ! preg_match( '/^@/', $v ) ) {
+			return '@' . $value;
 		}
 		return $v;
 	}
@@ -505,6 +468,15 @@ class iworks_simple_seo_improvements extends iworks {
 	}
 
 	/**
+	 * add default OG image to OG plugin
+	 *
+	 * @since 1.2.0
+	 */
+	public function filter_og_image_init( $og ) {
+		return $this->get_image_for_og_image();
+	}
+
+	/**
 	 * Add code after <body> tag.
 	 *
 	 * @since 1.1.0
@@ -514,7 +486,7 @@ class iworks_simple_seo_improvements extends iworks {
 		if ( empty( $value ) ) {
 			return;
 		}
-		echo $value;
+		echo $this->wrap_code_in_comments( $value );
 	}
 
 	/**
@@ -527,7 +499,93 @@ class iworks_simple_seo_improvements extends iworks {
 		if ( empty( $value ) ) {
 			return;
 		}
-		echo $value;
+		echo $this->wrap_code_in_comments( $value );
+	}
+
+	/**
+	 * Wrap output code with comment
+	 *
+	 * @since 1.1.1
+	 */
+	private function wrap_code_in_comments( $code ) {
+		$content  = sprintf(
+			'%3$s<!-- %1$s - %2$s -->%3$s',
+			__( 'Simple SEO Improvements', 'simple-seo-improvements' ),
+			$this->version,
+			PHP_EOL
+		);
+		$content .= $code;
+		$content .= sprintf(
+			'%3$s<!-- /%1$s -->%3$s',
+			__( 'Simple SEO Improvements', 'simple-seo-improvements' ),
+			$this->version,
+			PHP_EOL
+		);
+		return $content;
+	}
+
+	/**
+	 * Filter options for some advertising
+	 *
+	 * @since 1.2.0
+	 */
+	public function filter_maybe_add_advertising( $options, $plugin ) {
+		if ( 'simple-seo-improvements' !== $plugin ) {
+			return $options;
+		}
+		if ( ! isset( $options['index']['metaboxes'] ) ) {
+			$options['index']['metaboxes'] = array();
+		}
+		if ( ! $this->is_og_installed ) {
+			$data = apply_filters( 'iworks_rate_advertising_og', array() );
+			if ( ! empty( $data ) ) {
+				$options['index']['metaboxes'] = array_merge( $options['index']['metaboxes'], $data );
+			}
+		}
+		return $options;
+	}
+
+	/**
+	 * set robots options
+	 *
+	 * @since 1.2.0
+	 */
+	protected function set_robots_options() {
+		if ( ! empty( $this->robots_options ) ) {
+			return;
+		}
+		$settings = $this->options->get_group( 'settings' );
+		if ( isset( $settings['robots'] ) ) {
+			$this->robots_options = $settings['robots'];
+		}
+	}
+
+	/**
+	 * get og:image
+	 *
+	 * @since 1.2.0
+	 */
+	private function get_image_for_og_image() {
+		$attachment_id = $this->options->get_option( 'default_image' );
+		if ( empty( $attachment_id ) ) {
+			return array();
+			return $image;
+		}
+		$mime_type = get_post_mime_type( $attachment_id );
+		if ( ! preg_match( '/^image/', $mime_type ) ) {
+			return array();
+		}
+		$data = wp_get_attachment_image_src( $attachment_id, 'full' );
+		if ( empty( $data ) ) {
+			return array();
+		}
+		return array(
+			'url'    => $data[0],
+			'width'  => $data[1],
+			'height' => $data[2],
+			'mime'   => $mime_type,
+			'alt'    => get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ),
+		);
 	}
 }
 

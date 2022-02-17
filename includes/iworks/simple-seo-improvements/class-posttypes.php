@@ -38,8 +38,8 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		$this->iworks = $iworks;
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_data' ) );
-		add_action( 'wp_head', array( $this, 'add_robots' ) );
-		add_action( 'wp_head', array( $this, 'add_meta_description' ) );
+		add_action( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_robots' ) );
+		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_meta_description' ) );
 		add_filter( 'document_title_parts', array( $this, 'change_wp_title' ) );
 		/**
 		 * integration with OG plugin
@@ -51,6 +51,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		 * options
 		 */
 		$this->options = get_iworks_simple_seo_improvements_options();
+		$this->set_robots_options();
 	}
 
 	/**
@@ -70,7 +71,6 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		/**
 		 * set params
 		 */
-		$options     = iworks_iworks_seo_improvements_options_get_robots_params();
 		$description = get_post_meta( $post_id, '_yoast_wpseo_metadesc', true );
 		if ( empty( $description ) ) {
 			$description = html_entity_decode( get_the_excerpt() );
@@ -81,7 +81,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		if ( 'front' === $mode ) {
 			$name = sprintf( '%s_mode', get_post_type() );
 			if ( 'force' === $this->options->get_option( $name ) ) {
-				foreach ( $options as $key ) {
+				foreach ( $this->robots_options as $key ) {
 					$data['robots'][ $key ] = intval( $this->options->get_option( sprintf( '%s_%s', get_post_type(), $key ) ) );
 				}
 			}
@@ -90,14 +90,14 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		 * always for auto draw
 		 */
 		if ( 'auto-draft' === get_post_status() ) {
-			foreach ( $options as $key ) {
+			foreach ( $this->robots_options as $key ) {
 				$data['robots'][ $key ] = intval( $this->options->get_option( sprintf( '%s_%s', get_post_type(), $key ) ) );
 			}
 		}
 		/**
 		 * defaults
 		 */
-		foreach ( $options as $key ) {
+		foreach ( $this->robots_options as $key ) {
 			if ( ! isset( $data['robots'][ $key ] ) ) {
 				$data['robots'][ $key ] = 0;
 			}
@@ -173,9 +173,12 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		return $parts;
 	}
 
-	public function add_meta_description() {
+	public function filter_add_meta_description( $content ) {
 		if ( ! $this->should_we_change_anything() ) {
-			return;
+			return $content;
+		}
+		if ( is_home() && is_front_page() ) {
+			return $content;
 		}
 		$value = '';
 		$data  = $this->get_custom_data();
@@ -194,38 +197,40 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		if ( empty( $value ) ) {
 			return;
 		}
-		printf(
+		$content .= sprintf(
 			'<meta name="description" content="%s" />%s',
 			esc_attr( $this->compress_all_whitespaces( $value ) ),
 			PHP_EOL
 		);
+		return $content;
 	}
 
 	/**
 	 * Add meta "robots" tag.
 	 *
 	 * @since 1.0.0
+	 * @since 1.2.0 become be a filter
 	 */
-	public function add_robots() {
+	public function filter_add_robots( $content ) {
 		if ( is_admin() || ! is_singular() ) {
-			return;
+			return $content;
 		}
-		$data    = $this->get_data( get_the_ID() );
-		$value   = array();
-		$options = iworks_iworks_seo_improvements_options_get_robots_params();
-		foreach ( $options as $key ) {
+		$data  = $this->get_data( get_the_ID() );
+		$value = array();
+		foreach ( $this->robots_options as $key ) {
 			if ( isset( $data['robots'][ $key ] ) && $data['robots'][ $key ] ) {
 				$value[] = $key;
 			}
 		}
 		if ( empty( $value ) ) {
-			return;
+			return $content;
 		}
-		printf(
+		$content .= sprintf(
 			'<meta name="robots" content="%s" />%s',
 			esc_attr( implode( ', ', $value ) ),
 			PHP_EOL
 		);
+		return $content;
 	}
 
 	/**
@@ -263,8 +268,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	<h3><?php esc_html_e( 'Robots', 'simple-seo-improvements' ); ?></h3>
 	<ul>
 		<?php
-		$options = iworks_iworks_seo_improvements_options_get_robots_params();
-		foreach ( $options as $key ) {
+		foreach ( $this->robots_options as $key ) {
 			$value = isset( $data['robots'][ $key ] ) ? $data['robots'][ $key ] : 0;
 			echo '<li><label>';
 			printf(

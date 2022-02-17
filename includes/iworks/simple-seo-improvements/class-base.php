@@ -34,6 +34,8 @@ abstract class iworks_simple_seo_improvements_base {
 
 	protected $options;
 
+	protected $robots_options;
+
 	protected function add_nonce() {
 		wp_nonce_field( __CLASS__, $this->nonce_name );
 	}
@@ -113,6 +115,21 @@ abstract class iworks_simple_seo_improvements_base {
 	 */
 	protected function compress_all_whitespaces( $value ) {
 		return trim( preg_replace( '/\s+/', ' ', $value ) );
+	}
+
+	/**
+	 * set robots options
+	 *
+	 * @since 1.2.0
+	 */
+	protected function set_robots_options() {
+		if ( ! empty( $this->robots_options ) ) {
+			return;
+		}
+		$settings = $this->options->get_group( 'settings' );
+		if ( isset( $settings['robots'] ) ) {
+			$this->robots_options = $settings['robots'];
+		}
 	}
 }
 

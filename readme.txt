@@ -66,6 +66,11 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
+= 1.2.0 (2022-02-17) =
+* Added meta description for homepage with posts blog list.
+* Added default og:image.
+* Updated iWorks Rate to 2.1.0.
+
 = 1.1.0 (2022-02-15) =
 * Added ability to add custom code for HTML HEAD.
 * Added ability to add custom code for the begin of the BODY tag.

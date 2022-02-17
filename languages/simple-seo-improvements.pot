@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2022-02-15 20:27:02+00:00\n"
+"POT-Creation-Date: 2022-02-17 13:00:51+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,142 +33,156 @@ msgstr ""
 msgid "SEO Improvements"
 msgstr ""
 
-#: etc/options.php:19 etc/options.php:99
-msgid "We are waiting for your message"
-msgstr ""
-
-#: etc/options.php:25
-msgid "I love what I do!"
-msgstr ""
-
-#: etc/options.php:63
-msgid "Below are some links to help spread this plugin to other users"
-msgstr ""
-
-#: etc/options.php:65
-msgid "Give it a five stars on WordPress.org"
-msgstr ""
-
-#: etc/options.php:66
-msgid "Link to it so others can easily find it"
-msgstr ""
-
-#: etc/options.php:101
-msgid "WordPress Help Forum"
-msgstr ""
-
-#: includes/iworks/class-simple-seo-improvements.php:138
-#: includes/iworks/rate/rate.php:118
-msgid "Settings"
-msgstr ""
-
-#: includes/iworks/class-simple-seo-improvements.php:169
+#: etc/options.php:19
 msgid "General"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:178
-msgid "URL prefixes"
+#: etc/options.php:24
+msgid "Default site Icon"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:183
-msgid "Category prefix"
+#: etc/options.php:31
+msgid "Home meta description"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:187
+#: etc/options.php:32
+msgid ""
+"This field is avaialble only when your homepage show blog posts not as a "
+"page"
+msgstr ""
+
+#: etc/options.php:46
+msgid "Remove category URL prefix"
+msgstr ""
+
+#: etc/options.php:50
 msgid "Turn it on to remove the category prefix."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:193
-msgid "Tag prefix"
+#: etc/options.php:57
+msgid "Remove tag URL prefix"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:197
+#: etc/options.php:61
 msgid "Turn it on to remove the tag prefix."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:208
+#: etc/options.php:72
 msgid "Social Media"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:209
+#: etc/options.php:73
 msgid ""
 "If you are using Facebook or Twitter analytic tools, enter the details "
 "below. Omitting them has no effect on how a shared web page appears on a "
 "Facebook timeline or Twitter feed."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:214
+#: etc/options.php:78
 msgid "Facebook app ID"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:216
+#: etc/options.php:80
 msgid ""
 "A Facebook App ID is a unique number that identifies your app when you "
 "request ads from Audience Network."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:221
+#: etc/options.php:85
 msgid "Twitter site"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:224
+#: etc/options.php:88
 msgid "@username for the website used in the card footer."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:233
+#: etc/options.php:97
 msgid "Custom code"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:234
+#: etc/options.php:98
 msgid ""
 "Use these settings to insert code from Google Tag Manager, Google Analytics "
 "or webmaster tools verification."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:239
+#: etc/options.php:103
 msgid "Header Code"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:240
-msgid "Code entered in this box will be printed in the &lt;head&gt; section."
-msgstr ""
-
-#: includes/iworks/class-simple-seo-improvements.php:250
-msgid "Body Code"
-msgstr ""
-
-#: includes/iworks/class-simple-seo-improvements.php:251
-msgid "Code entered in this box will be printed after the opening &lt;body&gt; tag."
-msgstr ""
-
-#: includes/iworks/class-simple-seo-improvements.php:261
-msgid "Footer Code"
-msgstr ""
-
-#: includes/iworks/class-simple-seo-improvements.php:262
+#: etc/options.php:104
 msgid ""
-"Code entered in this box will be printed before the closing &lt;/body&gt; "
-"tag."
+"Code entered in this box will be printed in the <code>&lt;head&gt;</code> "
+"section."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:295
+#: etc/options.php:114
+msgid "Body Start"
+msgstr ""
+
+#: etc/options.php:115
+msgid ""
+"Code entered in this box will be printed after the opening "
+"<code>&lt;body&gt;</code> tag."
+msgstr ""
+
+#: etc/options.php:125
+msgid "Body End"
+msgstr ""
+
+#: etc/options.php:126
+msgid ""
+"Code entered in this box will be printed before the closing "
+"<code>&lt;/body&gt;</code> tag."
+msgstr ""
+
+#: etc/options.php:136 etc/options.php:210
+msgid "We are waiting for your message"
+msgstr ""
+
+#: etc/options.php:142
+msgid "I love what I do!"
+msgstr ""
+
+#: etc/options.php:174
+msgid "Below are some links to help spread this plugin to other users"
+msgstr ""
+
+#: etc/options.php:176
+msgid "Give it a five stars on WordPress.org"
+msgstr ""
+
+#: etc/options.php:177
+msgid "Link to it so others can easily find it"
+msgstr ""
+
+#: etc/options.php:212
+msgid "WordPress Help Forum"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:145
+#: includes/iworks/rate/rate.php:124
+msgid "Settings"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:230
 msgid ""
 "Allow to set for entries separately. Settings will apply as default for new "
 "entries."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:298
+#: includes/iworks/class-simple-seo-improvements.php:233
 msgid "Force setting to all entries"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:312
-#: includes/iworks/class-simple-seo-improvements.php:342
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:276
+#: includes/iworks/class-simple-seo-improvements.php:247
+#: includes/iworks/class-simple-seo-improvements.php:277
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:280
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:134
 msgid "Add \"%s\"."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:329
+#: includes/iworks/class-simple-seo-improvements.php:264
 msgid "Add meta tags for %s."
 msgstr ""
 
@@ -217,9 +231,33 @@ msgstr ""
 msgid "ON"
 msgstr ""
 
-#: includes/iworks/rate/rate.php:124
+#: includes/iworks/rate/rate.php:130
 #: includes/iworks/rate/templates/thanks.php:28
 msgid "Provide us a coffee"
+msgstr ""
+
+#: includes/iworks/rate/rate.php:474
+msgid "OpenGraph"
+msgstr ""
+
+#: includes/iworks/rate/rate.php:490
+msgid "OG — Better Share on Social Media"
+msgstr ""
+
+#: includes/iworks/rate/rate.php:491
+msgid "https://wordpress.org/plugins/og/"
+msgstr ""
+
+#: includes/iworks/rate/templates/plugins/og.php:2
+msgid "Would you like to boost your website sharing abilities?"
+msgstr ""
+
+#: includes/iworks/rate/templates/plugins/og.php:7
+msgid "Don't wait, install plugin %s!"
+msgstr ""
+
+#: includes/iworks/rate/templates/plugins/og.php:17
+msgid "Install"
 msgstr ""
 
 #: includes/iworks/rate/templates/thanks.php:17
@@ -289,17 +327,17 @@ msgid ""
 "Thank you for all the ratings, reviews and donates."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:259
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:264
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:85
 msgid "HTML Title"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:263
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:268
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:115
 msgid "Robots"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:286
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:290
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:100
 msgid "HTML description"
 msgstr ""
@@ -328,27 +366,27 @@ msgstr ""
 msgid "AUTHOR_URI"
 msgstr ""
 
-#: etc/options.php:66
-msgctxt "plugin home page on WordPress.org"
-msgid "https://wordpress.org/plugins/simple-seo-improvements/"
-msgstr ""
-
-#: etc/options.php:101
-msgctxt "link to support forum on WordPress.org"
-msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
-msgstr ""
-
-#: includes/iworks/class-simple-seo-improvements.php:223
+#: etc/options.php:87
 msgctxt "placeholder"
 msgid "@account_name"
 msgstr ""
 
-#: includes/iworks/rate/rate.php:399
+#: etc/options.php:177
+msgctxt "plugin home page on WordPress.org"
+msgid "https://wordpress.org/plugins/simple-seo-improvements/"
+msgstr ""
+
+#: etc/options.php:212
+msgctxt "link to support forum on WordPress.org"
+msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
+msgstr ""
+
+#: includes/iworks/rate/rate.php:405
 msgctxt "plugins home"
 msgid "https://wordpress.org/plugins/%s"
 msgstr ""
 
-#: includes/iworks/rate/rate.php:405
+#: includes/iworks/rate/rate.php:411
 msgctxt "plugins support home"
 msgid "https://wordpress.org/support/plugin/%s"
 msgstr ""
