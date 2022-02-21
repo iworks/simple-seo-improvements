@@ -1,7 +1,7 @@
 === PLUGIN_TITLE ===
 Contributors: iworks
-Donate link: http://iworks.pl/donate/simple-seo-improvements.php
-Tags: SEO, robots, meta-robots
+Donate link: https://ko-fi.com/iworks?utm_source=simple-seo-improvements&utm_medium=readme-donate
+Tags: seo, robots, meta robots, meta description, google search console. facebook, twitter, category, tag
 Requires at least: 5.0
 Tested up to: 5.9
 Stable tag: PLUGIN_VERSION
@@ -24,6 +24,23 @@ The configuration allows you to set the default values of the "robots" meta fiel
 You can block the indexing of unwanted pages, such as attachment pages, but leave the link-follow parameter.
 
 You can also choose whether the global settings will be set values for new content or be enforced for each content type.
+
+= Features list =
+
+* Add custom html code after <code>&lt;BODY&gt;</code> tag.
+* Add custom html code before <code>&lt;/BODY&gt;</code> tag.
+* Add custom html code in <code>&lt;HEAD&gt;</code> section.
+* Add default site og:image.
+* Add different html title for single entry.
+* Add Facebook application ID.
+* Add meta description for homepage when it display posts.
+* Add meta description for single entry.
+* Add meta robots for all build in post types (post, page, media).
+* Add meta robots for all custom post types
+* Add meta robots for single entry.
+* Add Twitter site.
+* Remove category URL prefix.
+* Remove tag URL prefix.
 
 == Installation ==
 
