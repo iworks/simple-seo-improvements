@@ -2,14 +2,14 @@
 Contributors: iworks
 Donate link: https://ko-fi.com/iworks?utm_source=simple-seo-improvements&utm_medium=readme-donate
 Tags: seo, robots, meta robots, meta description, google search console. facebook, twitter, category, tag
-Requires at least: 5.0
-Tested up to: 5.9
+Requires at least: PLUGIN_REQUIRES_WORDPRESS
+Tested up to: 6.0
 Stable tag: PLUGIN_VERSION
-Requires PHP: 7.3
+Requires PHP: PLUGIN_REQUIRES_PHP
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-PLUGIN_DESCRIPTION
+PLUGIN_TAGLINE
 
 == Description ==
 
@@ -82,6 +82,12 @@ I do not know... but some times we have to.
 1. Plugin configuration screen - posts.
 
 == Changelog ==
+
+= 1.2.2 (2022-02-22) =
+* Fixed typo in meta description field.
+
+= 1.2.1 (2022-02-22) =
+* Fixed display meta description when [OG — Better Share on Social Media](https://wordpress.org/plugins/og/) plugin is installed and activated.
 
 = 1.2.0 (2022-02-17) =
 * Added meta description for homepage with posts blog list.

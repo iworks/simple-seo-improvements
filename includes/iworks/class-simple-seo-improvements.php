@@ -368,9 +368,6 @@ class iworks_simple_seo_improvements extends iworks {
 			$content .= $value;
 			$content .= PHP_EOL;
 		}
-		if ( $this->is_og_installed ) {
-			return;
-		}
 		/**
 		 * html meta description for home with blog posts
 		 *
@@ -380,7 +377,7 @@ class iworks_simple_seo_improvements extends iworks {
 			$value = $this->options->get_option( 'home_meta_description' );
 			if ( ! empty( $value ) ) {
 				$content .= sprintf(
-					'<meta property="description" content="%s">%s',
+					'<meta name="description" content="%s">%s',
 					esc_attr( $value ),
 					PHP_EOL
 				);
@@ -389,44 +386,46 @@ class iworks_simple_seo_improvements extends iworks {
 		/**
 		 * og:image
 		 */
-		$value = $this->get_image_for_og_image();
-		if ( ! empty( $value ) ) {
-			foreach ( $value as $key => $v ) {
-				if ( empty( $v ) ) {
-					continue;
+		if ( ! $this->is_og_installed ) {
+			$value = $this->get_image_for_og_image();
+			if ( ! empty( $value ) ) {
+				foreach ( $value as $key => $v ) {
+					if ( empty( $v ) ) {
+						continue;
+					}
+					$string = '<meta property="og:image:%2$s" content="%1$s" />';
+					if ( 'url' === $key ) {
+						$string = '<meta property="og:image" content="%1$s" />';
+					}
+					$content .= sprintf( $string, esc_attr( $v ), esc_attr( $key ) );
+					$content .= PHP_EOL;
 				}
-				$string = '<meta property="og:image:%2$s" content="%1$s" />';
-				if ( 'url' === $key ) {
-					$string = '<meta property="og:image" content="%1$s" />';
+			}
+			/**
+			 * fb:app_id
+			 */
+			$value = $this->options->get_option( 'fb:app_id' );
+			if ( ! empty( $value ) ) {
+				$content .= sprintf(
+					'<meta property="fb:app_id" content="%s">%s',
+					esc_attr( $value ),
+					PHP_EOL
+				);
+			}
+			/**
+			 * twitter:site
+			 */
+			$value = $this->options->get_option( 'twitter:site' );
+			if ( ! empty( $value ) ) {
+				if ( ! preg_match( '/^@/', $value ) ) {
+					$value = '@' . $value;
 				}
-				$content .= sprintf( $string, esc_attr( $v ), esc_attr( $key ) );
-				$content .= PHP_EOL;
+				$content .= sprintf(
+					'<meta property="twitter:site" content="%s">%s',
+					esc_attr( $value ),
+					PHP_EOL
+				);
 			}
-		}
-		/**
-		 * fb:app_id
-		 */
-		$value = $this->options->get_option( 'fb:app_id' );
-		if ( ! empty( $value ) ) {
-			$content .= sprintf(
-				'<meta property="fb:app_id" content="%s">%s',
-				esc_attr( $value ),
-				PHP_EOL
-			);
-		}
-		/**
-		 * twitter:site
-		 */
-		$value = $this->options->get_option( 'twitter:site' );
-		if ( ! empty( $value ) ) {
-			if ( ! preg_match( '/^@/', $value ) ) {
-				$value = '@' . $value;
-			}
-			$content .= sprintf(
-				'<meta property="twitter:site" content="%s">%s',
-				esc_attr( $value ),
-				PHP_EOL
-			);
 		}
 		if ( empty( $content ) ) {
 			return;
