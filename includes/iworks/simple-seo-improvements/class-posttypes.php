@@ -38,7 +38,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		$this->iworks = $iworks;
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_data' ) );
-		add_action( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_robots' ) );
+		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_robots' ) );
 		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_meta_description' ) );
 		add_filter( 'document_title_parts', array( $this, 'change_wp_title' ) );
 		/**
@@ -215,7 +215,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		if ( is_admin() || ! is_singular() ) {
 			return $content;
 		}
-		$data  = $this->get_data( get_the_ID() );
+		$data = $this->get_data( get_the_ID() );
 		$value = array();
 		foreach ( $this->robots_options as $key ) {
 			if ( isset( $data['robots'][ $key ] ) && $data['robots'][ $key ] ) {

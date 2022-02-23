@@ -77,7 +77,7 @@ class iworks_simple_seo_improvements extends iworks {
 		 */
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'wp_head', array( $this, 'add_robots' ) );
-		add_action( 'wp_head', array( $this, 'add_social_media' ) );
+		add_action( 'wp_head', array( $this, 'filter_wp_head_add_html_head' ) );
 		add_action( 'wp_body_open', array( $this, 'action_wp_body_open_add_html_body_start' ), 0 );
 		add_action( 'wp_footer', array( $this, 'action_wp_footer_add_html_body_end' ), PHP_INT_MAX );
 		/**
@@ -358,7 +358,7 @@ class iworks_simple_seo_improvements extends iworks {
 	 *
 	 * @since 1.1.0
 	 */
-	public function add_social_media() {
+	public function filter_wp_head_add_html_head() {
 		$content = '';
 		/**
 		 * HTML HEAD
@@ -427,10 +427,10 @@ class iworks_simple_seo_improvements extends iworks {
 				);
 			}
 		}
+		$content = apply_filters( 'simple_seo_improvements_wp_head', $content );
 		if ( empty( $content ) ) {
 			return;
 		}
-		$content = apply_filters( 'simple_seo_improvements_wp_head', $content );
 		echo $this->wrap_code_in_comments( $content );
 	}
 

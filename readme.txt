@@ -83,6 +83,9 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
+= 1.2.3 (2022-02-23) =
+* Fixed filter call order - singular settings was ignored.
+
 = 1.2.2 (2022-02-22) =
 * Fixed typo in meta description field.
 
