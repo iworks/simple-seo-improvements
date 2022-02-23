@@ -579,11 +579,13 @@ class iworks_simple_seo_improvements extends iworks {
 			return array();
 		}
 		return array(
-			'url'    => $data[0],
-			'width'  => $data[1],
-			'height' => $data[2],
-			'mime'   => $mime_type,
-			'alt'    => get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ),
+			array(
+				'url'    => $data[0],
+				'width'  => $data[1],
+				'height' => $data[2],
+				'mime'   => $mime_type,
+				'alt'    => get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ),
+			),
 		);
 	}
 }
