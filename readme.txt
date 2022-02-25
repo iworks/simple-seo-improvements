@@ -85,7 +85,7 @@ I do not know... but some times we have to.
 
 = 1.2.4 (2022-02-25) =
 * Fixed display `og:image` when [OG — Better Share on Social Media](https://wordpress.org/plugins/og/) plugin is installed and activated.
-* Fixed missing function wehn edit taxonomy. Props for chał Ruszczyk](https://profiles.wordpress.org/mruszczyk/).
+* Fixed missing function wehn edit taxonomy. Props for [Michał Ruszczyk](https://profiles.wordpress.org/mruszczyk/).
 * Updated iWorks Options to 2.8.1.
 
 = 1.2.3 (2022-02-23) =
