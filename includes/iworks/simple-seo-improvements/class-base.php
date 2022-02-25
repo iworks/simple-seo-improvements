@@ -126,6 +126,9 @@ abstract class iworks_simple_seo_improvements_base {
 		if ( ! empty( $this->robots_options ) ) {
 			return;
 		}
+		if ( empty( $this->options ) ) {
+			$this->options = get_iworks_simple_seo_improvements_options();
+		}
 		$settings = $this->options->get_group( 'settings' );
 		if ( isset( $settings['robots'] ) ) {
 			$this->robots_options = $settings['robots'];

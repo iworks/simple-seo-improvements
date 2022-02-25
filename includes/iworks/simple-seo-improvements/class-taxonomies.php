@@ -117,9 +117,9 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 	}
 
 	private function get_robots_field( $data ) {
-		$options     = iworks_iworks_seo_improvements_options_get_robots_params();
 		$content = '<ul>';
-		foreach ( $options as $key ) {
+		$this->set_robots_options();
+		foreach ( $this->robots_options as $key ) {
 			$value = false;
 			if ( isset( $data['robots'] ) && isset( $data['robots'][ $key ] ) ) {
 				$value = true;
