@@ -27,18 +27,19 @@ You can also choose whether the global settings will be set values for new conte
 
 = Features list =
 
+* Add Facebook application ID.
+* Add IndexNow for Bing.
+* Add Twitter site.
 * Add custom html code after <code>&lt;BODY&gt;</code> tag.
 * Add custom html code before <code>&lt;/BODY&gt;</code> tag.
 * Add custom html code in <code>&lt;HEAD&gt;</code> section.
 * Add default site og:image.
 * Add different html title for single entry.
-* Add Facebook application ID.
 * Add meta description for homepage when it display posts.
 * Add meta description for single entry.
 * Add meta robots for all build in post types (post, page, media).
 * Add meta robots for all custom post types
 * Add meta robots for single entry.
-* Add Twitter site.
 * Remove category URL prefix.
 * Remove tag URL prefix.
 
