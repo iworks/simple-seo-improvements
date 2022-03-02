@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2022-03-02 19:19:23+00:00\n"
+"POT-Creation-Date: 2022-03-02 19:25:40+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -96,84 +96,81 @@ msgstr ""
 msgid "@username for the website used in the card footer."
 msgstr ""
 
-#: etc/options.php:95
+#: etc/options.php:97
 msgid "IndexNow"
 msgstr ""
 
-#: etc/options.php:96
+#: etc/options.php:98
 msgid ""
 "IndexNow is an easy way for websites owners to instantly inform search "
-"engines about latest content changes on their website. In its simplest "
-"form, IndexNow is a simple ping so that search engines know that a URL and "
-"its content has been added, updated, or deleted, allowing search engines to "
-"quickly reflect this change in their search results."
+"engines about latest content changes on their website. In its simplest form."
 msgstr ""
 
-#: etc/options.php:101
+#: etc/options.php:108
 msgid "Send to Bing"
 msgstr ""
 
-#: etc/options.php:114
+#: etc/options.php:121
 msgid "Custom code"
 msgstr ""
 
-#: etc/options.php:115
+#: etc/options.php:122
 msgid ""
 "Use these settings to insert code from Google Tag Manager, Google Analytics "
 "or webmaster tools verification."
 msgstr ""
 
-#: etc/options.php:120
+#: etc/options.php:127
 msgid "Header Code"
 msgstr ""
 
-#: etc/options.php:121
+#: etc/options.php:128
 msgid ""
 "Code entered in this box will be printed in the <code>&lt;head&gt;</code> "
 "section."
 msgstr ""
 
-#: etc/options.php:131
+#: etc/options.php:138
 msgid "Body Start"
 msgstr ""
 
-#: etc/options.php:132
+#: etc/options.php:139
 msgid ""
 "Code entered in this box will be printed after the opening "
 "<code>&lt;body&gt;</code> tag."
 msgstr ""
 
-#: etc/options.php:142
+#: etc/options.php:149
 msgid "Body End"
 msgstr ""
 
-#: etc/options.php:143
+#: etc/options.php:150
 msgid ""
 "Code entered in this box will be printed before the closing "
 "<code>&lt;/body&gt;</code> tag."
 msgstr ""
 
-#: etc/options.php:153 etc/options.php:227
+#: etc/options.php:160 etc/options.php:234
 msgid "We are waiting for your message"
 msgstr ""
 
-#: etc/options.php:159
+#: etc/options.php:166
 msgid "I love what I do!"
 msgstr ""
 
-#: etc/options.php:191
+#: etc/options.php:198
 msgid "Below are some links to help spread this plugin to other users"
 msgstr ""
 
-#: etc/options.php:193
+#: etc/options.php:200
 msgid "Give it a five stars on WordPress.org"
 msgstr ""
 
-#: etc/options.php:194
+#: etc/options.php:201
 msgid "Link to it so others can easily find it"
 msgstr ""
 
-#: etc/options.php:229
+#: etc/options.php:236
 msgid "WordPress Help Forum"
 msgstr ""
 
@@ -388,12 +385,12 @@ msgctxt "placeholder"
 msgid "@account_name"
 msgstr ""
 
-#: etc/options.php:194
+#: etc/options.php:201
 msgctxt "plugin home page on WordPress.org"
 msgid "https://wordpress.org/plugins/simple-seo-improvements/"
 msgstr ""
 
-#: etc/options.php:229
+#: etc/options.php:236
 msgctxt "link to support forum on WordPress.org"
 msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
 msgstr ""
