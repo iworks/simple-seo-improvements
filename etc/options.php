@@ -88,6 +88,23 @@ function iworks_simple_seo_improvements_options() {
 				'description'       => __( '@username for the website used in the card footer.', 'simple-seo-improvements' ),
 			),
 			/**
+			 * IndexNow
+			 */
+			array(
+				'type'        => 'subheading',
+				'label'       => __( 'IndexNow', 'simple-seo-improvements' ),
+				'description' => __( 'IndexNow is an easy way for websites owners to instantly inform search engines about latest content changes on their website. In its simplest form, IndexNow is a simple ping so that search engines know that a URL and its content has been added, updated, or deleted, allowing search engines to quickly reflect this change in their search results.', 'simple-seo-improvements' ),
+			),
+			array(
+				'name'              => 'indexnow_bing',
+				'type'              => 'checkbox',
+				'th'                => __( 'Send to Bing', 'simple-seo-improvements' ),
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'sanitize_callback' => 'intval',
+			),
+			/**
 			 * Add custom code
 			 *
 			 * @since 1.1.0

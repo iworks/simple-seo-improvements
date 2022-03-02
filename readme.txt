@@ -83,6 +83,9 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
+= 1.3.0 (2022-03-02) =
+* Added IndexNow for Bing.
+
 = 1.2.4 (2022-02-25) =
 * Fixed display `og:image` when [OG — Better Share on Social Media](https://wordpress.org/plugins/og/) plugin is installed and activated.
 * Fixed missing function wehn edit taxonomy. Props for [Michał Ruszczyk](https://profiles.wordpress.org/mruszczyk/).

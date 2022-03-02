@@ -75,6 +75,7 @@ class iworks_simple_seo_improvements extends iworks {
 		/**
 		 * WordPress Hooks
 		 */
+		add_action( 'init', array( $this, 'maybe_load_index_now' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'wp_head', array( $this, 'add_robots' ) );
 		add_action( 'wp_head', array( $this, 'filter_wp_head_add_html_head' ) );
@@ -587,6 +588,33 @@ class iworks_simple_seo_improvements extends iworks {
 				'alt'    => get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ),
 			),
 		);
+	}
+
+	/**
+	 * get or generate IndexNow api key
+	 *
+	 * @since 1.3.0
+	 */
+	private function get_indexnow_key() {
+		$key = $this->options->get_option( 'indexnow' );
+		if ( empty( $key ) ) {
+			$key = wp_generate_password( 32, false, false );
+			$this->options->add_option( 'indexnow', $key, false );
+		}
+		return $key;
+	}
+
+	/**
+	 * IndexNow
+	 *
+	 * @since 1.3.0
+	 */
+	public function maybe_load_index_now() {
+		if ( ! empty( $this->options->get_option( 'indexnow_bing' ) ) ) {
+			$key = $this->get_indexnow_key();
+			require_once( $this->base . '/iworks/simple-seo-improvements/index-now/class-iworks-index-now-bing.php' );
+			new iworks_simple_seo_improvements_index_now_bing( $key );
+		}
 	}
 }
 
