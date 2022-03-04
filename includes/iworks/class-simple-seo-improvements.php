@@ -76,6 +76,7 @@ class iworks_simple_seo_improvements extends iworks {
 		 * WordPress Hooks
 		 */
 		add_action( 'init', array( $this, 'maybe_load_index_now' ) );
+		add_action( 'init', array( $this, 'maybe_load_robots_txt' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'wp_head', array( $this, 'add_robots' ) );
 		add_action( 'wp_head', array( $this, 'filter_wp_head_add_html_head' ) );
@@ -614,6 +615,18 @@ class iworks_simple_seo_improvements extends iworks {
 			$key = $this->get_indexnow_key();
 			require_once( $this->base . '/iworks/simple-seo-improvements/index-now/class-iworks-index-now-bing.php' );
 			new iworks_simple_seo_improvements_index_now_bing( $key );
+		}
+	}
+
+	/**
+	 * IndexNow
+	 *
+	 * @since 1.4.0
+	 */
+	public function maybe_load_robots_txt() {
+		if ( ! empty( $this->options->get_option( 'robots_txt' ) ) ) {
+			require_once( $this->base . '/iworks/simple-seo-improvements/class-iworks-robots-txt.php' );
+			new iworks_simple_seo_improvements_robots_txt();
 		}
 	}
 }

@@ -84,6 +84,9 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
+= 1.4.0 (2022-03-02) =
+* Added improvements into robots.txt file.
+
 = 1.3.0 (2022-03-02) =
 * Added IndexNow for Bing.
 

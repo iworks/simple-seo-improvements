@@ -93,9 +93,8 @@ function iworks_simple_seo_improvements_options() {
 			 * @since 1.3.0
 			 */
 			array(
-				'type'        => 'subheading',
-				'label'       => __( 'IndexNow', 'simple-seo-improvements' ),
-				'description' => __( 'IndexNow is an easy way for websites owners to instantly inform search engines about latest content changes on their website. In its simplest form.', 'simple-seo-improvements' ),
+				'type'  => 'subheading',
+				'label' => __( 'Other', 'simple-seo-improvements' ),
 			),
 			/**
 			 * IndexNow for Bing
@@ -105,11 +104,27 @@ function iworks_simple_seo_improvements_options() {
 			array(
 				'name'              => 'indexnow_bing',
 				'type'              => 'checkbox',
-				'th'                => __( 'Send to Bing', 'simple-seo-improvements' ),
+				'th'                => __( 'IndexNow for Bing', 'simple-seo-improvements' ),
 				'default'           => 1,
 				'sanitize_callback' => 'absint',
 				'classes'           => array( 'switch-button' ),
 				'sanitize_callback' => 'intval',
+				'description'       => __( 'IndexNow is an easy way for websites owners to instantly inform search engines about latest content changes on their website. In its simplest form.', 'simple-seo-improvements' ),
+			),
+			/**
+			 * robots.txt
+			 *
+			 * @since 1.4.0
+			 */
+			array(
+				'name'              => 'robots_txt',
+				'type'              => 'checkbox',
+				'th'                => __( 'Improve robots.txt', 'simple-seo-improvements' ),
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'sanitize_callback' => 'intval',
+				'description'       => __( 'A robots.txt file tells search engine crawlers which URLs the crawler can access on your site.', 'simple-seo-improvements' ),
 			),
 			/**
 			 * Add custom code
