@@ -68,6 +68,8 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 				'/*/*.png',
 				'/*/*.webp',
 				'/*/*.svg',
+				'/wp-content/uploads/*',
+				'/files/*',
 			),
 		);
 		foreach ( array( 'tag', 'category' ) as $taxonomy_name ) {
