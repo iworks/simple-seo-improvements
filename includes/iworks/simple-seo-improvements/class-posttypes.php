@@ -37,6 +37,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	public function __construct( $iworks ) {
 		$this->iworks = $iworks;
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'edit_attachment', array( $this, 'save_data' ) );
 		add_action( 'save_post', array( $this, 'save_data' ) );
 		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_robots' ) );
 		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_meta_description' ) );
@@ -195,7 +196,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 			$value = get_the_excerpt();
 		}
 		if ( empty( $value ) ) {
-			return;
+			return $content;
 		}
 		$content .= sprintf(
 			'<meta name="description" content="%s" />%s',
@@ -247,7 +248,15 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		);
 		$post_types = get_post_types( $args );
 		foreach ( $post_types as $post_type ) {
-			add_meta_box( 'iworks_simple_seo_improvements', __( 'Simple SEO Improvements', 'Simple' ), array( $this, 'meta_box_html' ), $post_type );
+			if ( 'force' === $this->options->get_option( $post_type . '_mode' ) ) {
+				continue;
+			}
+			add_meta_box(
+				'iworks_simple_seo_improvements',
+				__( 'Simple SEO Improvements', 'simple-seo-improvements' ),
+				array( $this, 'meta_box_html' ),
+				$post_type
+			);
 		}
 	}
 

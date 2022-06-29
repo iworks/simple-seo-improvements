@@ -84,6 +84,11 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
+= 1.4.1 (2022-06-29) =
+* Fixed saving attachment data.
+* Fixed translation domain.
+* Fixed issue with empty description.
+
 = 1.4.0 (2022-03-02) =
 * Added improvements into robots.txt file.
 
