@@ -84,6 +84,9 @@ I do not know... but some times we have to.
 
 == Changelog ==
 
+= 1.4.3 (2022-09-19) =
+* Fixed a typo in sprintf pattern.
+
 = 1.4.2 (2022-09-19) =
 * Added ability to use default image as site icon.
 * Changed [iWorks Rate Module](https://github.com/iworks/iworks-rate) repository to GitHub.
