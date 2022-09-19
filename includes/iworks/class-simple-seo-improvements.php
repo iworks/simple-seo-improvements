@@ -363,6 +363,25 @@ class iworks_simple_seo_improvements extends iworks {
 	public function filter_wp_head_add_html_head() {
 		$content = '';
 		/**
+		 * favicon
+		 *
+		 * @since 1.4.2
+		 */
+		$attachment_id = $this->options->get_option( 'default_image' );
+		if ( ! empty( $attachment_id ) && $this->options->get_option( 'use_as_favicon' ) ) {
+			$url       = wp_make_link_relative( wp_get_attachment_image_url( $attachment_id, 'full' ) );
+			$mime_type = get_post_mime_type( $attachment_id );
+			foreach ( array( 'icon', 'shortcut icon' ) as $key ) {
+				printf(
+					'<link rel="%s" href="%s" type="s"/>%s',
+					esc_attr( $key ),
+					esc_attr( $url ),
+					esc_attr( $mime_type ),
+					PHP_EOL
+				);
+			}
+		}
+		/**
 		 * HTML HEAD
 		 */
 		$value = $this->options->get_option( 'html_head' );

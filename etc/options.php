@@ -26,6 +26,15 @@ function iworks_simple_seo_improvements_options() {
 				'max-width'         => 64,
 			),
 			array(
+				'name'              => 'use_as_favicon',
+				'type'              => 'checkbox',
+				'th'                => __( 'Use as favicon', 'simple-seo-improvements' ),
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'group'             => 'prefixes',
+			),
+			array(
 				'name'        => 'home_meta_description',
 				'type'        => 'textarea',
 				'th'          => __( 'Home meta description', 'simple-seo-improvements' ),
