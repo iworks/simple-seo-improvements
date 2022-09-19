@@ -373,7 +373,7 @@ class iworks_simple_seo_improvements extends iworks {
 			$mime_type = get_post_mime_type( $attachment_id );
 			foreach ( array( 'icon', 'shortcut icon' ) as $key ) {
 				printf(
-					'<link rel="%s" href="%s" type="s"/>%s',
+					'<link rel="%s" href="%s" type="%s"/>%s',
 					esc_attr( $key ),
 					esc_attr( $url ),
 					esc_attr( $mime_type ),
