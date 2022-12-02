@@ -46,7 +46,7 @@ class iworks_simple_seo_improvements_sitemap extends iworks_simple_seo_improveme
 			__( 'Sitemap XML', 'simple-seo-improvements' ),
 			array( $this, 'add_fields_html' ),
 			'media',
-			'default',
+			'default'
 		);
 
 	}

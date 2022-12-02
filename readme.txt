@@ -3,7 +3,7 @@ Contributors: iworks
 Donate link: https://ko-fi.com/iworks?utm_source=simple-seo-improvements&utm_medium=readme-donate
 Tags: seo, robots, meta robots, meta description, google search console. facebook, twitter, category, tag
 Requires at least: PLUGIN_REQUIRES_WORDPRESS
-Tested up to: 6.0
+Tested up to: 6.1
 Stable tag: PLUGIN_VERSION
 Requires PHP: PLUGIN_REQUIRES_PHP
 License: GPLv3 or later
@@ -83,6 +83,9 @@ I do not know... but some times we have to.
 1. Plugin configuration screen - posts.
 
 == Changelog ==
+
+= 1.4.4 (2022-12-02) =
+* Fixed PHP compatibility syntax.
 
 = 1.4.3 (2022-09-19) =
 * Fixed a typo in sprintf pattern.
