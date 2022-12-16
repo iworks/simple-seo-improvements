@@ -34,7 +34,6 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 		add_filter( 'robots_txt', array( $this, 'filter_robots_txt_add' ) );
 	}
 
-
 	public function filter_robots_txt_add( $robots ) {
 		$entries = array(
 			'Disallow' => array(
@@ -44,10 +43,6 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 				'*/trackback/',
 				'/wp-admin/',
 				'/wp-content/languages/',
-				'/wp-content/mu-plugins/',
-				'/wp-content/plugins/',
-				'/wp-content/themes/',
-				'/wp-includes/',
 				'/wp-*.php',
 				'/xmlrpc.php',
 				'/yoast-ga/outbound-article/',

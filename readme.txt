@@ -84,8 +84,12 @@ I do not know... but sometimes we have to.
 
 == Changelog ==
 
+= 1.4.5 (2022-12-16) =
+* Improved robots.txt
+
 = 1.4.4 (2022-12-02) =
 * Fixed PHP compatibility syntax.
+* Updated iWorks Rate to 2.1.1.
 
 = 1.4.3 (2022-09-19) =
 * Fixed a typo in sprintf pattern.
