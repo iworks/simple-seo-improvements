@@ -79,7 +79,7 @@ class iworks_simple_seo_improvements extends iworks {
 		add_action( 'init', array( $this, 'maybe_load_robots_txt' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'wp_head', array( $this, 'add_robots' ) );
-		add_action( 'wp_head', array( $this, 'filter_wp_head_add_html_head' ) );
+		add_action( 'wp_head', array( $this, 'filter_wp_head_add_html_head' ), 0 );
 		add_action( 'wp_body_open', array( $this, 'action_wp_body_open_add_html_body_start' ), 0 );
 		add_action( 'wp_footer', array( $this, 'action_wp_footer_add_html_body_end' ), PHP_INT_MAX );
 		/**
@@ -104,6 +104,11 @@ class iworks_simple_seo_improvements extends iworks {
 		 */
 		require_once $this->base . '/iworks/simple-seo-improvements/class-sitemap.php';
 		new iworks_simple_seo_improvements_sitemap( $this );
+		/**
+		 * Archives: day, month, year & author
+		 */
+		require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php';
+		new iworks_simple_seo_improvements_archives( $this );
 		/**
 		 * prefixes
 		 */
@@ -173,6 +178,15 @@ class iworks_simple_seo_improvements extends iworks {
 		if ( 'simple-seo-improvements' !== $plugin ) {
 			return $options;
 		}
+		/**
+		 * Do not handle
+		 *
+		 * @since 1.5.0
+		 *
+		 */
+		if ( 'no' === get_option( 'iworks_ssi_post_types', 'per_type' ) ) {
+			return $options;
+		}
 		$opts = $options['index']['options'];
 		/**
 		 * remove 'meta-description' group
@@ -204,14 +218,33 @@ class iworks_simple_seo_improvements extends iworks {
 			}
 		}
 		/**
+		/**
+		 * common settings
+		 */
+		$post_types = array(
+			'any_post_type' => (object) array(
+				'name'            => 'any_post_type',
+				'label'           => __( 'Any post type', 'simple-seo-improvements' ),
+				'labels'          => (object) array(
+					'singular_name' => __( 'Any post type', 'simple-seo-improvements' ),
+					'archives'      => __( 'Any post type archive', 'simple-seo-improvements' ),
+				),
+				'has_archive'     => true,
+				'capability_type' => 'any',
+			),
+		);
+		/**
 		 * post types
 		 */
-		$post_types = get_post_types();
-		foreach ( get_post_types() as $post_type_slug ) {
-			$post_type = get_post_type_object( $post_type_slug );
-			if ( ! $post_type->public ) {
-				continue;
-			}
+		if ( 'per_type' === get_option( 'iworks_ssi_post_types', 'per_type' ) ) {
+			$post_types = get_post_types(
+				array(
+					'public' => true,
+				),
+				'objects'
+			);
+		}
+		foreach ( $post_types as $post_type_slug => $post_type ) {
 			/**
 			 *  settings for attachements
 			 */
@@ -309,6 +342,9 @@ class iworks_simple_seo_improvements extends iworks {
 			$post_type = 'post';
 		} elseif ( is_archive() ) {
 			$post_type = get_queried_object()->name;
+		}
+		if ( 'common' === $this->options->get_option( 'post_types' ) ) {
+			// $post_type = 'any_post_type';
 		}
 		if ( empty( $post_type ) ) {
 			return;

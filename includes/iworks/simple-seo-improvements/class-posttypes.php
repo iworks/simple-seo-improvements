@@ -77,13 +77,20 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 			$description = html_entity_decode( get_the_excerpt() );
 		}
 		/**
+		 * get post type
+		 */
+		$post_type = 'any_post_type';
+		if ( 'common' !== $this->options->get_option( 'post_types' ) ) {
+			$post_type = get_post_type();
+		}
+		/**
 		 * force?
 		 */
 		if ( 'front' === $mode ) {
-			$name = sprintf( '%s_mode', get_post_type() );
+			$name = sprintf( '%s_mode', $post_type );
 			if ( 'force' === $this->options->get_option( $name ) ) {
 				foreach ( $this->robots_options as $key ) {
-					$data['robots'][ $key ] = intval( $this->options->get_option( sprintf( '%s_%s', get_post_type(), $key ) ) );
+					$data['robots'][ $key ] = intval( $this->options->get_option( sprintf( '%s_%s', $post_type, $key ) ) );
 				}
 			}
 		}
@@ -92,7 +99,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		 */
 		if ( 'auto-draft' === get_post_status() ) {
 			foreach ( $this->robots_options as $key ) {
-				$data['robots'][ $key ] = intval( $this->options->get_option( sprintf( '%s_%s', get_post_type(), $key ) ) );
+				$data['robots'][ $key ] = intval( $this->options->get_option( sprintf( '%s_%s', $post_type, $key ) ) );
 			}
 		}
 		/**
@@ -214,6 +221,14 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 */
 	public function filter_add_robots( $content ) {
 		if ( is_admin() || ! is_singular() ) {
+			return $content;
+		}
+		/**
+		 * maybe do not add?
+		 *
+		 * @since 1.5.0
+		 */
+		if ( 'no' === $this->options->get_option( 'post_types' ) ) {
 			return $content;
 		}
 		$data  = $this->get_data( get_the_ID() );

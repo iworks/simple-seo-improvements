@@ -97,13 +97,48 @@ function iworks_simple_seo_improvements_options() {
 				'description'       => __( '@username for the website used in the card footer.', 'simple-seo-improvements' ),
 			),
 			/**
-			 * IndexNow
+			 * Other
 			 *
 			 * @since 1.3.0
 			 */
 			array(
 				'type'  => 'subheading',
 				'label' => __( 'Other', 'simple-seo-improvements' ),
+			),
+			array(
+				'name'    => 'post_types',
+				'type'    => 'radio',
+				'th'      => __( 'Post types', 'simple-seo-improvements' ),
+				'default' => 'per_type',
+				'options' => array(
+					'per_type' => array(
+						'label' => __( 'Allow each post type to have individual settings.', 'simple-seo-improvements' ),
+					),
+					'common'   => array(
+						'label' => __( 'Common settings for all post types.', 'simple-seo-improvements' ),
+					),
+					'no'       => array(
+						'label' => __( 'Do not support post types.', 'simple-seo-improvements' ),
+					),
+				),
+			),
+			array(
+				'name'        => 'other_archives',
+				'type'        => 'radio',
+				'th'          => __( 'Other Archives', 'simple-seo-improvements' ),
+				'default'     => 'no',
+				'options'     => array(
+					'per_type' => array(
+						'label' => __( ' Allow each archive type to have individual settings.', 'simple-seo-improvements' ),
+					),
+					'common'   => array(
+						'label' => __( 'Common settings for all archives.', 'simple-seo-improvements' ),
+					),
+					'no'       => array(
+						'label' => __( 'Do not support on archives.', 'simple-seo-improvements' ),
+					),
+				),
+				'description' => __( 'Date (day/month/year) and author archive.', 'simple-seo-improvements' ),
 			),
 			/**
 			 * IndexNow for Bing
@@ -225,26 +260,6 @@ function iworks_iworks_seo_improvements_options_loved_this_plugin( $iworks_iwork
 	<li><a href="<?php _ex( 'https://wordpress.org/plugins/simple-seo-improvements/', 'plugin home page on WordPress.org', 'simple-seo-improvements' ); ?>"><?php _e( 'Link to it so others can easily find it', 'simple-seo-improvements' ); ?></a></li>
 </ul>
 	<?php
-}
-function iworks_iworks_seo_improvements_taxonomies() {
-	$data       = array();
-	$taxonomies = get_taxonomies( array( 'public' => true ), 'objects' );
-	foreach ( $taxonomies as $taxonomy ) {
-		$data[ $taxonomy->name ] = $taxonomy->labels->name;
-	}
-	return $data;
-}
-function iworks_iworks_seo_improvements_post_types() {
-	$args       = array(
-		'public' => true,
-	);
-	$p          = array();
-	$post_types = get_post_types( $args, 'names' );
-	foreach ( $post_types as $post_type ) {
-		$a               = get_post_type_object( $post_type );
-		$p[ $post_type ] = $a->labels->name;
-	}
-	return $p;
 }
 
 function iworks_iworks_seo_improvementss_options_need_assistance( $iworks_iworks_seo_improvementss ) {

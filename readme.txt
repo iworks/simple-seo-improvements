@@ -84,6 +84,10 @@ I do not know... but sometimes we have to.
 
 == Changelog ==
 
+= 1.5.0 (2023-01-15) =
+* Updated iWorks Options to 2.8.4.
+* The meta robots for the author, day, month and year archive has been added.
+
 = 1.4.5 (2022-12-16) =
 * Improved robots.txt
 
