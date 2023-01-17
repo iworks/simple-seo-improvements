@@ -30,9 +30,9 @@ You can also choose whether the global settings will set values for new content 
 * Add Facebook application ID.
 * Add IndexNow for Bing.
 * Add the Twitter site.
-* Insert custom HTML code after the `&lt;BODY&gt;` tag.
-* Insert custom HTML code before the `&lt;/BODY&gt;` tag.
-* Insert custom HTML code in the `&lt;HEAD&gt;` section.
+* Insert custom HTML code after the `<BODY>` tag.
+* Insert custom HTML code before the `</BODY>` tag.
+* Insert custom HTML code in the `<HEAD>` section.
 * Add default site og:image.
 * Add a different HTML title for a single entry.
 * Add meta description for the homepage when it displays posts.
