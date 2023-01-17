@@ -86,7 +86,7 @@ I'm not sure... but we have to do it sometimes.
 
 == Changelog ==
 
-= 1.5.0 (2023-01-15) =
+= 1.5.0 (2023-01-17) =
 * iWorks Options has been updated to version 2.8.4.
 * The meta robots for the author, day, month, and year archives have been added.
 
