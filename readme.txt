@@ -15,40 +15,42 @@ PLUGIN_TAGLINE
 
 PLUGIN_DESCRIPTION
 
-Change HTML title and META robots fields for all post types and taxonomies.
+Change the HTML title and META robots fields for all post types and taxonomies.
 
-Content editing allows you to set a meta value for the page title and description, post, and content types.
+Content editing allows you to set a meta value for the page title and description, posts, and content types.
 
-The configuration allows you to set the default values of the "robots" meta field for pages, entries, attachments and your content types.
+The configuration allows you to set the default values of the "robots" meta field for pages, entries, attachments, and your content types.
 
 You can block the indexing of unwanted pages, such as attachment pages, but leave the link-follow parameter.
 
-You can also choose whether the global settings will be set values for new content or enforced for each content type.
+You can also choose whether the global settings will set values for new content or be enforced for each content type.
 
-= Features list =
+= List of features =
 
 * Add Facebook application ID.
 * Add IndexNow for Bing.
 * Add the Twitter site.
-* Add custom HTML code after <code>&lt;BODY&gt;</code> tag.
-* Add custom HTML code before <code>&lt;/BODY&gt;</code> tag.
-* Add custom HTML code in <code>&lt;HEAD&gt;</code> section.
+* Insert custom HTML code after the `&lt;BODY&gt;` tag.
+* Insert custom HTML code before the `&lt;/BODY&gt;` tag.
+* Insert custom HTML code in the `&lt;HEAD&gt;` section.
 * Add default site og:image.
 * Add a different HTML title for a single entry.
 * Add meta description for the homepage when it displays posts.
-* Add meta description for a single entry.
-* Add meta robots for all build post types (post, page, media).
-* Add meta robots for all custom post types
-* Add meta robots for a single entry.
-* Remove category URL prefix.
-* Remove tag URL prefix.
+* Include a meta description for each entry.
+* Include meta robots in all build post types (post, page, and media).
+* Include meta robots in all custom post types.
+* Include meta robots in a single entry.
+* Include meta robots in an author archive.
+* Include meta robots in a date archive.
+* Allows the category prefix to be removed from the URL.
+* Allows the tag prefix to be removed from the URL.
 
 == Installation ==
 
 There are 3 ways to install this plugin:
 
 = 1. The super-easy way =
-1. In your Admin, go to the menu Plugins > Add
+1. Navigate to the Plugins > Add menu in your Admin
 1. Search for `Simple SEO Improvements`
 1. Click to install
 1. Activate the plugin
@@ -74,26 +76,26 @@ There are 3 ways to install this plugin:
 
 = Why should I change the title? =
 
-I do not know... but sometimes we have to.
+I'm not sure... but we have to do it sometimes.
 
 == Screenshots ==
 
-1. Entry edit screen.
-1. Taxonomy edit screen.
+1. The entry editing screen.
+1. The taxonomy editing screen.
 1. Plugin configuration screen - posts.
 
 == Changelog ==
 
 = 1.5.0 (2023-01-15) =
-* Updated iWorks Options to 2.8.4.
-* The meta robots for the author, day, month and year archive has been added.
+* iWorks Options has been updated to version 2.8.4.
+* The meta robots for the author, day, month, and year archives have been added.
 
 = 1.4.5 (2022-12-16) =
 * Improved robots.txt
 
 = 1.4.4 (2022-12-02) =
-* Fixed PHP compatibility syntax.
-* Updated iWorks Rate to 2.1.1.
+* Improved PHP syntax compatibility.
+* iWorks Rate has been updated to 2.1.1.
 
 = 1.4.3 (2022-09-19) =
 * Fixed a typo in sprintf pattern.

@@ -36,7 +36,7 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 
 	public function __construct( $iworks ) {
 		$this->iworks = $iworks;
-		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_robots' ) );
+		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_robots' ), 0 );
 		/**
 		 * options
 		 */
@@ -51,12 +51,53 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 	 * @since 1.5.0
 	 */
 	public function filter_add_robots( $content ) {
-		if ( is_admin() || ! is_singular() ) {
+		if ( is_admin() ) {
 			return $content;
 		}
-		if ( is_author() ) {
+		$type = $this->options->get_option( 'other_archives' );
+		if ( 'no' === $type ) {
+			return $content;
 		}
-
+		$value = array();
+		/**
+		 * author
+		 */
+		if ( is_author() ) {
+			$key = 'other_archive_%s';
+			if ( 'common' !== $type ) {
+				$key = 'other_archive_author_%s';
+			}
+			foreach ( $this->robots_options as $name ) {
+				if ( intval( $this->options->get_option( sprintf( $key, $name ) ) ) ) {
+					$value[] = $name;
+				}
+			}
+		}
+		/**
+		 * date related Archive
+		 */
+		if ( is_date() ) {
+			$key = 'other_archive_%s';
+			if ( 'common' !== $type ) {
+				$key = 'other_archive_date_%s';
+			}
+			foreach ( $this->robots_options as $name ) {
+				if ( intval( $this->options->get_option( sprintf( $key, $name ) ) ) ) {
+					$value[] = $name;
+				}
+			}
+		}
+		/**
+		 * empty
+		 */
+		if ( empty( $value ) ) {
+			return $content;
+		}
+		$content .= sprintf(
+			'<meta name="robots" content="%s" />%s',
+			esc_attr( implode( ', ', $value ) ),
+			PHP_EOL
+		);
 		return $content;
 	}
 
@@ -90,10 +131,30 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 			'label'       => __( 'Other Archives', 'simple-seo-improvements' ),
 			'description' => __( 'Use these settings to controll date related & author archive.', 'simple-seo-improvements' ),
 		);
+		return $this->add_options( $options );
+	}
+
+	private function add_options_per_type( $options ) {
+		$options['index']['options'][] = array(
+			'type'  => 'heading',
+			'label' => __( 'Author Archive', 'simple-seo-improvements' ),
+		);
+		$options                       = $this->add_options( $options, 'author_' );
+		$options['index']['options'][] = array(
+			'type'        => 'heading',
+			'label'       => __( 'Date Archive', 'simple-seo-improvements' ),
+			'description' => __( 'Use these settings to controll day, month & year archive.', 'simple-seo-improvements' ),
+		);
+		$options                       = $this->add_options( $options, 'date_' );
+		return $options;
+	}
+
+	private function add_options( $options, $name = '' ) {
 		foreach ( $this->robots_options as $key ) {
 			$options['index']['options'][] = array(
 				'name'              => sprintf(
-					'other_archive_%s',
+					'other_archive_%s%s',
+					$name,
 					$key
 				),
 				'type'              => 'checkbox',
@@ -106,19 +167,6 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 				'classes'           => array( 'switch-button' ),
 			);
 		}
-		return $options;
-	}
-
-	private function add_options_per_type( $options ) {
-		$options['index']['options'][] = array(
-			'type'  => 'heading',
-			'label' => __( 'Author Archive', 'simple-seo-improvements' ),
-		);
-		$options['index']['options'][] = array(
-			'type'        => 'heading',
-			'label'       => __( 'Date Archive', 'simple-seo-improvements' ),
-			'description' => __( 'Use these settings to controll day, month & year archive.', 'simple-seo-improvements' ),
-		);
 		return $options;
 	}
 }

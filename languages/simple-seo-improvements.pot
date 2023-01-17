@@ -1,15 +1,15 @@
-# Copyright (C) 2022 AUTHOR_NAME
+# Copyright (C) 2023 AUTHOR_NAME
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2022-12-16 06:12:09+00:00\n"
+"POT-Creation-Date: 2023-01-17 17:51:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
@@ -104,113 +104,160 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: etc/options.php:116
-msgid "IndexNow for Bing"
+#: etc/options.php:111
+msgid "Post types"
+msgstr ""
+
+#: etc/options.php:115
+msgid "Allow each post type to have individual settings."
+msgstr ""
+
+#: etc/options.php:118
+msgid "Common settings for all post types."
 msgstr ""
 
 #: etc/options.php:121
+msgid "Do not support post types."
+msgstr ""
+
+#: etc/options.php:128
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:131
+msgid "Other Archives"
+msgstr ""
+
+#: etc/options.php:132
+msgid " Allow each archive type to have individual settings."
+msgstr ""
+
+#: etc/options.php:135
+msgid "Common settings for all archives."
+msgstr ""
+
+#: etc/options.php:138
+msgid "Do not support on archives."
+msgstr ""
+
+#: etc/options.php:141
+msgid "Date (day/month/year) and author archive."
+msgstr ""
+
+#: etc/options.php:151
+msgid "IndexNow for Bing"
+msgstr ""
+
+#: etc/options.php:156
 msgid ""
 "IndexNow is an easy way for websites owners to instantly inform search "
 "engines about latest content changes on their website. In its simplest form."
 msgstr ""
 
-#: etc/options.php:131
+#: etc/options.php:166
 msgid "Improve robots.txt"
 msgstr ""
 
-#: etc/options.php:136
+#: etc/options.php:171
 msgid ""
 "A robots.txt file tells search engine crawlers which URLs the crawler can "
 "access on your site."
 msgstr ""
 
-#: etc/options.php:145
+#: etc/options.php:180
 msgid "Custom code"
 msgstr ""
 
-#: etc/options.php:146
+#: etc/options.php:181
 msgid ""
 "Use these settings to insert code from Google Tag Manager, Google Analytics "
 "or webmaster tools verification."
 msgstr ""
 
-#: etc/options.php:151
+#: etc/options.php:186
 msgid "Header Code"
 msgstr ""
 
-#: etc/options.php:152
+#: etc/options.php:187
 msgid ""
 "Code entered in this box will be printed in the <code>&lt;head&gt;</code> "
 "section."
 msgstr ""
 
-#: etc/options.php:162
+#: etc/options.php:197
 msgid "Body Start"
 msgstr ""
 
-#: etc/options.php:163
+#: etc/options.php:198
 msgid ""
 "Code entered in this box will be printed after the opening "
 "<code>&lt;body&gt;</code> tag."
 msgstr ""
 
-#: etc/options.php:173
+#: etc/options.php:208
 msgid "Body End"
 msgstr ""
 
-#: etc/options.php:174
+#: etc/options.php:209
 msgid ""
 "Code entered in this box will be printed before the closing "
 "<code>&lt;/body&gt;</code> tag."
 msgstr ""
 
-#: etc/options.php:184 etc/options.php:258
+#: etc/options.php:219 etc/options.php:273
 msgid "We are waiting for your message"
 msgstr ""
 
-#: etc/options.php:190
+#: etc/options.php:225
 msgid "I love what I do!"
 msgstr ""
 
-#: etc/options.php:222
+#: etc/options.php:257
 msgid "Below are some links to help spread this plugin to other users"
 msgstr ""
 
-#: etc/options.php:224
+#: etc/options.php:259
 msgid "Give it a five stars on WordPress.org"
 msgstr ""
 
-#: etc/options.php:225
+#: etc/options.php:260
 msgid "Link to it so others can easily find it"
 msgstr ""
 
-#: etc/options.php:260
+#: etc/options.php:275
 msgid "WordPress Help Forum"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:147
+#: includes/iworks/class-simple-seo-improvements.php:152
 #: includes/iworks/rate/rate.php:124
 msgid "Settings"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:232
+#: includes/iworks/class-simple-seo-improvements.php:227
+#: includes/iworks/class-simple-seo-improvements.php:229
+msgid "Any post type"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:230
+msgid "Any post type archive"
+msgstr ""
+
+#: includes/iworks/class-simple-seo-improvements.php:265
 msgid ""
 "Allow to set for entries separately. Settings will apply as default for new "
 "entries."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:235
+#: includes/iworks/class-simple-seo-improvements.php:268
 msgid "Force setting to all entries"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:249
-#: includes/iworks/class-simple-seo-improvements.php:279
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:289
+#: includes/iworks/class-simple-seo-improvements.php:282
+#: includes/iworks/class-simple-seo-improvements.php:312
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:162
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:304
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:134
 msgid "Add \"%s\"."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:266
+#: includes/iworks/class-simple-seo-improvements.php:299
 msgid "Add meta tags for %s."
 msgstr ""
 
@@ -355,17 +402,33 @@ msgid ""
 "Thank you for all the ratings, reviews and donates."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:273
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:132
+msgid "Use these settings to controll date related & author archive."
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:140
+msgid "Author Archive"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:145
+msgid "Date Archive"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:146
+msgid "Use these settings to controll day, month & year archive."
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:288
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:85
 msgid "HTML Title"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:277
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:292
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:115
 msgid "Robots"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-posttypes.php:299
+#: includes/iworks/simple-seo-improvements/class-posttypes.php:314
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:100
 msgid "HTML description"
 msgstr ""
@@ -399,12 +462,12 @@ msgctxt "placeholder"
 msgid "@account_name"
 msgstr ""
 
-#: etc/options.php:225
+#: etc/options.php:260
 msgctxt "plugin home page on WordPress.org"
 msgid "https://wordpress.org/plugins/simple-seo-improvements/"
 msgstr ""
 
-#: etc/options.php:260
+#: etc/options.php:275
 msgctxt "link to support forum on WordPress.org"
 msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
 msgstr ""
