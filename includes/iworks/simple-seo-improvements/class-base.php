@@ -34,7 +34,7 @@ abstract class iworks_simple_seo_improvements_base {
 
 	protected $options;
 
-	protected $robots_options;
+	protected $robots_options = array();
 
 	protected function add_nonce() {
 		wp_nonce_field( __CLASS__, $this->nonce_name );

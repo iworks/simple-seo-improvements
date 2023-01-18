@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2023-01-17 17:51:41+00:00\n"
+"POT-Creation-Date: 2023-01-18 06:09:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -121,7 +121,7 @@ msgid "Do not support post types."
 msgstr ""
 
 #: etc/options.php:128
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:131
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:129
 msgid "Other Archives"
 msgstr ""
 
@@ -251,7 +251,7 @@ msgstr ""
 
 #: includes/iworks/class-simple-seo-improvements.php:282
 #: includes/iworks/class-simple-seo-improvements.php:312
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:162
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:163
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:304
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:134
 msgid "Add \"%s\"."
@@ -402,19 +402,19 @@ msgid ""
 "Thank you for all the ratings, reviews and donates."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:132
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:130
 msgid "Use these settings to controll date related & author archive."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:140
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:138
 msgid "Author Archive"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:145
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:143
 msgid "Date Archive"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:146
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:144
 msgid "Use these settings to controll day, month & year archive."
 msgstr ""
 

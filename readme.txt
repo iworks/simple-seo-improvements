@@ -86,55 +86,73 @@ I'm not sure... but we have to do it sometimes.
 
 == Changelog ==
 
+= 1.5.1 (2023-01-18) =
+
+* The check for `is_array` has been added to avoid warnings in some situations.
+
 = 1.5.0 (2023-01-17) =
+
 * iWorks Options has been updated to version 2.8.4.
 * The meta robots for the author, day, month, and year archives have been added.
 
 = 1.4.5 (2022-12-16) =
+
 * Improved robots.txt
 
 = 1.4.4 (2022-12-02) =
+
 * Improved PHP syntax compatibility.
 * iWorks Rate has been updated to 2.1.1.
 
 = 1.4.3 (2022-09-19) =
+
 * Fixed a typo in sprintf pattern.
 
 = 1.4.2 (2022-09-19) =
+
 * Added ability to use default image as site icon.
 * Changed [iWorks Rate Module](https://github.com/iworks/iworks-rate) repository to GitHub.
 
 = 1.4.1 (2022-06-29) =
+
 * Fixed saving attachment data.
 * Fixed translation domain.
 * Fixed issue with empty description.
 
 = 1.4.0 (2022-03-02) =
+
 * Added improvements to the robots.txt file.
 
 = 1.3.0 (2022-03-02) =
+
 * Added IndexNow for Bing.
 
 = 1.2.4 (2022-02-25) =
+
 * Fixed display `og:image` when [OG — Better Share on Social Media](https://wordpress.org/plugins/og/) plugin is installed and activated.
 * Fixed missing function when editing taxonomy. Props for [Michał Ruszczyk](https://profiles.wordpress.org/mruszczyk/).
 * Updated iWorks Options to 2.8.1.
 
 = 1.2.3 (2022-02-23) =
+
 * Fixed filter call order - singular settings were ignored.
 
 = 1.2.2 (2022-02-22) =
+
 * Fixed typo in the meta description field.
 
 = 1.2.1 (2022-02-22) =
+
 * Fixed display meta description when [OG — Better Share on Social Media](https://wordpress.org/plugins/og/) plugin is installed and activated.
 
 = 1.2.0 (2022-02-17) =
+
 * Added meta description for the homepage with posts blog list.
 * Added default og:image.
 * Updated iWorks Rate to 2.1.0.
 
 = 1.1.0 (2022-02-15) =
+
 * Added the ability to add custom code for HTML HEAD.
 * Added the ability to add custom code for the beginning of the BODY tag.
 * Added the ability to add custom code for the end of the BODY tag.
@@ -146,34 +164,43 @@ I'm not sure... but we have to do it sometimes.
 * Updated iWorks Options to 2.8.1.
 
 = 1.0.8 (2022-01-21) =
+
 * Updated iWorks Options to 2.8.0.
 * Updated iWorks Rate to 2.0.6.
 
 = 1.0.7 (2022-01-17) =
+
 * Fixed link from the plugins page to the configuration page. Props for [Sebastian Miśniakiewicz](https://profiles.wordpress.org/sebastianm/)
 
 = 1.0.6 (2022-01-14) =
+
 * Added configuration for single entries defaults.
 
 = 1.0.5 (2021-09-28) =
+
 * Changed attachment URL to direct URL to file.
 * Filter attachments on sitemap XML only to images.
 
 = 1.0.4 (2021-09-28) =
+
 * Added ability to publish images on Sitemap XML.
 
 = 1.0.3 (2021-09-04) =
+
 * Fixed missing data on the blog posts page.
 * Updated iWorks Rate to 2.0.4.
 
 = 1.0.2 (2021-06-29) =
+
 * Strip tags from title and description fields.
 * Updated iWorks Rate to 2.0.2.
 
 = 1.0.1 (2021-06-08) =
+
 * Added integration with [OG Plugin](https://wordpress.org/plugins/og/) to use the same custom title for `og:title`.
 
 = 1.0.0 (2021-05-21) =
+
 * First release.
 * Added HTML custom title for entries.
 * Added HTML custom title for taxonomies.

@@ -32,8 +32,6 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 
 	private $iworks;
 
-	private $fields;
-
 	public function __construct( $iworks ) {
 		$this->iworks = $iworks;
 		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_robots' ), 0 );
@@ -150,6 +148,9 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 	}
 
 	private function add_options( $options, $name = '' ) {
+		if ( ! is_array( $this->robots_options ) ) {
+			return $options;
+		}
 		foreach ( $this->robots_options as $key ) {
 			$options['index']['options'][] = array(
 				'name'              => sprintf(
