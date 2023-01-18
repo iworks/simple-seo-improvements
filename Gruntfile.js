@@ -269,7 +269,7 @@ module.exports = function(grunt) {
                     '!composer.lock',
                     '!stylelint.config.js'
                 ],
-                dest: './release/<%= pkg.name %>/',
+                dest: './release/<%= pkg.name %>-<%= pkg.version %>/',
                 noEmpty: true
             }
         },
@@ -279,7 +279,7 @@ module.exports = function(grunt) {
             target: {
                 options: {
                     mode: 'zip',
-                    archive: './release/<%= pkg.name %>-<%= pkg.version %>.zip'
+                    archive: './release/<%= pkg.name %>.zip'
                 },
                 expand: true,
                 cwd: './release/<%= pkg.name %>/',
