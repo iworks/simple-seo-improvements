@@ -3,7 +3,7 @@ Contributors: iworks
 Donate link: https://ko-fi.com/iworks?utm_source=simple-seo-improvements&utm_medium=readme-donate
 Tags: seo, robots, meta robots, meta description, google search console. facebook, twitter, category, tag
 Requires at least: PLUGIN_REQUIRES_WORDPRESS
-Tested up to: 6.1
+Tested up to: 6.2
 Stable tag: PLUGIN_VERSION
 Requires PHP: PLUGIN_REQUIRES_PHP
 License: GPLv3 or later
@@ -44,6 +44,9 @@ You can also choose whether the global settings will set values for new content 
 * Include meta robots in a date archive.
 * Allows the category prefix to be removed from the URL.
 * Allows the tag prefix to be removed from the URL.
+* Allows to set the "Max Image Preview".
+* Allows to set the "Max Snippet".
+* Allows to set the "Max Video Preview".
 
 == Installation ==
 
