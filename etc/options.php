@@ -19,6 +19,10 @@ function iworks_simple_seo_improvements_options() {
 				'label' => __( 'General', 'simple-seo-improvements' ),
 			),
 			array(
+				'type'  => 'subheading',
+				'label' => __( 'Appearance', 'simple-seo-improvements' ),
+			),
+			array(
 				'name'              => 'default_image',
 				'type'              => 'image',
 				'th'                => __( 'Default site Icon', 'iworks-pwa' ),
@@ -140,6 +144,10 @@ function iworks_simple_seo_improvements_options() {
 				),
 				'description' => __( 'Date (day/month/year) and author archive.', 'simple-seo-improvements' ),
 			),
+			array(
+				'type'  => 'heading',
+				'label' => __( 'Robots', 'simple-seo-improvements' ),
+			),
 			/**
 			 * IndexNow for Bing
 			 *
@@ -152,7 +160,6 @@ function iworks_simple_seo_improvements_options() {
 				'default'           => 1,
 				'sanitize_callback' => 'absint',
 				'classes'           => array( 'switch-button' ),
-				'sanitize_callback' => 'intval',
 				'description'       => __( 'IndexNow is an easy way for websites owners to instantly inform search engines about latest content changes on their website. In its simplest form.', 'simple-seo-improvements' ),
 			),
 			/**
@@ -165,10 +172,96 @@ function iworks_simple_seo_improvements_options() {
 				'type'              => 'checkbox',
 				'th'                => __( 'Improve robots.txt', 'simple-seo-improvements' ),
 				'default'           => 1,
-				'sanitize_callback' => 'absint',
 				'classes'           => array( 'switch-button' ),
-				'sanitize_callback' => 'intval',
+				'sanitize_callback' => 'absint',
 				'description'       => __( 'A robots.txt file tells search engine crawlers which URLs the crawler can access on your site.', 'simple-seo-improvements' ),
+			),
+			/**
+			 * Google
+			 *
+			 * @since 1.5.2
+			 */
+			array(
+				'type'        => 'subheading',
+				'label'       => __( 'Google', 'simple-seo-improvements' ),
+				'description' => __( 'The robots meta tag lets you utilize a granular, page-specific approach to controlling how an individual page should be indexed and served to users in Google Search results.', 'simple-seo-improvements' ),
+			),
+			/**
+			 * googlebot
+			 *
+			 * @since 1.5.2
+			 */
+			array(
+				'name'              => 'robots_googlebot',
+				'type'              => 'checkbox',
+				'th'                => __( 'Show in Google', 'simple-seo-improvements' ),
+				'default'           => 1,
+				'classes'           => array( 'switch-button' ),
+				'sanitize_callback' => 'absint',
+				'description'       => __( 'To show a page in Google\'s web search results.', 'simple-seo-improvements' ),
+			),
+			/**
+			 * googlebot-news
+			 *
+			 * @since 1.5.2
+			 */
+			array(
+				'name'              => 'robots_googlebot_news',
+				'type'              => 'checkbox',
+				'th'                => __( 'Show in Google News', 'simple-seo-improvements' ),
+				'default'           => 1,
+				'classes'           => array( 'switch-button' ),
+				'sanitize_callback' => 'absint',
+				'description'       => __( 'To show a page in Google\'s web search results, but not in Google News, use the googlebot-news meta tag', 'simple-seo-improvements' ),
+			),
+			/**
+			 * max-snippet: [number]
+			 *
+			 * @since 1.5.2
+			 */
+			array(
+				'name'              => 'robots_max_snippet',
+				'type'              => 'number',
+				'th'                => __( 'Max Snippet', 'simple-seo-improvements' ),
+				'default'           => -1,
+				'sanitize_callback' => 'intval',
+				'description'       => __( 'Use a maximum of [number] characters as a textual snippet for this search result. If you don\'t specify this rule, Google will choose the length of the snippet. Set -1 and Google will choose the snippet length that it believes is most effective to help users discover your content and direct users to your site. Set 0 - no snippet is to be shown. Equivalent to nosnippet.', 'simple-seo-improvements' ),
+			),
+			/**
+			 * max-image-preview: [setting]
+			 *
+			 * @since 1.5.2
+			 */
+			array(
+				'name'        => 'robots_max_image_preview',
+				'type'        => 'radio',
+				'th'          => __( 'Max Image Preview', 'simple-seo-improvements' ),
+				'default'     => 'large',
+				'options'     => array(
+					'none'     => array(
+						'label' => __( 'No image preview is to be shown.', 'simple-seo-improvements' ),
+					),
+					'standard' => array(
+						'label' => __( 'A default image preview may be shown.', 'simple-seo-improvements' ),
+					),
+					'large'    => array(
+						'label' => __( 'A larger image preview, up to the width of the viewport, may be shown.', 'simple-seo-improvements' ),
+					),
+				),
+				'description' => __( 'Set the maximum size of an image preview for this page in a search results. If you don\'t specify the max-image-preview rule, Google may show an image preview of the default size.', 'simple-seo-improvements' ),
+			),
+			/**
+			 * max-video-preview: [setting]
+			 *
+			 * @since 1.5.2
+			 */
+			array(
+				'name'              => 'robots_max_video_preview',
+				'type'              => 'number',
+				'th'                => __( 'Max Video Preview', 'simple-seo-improvements' ),
+				'default'           => -1,
+				'sanitize_callback' => 'intval',
+				'description'       => __( 'This applies to all forms of search results (at Google: web search, Google Images, Google Videos, Discover, Assistant). This rule is ignored if no parseable [number] is specified.', 'simple-seo-improvements' ),
 			),
 			/**
 			 * Add custom code

@@ -224,6 +224,16 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 			return $content;
 		}
 		/**
+		 * Google
+		 */
+		if ( '0' === $this->options->get_option( 'robots_googlebot' ) ) {
+			$content .= '<meta name="googlebot" content="noindex">' . PHP_EOL;
+		}
+		if ( '0' === $this->options->get_option( 'robots_googlebot_news' ) ) {
+			$content .= '<meta name="googlebot-news" content="noindex">' . PHP_EOL;
+		}
+
+		/**
 		 * maybe do not add?
 		 *
 		 * @since 1.5.0
@@ -232,7 +242,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 			return $content;
 		}
 		$data  = $this->get_data( get_the_ID() );
-		$value = array();
+		$value = $this->get_meta_robots_commons();
 		foreach ( $this->robots_options as $key ) {
 			if ( isset( $data['robots'][ $key ] ) && $data['robots'][ $key ] ) {
 				$value[] = $key;

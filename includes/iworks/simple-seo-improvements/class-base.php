@@ -134,6 +134,41 @@ abstract class iworks_simple_seo_improvements_base {
 			$this->robots_options = $settings['robots'];
 		}
 	}
+
+
+	protected function get_meta_robots_commons() {
+		$options = array();
+
+		/**
+		 * Google: Max Snippet
+		 */
+		$value = $this->options->get_option( 'robots_max_snippet' );
+		if ( '-1' !== $value ) {
+			$options[] = sprintf( 'max-snippet:%d', $value );
+		}
+
+		/**
+		 * Google: Max Image Preview
+		 */
+		$value = $this->options->get_option( 'robots_max_image_preview' );
+		switch ( $value ) {
+			case 'none':
+			case 'large':
+				$options[] = sprintf( 'max-image-preview:%s', $value );
+				break;
+		}
+
+		/**
+		 * Google: Max Video Preview
+		 */
+		$value = $this->options->get_option( 'robots_max_video_preview' );
+		if ( '-1' !== $value ) {
+			$options[] = sprintf( 'max-video-preview:%d', $value );
+		}
+
+		return apply_filters( 'iworks_simple_seo_improvements_meta_robots_init', $options );
+
+	}
 }
 
 

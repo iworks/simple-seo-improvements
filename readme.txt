@@ -86,6 +86,14 @@ I'm not sure... but we have to do it sometimes.
 
 == Changelog ==
 
+= 1.5.2 (2023-05-09) =
+
+* An ability to Google News noindex has been added.
+* An ability to Google noindex has been added.
+* An ability to set the "Max Image Preview" value has been added.
+* An ability to set the "Max Snippet" value has been added.
+* An ability to set the "Max Video Preview" value has been added.
+
 = 1.5.1 (2023-01-18) =
 
 * The check for `is_array` has been added to avoid warnings in some situations.

@@ -282,7 +282,7 @@ module.exports = function(grunt) {
                     archive: './release/<%= pkg.name %>.zip'
                 },
                 expand: true,
-                cwd: './release/<%= pkg.name %>/',
+                cwd: './release/<%= pkg.name %>-<%= pkg.version %>/',
                 src: ['**/*']
             }
         },
