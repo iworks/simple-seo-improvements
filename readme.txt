@@ -89,6 +89,13 @@ I'm not sure... but we have to do it sometimes.
 
 == Changelog ==
 
+= 1.5.3 (2023-06-09) =
+
+* The front page post type has been set.
+* Every singular post type has been set.
+* The schema attribute "name" has been set to `og:title`.
+* The schema attribute "description" has been set to `og:description`.
+
 = 1.5.2 (2023-05-09) =
 
 * An ability to Google News noindex has been added.

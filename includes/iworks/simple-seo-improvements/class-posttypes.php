@@ -349,6 +349,25 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		$title = $this->get_custom_title_of_current_post();
 		if ( ! empty( $title ) ) {
 			$og['og']['title'] = $title;
+			if ( isset( $og['schema'] ) ) {
+				$og['schema']['name'] = $title;
+			}
+		}
+		/**
+		 * @since 1.5.3
+		 */
+		$data = $this->get_custom_data();
+		if (
+			isset( $data['description'] )
+			&& ! empty( $data['description'] )
+		) {
+			$description = $this->compress_all_whitespaces( $data['description'] );
+			if ( ! empty( $description ) ) {
+				$og['og']['description'] = $description;
+				if ( isset( $og['schema'] ) ) {
+					$og['schema']['description'] = $description;
+				}
+			}
 		}
 		return $og;
 	}

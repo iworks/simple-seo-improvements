@@ -340,8 +340,12 @@ class iworks_simple_seo_improvements extends iworks {
 		 */
 		if ( is_home() ) {
 			$post_type = 'post';
-		} elseif ( is_archive() ) {
+		} elseif ( is_front_page() ) {
+			$post_type = 'page';
+		} elseif ( is_singular() ) {
 			$post_type = get_queried_object()->name;
+		} elseif ( is_archive() ) {
+			$post_type = 'post';
 		}
 		if ( 'common' === $this->options->get_option( 'post_types' ) ) {
 			// $post_type = 'any_post_type';
