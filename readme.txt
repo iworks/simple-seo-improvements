@@ -91,8 +91,10 @@ I'm not sure... but we have to do it sometimes.
 
 = 1.5.4 (2023-06-30) =
 
-* Unnecessary trailing slashes have been removed.
 * The `FILTER_SANITIZE_STRING` flag has been replaced by `FILTER_DEFAULT`.
+* The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.8.5.
+* The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.1.2.
+* Unnecessary trailing slashes have been removed.
 
 = 1.5.3 (2023-06-09) =
 
