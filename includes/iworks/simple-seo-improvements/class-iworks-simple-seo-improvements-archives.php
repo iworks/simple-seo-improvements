@@ -92,7 +92,7 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 			return $content;
 		}
 		$content .= sprintf(
-			'<meta name="robots" content="%s" />%s',
+			'<meta name="robots" content="%s">%s',
 			esc_attr( implode( ', ', $value ) ),
 			PHP_EOL
 		);

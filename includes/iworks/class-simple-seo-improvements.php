@@ -367,7 +367,7 @@ class iworks_simple_seo_improvements extends iworks {
 			return;
 		}
 		printf(
-			'<meta name="robots" content="%s" />%s',
+			'<meta name="robots" content="%s">%s',
 			esc_attr( implode( ', ', $robots ) ),
 			PHP_EOL
 		);
@@ -413,7 +413,7 @@ class iworks_simple_seo_improvements extends iworks {
 			$mime_type = get_post_mime_type( $attachment_id );
 			foreach ( array( 'icon', 'shortcut icon' ) as $key ) {
 				printf(
-					'<link rel="%s" href="%s" type="%s"/>%s',
+					'<link rel="%s" href="%s" type="%s">%s',
 					esc_attr( $key ),
 					esc_attr( $url ),
 					esc_attr( $mime_type ),
@@ -454,9 +454,9 @@ class iworks_simple_seo_improvements extends iworks {
 					if ( empty( $v ) ) {
 						continue;
 					}
-					$string = '<meta property="og:image:%2$s" content="%1$s" />';
+					$string = '<meta property="og:image:%2$s" content="%1$s">';
 					if ( 'url' === $key ) {
-						$string = '<meta property="og:image" content="%1$s" />';
+						$string = '<meta property="og:image" content="%1$s">';
 					}
 					$content .= sprintf( $string, esc_attr( $v ), esc_attr( $key ) );
 					$content .= PHP_EOL;

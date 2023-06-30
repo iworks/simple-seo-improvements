@@ -239,7 +239,7 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 			return;
 		}
 		printf(
-			'<meta name="description" content="%s" />%s',
+			'<meta name="description" content="%s">%s',
 			esc_attr( $this->compress_all_whitespaces( $value ) ),
 			PHP_EOL
 		);
@@ -260,7 +260,7 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 			return;
 		}
 		printf(
-			'<meta name="robots" content="%s" />%s',
+			'<meta name="robots" content="%s">%s',
 			esc_attr( implode( ', ', array_keys( $data['robots'] ) ) ),
 			PHP_EOL
 		);

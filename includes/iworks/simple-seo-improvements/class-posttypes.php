@@ -206,7 +206,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 			return $content;
 		}
 		$content .= sprintf(
-			'<meta name="description" content="%s" />%s',
+			'<meta name="description" content="%s">%s',
 			esc_attr( $this->compress_all_whitespaces( $value ) ),
 			PHP_EOL
 		);
@@ -252,7 +252,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 			return $content;
 		}
 		$content .= sprintf(
-			'<meta name="robots" content="%s" />%s',
+			'<meta name="robots" content="%s">%s',
 			esc_attr( implode( ', ', $value ) ),
 			PHP_EOL
 		);
