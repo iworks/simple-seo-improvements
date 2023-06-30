@@ -326,6 +326,7 @@ module.exports = function(grunt) {
                     { match: /PLUGIN_NAME/g, replace: '<%= pkg.name %>' },
                     { match: /PLUGIN_REQUIRES_PHP/g, replace: '<%= pkg.requires.PHP %>' },
                     { match: /PLUGIN_REQUIRES_WORDPRESS/g, replace: '<%= pkg.requires.WordPress %>' },
+                    { match: /PLUGIN_TESTED_WORDPRESS/g, replace: '<%= pkg.tested.WordPress %>' },
                     { match: /PLUGIN_TILL_YEAR/g, replace: buildyear },
                     { match: /PLUGIN_TITLE/g, replace: '<%= pkg.title %>' },
                     { match: /PLUGIN_TAGLINE/g, replace: '<%= pkg.tagline %>' },

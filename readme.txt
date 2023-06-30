@@ -3,7 +3,7 @@ Contributors: iworks
 Donate link: https://ko-fi.com/iworks?utm_source=simple-seo-improvements&utm_medium=readme-donate
 Tags: seo, robots, meta robots, meta description, google search console. facebook, twitter, category, tag
 Requires at least: PLUGIN_REQUIRES_WORDPRESS
-Tested up to: 6.2
+Tested up to: PLUGIN_TESTED_WORDPRESS
 Stable tag: PLUGIN_VERSION
 Requires PHP: PLUGIN_REQUIRES_PHP
 License: GPLv3 or later
