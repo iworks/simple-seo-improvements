@@ -90,7 +90,9 @@ I'm not sure... but we have to do it sometimes.
 == Changelog ==
 
 = 1.5.4 (2023-06-30) =
+
 * Unnecessary trailing slashes have been removed.
+* The `FILTER_SANITIZE_STRING` flag has been replaced by `FILTER_DEFAULT`.
 
 = 1.5.3 (2023-06-09) =
 

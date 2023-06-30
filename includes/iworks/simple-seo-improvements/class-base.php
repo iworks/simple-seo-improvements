@@ -41,7 +41,7 @@ abstract class iworks_simple_seo_improvements_base {
 	}
 
 	protected function check_nonce() {
-		$value = filter_input( INPUT_POST, $this->nonce_name, FILTER_SANITIZE_STRING );
+		$value = filter_input( INPUT_POST, $this->nonce_name, FILTER_DEFAULT );
 		if ( ! empty( $value ) ) {
 			return wp_verify_nonce( $value, __CLASS__ );
 		}
@@ -54,7 +54,7 @@ abstract class iworks_simple_seo_improvements_base {
 				$this->filter_input_filter_sanitize_string( $one );
 			}
 		} elseif ( is_string( $data ) ) {
-			$data = filter_var( $data, FILTER_SANITIZE_STRING );
+			$data = filter_var( $data, FILTER_DEFAULT );
 		}
 		return $data;
 	}
