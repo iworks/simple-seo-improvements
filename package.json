@@ -13,11 +13,11 @@
         }
     ],
     "requires": {
-        "WordPress": "5.0",
-        "PHP": "7.2"
+        "WordPress": "6.0",
+        "PHP": "7.4"
     },
     "tested": {
-        "WordPress": "6.2"
+        "WordPress": "6.3"
     },
     "devDependencies": {
         "ajv-keywords": "^3.2.0",
