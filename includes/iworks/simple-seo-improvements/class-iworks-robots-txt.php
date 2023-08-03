@@ -76,7 +76,14 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 		/**
 		 * replace robots_txt
 		 */
-		$robots  = 'User-agent: *';
+		$robots  = '';
+		$robots .= PHP_EOL;
+		$robots .= '# PLUGIN_NAME PLUGIN_VERSION';
+		$robots .= PHP_EOL;
+		$robots .= '# PLUGIN_URI';
+		$robots .= PHP_EOL;
+		$robots .= PHP_EOL;
+		$robots .= 'User-agent: *';
 		$robots .= PHP_EOL;
 		foreach ( $entries as $key => $data ) {
 			if ( 'Sitemap' === $key ) {
