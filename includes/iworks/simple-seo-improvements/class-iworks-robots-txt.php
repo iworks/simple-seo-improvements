@@ -35,37 +35,18 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 	}
 
 	public function filter_robots_txt_add( $robots ) {
-		$entries = array(
-			'Disallow' => array(
-				'/.htaccess',
-				'/license.txt',
-				'/readme.html',
-				'*/trackback/',
-				'/wp-admin/',
-				'/wp-content/languages/',
-				'/wp-*.php',
-				'/xmlrpc.php',
-				'/yoast-ga/outbound-article/',
-				'/19*/feed',
-				'/20*/feed',
-				'*preview=true*',
-				'*cf_action=*',
-				'*?attachment_id=',
-				'*replytocom=*',
-				'*doing_wp_cron*',
-				'*/disclaimer/*',
-			),
-			'Allow'    => array(
-				'/wp-admin/admin-ajax.php',
-				'/*/*.css',
-				'/*/*.js',
-				'/*/*.jpg',
-				'/*/*.png',
-				'/*/*.webp',
-				'/*/*.svg',
-				'/wp-content/uploads/*',
-				'/files/*',
-			),
+		$this->set_robots_options();
+		$entries = apply_filters(
+			/**
+			 * allow to filter robots.txt aray
+			 *
+			 * @since 1.5.5
+			 */
+			'iworks_simple_seo_improvements_filter_robots_txt_add',
+			array(
+				'Disallow' => preg_split( '/[\r\n]/', $this->options->get_option( 'robots_txt_disallow' ) ),
+				'Allow'    => preg_split( '/[\r\n]/', $this->options->get_option( 'robots_txt_allow' ) ),
+			)
 		);
 		foreach ( array( 'tag', 'category' ) as $taxonomy_name ) {
 			$url_base = get_option( $taxonomy_name . '_base', '' );
@@ -101,7 +82,10 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 			if ( 'Sitemap' === $key ) {
 				$robots .= PHP_EOL;
 			}
-			foreach ( $data as $one ) {
+			foreach ( array_unique( $data ) as $one ) {
+				if ( empty( $one ) ) {
+					continue;
+				}
 				$robots .= sprintf( '%s: %s%s', $key, $one, PHP_EOL );
 			}
 		}

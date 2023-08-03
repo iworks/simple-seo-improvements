@@ -89,6 +89,10 @@ I'm not sure... but we have to do it sometimes.
 
 == Changelog ==
 
+= 1.5.5 (2023-08-03) =
+
+* Robots.txt options have been moved to the configuration panel.
+
 = 1.5.4 (2023-06-30) =
 
 * The `FILTER_SANITIZE_STRING` flag has been replaced by `FILTER_DEFAULT`.

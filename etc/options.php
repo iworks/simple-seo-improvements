@@ -149,18 +149,14 @@ function iworks_simple_seo_improvements_options() {
 				'label' => __( 'Robots', 'simple-seo-improvements' ),
 			),
 			/**
-			 * IndexNow for Bing
+			 * subheader for robots.txt
 			 *
-			 * @since 1.3.0
+			 * @since 1.5.5
 			 */
 			array(
-				'name'              => 'indexnow_bing',
-				'type'              => 'checkbox',
-				'th'                => __( 'IndexNow for Bing', 'simple-seo-improvements' ),
-				'default'           => 1,
-				'sanitize_callback' => 'absint',
-				'classes'           => array( 'switch-button' ),
-				'description'       => __( 'IndexNow is an easy way for websites owners to instantly inform search engines about latest content changes on their website. In its simplest form.', 'simple-seo-improvements' ),
+				'type'  => 'subheading',
+				'label' => __( 'robots.txt', 'simple-seo-improvements' ),
+				'since' => '1.5.5',
 			),
 			/**
 			 * robots.txt
@@ -175,6 +171,54 @@ function iworks_simple_seo_improvements_options() {
 				'classes'           => array( 'switch-button' ),
 				'sanitize_callback' => 'absint',
 				'description'       => __( 'A robots.txt file tells search engine crawlers which URLs the crawler can access on your site.', 'simple-seo-improvements' ),
+			),
+			/**
+			 * Disallow: for robots.txt
+			 *
+			 * @since 1.5.5
+			 */
+			array(
+				'name'        => 'robots_txt_disallow',
+				'type'        => 'textarea',
+				'th'          => __( 'Disallow:', 'simple-seo-improvements' ),
+				'classes'     => array( 'large-text code' ),
+				'default'     => simple_seo_improvements_robots_txt_disallow(),
+				'description' => __( 'Add one entry per line.', 'simple-seo-improvements' ),
+				'rows'        => 10,
+				'since'       => '1.5.5',
+			),
+			/**
+			 * Allow: for robots.txt
+			 *
+			 * @since 1.5.5
+			 */
+			array(
+				'name'        => 'robots_txt_allow',
+				'type'        => 'textarea',
+				'th'          => __( 'Allow:', 'simple-seo-improvements' ),
+				'classes'     => array( 'large-text code' ),
+				'rows'        => 10,
+				'default'     => simple_seo_improvements_robots_txt_allow(),
+				'description' => __( 'Add one entry per line.', 'simple-seo-improvements' ),
+				'since'       => '1.5.5',
+			),
+			/**
+			 * IndexNow for Bing
+			 *
+			 * @since 1.3.0
+			 */
+			array(
+				'type'  => 'subheading',
+				'label' => __( 'Bing', 'simple-seo-improvements' ),
+			),
+			array(
+				'name'              => 'indexnow_bing',
+				'type'              => 'checkbox',
+				'th'                => __( 'IndexNow for Bing', 'simple-seo-improvements' ),
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'description'       => __( 'IndexNow is an easy way for websites owners to instantly inform search engines about latest content changes on their website. In its simplest form.', 'simple-seo-improvements' ),
 			),
 			/**
 			 * Google
@@ -369,3 +413,63 @@ function iworks_iworks_seo_improvementss_options_need_assistance( $iworks_iworks
 </ul>
 	<?php
 }
+
+/**
+ * get defaults for robots_txt_allow field
+ *
+ * @since 1.5.5
+ */
+function simple_seo_improvements_robots_txt_allow() {
+	return implode(
+		PHP_EOL,
+		apply_filters(
+			'simple_seo_improvements_robots_txt_allow',
+			array(
+				'/*/*.css',
+				'/files/*',
+				'/*/*.jpg',
+				'/*/*.js',
+				'/*/*.png',
+				'/*/*.svg',
+				'/*/*.webp',
+				'/wp-admin/admin-ajax.php',
+				'/wp-content/uploads/*',
+			)
+		)
+	);
+}
+
+/**
+ * get defaults for robots_txt_disallow field
+ *
+ * @since 1.5.5
+ */
+function simple_seo_improvements_robots_txt_disallow() {
+	return implode(
+		PHP_EOL,
+		apply_filters(
+			'simple_seo_improvements_robots_txt_disallow',
+			array(
+				'*?attachment_id=',
+				'/category/*/feed',
+				'*cf_action=*',
+				'*/disclaimer/*',
+				'*doing_wp_cron*',
+				'/*/feed',
+				'/.htaccess',
+				'/license.txt',
+				'*preview=true*',
+				'/readme.html',
+				'*replytocom=*',
+				'/tag/*/feed',
+				'*/trackback/',
+				'/wp-admin/',
+				'/wp-content/languages/',
+				'/wp-*.php',
+				'/xmlrpc.php',
+				'/yoast-ga/outbound-article/',
+			)
+		)
+	);
+}
+
