@@ -48,6 +48,10 @@ You can also choose whether the global settings will set values for new content 
 * Allows to set the "Max Snippet".
 * Allows to set the "Max Video Preview".
 
+= GitHub =
+
+The Simple SEO Improvements plugin is available also on [GitHub - Simple SEO Improvements](https://github.com/iworks/simple-seo-improvements).
+
 == Installation ==
 
 There are 3 ways to install this plugin:
@@ -80,6 +84,10 @@ There are 3 ways to install this plugin:
 = Why should I change the title? =
 
 I'm not sure... but we have to do it sometimes.
+
+= I have a problem with the plugin, or I want to suggest a feature. Where can I do this? =
+
+You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-seo-improvements/#new-topic-0), but please add your ticket to [Github Issues](https://github.com/iworks/simple-seo-improvements/issues/new).
 
 == Screenshots ==
 
