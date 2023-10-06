@@ -89,6 +89,10 @@ I'm not sure... but we have to do it sometimes.
 
 == Changelog ==
 
+= 1.5.6 (2023-10-06) =
+
+* The filter `simple-seo-improvements/is_active` has been added. It allows you to check if the plugin is active.
+
 = 1.5.5 (2023-08-03) =
 
 * Robots.txt options have been moved to the configuration panel.

@@ -72,6 +72,7 @@ class iworks_simple_seo_improvements extends iworks {
 		 * plugin ID
 		 */
 		$this->plugin_file = plugin_basename( dirname( $this->base ) . '/simple-seo-improvements.php' );
+		add_filter( 'simple-seo-improvements/is_active', '__return_true' );
 		/**
 		 * WordPress Hooks
 		 */
