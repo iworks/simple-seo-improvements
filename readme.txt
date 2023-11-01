@@ -98,9 +98,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 == Changelog ==
 
 = 1.5.7 (2023-11-01) =
-* The post data has been added (json-d).
-* The sitelinks search box structured data has been added (json-d).
-* The logo structured data has been added (json-d).
+* The post data has been added (json-ld).
+* The sitelinks search box structured data has been added (json-ld).
+* The logo structured data has been added (json-ld).
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.8.7.
 * The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.1.3.
 
