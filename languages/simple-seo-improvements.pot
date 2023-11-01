@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2023-08-03 13:02:56+00:00\n"
+"POT-Creation-Date: 2023-10-06 06:21:22+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -332,39 +332,39 @@ msgstr ""
 msgid "WordPress Help Forum"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:152
+#: includes/iworks/class-simple-seo-improvements.php:153
 #: includes/iworks/rate/rate.php:124
 msgid "Settings"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:227
-#: includes/iworks/class-simple-seo-improvements.php:229
+#: includes/iworks/class-simple-seo-improvements.php:228
+#: includes/iworks/class-simple-seo-improvements.php:230
 msgid "Any post type"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:230
+#: includes/iworks/class-simple-seo-improvements.php:231
 msgid "Any post type archive"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:265
+#: includes/iworks/class-simple-seo-improvements.php:266
 msgid ""
 "Allow to set for entries separately. Settings will apply as default for new "
 "entries."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:268
+#: includes/iworks/class-simple-seo-improvements.php:269
 msgid "Force setting to all entries"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:282
-#: includes/iworks/class-simple-seo-improvements.php:312
+#: includes/iworks/class-simple-seo-improvements.php:283
+#: includes/iworks/class-simple-seo-improvements.php:313
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:163
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:314
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:134
 msgid "Add \"%s\"."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:299
+#: includes/iworks/class-simple-seo-improvements.php:300
 msgid "Add meta tags for %s."
 msgstr ""
 

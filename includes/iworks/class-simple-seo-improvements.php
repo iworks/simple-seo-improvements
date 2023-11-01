@@ -116,6 +116,15 @@ class iworks_simple_seo_improvements extends iworks {
 		require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-prefixes.php';
 		new iworks_simple_seo_improvements_prefixes( $this );
 		/**
+		 * JSON-D
+		 *
+		 * @since 1.5.7
+		 */
+		if ( $this->options->get_option( 'use_json_d' ) ) {
+			require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-d.php';
+			new iworks_simple_seo_improvements_json_d( $this );
+		}
+		/**
 		 * iWorks Rate integration - change logo for rate
 		 */
 		add_filter( 'iworks_rate_notice_logo_style', array( $this, 'filter_plugin_logo' ), 10, 2 );

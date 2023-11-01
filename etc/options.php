@@ -25,7 +25,7 @@ function iworks_simple_seo_improvements_options() {
 			array(
 				'name'              => 'default_image',
 				'type'              => 'image',
-				'th'                => __( 'Default site Icon', 'iworks-pwa' ),
+				'th'                => __( 'Default Site Icon', 'iworks-pwa' ),
 				'sanitize_callback' => 'intval',
 				'max-width'         => 64,
 			),
@@ -203,6 +203,24 @@ function iworks_simple_seo_improvements_options() {
 				'since'       => '1.5.5',
 			),
 			/**
+			 * ication/ld+json
+			 *
+			 * @since 1.1.0
+			 */
+			array(
+				'type'        => 'subheading',
+				'label'       => __( 'Structured Data Markup (JSON-D)', 'simple-seo-improvements' ),
+				'description' => __( 'Structured data is a standardized format for providing information about a page and classifying the page content.', 'simple-seo-improvements' ),
+			),
+			array(
+				'name'              => 'use_json_d',
+				'type'              => 'checkbox',
+				'th'                => __( 'Use Structured Data Markup', 'simple-seo-improvements' ),
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+			),
+			/**
 			 * IndexNow for Bing
 			 *
 			 * @since 1.3.0
@@ -314,7 +332,7 @@ function iworks_simple_seo_improvements_options() {
 			 */
 			array(
 				'type'        => 'heading',
-				'label'       => __( 'Custom code', 'simple-seo-improvements' ),
+				'label'       => __( 'Custom Code', 'simple-seo-improvements' ),
 				'description' => __( 'Use these settings to insert code from Google Tag Manager, Google Analytics or webmaster tools verification.', 'simple-seo-improvements' ),
 			),
 			array(
