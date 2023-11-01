@@ -31,7 +31,7 @@ require_once dirname( __FILE__ ) . '/class-base.php';
 class iworks_simple_seo_improvements_json_d extends iworks_simple_seo_improvements_base {
 
 	private $data = array(
-		'@context' => 'https=>//schema.org',
+		'@context' => 'https://schema.org',
 	);
 
 	public function __construct( $iworks ) {

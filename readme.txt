@@ -47,6 +47,7 @@ You can also choose whether the global settings will set values for new content 
 * Allows to set the "Max Image Preview".
 * Allows to set the "Max Snippet".
 * Allows to set the "Max Video Preview".
+* Add structured data.
 
 = GitHub =
 
@@ -96,6 +97,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 1. Plugin configuration screen - posts.
 
 == Changelog ==
+
+= 1.5.8 (2023-11-01) =
+* A small typo in structured data has been fixed.
 
 = 1.5.7 (2023-11-01) =
 * The post data has been added (json-ld).
