@@ -3,7 +3,7 @@
     "title": "Simple SEO Improvements",
     "description": "Simple SEO improvements - lightweight solution to power up your website.",
     "tagline": "Lightweight SEO solution to power up your website.",
-    "version": "1.5.8",
+    "version": "2.0.0",
     "homepage": "http://iworks.pl/en/plugins/simple-seo-improvements/",
     "author": [
         {
@@ -66,5 +66,5 @@
         "type": "git",
         "url": "git@github.com:iworks/simple-seo-improvements.git"
     },
-    "license": "GPL-2.0"
+    "license": "GPL-3.0"
 }

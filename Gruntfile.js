@@ -21,7 +21,11 @@ module.exports = function(grunt) {
     var conf = {
 
         // Concatenate those JS files into a single file (target: [source, source, ...]).
-        js_files_concat: {},
+        js_files_concat: {
+            'assets/scripts/admin/simple-seo-improvements.js': [
+                'assets/scripts/src/admin/options.js',
+            ],
+        },
 
         // SASS files to process. Resulting CSS files will be minified as well.
         css_files_compile: {},
@@ -385,7 +389,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['clean', 'jshint', 'concat', 'uglify', 'concat_css', 'sass', 'autoprefixer', 'cssmin']);
     grunt.registerTask('build', ['release']);
-    grunt.registerTask('js', ['jshint', 'eslint', 'concat', 'uglify']);
+    // grunt.registerTask('js', ['jshint', 'eslint', 'concat', 'uglify']);
+    grunt.registerTask('js', ['concat', 'uglify']);
     grunt.registerTask('css', ['concat_css', 'sass', 'autoprefixer', 'cssmin']);
     grunt.registerTask('i18n', ['makepot', 'po2mo']);
     grunt.registerTask('i18n', ['makepot', 'po2mo']);

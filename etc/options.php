@@ -11,7 +11,9 @@ function iworks_simple_seo_improvements_options() {
 		'page_title'      => __( 'Simple SEO Improvements Configuration', 'simple-seo-improvements' ),
 		'menu_title'      => __( 'SEO Improvements', 'simple-seo-improvements' ),
 		'menu'            => 'options',
-		'enqueue_scripts' => array(),
+		'enqueue_scripts' => array(
+			'simple-seo-improvements-admin',
+		),
 		'enqueue_styles'  => array(),
 		'options'         => array(
 			array(
@@ -203,24 +205,6 @@ function iworks_simple_seo_improvements_options() {
 				'since'       => '1.5.5',
 			),
 			/**
-			 * ication/ld+json
-			 *
-			 * @since 1.1.0
-			 */
-			array(
-				'type'        => 'subheading',
-				'label'       => __( 'Structured Data Markup (JSON-D)', 'simple-seo-improvements' ),
-				'description' => __( 'Structured data is a standardized format for providing information about a page and classifying the page content.', 'simple-seo-improvements' ),
-			),
-			array(
-				'name'              => 'use_json_d',
-				'type'              => 'checkbox',
-				'th'                => __( 'Use Structured Data Markup', 'simple-seo-improvements' ),
-				'default'           => 1,
-				'sanitize_callback' => 'absint',
-				'classes'           => array( 'switch-button' ),
-			),
-			/**
 			 * IndexNow for Bing
 			 *
 			 * @since 1.3.0
@@ -325,6 +309,162 @@ function iworks_simple_seo_improvements_options() {
 				'sanitize_callback' => 'intval',
 				'description'       => __( 'This applies to all forms of search results (at Google: web search, Google Images, Google Videos, Discover, Assistant). This rule is ignored if no parseable [number] is specified.', 'simple-seo-improvements' ),
 			),
+			/**
+			 * Structured Data Markup - LD+JSON
+			 *
+			 * @since 2.0.0
+			 */
+			array(
+				'type'        => 'heading',
+				'label'       => __( 'Structured Data', 'simple-seo-improvements' ),
+				'description' => __( 'Structured data is a standardized format for providing information about a page and classifying the page content.', 'simple-seo-improvements' ),
+				'since'       => '2.0.0',
+			),
+			array(
+				'name'              => 'use_json_ld',
+				'type'              => 'checkbox',
+				'th'                => __( 'Use Structured Data Markup', 'simple-seo-improvements' ),
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'since'             => '2.0.0',
+			),
+			array(
+				'type'  => 'subheading',
+				'label' => __( 'Site Representation', 'simple-seo-improvements' ),
+				'since' => '2.0.0',
+			),
+			array(
+				'name'        => 'json_name_alt',
+				'type'        => 'text',
+				'th'          => __( 'Alternate Website Name', 'simple-seo-improvements' ),
+				'description' => __( 'Use the alternate website name for acronyms, or a shorter version of your website\'s name.', 'simple-seo-improvements' ),
+				'classes'     => array(
+					'large-text',
+				),
+				'since'       => '2.0.0',
+			),
+
+			array(
+				'name'        => 'json_type',
+				'type'        => 'radio',
+				'th'          => __( 'Type', 'simple-seo-improvements' ),
+				'description' => __( 'Choose whether your site represents an organization or a person.', 'simple-seo-improvements' ),
+				'default'     => 'none',
+				'options'     => array(
+					'none'         => array(
+						'label' => __( 'Don\'t use organization/person structure data.', 'simple-seo-improvements' ),
+					),
+					'organization' => array(
+						'label' => __( 'Organization', 'simple-seo-improvements' ),
+					),
+					'person'       => array(
+						'label' => __( 'Person', 'simple-seo-improvements' ),
+					),
+				),
+				'since'       => '2.0.0',
+			),
+			array(
+				'name'    => 'json_org_name',
+				'type'    => 'text',
+				'th'      => __( 'Organization name', 'simple-seo-improvements' ),
+				'classes' => array(
+					'large-text',
+				),
+				'group'   => 'organization',
+				'since'   => '2.0.0',
+			),
+			array(
+				'name'        => 'json_org_alt',
+				'type'        => 'text',
+				'th'          => __( 'Alternate organization name', 'simple-seo-improvements' ),
+				'description' => __( 'Use the alternate organization name for acronyms, or a shorter version of your organization\'s name.', 'simple-seo-improvements' ),
+				'classes'     => array(
+					'large-text',
+				),
+				'since'       => '2.0.0',
+			),
+			array(
+				'name'              => 'json_org_img',
+				'type'              => 'image',
+				'th'                => __( 'Organization logo', 'iworks-pwa' ),
+				'sanitize_callback' => 'intval',
+				'max-width'         => 64,
+				'since'             => '2.0.0',
+			),
+			array(
+				'name'    => 'json_org_pa_st',
+				'type'    => 'text',
+				'th'      => __( 'Street Address', 'simple-seo-improvements' ),
+				'classes' => array(
+					'large-text',
+				),
+				'since'   => '2.0.0',
+			),
+			array(
+				'name'    => 'json_org_pa_l',
+				'type'    => 'text',
+				'th'      => __( 'Address Locality', 'simple-seo-improvements' ),
+				'classes' => array(
+					'large-text',
+				),
+				'since'   => '2.0.0',
+			),
+			array(
+				'name'        => 'json_org_pa_r',
+				'type'        => 'text',
+				'th'          => __( 'Address Region', 'simple-seo-improvements' ),
+				'description' => __( 'E.g. state, voivodeship', 'simple-seo-improvements' ),
+				'classes'     => array(
+					'large-text',
+				),
+				'since'       => '2.0.0',
+			),
+			array(
+				'name'  => 'json_org_pa_pc',
+				'type'  => 'text',
+				'th'    => __( 'Postal Code', 'simple-seo-improvements' ),
+				'since' => '2.0.0',
+			),
+			array(
+				'name'    => 'json_org_pa_c',
+				'type'    => 'text',
+				'th'      => __( 'Address Country', 'simple-seo-improvements' ),
+				'classes' => array(
+					'large-text',
+				),
+				'since'   => '2.0.0',
+			),
+			array(
+				'name'        => 'json_person',
+				'type'        => 'select',
+				'th'          => __( 'Select User', 'simple-seo-improvements' ),
+				'options'     => iworks_simple_seo_improvements_get_users(),
+				'description' => __( 'You have selected the user admin as the person this site represents. Their user profile information will now be used in search results. Update their profile to make sure the information is correct.', 'simple-seo-improvements' ),
+				'group'       => 'person',
+				'since'       => '2.0.0',
+			),
+			array(
+				'name'              => 'json_person_img',
+				'type'              => 'image',
+				'th'                => __( 'Personal logo or avatar', 'iworks-pwa' ),
+				'sanitize_callback' => 'intval',
+				'max-width'         => 64,
+				'since'             => '2.0.0',
+			),
+			array(
+				'name'        => 'json_other',
+				'type'        => 'textarea',
+				'th'          => __( 'Other profiles', 'simple-seo-improvements' ),
+				'description' => __( 'Tell us if you have any other profiles on the web that belong to your organization. This can be any number of profiles, like YouTube, LinkedIn, Pinterest, or even Wikipedia. Put one URL per line.', 'simple-seo-improvements' ),
+				'classes'     => array(
+					'large-text',
+					'code',
+				),
+				'rows'        => 10,
+				'since'       => '2.0.0',
+			),
+
 			/**
 			 * Add custom code
 			 *
@@ -491,3 +631,11 @@ function simple_seo_improvements_robots_txt_disallow() {
 	);
 }
 
+/**
+ * get user lists
+ *
+ * @since 2.0.0
+ */
+function iworks_simple_seo_improvements_get_users() {
+	return apply_filters( 'iworks_simple_seo_improvements_get_users', array() );
+}

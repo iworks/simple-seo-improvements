@@ -98,6 +98,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 == Changelog ==
 
+= 2.0.0 (2023-11-01) =
+* The structured data has been added.
+
 = 1.5.8 (2023-11-01) =
 * A small typo in structured data has been fixed.
 

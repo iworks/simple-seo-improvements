@@ -120,9 +120,9 @@ class iworks_simple_seo_improvements extends iworks {
 		 *
 		 * @since 1.5.7
 		 */
-		if ( $this->options->get_option( 'use_json_d' ) ) {
-			require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-d.php';
-			new iworks_simple_seo_improvements_json_d( $this );
+		if ( $this->options->get_option( 'use_json_ld' ) ) {
+			require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php';
+			new iworks_simple_seo_improvements_json_ld( $this );
 		}
 		/**
 		 * iWorks Rate integration - change logo for rate
@@ -137,6 +137,12 @@ class iworks_simple_seo_improvements extends iworks {
 		add_filter( 'og_twitter_site', array( $this, 'filter_og_twitter_site' ) );
 		add_filter( 'og_array', array( $this, 'filter_og_array_add_fb_app_id' ) );
 		add_filter( 'og_image_init', array( $this, 'filter_og_image_init' ) );
+		/**
+		 * get user list for options
+		 *
+		 * @since 2.0.0
+		 */
+		add_filter( 'iworks_simple_seo_improvements_get_users', array( $this, 'filter_get_user_list_options' ) );
 	}
 
 	/**
@@ -147,6 +153,12 @@ class iworks_simple_seo_improvements extends iworks {
 	public function admin_init() {
 		$this->options->options_init();
 		add_filter( 'plugin_action_links_' . $this->plugin_file, array( $this, 'add_settings_link' ) );
+		wp_register_script(
+			'simple-seo-improvements-admin',
+			plugins_url( 'assets/scripts/admin/simple-seo-improvements' . $this->dev . '.js', $this->base ),
+			array(),
+			$this->get_version()
+		);
 	}
 
 	/**
@@ -697,6 +709,24 @@ class iworks_simple_seo_improvements extends iworks {
 			require_once( $this->base . '/iworks/simple-seo-improvements/class-iworks-robots-txt.php' );
 			new iworks_simple_seo_improvements_robots_txt();
 		}
+	}
+
+	/**
+	 * get user list for options
+	 *
+	 *
+	 * @since 2.0.0
+	 */
+	public function filter_get_user_list_options( $options ) {
+		$args  = array(
+			'fields' => array( 'id', 'display_name' ),
+			'number' => -1,
+		);
+		$users = get_users( $args );
+		foreach ( $users as $user ) {
+			$options[ $user->id ] = $user->display_name;
+		}
+		return $options;
 	}
 }
 

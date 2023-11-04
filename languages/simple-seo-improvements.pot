@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2023-11-01 08:35:03+00:00\n"
+"POT-Creation-Date: 2023-11-04 18:31:53+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,212 +33,198 @@ msgstr ""
 msgid "SEO Improvements"
 msgstr ""
 
-#: etc/options.php:19
+#: etc/options.php:21
 msgid "General"
 msgstr ""
 
-#: etc/options.php:23
+#: etc/options.php:25
 msgid "Appearance"
 msgstr ""
 
-#: etc/options.php:28
+#: etc/options.php:30
 msgid "Default Site Icon"
 msgstr ""
 
-#: etc/options.php:35
+#: etc/options.php:37
 msgid "Use as favicon"
 msgstr ""
 
-#: etc/options.php:44
+#: etc/options.php:46
 msgid "Home meta description"
 msgstr ""
 
-#: etc/options.php:45
+#: etc/options.php:47
 msgid ""
 "This field is avaialble only when your homepage show blog posts not as a "
 "page"
 msgstr ""
 
-#: etc/options.php:59
+#: etc/options.php:61
 msgid "Remove category URL prefix"
 msgstr ""
 
-#: etc/options.php:63
+#: etc/options.php:65
 msgid "Turn it on to remove the category prefix."
 msgstr ""
 
-#: etc/options.php:70
+#: etc/options.php:72
 msgid "Remove tag URL prefix"
 msgstr ""
 
-#: etc/options.php:74
+#: etc/options.php:76
 msgid "Turn it on to remove the tag prefix."
 msgstr ""
 
-#: etc/options.php:85
+#: etc/options.php:87
 msgid "Social Media"
 msgstr ""
 
-#: etc/options.php:86
+#: etc/options.php:88
 msgid ""
 "If you are using Facebook or Twitter analytic tools, enter the details "
 "below. Omitting them has no effect on how a shared web page appears on a "
 "Facebook timeline or Twitter feed."
 msgstr ""
 
-#: etc/options.php:91
+#: etc/options.php:93
 msgid "Facebook app ID"
 msgstr ""
 
-#: etc/options.php:93
+#: etc/options.php:95
 msgid ""
 "A Facebook App ID is a unique number that identifies your app when you "
 "request ads from Audience Network."
 msgstr ""
 
-#: etc/options.php:98
+#: etc/options.php:100
 msgid "Twitter site"
 msgstr ""
 
-#: etc/options.php:101
+#: etc/options.php:103
 msgid "@username for the website used in the card footer."
 msgstr ""
 
-#: etc/options.php:110
+#: etc/options.php:112
 msgid "Other"
 msgstr ""
 
-#: etc/options.php:115
+#: etc/options.php:117
 msgid "Post types"
 msgstr ""
 
-#: etc/options.php:119
+#: etc/options.php:121
 msgid "Allow each post type to have individual settings."
 msgstr ""
 
-#: etc/options.php:122
+#: etc/options.php:124
 msgid "Common settings for all post types."
 msgstr ""
 
-#: etc/options.php:125
+#: etc/options.php:127
 msgid "Do not support post types."
 msgstr ""
 
-#: etc/options.php:132
+#: etc/options.php:134
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:129
 msgid "Other Archives"
 msgstr ""
 
-#: etc/options.php:136
+#: etc/options.php:138
 msgid " Allow each archive type to have individual settings."
 msgstr ""
 
-#: etc/options.php:139
+#: etc/options.php:141
 msgid "Common settings for all archives."
 msgstr ""
 
-#: etc/options.php:142
+#: etc/options.php:144
 msgid "Do not support on archives."
 msgstr ""
 
-#: etc/options.php:145
+#: etc/options.php:147
 msgid "Date (day/month/year) and author archive."
 msgstr ""
 
-#: etc/options.php:149
+#: etc/options.php:151
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:302
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:115
 msgid "Robots"
 msgstr ""
 
-#: etc/options.php:158
+#: etc/options.php:160
 msgid "robots.txt"
 msgstr ""
 
-#: etc/options.php:169
+#: etc/options.php:171
 msgid "Improve robots.txt"
 msgstr ""
 
-#: etc/options.php:173
+#: etc/options.php:175
 msgid ""
 "A robots.txt file tells search engine crawlers which URLs the crawler can "
 "access on your site."
 msgstr ""
 
-#: etc/options.php:183
+#: etc/options.php:185
 msgid "Disallow:"
 msgstr ""
 
-#: etc/options.php:186 etc/options.php:202
+#: etc/options.php:188 etc/options.php:204
 msgid "Add one entry per line."
 msgstr ""
 
-#: etc/options.php:198
+#: etc/options.php:200
 msgid "Allow:"
 msgstr ""
 
-#: etc/options.php:212
-msgid "Structured Data Markup (JSON-D)"
-msgstr ""
-
-#: etc/options.php:213
-msgid ""
-"Structured data is a standardized format for providing information about a "
-"page and classifying the page content."
-msgstr ""
-
-#: etc/options.php:218
-msgid "Use Structured Data Markup"
-msgstr ""
-
-#: etc/options.php:230
+#: etc/options.php:214
 msgid "Bing"
 msgstr ""
 
-#: etc/options.php:235
+#: etc/options.php:219
 msgid "IndexNow for Bing"
 msgstr ""
 
-#: etc/options.php:239
+#: etc/options.php:223
 msgid ""
 "IndexNow is an easy way for websites owners to instantly inform search "
 "engines about latest content changes on their website. In its simplest form."
 msgstr ""
 
-#: etc/options.php:248
+#: etc/options.php:232
 msgid "Google"
 msgstr ""
 
-#: etc/options.php:249
+#: etc/options.php:233
 msgid ""
 "The robots meta tag lets you utilize a granular, page-specific approach to "
 "controlling how an individual page should be indexed and served to users in "
 "Google Search results."
 msgstr ""
 
-#: etc/options.php:259
+#: etc/options.php:243
 msgid "Show in Google"
 msgstr ""
 
-#: etc/options.php:263
+#: etc/options.php:247
 msgid "To show a page in Google's web search results."
 msgstr ""
 
-#: etc/options.php:273
+#: etc/options.php:257
 msgid "Show in Google News"
 msgstr ""
 
-#: etc/options.php:277
+#: etc/options.php:261
 msgid ""
 "To show a page in Google's web search results, but not in Google News, use "
 "the googlebot-news meta tag"
 msgstr ""
 
-#: etc/options.php:287
+#: etc/options.php:271
 msgid "Max Snippet"
 msgstr ""
 
-#: etc/options.php:290
+#: etc/options.php:274
 msgid ""
 "Use a maximum of [number] characters as a textual snippet for this search "
 "result. If you don't specify this rule, Google will choose the length of "
@@ -248,137 +234,253 @@ msgid ""
 "nosnippet."
 msgstr ""
 
-#: etc/options.php:300
+#: etc/options.php:284
 msgid "Max Image Preview"
 msgstr ""
 
-#: etc/options.php:304
+#: etc/options.php:288
 msgid "No image preview is to be shown."
 msgstr ""
 
-#: etc/options.php:307
+#: etc/options.php:291
 msgid "A default image preview may be shown."
 msgstr ""
 
-#: etc/options.php:310
+#: etc/options.php:294
 msgid "A larger image preview, up to the width of the viewport, may be shown."
 msgstr ""
 
-#: etc/options.php:313
+#: etc/options.php:297
 msgid ""
 "Set the maximum size of an image preview for this page in a search results. "
 "If you don't specify the max-image-preview rule, Google may show an image "
 "preview of the default size."
 msgstr ""
 
-#: etc/options.php:323
+#: etc/options.php:307
 msgid "Max Video Preview"
 msgstr ""
 
-#: etc/options.php:326
+#: etc/options.php:310
 msgid ""
 "This applies to all forms of search results (at Google: web search, Google "
 "Images, Google Videos, Discover, Assistant). This rule is ignored if no "
 "parseable [number] is specified."
 msgstr ""
 
-#: etc/options.php:335
+#: etc/options.php:319
+msgid "Structured Data"
+msgstr ""
+
+#: etc/options.php:320
+msgid ""
+"Structured data is a standardized format for providing information about a "
+"page and classifying the page content."
+msgstr ""
+
+#: etc/options.php:326
+msgid "Use Structured Data Markup"
+msgstr ""
+
+#: etc/options.php:334
+msgid "Site Representation"
+msgstr ""
+
+#: etc/options.php:340
+msgid "Alternate Website Name"
+msgstr ""
+
+#: etc/options.php:341
+msgid ""
+"Use the alternate website name for acronyms, or a shorter version of your "
+"website's name."
+msgstr ""
+
+#: etc/options.php:351
+msgid "Type"
+msgstr ""
+
+#: etc/options.php:352
+msgid "Choose whether your site represents an organization or a person."
+msgstr ""
+
+#: etc/options.php:356
+msgid "Don't use organization/person structure data."
+msgstr ""
+
+#: etc/options.php:359
+msgid "Organization"
+msgstr ""
+
+#: etc/options.php:362
+msgid "Person"
+msgstr ""
+
+#: etc/options.php:370
+msgid "Organization name"
+msgstr ""
+
+#: etc/options.php:380
+msgid "Alternate organization name"
+msgstr ""
+
+#: etc/options.php:381
+msgid ""
+"Use the alternate organization name for acronyms, or a shorter version of "
+"your organization's name."
+msgstr ""
+
+#: etc/options.php:390
+msgid "Organization logo"
+msgstr ""
+
+#: etc/options.php:398
+msgid "Street Address"
+msgstr ""
+
+#: etc/options.php:407
+msgid "Address Locality"
+msgstr ""
+
+#: etc/options.php:416
+msgid "Address Region"
+msgstr ""
+
+#: etc/options.php:417
+msgid "E.g. state, voivodeship"
+msgstr ""
+
+#: etc/options.php:426
+msgid "Postal Code"
+msgstr ""
+
+#: etc/options.php:432
+msgid "Address Country"
+msgstr ""
+
+#: etc/options.php:441
+msgid "Select User"
+msgstr ""
+
+#: etc/options.php:443
+msgid ""
+"You have selected the user admin as the person this site represents. Their "
+"user profile information will now be used in search results. Update their "
+"profile to make sure the information is correct."
+msgstr ""
+
+#: etc/options.php:450
+msgid "Personal logo or avatar"
+msgstr ""
+
+#: etc/options.php:458
+msgid "Other profiles"
+msgstr ""
+
+#: etc/options.php:459
+msgid ""
+"Tell us if you have any other profiles on the web that belong to your "
+"organization. This can be any number of profiles, like YouTube, LinkedIn, "
+"Pinterest, or even Wikipedia. Put one URL per line."
+msgstr ""
+
+#: etc/options.php:475
 msgid "Custom Code"
 msgstr ""
 
-#: etc/options.php:336
+#: etc/options.php:476
 msgid ""
 "Use these settings to insert code from Google Tag Manager, Google Analytics "
 "or webmaster tools verification."
 msgstr ""
 
-#: etc/options.php:341
+#: etc/options.php:481
 msgid "Header Code"
 msgstr ""
 
-#: etc/options.php:342
+#: etc/options.php:482
 msgid ""
 "Code entered in this box will be printed in the <code>&lt;head&gt;</code> "
 "section."
 msgstr ""
 
-#: etc/options.php:352
+#: etc/options.php:492
 msgid "Body Start"
 msgstr ""
 
-#: etc/options.php:353
+#: etc/options.php:493
 msgid ""
 "Code entered in this box will be printed after the opening "
 "<code>&lt;body&gt;</code> tag."
 msgstr ""
 
-#: etc/options.php:363
+#: etc/options.php:503
 msgid "Body End"
 msgstr ""
 
-#: etc/options.php:364
+#: etc/options.php:504
 msgid ""
 "Code entered in this box will be printed before the closing "
 "<code>&lt;/body&gt;</code> tag."
 msgstr ""
 
-#: etc/options.php:374 etc/options.php:428
+#: etc/options.php:514 etc/options.php:568
 msgid "We are waiting for your message"
 msgstr ""
 
-#: etc/options.php:380
+#: etc/options.php:520
 msgid "I love what I do!"
 msgstr ""
 
-#: etc/options.php:412
+#: etc/options.php:552
 msgid "Below are some links to help spread this plugin to other users"
 msgstr ""
 
-#: etc/options.php:414
+#: etc/options.php:554
 msgid "Give it a five stars on WordPress.org"
 msgstr ""
 
-#: etc/options.php:415
+#: etc/options.php:555
 msgid "Link to it so others can easily find it"
 msgstr ""
 
-#: etc/options.php:430
+#: etc/options.php:570
 msgid "WordPress Help Forum"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:162
+#: includes/iworks/class-simple-seo-improvements.php:174
 #: includes/iworks/rate/rate.php:125
 msgid "Settings"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:237
-#: includes/iworks/class-simple-seo-improvements.php:239
+#: includes/iworks/class-simple-seo-improvements.php:249
+#: includes/iworks/class-simple-seo-improvements.php:251
 msgid "Any post type"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:240
+#: includes/iworks/class-simple-seo-improvements.php:252
 msgid "Any post type archive"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:275
+#: includes/iworks/class-simple-seo-improvements.php:287
 msgid ""
 "Allow to set for entries separately. Settings will apply as default for new "
 "entries."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:278
+#: includes/iworks/class-simple-seo-improvements.php:290
 msgid "Force setting to all entries"
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:292
-#: includes/iworks/class-simple-seo-improvements.php:322
+#: includes/iworks/class-simple-seo-improvements.php:304
+#: includes/iworks/class-simple-seo-improvements.php:334
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:163
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:314
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:134
 msgid "Add \"%s\"."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:309
+#: includes/iworks/class-simple-seo-improvements.php:321
 msgid "Add meta tags for %s."
 msgstr ""
 
@@ -543,6 +645,14 @@ msgstr ""
 msgid "Use these settings to controll day, month & year archive."
 msgstr ""
 
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:114
+msgid "Home Page"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:153
+msgid "Search Results for: %s"
+msgstr ""
+
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:298
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:85
 msgid "HTML Title"
@@ -577,17 +687,17 @@ msgstr ""
 msgid "AUTHOR_URI"
 msgstr ""
 
-#: etc/options.php:100
+#: etc/options.php:102
 msgctxt "placeholder"
 msgid "@account_name"
 msgstr ""
 
-#: etc/options.php:415
+#: etc/options.php:555
 msgctxt "plugin home page on WordPress.org"
 msgid "https://wordpress.org/plugins/simple-seo-improvements/"
 msgstr ""
 
-#: etc/options.php:430
+#: etc/options.php:570
 msgctxt "link to support forum on WordPress.org"
 msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
 msgstr ""
