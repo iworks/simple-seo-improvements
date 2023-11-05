@@ -392,8 +392,8 @@ module.exports = function(grunt) {
     // grunt.registerTask('js', ['jshint', 'eslint', 'concat', 'uglify']);
     grunt.registerTask('js', ['concat', 'uglify']);
     grunt.registerTask('css', ['concat_css', 'sass', 'autoprefixer', 'cssmin']);
-    grunt.registerTask('i18n', ['makepot', 'po2mo']);
-    grunt.registerTask('i18n', ['makepot', 'po2mo']);
+    // grunt.registerTask('i18n', ['makepot', 'po2mo']);
+    grunt.registerTask('i18n', ['makepot']);
     //grunt.registerTask( 'test', ['phpunit', 'jshint'] );
 
     grunt.util.linefeed = '\n';

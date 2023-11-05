@@ -46,6 +46,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	public function __construct( $iworks ) {
 		$this->options = get_iworks_simple_seo_improvements_options();
 		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'get_json_ld' ) );
+		$this->dev = defined( 'IWORKS_DEV_MODE' ) ? IWORKS_DEV_MODE : ( defined( 'WP_DEBUG' ) ? WP_DEBUG : false );
 	}
 
 	/**
@@ -81,21 +82,72 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
+	 * BreadcrumbList::Page::archive
+	 *
+	 * @since 2.0.0
+	 */
+	private function get_part_breadcrumb_list_page_archive( $ID ) {
+		$post_type = get_post_type( $ID );
+		$link      = get_post_type_archive_link( $post_type );
+		if ( $link ) {
+			$post_type_object = get_post_type_object( $post_type );
+			return  array(
+				'@type' => 'ListItem',
+				'name'  => $post_type_object->label,
+				'item'  => $link,
+			);
+		}
+		return false;
+	}
+
+	/**
 	 * BreadcrumbList::Page
 	 *
 	 * @since 2.0.0
 	 */
 	private function get_part_breadcrumb_list_page( $pages, $ID ) {
-		$pages[]        = array(
+		$pages[] = array(
 			'@type' => 'ListItem',
 			'name'  => get_the_title( $ID ),
 			'item'  => get_permalink( $ID ),
 		);
+		/**
+		 * parents
+		 *
+		 * @since 2.0.0
+		 */
 		$post_parent_id = wp_get_post_parent_id( $ID );
 		if ( 0 < $post_parent_id ) {
 			$pages = $this->get_part_breadcrumb_list_page( $pages, $post_parent_id );
 		}
+		/**
+		 * post type archive page
+		 *
+		 * @since 2.0.0
+		 */
+		$post_type_archive_page = $this->get_part_breadcrumb_list_page_archive( $ID );
+		if ( $post_type_archive_page ) {
+			$pages[] = $post_type_archive_page;
+		}
 		return $pages;
+	}
+
+	/**
+	 * BreadcrumbList::Author
+	 *
+	 * @since 2.0.0
+	 */
+	private function get_part_breadcrumb_list_author( $author_id ) {
+		if ( $author_id ) {
+			$user = get_userdata( $author_id );
+			return
+				array(
+					'@type' => 'ListItem',
+					'name'  => sprintf( esc_html__( 'Archives for %s', 'simple-seo-improvements' ), $user->display_name ),
+					'item'  => get_author_posts_url( $author_id ),
+				);
+		}
+		return false;
 	}
 
 	/**
@@ -118,6 +170,8 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		);
 		/**
 		 * singular
+		 *
+		 * @since 2.0.0
 		 */
 		if ( is_singular() ) {
 			foreach (
@@ -130,6 +184,8 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		}
 		/**
 		 * term
+		 *
+		 * @since 2.0.0
 		 */
 		if (
 			is_tag()
@@ -145,6 +201,8 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		}
 		/**
 		 * is_search
+		 *
+		 * @since 2.0.0
 		 */
 		if ( is_search() ) {
 			$data['itemListElement'][] = array(
@@ -155,7 +213,122 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			);
 		}
 		/**
+		 * is_post_type_archive
+		 *
+		 * @since 2.0.0
+		 */
+		if ( is_post_type_archive() ) {
+			$queried_object = get_queried_object();
+			if ( is_a( $queried_object, 'WP_Post_Type' ) ) {
+				$link = get_post_type_archive_link( $queried_object->name );
+				if ( $link ) {
+					$data['itemListElement'][] = array(
+						'@type'    => 'ListItem',
+						'position' => sizeof( $data['itemListElement'] ) + 1,
+						'name'     => $queried_object->label,
+						'item'     => $link,
+					);
+				}
+			}
+		}
+		/**
+		 * is_date
+		 *
+		 * @since 2.0.0
+		 */
+		if ( is_date() ) {
+			$day = $month = $year = false;
+			if ( is_day() ) {
+				$day = $month = $year = true;
+			} elseif ( is_month() ) {
+				$month = $year = true;
+			} elseif ( is_year() ) {
+				$year = true;
+			}
+			if ( $year ) {
+				$year                      = get_query_var( 'year' );
+				$data['itemListElement'][] = array(
+					'@type'    => 'ListItem',
+					'position' => sizeof( $data['itemListElement'] ) + 1,
+					'name'     => sprintf( esc_html__( 'Archives for %d', 'simple-seo-improvements' ), $year ),
+					'item'     => get_year_link( $year ),
+				);
+			}
+			if ( $month ) {
+				$month                     = get_query_var( 'month' );
+				$data['itemListElement'][] = array(
+					'@type'    => 'ListItem',
+					'position' => sizeof( $data['itemListElement'] ) + 1,
+					'name'     => sprintf(
+						esc_html__( 'Archives for %s', 'simple-seo-improvements' ),
+						date_i18n(
+							'F Y',
+							strtotime(
+								sprintf(
+									'%d-%02d',
+									$year,
+									$month
+								)
+							)
+						)
+					),
+					'item'     => get_month_link( $year, $month ),
+				);
+			}
+			if ( $day ) {
+				$day                       = get_query_var( 'day' );
+				$data['itemListElement'][] = array(
+					'@type'    => 'ListItem',
+					'position' => sizeof( $data['itemListElement'] ) + 1,
+					'name'     => sprintf(
+						esc_html__( 'Archives for %s', 'simple-seo-improvements' ),
+						date_i18n(
+							'j F Y',
+							strtotime(
+								sprintf(
+									'%d-%02d-%02d',
+									$year,
+									$month,
+									$day
+								)
+							)
+						)
+					),
+					'item'     => get_day_link( $year, $month, $day ),
+				);
+			}
+		}
+		/**
+		 * is_author
+		 *
+		 * @since 2.0.0
+		 */
+		if ( is_author() ) {
+			$author_name = get_query_var( 'author_name' );
+			$user        = get_user_by( 'login', $author_name );
+			$item        = $this->get_part_breadcrumb_list_author( $user->ID );
+			if ( $item ) {
+				$item['position']          = sizeof( $data['itemListElement'] ) + 1;
+				$data['itemListElement'][] = $item;
+			}
+		}
+		/**
+		 * is_404
+		 *
+		 * @since 2.0.0
+		 */
+		if ( is_404() ) {
+			$data['itemListElement'][] = array(
+				'@type'    => 'ListItem',
+				'position' => sizeof( $data['itemListElement'] ) + 1,
+				'name'     => __( '404 Error Page', 'simple-seo-improvements' ),
+				'item'     => '',
+			);
+		}
+		/**
 		 * remove last item url from breadcrumb
+		 *
+		 * @since 2.0.0
 		 */
 		unset( $data['itemListElement'][ sizeof( $data['itemListElement'] ) - 1 ]['item'] );
 		/**
@@ -242,6 +415,166 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
+	 * potentialAction: CommentAction
+	 *
+	 * @since 2.0.0
+	 */
+	private function get_part_potential_action_comment_action() {
+		if ( ! is_singular() ) {
+			return array();
+		}
+		if ( ! comments_open() ) {
+			return array();
+		}
+		return apply_filters(
+			'iworks_simple_seo_improvements_json_ld::potentialAction::CommentAction',
+			array(
+				'@type'  => 'CommentAction',
+				'name'   => __( 'Comment', 'simple-seo-improvements' ),
+				'target' => array(
+					get_permalink() . '#response',
+				),
+			)
+		);
+	}
+
+	/**
+	 * author
+	 *
+	 * @since 2.0.0
+	 */
+	private function get_part_author() {
+		global $post;
+		$author_id = $post->post_author;
+		$user      = get_userdata( $author_id );
+		if ( empty( $user ) ) {
+			return array();
+		}
+		$data = array(
+			'@type' => 'Person',
+			'@id'   => home_url() . '/#/schema/person/' . md5( $user->user_email ),
+			'name'  => $user->display_name,
+			'url'   => get_author_posts_url( $author_id ),
+			'image' => array(
+				'@type'      => 'ImageObject',
+				'inLanguage' => $this->get_locale(),
+				'@id'        => home_url() . '/#/schema/person/image/',
+				'url'        => get_avatar_url( $user->user_email, array( 'size' => 512 ) ),
+				'contentUrl' => get_avatar_url( $user->user_email, array( 'size' => 512 ) ),
+				'caption'    => $user->display_name,
+			),
+		);
+		/**
+		 * sameAs
+		 */
+		$same_as = array();
+		$value   = $user->user_url;
+		if ( $value && home_url() !== $value ) {
+			$same_as[] = $value;
+		}
+		if ( ! empty( $same_as ) ) {
+			$data['sameAs'] = $same_as;
+		}
+		/**
+		 * return
+		 */
+		return apply_filters(
+			'iworks_simple_seo_improvements_json_ld::author',
+			$data
+		);
+
+	}
+
+	/**
+	 * Article
+	 *
+	 * @since 2.0.0
+	 */
+	private function get_part_article() {
+		$data = array(
+			'@type'     => 'Article',
+			'@id'       => get_permalink() . '/#article',
+			'isPartOf'  => array(
+				'@id' => get_permalink(),
+			),
+			'wordCount' => str_word_count( strip_tags( get_the_content() ) ),
+			'headline'  => get_the_title(),
+		);
+		/**
+		 * thumbnail
+		 */
+		$data = wp_parse_args(
+			$this->get_part_thumbnail(),
+			$data
+		);
+		/**
+		 * Author
+		 */
+		$value = $this->get_part_author();
+		if ( ! empty( $value ) ) {
+			$data['author'] = $value;
+		}
+		/**
+		 * inLanguage
+		 */
+		$data = wp_parse_args(
+			$this->get_part_in_language(),
+			$data
+		);
+		/**
+		 * potentialAction:CommentAction
+		 */
+		$value = $this->get_part_potential_action_comment_action();
+		if ( ! empty( $value ) ) {
+			if ( ! isset( $data['potentialAction'] ) ) {
+				$data['potentialAction'] = array();
+			}
+			$data['potentialAction'][] = $value;
+		}
+		/**
+		 * return
+		 */
+		return apply_filters(
+			'iworks_simple_seo_improvements_json_ld::Article',
+			$data
+		);
+	}
+
+	/**
+	 * thumbnail
+	 *
+	 * @since 2.0.0
+	 */
+	private function get_part_thumbnail() {
+		if ( has_post_thumbnail() ) {
+			return array(
+				'primaryImageOfPage' => array(
+					'@id' => get_permalink() . '#primaryimage',
+				),
+				'image'              => array(
+					'@id' => get_permalink() . '#primaryimage',
+				),
+				'thumbnailUrl'       => get_the_post_thumbnail_url( get_the_ID(), 'full' ),
+				'datePublished'      => get_the_date( 'c' ),
+				'dateModified'       => get_the_modified_date( 'c' ),
+				'breadcrumb'         => array(
+					'@id' => get_permalink() . '#breadcrumb',
+				),
+			);
+		}
+		return array();
+	}
+	/**
+	 * inLanguage
+	 *
+	 * @since 2.0.0
+	 */
+	private function get_part_in_language() {
+		return array(
+			'inLanguage' => $this->get_locale(),
+		);
+	}
+	/**
 	 * WebPage
 	 *
 	 * @since 2.0.0
@@ -255,34 +588,25 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				'@id' => home_url( '/#website' ),
 			),
 		);
-		if ( has_post_thumbnail() ) {
-			$data = wp_parse_args(
-				array(
-					'primaryImageOfPage' => array(
-						'@id' => get_permalink() . '#primaryimage',
-					),
-					'image'              => array(
-						'@id' => get_permalink() . '#primaryimage',
-					),
-					'thumbnailUrl'       => get_the_post_thumbnail_url( get_the_ID(), 'full' ),
-					'datePublished'      => get_the_date( 'c' ),
-					'dateModified'       => get_the_modified_date( 'c' ),
-					'breadcrumb'         => array(
-						'@id' => get_permalink() . '#breadcrumb',
-					),
-				),
-				$data
-			);
-		}
+		$data = wp_parse_args(
+			$this->get_part_thumbnail(),
+			$data
+		);
+		$data = wp_parse_args(
+			$this->get_part_in_language(),
+			$data
+		);
 		$data = wp_parse_args(
 			array(
-				'inLanguage'      => $this->get_locale(),
 				'potentialAction' => array(
 					$this->get_part_potential_action_read_action( get_permalink() ),
 				),
 			),
 			$data
 		);
+		/**
+		 * return
+		 */
 		return apply_filters(
 			'iworks_simple_seo_improvements_json_ld::WebPage',
 			$data
@@ -305,9 +629,13 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			'@id'        => get_permalink() . $id,
 			'url'        => $image[0],
 			'contentUrl' => $image[0],
-			'width'      => $image[1],
-			'height'     => $image[2],
 		);
+		if ( 0 < $image[1] ) {
+			$data['width'] = $image[1];
+		}
+		if ( 0 < $image[2] ) {
+			$data['height'] = $image[2];
+		}
 		/**
 		 * caption
 		 */
@@ -509,6 +837,9 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			$this->data['@graph'][] = $this->get_part_collection_page();
 		}
 		if ( is_singular() ) {
+			if ( is_single() ) {
+				$this->data['@graph'][] = $this->get_part_article();
+			}
 			$this->data['@graph'][] = $this->get_part_web_page();
 			if ( has_post_thumbnail() ) {
 				$this->data['@graph'][] = $this->get_part_image_object( get_post_thumbnail_id() );
@@ -548,12 +879,19 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	public function get_json_ld( $content ) {
 		$content .= '<script type="application/ld+json" id="simple-seo-improvements-json-ld">';
 		$content .= PHP_EOL;
+		$flags    = JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
+		if ( $this->dev ) {
+			$flags = JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
+		}
 		$content .= json_encode(
 			apply_filters(
-				'simple_seo_improvements_json_d_data',
+				'iworks_simple_seo_improvements_json_ld::json_encode::json',
 				array_filter( $this->get_data() )
 			),
-			JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+			apply_filters(
+				'iworks_simple_seo_improvements_json_ld::json_encode::flags',
+				$flags
+			)
 		);
 		$content .= PHP_EOL;
 		$content .= '</script>';

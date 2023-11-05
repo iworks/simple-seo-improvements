@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2023-11-04 18:31:53+00:00\n"
+"POT-Creation-Date: 2023-11-05 10:32:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -645,12 +645,30 @@ msgstr ""
 msgid "Use these settings to controll day, month & year archive."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:114
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:146
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:263
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:284
+msgid "Archives for %s"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:166
 msgid "Home Page"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:153
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:211
 msgid "Search Results for: %s"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:253
+msgid "Archives for %d"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:324
+msgid "404 Error Page"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:433
+msgid "Comment"
 msgstr ""
 
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:298
