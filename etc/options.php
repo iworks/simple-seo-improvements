@@ -436,6 +436,15 @@ function iworks_simple_seo_improvements_options() {
 				'since'   => '2.0.0',
 			),
 			array(
+				'name'              => 'json_org_lb',
+				'type'              => 'select',
+				'th'                => __( 'Local Buissnes Page', 'simple-seo-improvements' ),
+				'description'       => __( 'Select a page to fill local business (LocalBusiness) structured data. Edit selected page to add or change LocalBusiness data.', 'simple-seo-improvements' ),
+				'options'           => iworks_simple_seo_improvements_get_pages(),
+				'sanitize_callback' => 'intval',
+				'since'             => '2.0.0',
+			),
+			array(
 				'name'        => 'json_person',
 				'type'        => 'select',
 				'th'          => __( 'Select User', 'simple-seo-improvements' ),
@@ -632,10 +641,26 @@ function simple_seo_improvements_robots_txt_disallow() {
 }
 
 /**
- * get user lists
+ * get users list
  *
  * @since 2.0.0
  */
 function iworks_simple_seo_improvements_get_users() {
 	return apply_filters( 'iworks_simple_seo_improvements_get_users', array() );
 }
+
+/**
+ * get pages list
+ *
+ * @since 2.0.0
+ */
+function iworks_simple_seo_improvements_get_pages() {
+	$options    = array();
+	$options[0] = esc_html__( '--- select ---', 'simple-seo-improvements' );
+	$args       = array();
+	foreach ( get_pages( $args ) as $page ) {
+		$options[ $page->ID ] = $page->post_title;
+	}
+	return $options;
+}
+

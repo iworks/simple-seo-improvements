@@ -36,6 +36,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	 * @since 1.5.7
 	 */
 	private $data = array();
+
 	/**
 	 * locale
 	 *
@@ -43,10 +44,125 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	 */
 	private $locale = null;
 
+	/**
+	 * LocalBusiness page meta name
+	 *
+	 * @since 2.0.0
+	 */
+	private $meta_field_local_business = '_ssi_local_business';
+
+	/**
+	 * fields for LocalBusiness
+	 *
+	 * @since 2.0.0
+	 */
+	private $local_business_fields = null;
+
+	/**
+	 * Types for LocalBusiness
+	 *
+	 * @since 2.0.0
+	 */
+	private $local_business_types = null;
+
 	public function __construct( $iworks ) {
 		$this->options = get_iworks_simple_seo_improvements_options();
-		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'get_json_ld' ) );
+		/**
+		 * dev
+		 */
 		$this->dev = defined( 'IWORKS_DEV_MODE' ) ? IWORKS_DEV_MODE : ( defined( 'WP_DEBUG' ) ? WP_DEBUG : false );
+		/**
+		 * hooks
+		 */
+		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'get_json_ld' ) );
+		add_filter( 'display_post_states', array( $this, 'filter_display_post_states' ), 10, 2 );
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_box_for_local_business' ) );
+		add_action( 'save_post', array( $this, 'action_save_post_local_business_fields' ), 10, 3 );
+	}
+
+	private function get_local_business_nonce_name() {
+		return $this->options->get_option_name( 'local_business_nonce_name' );
+	}
+
+	private function get_local_business_nonce_action() {
+		return $this->options->get_option_name( 'local_business_nonce_action' );
+	}
+
+	private function set_local_business_data() {
+		$this->local_business_fields = array(
+			'address'                   => array(
+				'type'   => 'text',
+				'label'  => esc_html__( 'Address', 'simple-seo-improvements' ),
+				'fields' => array(
+					'name'            => esc_html__( 'Name', 'simple-seo-improvements' ),
+					'streetAddress'   => esc_html__( 'Street Address', 'simple-seo-improvements' ),
+					'addressLocality' => esc_html__( 'Locality', 'simple-seo-improvements' ),
+					'addressRegion'   => esc_html__( 'Region', 'simple-seo-improvements' ),
+					'postalCode'      => esc_html__( 'Postal Code', 'simple-seo-improvements' ),
+					'addressCountry'  => esc_html__( 'Country', 'simple-seo-improvements' ),
+				),
+			),
+			'contact'                   => array(
+				'type'   => 'text',
+				'label'  => esc_html__( 'Contact Data', 'simple-seo-improvements' ),
+				'fields' => array(
+					'telephone' => esc_html__( 'Telephone', 'simple-seo-improvements' ),
+				),
+			),
+			'geo'                       => array(
+				'type'   => 'text',
+				'label'  => esc_html__( 'Geo Coordinates', 'simple-seo-improvements' ),
+				'fields' => array(
+					'latitude'  => esc_html__( 'Latitude', 'simple-seo-improvements' ),
+					'longitude' => esc_html__( 'Longitude', 'simple-seo-improvements' ),
+				),
+			),
+			'OpeningHoursSpecification' => array(
+				'type'   => 'hours',
+				'label'  => esc_html__( 'Opening Hours Specification', 'simple-seo-improvements' ),
+				'fields' => array(
+					'Monday'    => esc_html__( 'Monday', 'simple-seo-improvements' ),
+					'Tuesday'   => esc_html__( 'Tuesday', 'simple-seo-improvements' ),
+					'Wednesday' => esc_html__( 'Wednesday', 'simple-seo-improvements' ),
+					'Thursday'  => esc_html__( 'Thursday', 'simple-seo-improvements' ),
+					'Friday'    => esc_html__( 'Friday', 'simple-seo-improvements' ),
+					'Saturday'  => esc_html__( 'Saturday', 'simple-seo-improvements' ),
+					'Sunday'    => esc_html__( 'Sunday', 'simple-seo-improvements' ),
+				),
+			),
+		);
+		$this->local_business_types  = array(
+			'AnimalShelter'               => __( 'Animal Shelter', 'simple-seo-improvement' ),
+			'ArchiveOrganization'         => __( 'Archive Organization', 'simple-seo-improvement' ),
+			'AutomotiveBusiness'          => __( 'Automotive Business', 'simple-seo-improvement' ),
+			'ChildCare'                   => __( 'Child Care', 'simple-seo-improvement' ),
+			'Dentist'                     => __( 'Dentist', 'simple-seo-improvement' ),
+			'DryCleaningOrLaundry'        => __( 'Dry Cleaning Or Laundry', 'simple-seo-improvement' ),
+			'EmergencyService'            => __( 'Emergency Service', 'simple-seo-improvement' ),
+			'EmploymentAgency'            => __( 'Employment Agency', 'simple-seo-improvement' ),
+			'EntertainmentBusiness'       => __( 'Entertainment Business', 'simple-seo-improvement' ),
+			'FinancialService'            => __( 'Financial Service', 'simple-seo-improvement' ),
+			'FoodEstablishment'           => __( 'Food Establishment', 'simple-seo-improvement' ),
+			'GovernmentOffice'            => __( 'Government Office', 'simple-seo-improvement' ),
+			'HealthAndBeautyBusiness'     => __( 'Health And Beauty Business', 'simple-seo-improvement' ),
+			'HomeAndConstructionBusiness' => __( 'Home And Construction Business', 'simple-seo-improvement' ),
+			'InternetCafe'                => __( 'Internet Cafe', 'simple-seo-improvement' ),
+			'LegalService'                => __( 'Legal Service', 'simple-seo-improvement' ),
+			'Library'                     => __( 'Library', 'simple-seo-improvement' ),
+			'LodgingBusiness'             => __( 'Lodging Business', 'simple-seo-improvement' ),
+			'MedicalBusiness'             => __( 'Medical Business', 'simple-seo-improvement' ),
+			'ProfessionalService'         => __( 'Professional Service', 'simple-seo-improvement' ),
+			'RadioStation'                => __( 'Radio Station', 'simple-seo-improvement' ),
+			'RealEstateAgent'             => __( 'Real Estate Agent', 'simple-seo-improvement' ),
+			'RecyclingCenter'             => __( 'Recycling Center', 'simple-seo-improvement' ),
+			'SelfStorage'                 => __( 'Self Storage', 'simple-seo-improvement' ),
+			'ShoppingCenter'              => __( 'Shopping Center', 'simple-seo-improvement' ),
+			'SportsActivityLocation'      => __( 'Sports Activity Location', 'simple-seo-improvement' ),
+			'Store'                       => __( 'Store', 'simple-seo-improvement' ),
+			'TelevisionStation'           => __( 'Television Station', 'simple-seo-improvement' ),
+			'TouristInformationCenter'    => __( 'Tourist Information Center', 'simple-seo-improvement' ),
+			'TravelAgency'                => __( 'Travel Agency', 'simple-seo-improvement' ),
+		);
 	}
 
 	/**
@@ -492,21 +608,26 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	 */
 	private function get_part_article() {
 		$data = array(
-			'@type'     => 'Article',
-			'@id'       => get_permalink() . '/#article',
-			'isPartOf'  => array(
+			'@type'        => 'Article',
+			'@id'          => get_permalink() . '#article',
+			'isPartOf'     => array(
 				'@id' => get_permalink(),
 			),
-			'wordCount' => str_word_count( strip_tags( get_the_content() ) ),
-			'headline'  => get_the_title(),
+			'wordCount'    => str_word_count( strip_tags( get_the_content() ) ),
+			'headline'     => get_the_title(),
+			'commentCount' => intval( get_comments_number( get_the_ID() ) ),
 		);
 		/**
 		 * thumbnail
 		 */
-		$data = wp_parse_args(
-			$this->get_part_thumbnail(),
-			$data
-		);
+		if ( has_post_thumbnail() ) {
+			$data = wp_parse_args(
+				array(
+					'thumbnail' => $this->get_part_image_object( get_post_thumbnail_id(), '#thumbnail' ),
+				),
+				$data
+			);
+		}
 		/**
 		 * Author
 		 */
@@ -546,8 +667,9 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	 * @since 2.0.0
 	 */
 	private function get_part_thumbnail() {
+		$data = array();
 		if ( has_post_thumbnail() ) {
-			return array(
+			$data = array(
 				'primaryImageOfPage' => array(
 					'@id' => get_permalink() . '#primaryimage',
 				),
@@ -557,12 +679,20 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				'thumbnailUrl'       => get_the_post_thumbnail_url( get_the_ID(), 'full' ),
 				'datePublished'      => get_the_date( 'c' ),
 				'dateModified'       => get_the_modified_date( 'c' ),
-				'breadcrumb'         => array(
-					'@id' => get_permalink() . '#breadcrumb',
-				),
 			);
+			if ( ! is_single() ) {
+				$data['breadcrumb'] = array(
+					'@id' => get_permalink() . '#breadcrumb',
+				);
+			}
 		}
-		return array();
+		/**
+		 * return
+		 */
+		return apply_filters(
+			'iworks_simple_seo_improvements_json_ld::primaryImageOfPage',
+			$data
+		);
 	}
 	/**
 	 * inLanguage
@@ -645,7 +775,8 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		}
 		return apply_filters(
 			'iworks_simple_seo_improvements_json_ld::ImageObject',
-			$data
+			$data,
+			$attachment_id
 		);
 	}
 
@@ -819,6 +950,123 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
+	 * LocalBusiness
+	 *
+	 * @since 2.0.0
+	 */
+	private function get_part_local_business() {
+		$this->set_local_business_data();
+		$value = get_post_meta( get_the_ID(), $this->meta_field_local_business, true );
+		if ( ! isset( $value['type'] ) ) {
+			return apply_filters(
+				'iworks_simple_seo_improvements_json_ld::LocalBusiness',
+				array(),
+				get_the_ID()
+			);
+		}
+		$data = array(
+			'@type' => $value['type'],
+			'@id'   => get_permalink(),
+			'url'   => get_permalink(),
+			// 'v' => $value,
+		);
+		/**
+		 * address
+		 */
+		$address = array();
+		foreach ( $this->local_business_fields['address']['fields'] as $key => $label ) {
+			if ( ! isset( $value[ $key ] ) ) {
+				continue;
+			}
+			if ( empty( $value[ $key ] ) ) {
+				continue;
+			}
+			if ( 'name' === $key ) {
+				$data[ $key ] = $value[ $key ];
+				continue;
+			}
+			$address[ $key ] = $value[ $key ];
+		}
+		if ( ! empty( $address ) ) {
+			$data['address'] = wp_parse_args(
+				$address,
+				array(
+					'@type' => 'PostalAddress',
+				)
+			);
+		}
+		/**
+		 * telephone
+		 */
+		if (
+			isset( $value['telephone'] )
+			&& $value['telephone']
+		) {
+			$data['telephone'] = $value['telephone'];
+		}
+		/**
+		 * geo
+		 */
+		if (
+			isset( $value['latitude'] )
+			&& $value['latitude']
+			&& isset( $value['longitude'] )
+			&& $value['longitude']
+		) {
+			$data['geo'] = array(
+				'@type'     => 'GeoCoordinates',
+				'latitude'  => sprintf( '%f', $value['latitude'] ),
+				'longitude' => sprintf( '%f', $value['longitude'] ),
+			);
+		}
+		/**
+		 * openingHoursSpecification
+		 */
+		$opening_hours = array();
+		foreach ( $this->local_business_fields['OpeningHoursSpecification']['fields'] as $key => $label ) {
+			if ( ! isset( $value[ $key ] ) ) {
+				continue;
+			}
+			if ( ! is_array( $value[ $key ] ) ) {
+				continue;
+			}
+			if ( ! isset( $value[ $key ]['closes'] ) ) {
+				continue;
+			}
+			if ( ! isset( $value[ $key ]['opens'] ) ) {
+				continue;
+			}
+			$k = sprintf( '%s:%s', $value[ $key ]['opens'], $value[ $key ]['closes'] );
+			if ( ! isset( $opening_hours[ $k ] ) ) {
+				$opening_hours[ $k ] = array(
+					'@type'     => 'OpeningHoursSpecification',
+					'dayOfWeek' => array(),
+					'opens'     => $value[ $key ]['opens'],
+					'closes'    => $value[ $key ]['closes'],
+				);
+			}
+			$opening_hours[ $k ]['dayOfWeek'][] = $key;
+		}
+		if ( ! empty( $opening_hours ) ) {
+			$data['openingHoursSpecification'] = array();
+			foreach ( $opening_hours as $k => $v ) {
+				$data['openingHoursSpecification'][] = $v;
+			}
+		}
+
+		// $data['openingHoursSpecification'] = $value;
+					// '@type': 'OpeningHoursSpecification',
+		/**
+		 * filter & return
+		 */
+		return apply_filters(
+			'iworks_simple_seo_improvements_json_ld::LocalBusiness',
+			$data,
+			get_the_ID()
+		);
+	}
+
+	/**
 	 * get JSON-LD data
 	 *
 	 * @since 2.0.0
@@ -829,6 +1077,26 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		}
 		$this->data['@context'] = 'https://schema.org';
 		$this->data['@graph']   = array();
+		/**
+		 * LocalBusiness
+		 */
+		if ( is_page() ) {
+			$local_business_page_id = intval( $this->options->get_option( 'json_org_lb' ) );
+			if (
+				0 < $local_business_page_id
+				&& is_page( $local_business_page_id )
+			) {
+				$data = $this->get_part_local_business();
+				if ( ! empty( $data ) ) {
+					$this->data['@graph'][] = $data;
+				}
+			}
+		}
+		/**
+		 * home
+		 * archive
+		 * search
+		 */
 		if (
 			is_home()
 			|| is_archive()
@@ -897,6 +1165,142 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		$content .= '</script>';
 		$content .= PHP_EOL;
 		return $content;
+	}
+
+	/**
+	 * Mark selected LocalBusiness page.
+	 *
+	 * @since 2.0.0
+	 */
+	public function filter_display_post_states( $post_states, $post ) {
+		if ( intval( $this->options->get_option( 'json_org_lb' ) ) === intval( $post->ID ) ) {
+			$post_states[] = esc_html__( 'Local Business Page', 'simple-seo-improvements' );
+		}
+		return $post_states;
+	}
+
+	private function check_is_local_business_page( $post_id ) {
+		return intval( $this->options->get_option( 'json_org_lb' ) ) === intval( $post_id );
+	}
+
+	/**
+	 * Add entry edit metabox.
+	 *
+	 * @since 1.0.0
+	 */
+	public function add_meta_box_for_local_business() {
+		if (
+			! $this->check_is_local_business_page(
+				filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT )
+			)
+		) {
+			return;
+		}
+		add_meta_box(
+			$this->options->get_option_name( 'localbusiness' ),
+			__( 'Simple SEO Improvements: LocalBusiness', 'simple-seo-improvements' ),
+			array( $this, 'meta_box_html_local_business' ),
+			'page'
+		);
+	}
+
+	private function get_local_business_values( $ID ) {
+		$values = get_post_meta( $ID, $this->meta_field_local_business, true );
+		if ( empty( $values ) ) {
+			$values = array();
+		}
+		$map = array(
+			'name'            => 'json_org_name',
+			'streetAddress'   => 'json_org_pa_st',
+			'addressLocality' => 'json_org_pa_l',
+			'addressRegion'   => 'json_org_pa_r',
+			'postalCode'      => 'json_org_pa_pc',
+			'addressCountry'  => 'json_org_pa_c',
+		);
+		foreach ( $map as $key => $option_name ) {
+			if ( isset( $values[ $key ] ) ) {
+				continue;
+			}
+			$values[ $key ] = $this->options->get_option( $option_name );
+		}
+		if ( ! isset( $values['type'] ) ) {
+			$values['type'] = '';
+		}
+		return $values;
+	}
+
+	public function meta_box_html_local_business( $post ) {
+		$this->set_local_business_data();
+		$file  = dirname( dirname( dirname( dirname( __FILE__ ) ) ) );
+		$file .= '/assets/templates/meta-boxes/localbusiness.php';
+		$args  = array(
+			'name'   => $this->meta_field_local_business,
+			'types'  => $this->local_business_types,
+			'value'  => $this->get_local_business_values( $post->ID ),
+			'fields' => $this->local_business_fields,
+			'nonce'  => array(
+				'name'   => $this->get_local_business_nonce_name(),
+				'action' => $this->get_local_business_nonce_action(),
+			),
+		);
+		load_template( $file, true, $args );
+	}
+
+	public function action_save_post_local_business_fields( $post_id, $post, $update ) {
+		if ( ! $this->check_is_local_business_page( $post_id ) ) {
+			return;
+		}
+		if ( ! isset( $_POST[ $this->get_local_business_nonce_name() ] ) ) {
+			return;
+		}
+		if ( ! wp_verify_nonce(
+			$_POST[ $this->get_local_business_nonce_name() ],
+			$this->get_local_business_nonce_action()
+		) ) {
+			return;
+		}
+		$value = $_POST[ $this->meta_field_local_business ];
+		$this->set_local_business_data();
+		$data = array();
+		/**
+		 * type
+		 */
+		$name = 'type';
+		if (
+			isset( $value[ $name ][ $subkey ] )
+			&& isset( $this->local_business_types[ $value[ $name ] ] )
+		) {
+			$data['type'] = $value[ $name ];
+		}
+		/**
+		 * fields
+		 */
+		foreach ( $this->local_business_fields as $group ) {
+			foreach ( $group['fields'] as $name => $label ) {
+				switch ( $group['type'] ) {
+					case 'text':
+						$v = isset( $value[ $name ] ) ? sanitize_text_field( $value[ $name ] ) : false;
+						if ( $v ) {
+							$data[ $name ] = $v;
+						}
+						break;
+					case 'hours':
+						foreach ( array( 'opens', 'closes' ) as $subkey ) {
+							if (
+							isset( $value[ $name ][ $subkey ] )
+							&& preg_match( '/^\d\d:\d\d$/', $value[ $name ][ $subkey ] )
+							) {
+								if ( ! isset( $data[ $name ] ) ) {
+									$data[ $name ] = array();
+								}
+								$data[ $name ][ $subkey ] = $value[ $name ][ $subkey ];
+							}
+						}
+						break;
+				}
+			}
+		}
+		$this->update_single_post_meta( $post_id, $this->meta_field_local_business, $data );
 	}
 
 }
