@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2023-11-05 10:51:48+00:00\n"
+"POT-Creation-Date: 2023-11-06 07:37:45+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,6 +24,22 @@ msgstr ""
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: assets/templates/meta-boxes/localbusiness.php:9 etc/options.php:351
+msgid "Type"
+msgstr ""
+
+#: assets/templates/meta-boxes/localbusiness.php:12 etc/options.php:659
+msgid "--- select ---"
+msgstr ""
+
+#: assets/templates/meta-boxes/localbusiness.php:60
+msgid "Opens:"
+msgstr ""
+
+#: assets/templates/meta-boxes/localbusiness.php:61
+msgid "Closes:"
+msgstr ""
 
 #: etc/options.php:11
 msgid "Simple SEO Improvements Configuration"
@@ -296,10 +312,6 @@ msgid ""
 "website's name."
 msgstr ""
 
-#: etc/options.php:351
-msgid "Type"
-msgstr ""
-
 #: etc/options.php:352
 msgid "Choose whether your site represents an organization or a person."
 msgstr ""
@@ -335,6 +347,7 @@ msgid "Organization logo"
 msgstr ""
 
 #: etc/options.php:398
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:98
 msgid "Street Address"
 msgstr ""
 
@@ -351,6 +364,7 @@ msgid "E.g. state, voivodeship"
 msgstr ""
 
 #: etc/options.php:426
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:101
 msgid "Postal Code"
 msgstr ""
 
@@ -359,92 +373,102 @@ msgid "Address Country"
 msgstr ""
 
 #: etc/options.php:441
+msgid "Local Buissnes Page"
+msgstr ""
+
+#: etc/options.php:442
+msgid ""
+"Select a page to fill local business (LocalBusiness) structured data. Edit "
+"selected page to add or change LocalBusiness data."
+msgstr ""
+
+#: etc/options.php:450
 msgid "Select User"
 msgstr ""
 
-#: etc/options.php:443
+#: etc/options.php:452
 msgid ""
 "You have selected the user admin as the person this site represents. Their "
 "user profile information will now be used in search results. Update their "
 "profile to make sure the information is correct."
 msgstr ""
 
-#: etc/options.php:450
+#: etc/options.php:459
 msgid "Personal logo or avatar"
 msgstr ""
 
-#: etc/options.php:458
+#: etc/options.php:467
 msgid "Other profiles"
 msgstr ""
 
-#: etc/options.php:459
+#: etc/options.php:468
 msgid ""
 "Tell us if you have any other profiles on the web that belong to your "
 "organization. This can be any number of profiles, like YouTube, LinkedIn, "
 "Pinterest, or even Wikipedia. Put one URL per line."
 msgstr ""
 
-#: etc/options.php:475
+#: etc/options.php:484
 msgid "Custom Code"
 msgstr ""
 
-#: etc/options.php:476
+#: etc/options.php:485
 msgid ""
 "Use these settings to insert code from Google Tag Manager, Google Analytics "
 "or webmaster tools verification."
 msgstr ""
 
-#: etc/options.php:481
+#: etc/options.php:490
 msgid "Header Code"
 msgstr ""
 
-#: etc/options.php:482
+#: etc/options.php:491
 msgid ""
 "Code entered in this box will be printed in the <code>&lt;head&gt;</code> "
 "section."
 msgstr ""
 
-#: etc/options.php:492
+#: etc/options.php:501
 msgid "Body Start"
 msgstr ""
 
-#: etc/options.php:493
+#: etc/options.php:502
 msgid ""
 "Code entered in this box will be printed after the opening "
 "<code>&lt;body&gt;</code> tag."
 msgstr ""
 
-#: etc/options.php:503
+#: etc/options.php:512
 msgid "Body End"
 msgstr ""
 
-#: etc/options.php:504
+#: etc/options.php:513
 msgid ""
 "Code entered in this box will be printed before the closing "
 "<code>&lt;/body&gt;</code> tag."
 msgstr ""
 
-#: etc/options.php:514 etc/options.php:568
+#: etc/options.php:523 etc/options.php:577
 msgid "We are waiting for your message"
 msgstr ""
 
-#: etc/options.php:520
+#: etc/options.php:529
 msgid "I love what I do!"
 msgstr ""
 
-#: etc/options.php:552
+#: etc/options.php:561
 msgid "Below are some links to help spread this plugin to other users"
 msgstr ""
 
-#: etc/options.php:554
+#: etc/options.php:563
 msgid "Give it a five stars on WordPress.org"
 msgstr ""
 
-#: etc/options.php:555
+#: etc/options.php:564
 msgid "Link to it so others can easily find it"
 msgstr ""
 
-#: etc/options.php:570
+#: etc/options.php:579
 msgid "WordPress Help Forum"
 msgstr ""
 
@@ -506,6 +530,7 @@ msgid "Save Changes"
 msgstr ""
 
 #: includes/iworks/options/options.php:1681
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:102
 msgid "Country"
 msgstr ""
 
@@ -645,30 +670,226 @@ msgstr ""
 msgid "Use these settings to controll day, month & year archive."
 msgstr ""
 
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:95
+msgid "Address"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:97
+msgid "Name"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:99
+msgid "Locality"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:100
+msgid "Region"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:107
+msgid "Contact Data"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:109
+msgid "Telephone"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:114
+msgid "Geo Coordinates"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:116
+msgid "Latitude"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:117
+msgid "Longitude"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:122
+msgid "Opening Hours Specification"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:124
+msgid "Monday"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:125
+msgid "Tuesday"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:126
+msgid "Wednesday"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:127
+msgid "Thursday"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:128
+msgid "Friday"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:129
+msgid "Saturday"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:130
+msgid "Sunday"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:135
+msgid "Animal Shelter"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:136
+msgid "Archive Organization"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:137
+msgid "Automotive Business"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:138
+msgid "Child Care"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:139
+msgid "Dentist"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:140
+msgid "Dry Cleaning Or Laundry"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:141
+msgid "Emergency Service"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:142
+msgid "Employment Agency"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:143
+msgid "Entertainment Business"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:144
+msgid "Financial Service"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:145
+msgid "Food Establishment"
+msgstr ""
+
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:146
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:263
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:284
+msgid "Government Office"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:147
+msgid "Health And Beauty Business"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:148
+msgid "Home And Construction Business"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:149
+msgid "Internet Cafe"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:150
+msgid "Legal Service"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:151
+msgid "Library"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:152
+msgid "Lodging Business"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:153
+msgid "Medical Business"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:154
+msgid "Professional Service"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:155
+msgid "Radio Station"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:156
+msgid "Real Estate Agent"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:157
+msgid "Recycling Center"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:158
+msgid "Self Storage"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:159
+msgid "Shopping Center"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:160
+msgid "Sports Activity Location"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:161
+msgid "Store"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:162
+msgid "Television Station"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:163
+msgid "Tourist Information Center"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:164
+msgid "Travel Agency"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:262
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:379
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:400
 msgid "Archives for %s"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:166
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:282
 msgid "Home Page"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:211
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:327
 msgid "Search Results for: %s"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:253
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:369
 msgid "Archives for %d"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:324
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:440
 msgid "404 Error Page"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:433
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:549
 msgid "Comment"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:1177
+msgid "Local Business Page"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:1201
+msgid "Simple SEO Improvements: LocalBusiness"
 msgstr ""
 
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:298
@@ -710,12 +931,12 @@ msgctxt "placeholder"
 msgid "@account_name"
 msgstr ""
 
-#: etc/options.php:555
+#: etc/options.php:564
 msgctxt "plugin home page on WordPress.org"
 msgid "https://wordpress.org/plugins/simple-seo-improvements/"
 msgstr ""
 
-#: etc/options.php:570
+#: etc/options.php:579
 msgctxt "link to support forum on WordPress.org"
 msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
 msgstr ""
