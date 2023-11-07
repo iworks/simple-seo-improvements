@@ -655,12 +655,6 @@ function iworks_simple_seo_improvements_get_users() {
  * @since 2.0.0
  */
 function iworks_simple_seo_improvements_get_pages() {
-	$options    = array();
-	$options[0] = esc_html__( '--- select ---', 'simple-seo-improvements' );
-	$args       = array();
-	foreach ( get_pages( $args ) as $page ) {
-		$options[ $page->ID ] = $page->post_title;
-	}
-	return $options;
+	return apply_filters( 'iworks_simple_seo_improvements_get_pages', array() );
 }
 

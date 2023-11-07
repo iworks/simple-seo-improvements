@@ -151,6 +151,10 @@ class iworks_simple_seo_improvements extends iworks {
 	 * @since 1.0.6
 	 */
 	public function admin_init() {
+		add_filter(
+			'iworks_simple_seo_improvements_get_pages',
+			array( $this, 'filter_get_pages' )
+		);
 		$this->options->options_init();
 		add_filter( 'plugin_action_links_' . $this->plugin_file, array( $this, 'add_settings_link' ) );
 		wp_register_script(
@@ -714,7 +718,6 @@ class iworks_simple_seo_improvements extends iworks {
 	/**
 	 * get user list for options
 	 *
-	 *
 	 * @since 2.0.0
 	 */
 	public function filter_get_user_list_options( $options ) {
@@ -728,5 +731,21 @@ class iworks_simple_seo_improvements extends iworks {
 		}
 		return $options;
 	}
+
+	/**
+	 * helper for pege lists.
+	 *
+	 * @since 2.0.0
+	 */
+	public function filter_get_pages() {
+		$options    = array();
+		$options[0] = esc_html__( '--- select ---', 'simple-seo-improvements' );
+		$args       = array();
+		foreach ( get_pages( $args ) as $page ) {
+			$options[ $page->ID ] = $page->post_title;
+		}
+		return $options;
+	}
+
 }
 

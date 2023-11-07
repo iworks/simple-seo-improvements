@@ -98,6 +98,10 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 == Changelog ==
 
+= 2.0.1 (2023-11-07) =
+* The too-early call of the function `get_pages()` has been fixed. Props for [schulz](https://wordpress.org/support/users/schulz/),
+* The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.8.8.
+
 = 2.0.0 (2023-11-01) =
 * The structured data has been added.
 
