@@ -31,10 +31,11 @@ require_once dirname( __FILE__ ) . '/class-base.php';
 class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improvements_base {
 
 	public function __construct() {
-		add_filter( 'robots_txt', array( $this, 'filter_robots_txt_add' ) );
+		add_filter( 'robots_txt', array( $this, 'filter_robots_txt_add' ), 11, 2 );
+		add_filter( 'robots_txt', array( $this, 'filter_robots_txt_add_ai_bots' ), 12, 2 );
 	}
 
-	public function filter_robots_txt_add( $robots ) {
+	public function filter_robots_txt_add( $robots, $public ) {
 		$this->set_robots_options();
 		$entries = apply_filters(
 			/**
@@ -96,10 +97,41 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 				$robots .= sprintf( '%s: %s%s', $key, $one, PHP_EOL );
 			}
 		}
-
 		return $robots;
 	}
 
+	/**
+	 * Block AI Crawlers Bots
+	 *
+	 * @since 2.0.2
+	 */
+	public function filter_robots_txt_add_ai_bots( $robots, $public ) {
+		$options = array(
+			'ai_block_chatgpt' => array(
+				'GPTBot',
+				'ChatGPT-User',
+			),
+			'ai_block_google'  => array(
+				'Google-Extended',
+			),
+			'ai_block_ccbot'   => array(
+				'CCBot',
+			),
+		);
+		foreach ( $options as $option_name => $bots ) {
+			if ( $this->options->get_option( $option_name ) ) {
+				foreach ( $bots as $bot ) {
+					$robots .= PHP_EOL;
+					$robots .= sprintf( 'User-agent: %s', $bot );
+					$robots .= PHP_EOL;
+					$robots .= 'Disallow: /';
+					$robots .= PHP_EOL;
+				}
+			}
+		}
+
+		return $robots;
+	}
 }
 
 

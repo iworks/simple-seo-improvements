@@ -156,9 +156,10 @@ function iworks_simple_seo_improvements_options() {
 			 * @since 1.5.5
 			 */
 			array(
-				'type'  => 'subheading',
-				'label' => __( 'robots.txt', 'simple-seo-improvements' ),
-				'since' => '1.5.5',
+				'type'        => 'subheading',
+				'description' => __( 'A robots.txt is nothing but a text file instructs robots, such as search engine robots, how to crawl and index pages on their website. You can block/allow good or bad bots that follow your robots.txt file.', 'simple-seo-improvements' ),
+				'label'       => __( 'robots.txt', 'simple-seo-improvements' ),
+				'since'       => '1.5.5',
 			),
 			/**
 			 * robots.txt
@@ -308,6 +309,43 @@ function iworks_simple_seo_improvements_options() {
 				'default'           => -1,
 				'sanitize_callback' => 'intval',
 				'description'       => __( 'This applies to all forms of search results (at Google: web search, Google Images, Google Videos, Discover, Assistant). This rule is ignored if no parseable [number] is specified.', 'simple-seo-improvements' ),
+			),
+			/**
+			 * Block AI Crawlers Bots
+			 *
+			 * @since 2.0.2
+			 */
+			array(
+				'type'  => 'subheading',
+				'label' => __( 'Block AI Crawlers Bots', 'simple-seo-improvements' ),
+				'since' => '2.0.2',
+			),
+			array(
+				'name'              => 'ai_block_chatgpt',
+				'type'              => 'checkbox',
+				'th'                => __( 'ChatGPT', 'simple-seo-improvements' ),
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'since'             => '2.0.2',
+			),
+			array(
+				'name'              => 'ai_block_google',
+				'type'              => 'checkbox',
+				'th'                => __( 'Google AI', 'simple-seo-improvements' ),
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'since'             => '2.0.2',
+			),
+			array(
+				'name'              => 'ai_block_CCBot',
+				'type'              => 'checkbox',
+				'th'                => __( 'CCBot', 'simple-seo-improvements' ),
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'since'             => '2.0.2',
 			),
 			/**
 			 * Structured Data Markup - LD+JSON

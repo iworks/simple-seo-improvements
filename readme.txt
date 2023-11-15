@@ -49,9 +49,15 @@ You can also choose whether the global settings will set values for new content 
 * Allows to set the "Max Video Preview".
 * Add structured data.
 
-= GitHub =
+= See room for improvement? =
 
-The Simple SEO Improvements plugin is available also on [GitHub - Simple SEO Improvements](https://github.com/iworks/simple-seo-improvements).
+Great! There are several ways you can get involved to help make Simple SEO Improvements better:
+
+1. **Report Bugs:** If you find a bug, error or other problem, please report it! You can do this by [creating a new topic](https://wordpress.org/support/plugin/simple-seo-improvements/) in the plugin forum. Once a developer can verify the bug by reproducing it, they will create an official bug report in GitHub where the bug will be worked on.
+2. **Suggest New Features:** Have an awesome idea? Please share it! Simply [create a new topic](https://wordpress.org/support/plugin/simple-seo-improvements/) in the plugin forum to express your thoughts on why the feature should be included and get a discussion going around your idea.
+3. **Issue Pull Requests:** If you're a developer, the easiest way to get involved is to help out on [issues already reported](https://github.com/iworks/simple-seo-improvements/issues) in GitHub. Be sure to check out the [contributing guide](https://github.com/iworks/simple-seo-improvements/blob/master/contributing.md) for developers.
+
+Thank you for wanting to make Simple SEO Improvements  better for everyone!
 
 == Installation ==
 
@@ -97,6 +103,12 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 1. Plugin configuration screen - posts.
 
 == Changelog ==
+
+Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
+
+= 2.0.2 (2023-11-15) =
+* The AI bots bloking has been added into the robots.txt file.
+* The dynamic property has been fixed.
 
 = 2.0.1 (2023-11-07) =
 * The too-early call of the function `get_pages()` has been fixed. Props for [schulz](https://wordpress.org/support/users/schulz/),
