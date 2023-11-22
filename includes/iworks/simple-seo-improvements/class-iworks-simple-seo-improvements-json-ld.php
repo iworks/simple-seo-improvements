@@ -1180,7 +1180,11 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	private function check_is_local_business_page( $post_id ) {
-		return intval( $this->options->get_option( 'json_org_lb' ) ) === intval( $post_id );
+		$id = intval( $this->options->get_option( 'json_org_lb' ) );
+		if ( 0 === $id ) {
+			return false;
+		}
+		return $id === intval( $post_id );
 	}
 
 	/**
