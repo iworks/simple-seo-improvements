@@ -106,6 +106,10 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.0.4 (2023-12-29) =
+* The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.0.
+* The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.1.6.
+
 = 2.0.3 (2023-11-22) =
 * Check for the LocalBuisness page option has been added to avoid showing the form on all new pages.
 
