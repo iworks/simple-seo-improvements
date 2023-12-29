@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-seo-improvements\n"
-"POT-Creation-Date: 2023-11-22 12:34:43+00:00\n"
+"POT-Creation-Date: 2023-12-29 10:22:23+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -497,7 +497,7 @@ msgid "WordPress Help Forum"
 msgstr ""
 
 #: includes/iworks/class-simple-seo-improvements.php:178
-#: includes/iworks/rate/rate.php:125
+#: includes/iworks/rate/rate.php:133
 msgid "Settings"
 msgstr ""
 
@@ -541,7 +541,7 @@ msgid "An error occurred while getting the configuration."
 msgstr ""
 
 #: includes/iworks/options/options.php:769
-#: includes/iworks/options/options.php:1788
+#: includes/iworks/options/options.php:1784
 msgid "Select Image"
 msgstr ""
 
@@ -549,53 +549,53 @@ msgstr ""
 msgid "Delete image"
 msgstr ""
 
-#: includes/iworks/options/options.php:865
+#: includes/iworks/options/options.php:862
 msgid "Save Changes"
 msgstr ""
 
-#: includes/iworks/options/options.php:1682
+#: includes/iworks/options/options.php:1678
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:102
 msgid "Country"
 msgstr ""
 
-#: includes/iworks/options/options.php:1683
+#: includes/iworks/options/options.php:1679
 msgid "City"
 msgstr ""
 
-#: includes/iworks/options/options.php:1684
+#: includes/iworks/options/options.php:1680
 msgid "Street"
 msgstr ""
 
-#: includes/iworks/options/options.php:1685
+#: includes/iworks/options/options.php:1681
 msgid "ZIP code"
 msgstr ""
 
-#: includes/iworks/options/options.php:1841
+#: includes/iworks/options/options.php:1837
 msgid "OFF"
 msgstr ""
 
-#: includes/iworks/options/options.php:1842
+#: includes/iworks/options/options.php:1838
 msgid "ON"
 msgstr ""
 
-#: includes/iworks/options/options.php:1907
+#: includes/iworks/options/options.php:1903
 msgid "Failed Security Check"
 msgstr ""
 
-#: includes/iworks/rate/rate.php:139
-#: includes/iworks/rate/templates/thanks.php:29
+#: includes/iworks/rate/rate.php:147
+#: includes/iworks/rate/templates/thanks.php:39
 msgid "Provide us a coffee"
 msgstr ""
 
-#: includes/iworks/rate/rate.php:498
+#: includes/iworks/rate/rate.php:541
 msgid "OpenGraph"
 msgstr ""
 
-#: includes/iworks/rate/rate.php:514
+#: includes/iworks/rate/rate.php:557
 msgid "OG — Better Share on Social Media"
 msgstr ""
 
-#: includes/iworks/rate/rate.php:515
+#: includes/iworks/rate/rate.php:558
 msgid "https://wordpress.org/plugins/og/"
 msgstr ""
 
@@ -603,19 +603,22 @@ msgstr ""
 msgid "Would you like to boost your website sharing abilities?"
 msgstr ""
 
-#: includes/iworks/rate/templates/plugins/og.php:12
+#: includes/iworks/rate/templates/plugins/og.php:13
+#. translators: %s is a plugin name with url
 msgid "Don't wait, install plugin %s!"
 msgstr ""
 
-#: includes/iworks/rate/templates/plugins/og.php:22
+#: includes/iworks/rate/templates/plugins/og.php:24
+#. translators: %s is a plugin wp home name, %s plugin name
 msgid "Install"
 msgstr ""
 
-#: includes/iworks/rate/templates/thanks.php:18
+#: includes/iworks/rate/templates/thanks.php:23
+#. translators: %s is a plugin name wrapped by strong html tag
 msgid "Thank you for using our plugin %s!"
 msgstr ""
 
-#: includes/iworks/rate/templates/thanks.php:21
+#: includes/iworks/rate/templates/thanks.php:31
 #. translators: %1$s: open anchor tag, %2$s: close anchor tag
 msgid ""
 "Please let us know what you think about our plugin. It is important that we "
@@ -625,17 +628,17 @@ msgid ""
 "help you!"
 msgstr ""
 
-#: includes/iworks/rate/templates/thanks.php:25
+#: includes/iworks/rate/templates/thanks.php:35
 #: includes/iworks/rate/templates/widgets/support.php:24
 msgid "Get help"
 msgstr ""
 
-#: includes/iworks/rate/templates/thanks.php:27
+#: includes/iworks/rate/templates/thanks.php:37
 #: includes/iworks/rate/templates/widgets/support.php:34
 msgid "Add review"
 msgstr ""
 
-#: includes/iworks/rate/templates/thanks.php:31
+#: includes/iworks/rate/templates/thanks.php:41
 msgid "I added review, do not show again"
 msgstr ""
 
@@ -965,12 +968,14 @@ msgctxt "link to support forum on WordPress.org"
 msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
 msgstr ""
 
-#: includes/iworks/rate/rate.php:429
+#: includes/iworks/rate/rate.php:453
+#. translators: %s: plugin slug
 msgctxt "plugins home"
 msgid "https://wordpress.org/plugins/%s"
 msgstr ""
 
-#: includes/iworks/rate/rate.php:435
+#: includes/iworks/rate/rate.php:460
+#. translators: %s: plugin slug
 msgctxt "plugins support home"
 msgid "https://wordpress.org/support/plugin/%s"
 msgstr ""
