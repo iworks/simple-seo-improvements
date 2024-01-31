@@ -1104,13 +1104,22 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		) {
 			$this->data['@graph'][] = $this->get_part_collection_page();
 		}
+		/**
+		 * is singular
+		 */
 		if ( is_singular() ) {
-			if ( is_single() ) {
-				$this->data['@graph'][] = $this->get_part_article();
-			}
-			$this->data['@graph'][] = $this->get_part_web_page();
-			if ( has_post_thumbnail() ) {
-				$this->data['@graph'][] = $this->get_part_image_object( get_post_thumbnail_id() );
+			switch ( get_post_type() ) {
+				case 'product':
+					$this->data['@graph'][] = $this->get_part_product();
+					break;
+				case 'page':
+				case 'post':
+					$this->data['@graph'][] = $this->get_part_article();
+					$this->data['@graph'][] = $this->get_part_web_page();
+					if ( has_post_thumbnail() ) {
+						$this->data['@graph'][] = $this->get_part_image_object( get_post_thumbnail_id() );
+					}
+					break;
 			}
 		}
 		$this->data['@graph'][] = $this->get_part_breadcrumb_list();
@@ -1307,5 +1316,136 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		$this->update_single_post_meta( $post_id, $this->meta_field_local_business, $data );
 	}
 
+	/**
+	 * product
+	 *
+	 * @since 2.0.5
+	 */
+	private function get_part_product() {
+		$data = array();
+		if (
+			defined( 'WC_PLUGIN_FILE' )
+			&& defined( 'WC_VERSION' )
+		) {
+			$data = $this->get_part_product_woocommerce();
+		}
+		return apply_filters(
+			'iworks/simple_seo_improvements/json_ld/product',
+			$data
+		);
+	}
+
+	/**
+	 * product
+	 *
+	 * @since 2.0.5
+	 */
+	private function get_part_product_woocommerce() {
+		$product = wc_get_product( get_the_ID() );
+		if ( ! $product ) {
+			return array();
+		}
+		$data = array(
+			'@type'       => 'Product',
+			'@id'         => get_permalink() . '#product',
+			'isPartOf'    => array(
+				'@id' => get_permalink(),
+			),
+			'name'        => $product->get_name(),
+			'description' => $product->get_description(),
+			'sku'         => $product->get_sku(),
+			'offers'      => array(
+				'@type'         => 'AggregateOffer',
+				'lowPrice'      => floatval( $product->get_sale_price() ),
+				'highPrice'     => floatval( $product->get_regular_price() ),
+				'priceCurrency' => get_woocommerce_currency(),
+			),
+		);
+		/**
+		 * images
+		 */
+		$images = array();
+		if ( has_post_thumbnail() ) {
+			$images[] = wp_get_attachment_url( get_post_thumbnail_id() );
+		}
+		$ids = $product->get_gallery_image_ids();
+		if ( $ids ) {
+			foreach ( $ids as $image_id ) {
+				$images[] = wp_get_attachment_url( $image_id );
+			}
+		}
+		/**
+		 * children
+		 */
+		$children = $product->get_children();
+		if ( $children && ! empty( $children ) ) {
+			$max = $min = null;
+			foreach ( $children as $id ) {
+				$child_product = wc_get_product( $id );
+				$child_max     = floatval( $child_product->get_regular_price() );
+				$child_min     = floatval( $child_product->get_sale_price() );
+				if ( null === $max ) {
+					$max = $child_min;
+				}
+				if ( null === $min ) {
+					$min = $child_max;
+				}
+				if ( $max < $child_max ) {
+					$max = $child_max;
+				}
+				if ( $min > $child_min && 0 < $child_min ) {
+					$min = $child_min;
+				}
+				/**
+				 * images
+				 */
+				if ( has_post_thumbnail( $id ) ) {
+					$images[] = wp_get_attachment_url( get_post_thumbnail_id( $id ) );
+				}
+				$ids = $child_product->get_gallery_image_ids();
+				if ( $ids ) {
+					foreach ( $ids as $image_id ) {
+						$images[] = wp_get_attachment_url( $image_id );
+					}
+				}
+			}
+			if ( null !== $max ) {
+				$data['offers']['highPrice'] = $max;
+				$data['offers']['lowPrice']  = $min;
+			}
+		}
+		/**
+		 * images assign
+		 */
+		if ( ! empty( $images ) ) {
+			$data = wp_parse_args(
+				array(
+					'image' => array_unique( $images ),
+				),
+				$data
+			);
+		}
+		/**
+		 * Author
+		 */
+		$value = $this->get_part_author();
+		if ( ! empty( $value ) ) {
+			$data['author'] = $value;
+		}
+		/**
+		 * inLanguage
+		 */
+		$data = wp_parse_args(
+			$this->get_part_in_language(),
+			$data
+		);
+		/**
+		 * return
+		 */
+		return apply_filters(
+			'iworks/simple_seo_improvements/json_ld/product/woocommerce',
+			$data
+		);
+	}
 }
 

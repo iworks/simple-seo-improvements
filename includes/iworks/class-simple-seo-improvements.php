@@ -37,7 +37,7 @@ class iworks_simple_seo_improvements extends iworks {
 	 *
 	 * @since 1.0.6
 	 */
-	private $options;
+	protected $options;
 
 	/**
 	 * plugin file
