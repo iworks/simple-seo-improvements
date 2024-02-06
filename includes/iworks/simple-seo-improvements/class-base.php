@@ -137,10 +137,8 @@ abstract class iworks_simple_seo_improvements_base {
 		}
 	}
 
-
 	protected function get_meta_robots_commons() {
 		$options = array();
-
 		/**
 		 * Google: Max Snippet
 		 */
@@ -148,7 +146,6 @@ abstract class iworks_simple_seo_improvements_base {
 		if ( '-1' !== $value ) {
 			$options[] = sprintf( 'max-snippet:%d', $value );
 		}
-
 		/**
 		 * Google: Max Image Preview
 		 */
@@ -159,7 +156,6 @@ abstract class iworks_simple_seo_improvements_base {
 				$options[] = sprintf( 'max-image-preview:%s', $value );
 				break;
 		}
-
 		/**
 		 * Google: Max Video Preview
 		 */
@@ -167,10 +163,23 @@ abstract class iworks_simple_seo_improvements_base {
 		if ( '-1' !== $value ) {
 			$options[] = sprintf( 'max-video-preview:%d', $value );
 		}
-
 		return apply_filters( 'iworks_simple_seo_improvements_meta_robots_init', $options );
+	}
 
+	/**
+	 * clear string
+	 *
+	 * @since 2.0.6
+	 */
+	protected function clear_string( $string ) {
+		if ( empty( $string ) ) {
+			return $string;
+		}
+		$string = preg_replace( '/>/', '> ', $string );
+		$string = wp_strip_all_tags( $string );
+		$string = preg_replace( '/[\r\t\n]+/', ' ', $string );
+		$string = preg_replace( '/ +/', ' ', $string );
+		$string = trim( $string );
+		return $string;
 	}
 }
-
-
