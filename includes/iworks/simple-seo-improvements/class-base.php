@@ -171,15 +171,18 @@ abstract class iworks_simple_seo_improvements_base {
 	 *
 	 * @since 2.0.6
 	 */
-	protected function clear_string( $string ) {
-		if ( empty( $string ) ) {
-			return $string;
+	protected function clear_string( $value ) {
+		if ( ! is_string( $value ) ) {
+			return $value;
 		}
-		$string = preg_replace( '/>/', '> ', $string );
-		$string = wp_strip_all_tags( $string );
-		$string = preg_replace( '/[\r\t\n]+/', ' ', $string );
-		$string = preg_replace( '/ +/', ' ', $string );
-		$string = trim( $string );
-		return $string;
+		if ( empty( $value ) ) {
+			return $value;
+		}
+		$value = preg_replace( '/>/', '> ', $value );
+		$value = wp_strip_all_tags( $value );
+		$value = preg_replace( '/[\r\t\n]+/', ' ', $value );
+		$value = preg_replace( '/ +/', ' ', $value );
+		$value = trim( $value );
+		return $value;
 	}
 }

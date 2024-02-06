@@ -106,6 +106,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.0.7 (2024-02-06) =
+* The "offerCount" field has been improved.
+
 = 2.0.6 (2024-02-06) =
 * The "offerCount" field has been added.
 * Cleaning string has been improved.

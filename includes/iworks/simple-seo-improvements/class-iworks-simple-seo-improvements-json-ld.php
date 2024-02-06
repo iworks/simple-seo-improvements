@@ -1356,20 +1356,30 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			'sku'         => $this->clear_string( $product->get_sku() ),
 			'offers'      => array(
 				'@type'         => 'AggregateOffer',
-				'offerCount'    => 1,
-				'lowPrice'      => floatval( $product->get_sale_price() ),
+				'offerCount'    => 999,
+				'lowPrice'      => floatval( $product->get_regular_price() ),
 				'highPrice'     => floatval( $product->get_regular_price() ),
 				'priceCurrency' => get_woocommerce_currency(),
 			),
 		);
 		/**
-		 * is variable?
+		 * sale?
+		 */
+
+		if ( $product->is_on_sale() ) {
+			$data['offers']['lowPrice'] = floatval( $product->get_sale_price() );
+		}
+		/**
+		 * if($product->is_type('variable')){
 		 */
 		if ( $product->is_type( 'variable' ) ) {
-			$variations = $product->get_available_variations();
-			if ( count( $variations ) ) {
-				$data['offers']['offerCount'] = count( $variations );
-			}
+			$data['offers']['lowPrice'] = floatval( $product->get_variation_price() );
+		}
+		/**
+		 * is managing_stock
+		 */
+		if ( $product->managing_stock() ) {
+			$data['offers']['offerCount'] = $product->get_stock_quantity();
 		}
 		/**
 		 * images
