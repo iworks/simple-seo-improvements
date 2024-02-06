@@ -176,7 +176,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			'@type'      => 'CollectionPage',
 			'@id'        => esc_url( home_url( $wp->request ) ),
 			'url'        => esc_url( home_url( $wp->request ) ),
-			'name'       => wp_title( '&raquo;', false ),
+			'name'       => $this->clear_string( wp_title( '&raquo;', false ) ),
 			'isPartOf'   => array(
 				'@id' => home_url( '/#website' ),
 			),
@@ -224,7 +224,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	private function get_part_breadcrumb_list_page( $pages, $ID ) {
 		$pages[] = array(
 			'@type' => 'ListItem',
-			'name'  => get_the_title( $ID ),
+			'name'  => $this->clear_string( get_the_title( $ID ) ),
 			'item'  => get_permalink( $ID ),
 		);
 		/**
@@ -466,21 +466,21 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			'@type' => 'WebSite',
 			'@id'   => home_url( '/#website' ),
 			'url'   => home_url( '/' ),
-			'name'  => get_bloginfo( 'name' ),
+			'name'  => $this->clear_string( get_bloginfo( 'name' ) ),
 		);
 		/**
 		 * Alternate website name
 		 */
 		$value = $this->options->get_option( 'json_name_alt' );
 		if ( ! empty( $value ) ) {
-			$data['alternateName'] = $value;
+			$data['alternateName'] = $this->clear_string( $value );
 		}
 		/**
 		 * description
 		 */
 		$value = get_bloginfo( 'description' );
 		if ( ! empty( $value ) ) {
-			$data['description'] = $value;
+			$data['description'] = $this->clear_string( $value );
 		}
 		/**
 		 * potentialAction
@@ -569,7 +569,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		$data = array(
 			'@type' => 'Person',
 			'@id'   => home_url() . '/#/schema/person/' . md5( $user->user_email ),
-			'name'  => $user->display_name,
+			'name'  => $this->clear_string( $user->display_name ),
 			'url'   => get_author_posts_url( $author_id ),
 			'image' => array(
 				'@type'      => 'ImageObject',
@@ -614,7 +614,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				'@id' => get_permalink(),
 			),
 			'wordCount'    => str_word_count( strip_tags( get_the_content() ) ),
-			'headline'     => get_the_title(),
+			'headline'     => $this->clear_string( get_the_title() ),
 			'commentCount' => intval( get_comments_number( get_the_ID() ) ),
 		);
 		/**
@@ -633,7 +633,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		 */
 		$value = $this->get_part_author();
 		if ( ! empty( $value ) ) {
-			$data['author'] = $value;
+			$data['author'] = $this->clear_string( $value );
 		}
 		/**
 		 * inLanguage
@@ -771,7 +771,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		 */
 		$value = wp_get_attachment_caption( $attachment_id );
 		if ( ! empty( $value ) ) {
-			$data['caption'] = $value;
+			$data['caption'] = $this->clear_string( $value );
 		}
 		return apply_filters(
 			'iworks_simple_seo_improvements_json_ld::ImageObject',
@@ -793,7 +793,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				$data = array(
 					'@type' => 'Organization',
 					'@id'   => home_url( '/#organization' ),
-					'name'  => $this->options->get_option( 'json_org_name' ),
+					'name'  => $this->clear_string( $this->options->get_option( 'json_org_name' ) ),
 					'url'   => home_url(),
 				);
 				/**
@@ -801,7 +801,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				 */
 				$value = $this->options->get_option( 'json_org_alt' );
 				if ( $value ) {
-					$data['alternateName'] = $value;
+					$data['alternateName'] = $this->clear_string( $value );
 				}
 				/**
 				 * logo
@@ -821,7 +821,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				 */
 				$value = $this->get_part_postal_address();
 				if ( ! empty( $value ) ) {
-					$data['address'] = $value;
+					$data['address'] = $this->clear_string( $value );
 				}
 				break;
 			case 'person':
@@ -836,7 +836,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 						'Organization',
 					),
 					'@id'   => home_url( '/#/schema/person/' . md5( $user->user_email ) ),
-					'name'  => $user->display_name,
+					'name'  => $this->clear_string( $user->display_name ),
 				);
 				/**
 				 * logo
@@ -899,35 +899,35 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		 */
 		$value = $this->options->get_option( 'json_org_pa_st' );
 		if ( ! empty( $value ) ) {
-			$data['streetAddress'] = $value;
+			$data['streetAddress'] = $this->clear_string( $value );
 		}
 		/**
 		 * addressLocality
 		 */
 		$value = $this->options->get_option( 'json_org_pa_l' );
 		if ( ! empty( $value ) ) {
-			$data['addressLocality'] = $value;
+			$data['addressLocality'] = $this->clear_string( $value );
 		}
 		/**
 		 * addressRegion
 		 */
 		$value = $this->options->get_option( 'json_org_pa_r' );
 		if ( ! empty( $value ) ) {
-			$data['addressRegion'] = $value;
+			$data['addressRegion'] = $this->clear_string( $value );
 		}
 		/**
 		 * postalCode
 		 */
 		$value = $this->options->get_option( 'json_org_pa_pc' );
 		if ( ! empty( $value ) ) {
-			$data['postalCode'] = $value;
+			$data['postalCode'] = $this->clear_string( $value );
 		}
 		/**
 		 * addressCountry
 		 */
 		$value = $this->options->get_option( 'json_org_pa_c' );
 		if ( ! empty( $value ) ) {
-			$data['addressCountry'] = $value;
+			$data['addressCountry'] = $this->clear_string( $value );
 		}
 		/**
 		 * @type
@@ -1002,7 +1002,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			isset( $value['telephone'] )
 			&& $value['telephone']
 		) {
-			$data['telephone'] = $value['telephone'];
+			$data['telephone'] = $this->clear_string( $value['telephone'] );
 		}
 		/**
 		 * geo
@@ -1351,16 +1351,26 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			'isPartOf'    => array(
 				'@id' => get_permalink(),
 			),
-			'name'        => $product->get_name(),
-			'description' => $product->get_description(),
-			'sku'         => $product->get_sku(),
+			'name'        => $this->clear_string( $product->get_name() ),
+			'description' => $this->clear_string( $product->get_description() ),
+			'sku'         => $this->clear_string( $product->get_sku() ),
 			'offers'      => array(
 				'@type'         => 'AggregateOffer',
+				'offerCount'    => 1,
 				'lowPrice'      => floatval( $product->get_sale_price() ),
 				'highPrice'     => floatval( $product->get_regular_price() ),
 				'priceCurrency' => get_woocommerce_currency(),
 			),
 		);
+		/**
+		 * is variable?
+		 */
+		if ( $product->is_type( 'variable' ) ) {
+			$variations = $product->get_available_variations();
+			if ( count( $variations ) ) {
+				$data['offers']['offerCount'] = count( $variations );
+			}
+		}
 		/**
 		 * images
 		 */
