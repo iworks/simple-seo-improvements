@@ -1360,6 +1360,12 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				'lowPrice'      => floatval( $product->get_regular_price() ),
 				'highPrice'     => floatval( $product->get_regular_price() ),
 				'priceCurrency' => get_woocommerce_currency(),
+				'offers'        => array(
+					array(
+						'@type' => 'Offer',
+						'url'   => get_permalink(),
+					),
+				),
 			),
 		);
 		/**
@@ -1372,8 +1378,19 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		/**
 		 * if($product->is_type('variable')){
 		 */
-		if ( $product->is_type( 'variable' ) ) {
-			$data['offers']['lowPrice'] = floatval( $product->get_variation_price() );
+		switch ( $product->get_type() ) {
+			case 'variable':
+				$data['offers']['lowPrice'] = floatval( $product->get_variation_price() );
+				$variations                 = $product->get_available_variations();
+				foreach ( $variations as $one ) {
+					$data['offers']['offers'][] = array(
+						'@type' => 'Offer',
+						'url'   => get_permalink( $one['variation_id'] ),
+					);
+				}
+				break;
+			default:
+				break;
 		}
 		/**
 		 * is managing_stock
