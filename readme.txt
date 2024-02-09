@@ -106,6 +106,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.0.9 (2024-xx-xx) =
+* The JSON+LD has been improved for a product.
+
 = 2.0.8 (2024-02-08) =
 * The "offers"/"Offer" field has been added.
 
