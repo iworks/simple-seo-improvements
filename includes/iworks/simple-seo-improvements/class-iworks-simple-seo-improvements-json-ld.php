@@ -1345,15 +1345,25 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		if ( ! $product ) {
 			return array();
 		}
+		/**
+		 * commons
+		 */
+		$price_valid_until = date( 'Y-m-01', strtotime( '+1 year' ) );
+		$sku               = $product->get_sku();
+		if ( empty( $sku ) ) {
+			$sku = get_post_field( 'post_name', get_post() );
+		}
+		/**
+		 * data
+		 */
 		$data = array(
 			'@type'       => 'Product',
 			'@id'         => get_permalink() . '#product',
-			'isPartOf'    => array(
-				'@id' => get_permalink(),
-			),
 			'name'        => $this->clear_string( $product->get_name() ),
 			'description' => $this->clear_string( $product->get_description() ),
-			'sku'         => $this->clear_string( $product->get_sku() ),
+			'brand'       => get_bloginfo( 'name' ),
+			'sku'         => $this->clear_string( $sku ),
+			'mpn'         => $this->clear_string( $sku ),
 			'offers'      => array(),
 		);
 		/**
@@ -1362,30 +1372,34 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		switch ( $product->get_type() ) {
 			case 'variable':
 				$data['offers']             = array(
-					'@type'  => 'AggregateOffer',
-					'offers' => array(),
+					'@type'         => 'AggregateOffer',
+					'priceCurrency' => get_woocommerce_currency(),
+					'offers'        => array(),
 				);
 				$data['offers']['lowPrice'] = floatval( $product->get_variation_price() );
 				$variations                 = $product->get_available_variations();
 				foreach ( $variations as $variant ) {
-					$product_variant = wc_get_product( $variant['variation_id'] );
-					$data_variant    = array(
-						'@type'         => 'Offer',
-						'url'           => get_permalink( $variant['variation_id'] ),
-						'lowPrice'      => floatval( $product_variant->get_regular_price() ),
-						'highPrice'     => floatval( $product_variant->get_regular_price() ),
-						'priceCurrency' => get_woocommerce_currency(),
+					$data_variant = array(
+						'@type' => 'Offer',
+						'url'   => get_permalink( $variant['variation_id'] ),
 					);
 					/**
-					 * sale?
+					 * description
 					 */
-					if ( $product_variant->is_on_sale() ) {
-						$data_variant['lowPrice'] = floatval( $product_variant->get_sale_price() );
+					if ( $variant['variant_description'] ) {
+						$data_variant['description'] = $variant['variant_description'];
+					}
+					/**
+					 * price
+					 */
+					if ( $variant['display_price'] ) {
+						$data_variant['price']           = $variant['display_price'];
+						$data_variant['priceValidUntil'] = $price_valid_until;
 					}
 					/**
 					 * is in stock?
 					 */
-					if ( $product_variant->is_in_stock() ) {
+					if ( $variant['is_in_stock'] ) {
 						$data_variant['availability'] = 'https://schema.org/InStock';
 					}
 					/**
@@ -1408,11 +1422,11 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				break;
 			default:
 				$data['offers'] = array(
-					'@type'         => 'Offer',
-					'lowPrice'      => floatval( $product->get_regular_price() ),
-					'highPrice'     => floatval( $product->get_regular_price() ),
-					'priceCurrency' => get_woocommerce_currency(),
-					'url'           => get_permalink(),
+					'@type'           => 'Offer',
+					'price'           => floatval( $product->get_regular_price() ),
+					'priceCurrency'   => get_woocommerce_currency(),
+					'priceValidUntil' => $price_valid_until,
+					'url'             => get_permalink(),
 				);
 				/**
 				 * sale?
@@ -1498,20 +1512,6 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				$data
 			);
 		}
-		/**
-		 * Author
-		 */
-		$value = $this->get_part_author();
-		if ( ! empty( $value ) ) {
-			$data['author'] = $value;
-		}
-		/**
-		 * inLanguage
-		 */
-		$data = wp_parse_args(
-			$this->get_part_in_language(),
-			$data
-		);
 		/**
 		 * return
 		 */
