@@ -1529,9 +1529,9 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	public function filter_og_array( $og ) {
 		if ( isset( $og['product'] ) ) {
 			unset( $og['product'] );
-		}
-		if ( isset( $og['og']['type'] ) ) {
-			unset( $og['og']['type'] );
+			if ( isset( $og['og']['type'] ) ) {
+				unset( $og['og']['type'] );
+			}
 		}
 		return $og;
 	}
