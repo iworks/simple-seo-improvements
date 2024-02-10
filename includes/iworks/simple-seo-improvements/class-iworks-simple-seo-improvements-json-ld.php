@@ -78,6 +78,10 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		add_filter( 'display_post_states', array( $this, 'filter_display_post_states' ), 10, 2 );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box_for_local_business' ) );
 		add_action( 'save_post', array( $this, 'action_save_post_local_business_fields' ), 10, 3 );
+		/**
+		 * OG Plugin compability
+		 */
+		add_filter( 'og_array', array( $this, 'filter_og_array' ) );
 	}
 
 	private function get_local_business_nonce_name() {
@@ -1520,6 +1524,16 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			$data,
 			$product
 		);
+	}
+
+	public function filter_og_array( $og ) {
+		if ( isset( $og['product'] ) ) {
+			unset( $og['product'] );
+		}
+		if ( isset( $og['og']['type'] ) ) {
+			unset( $og['og']['type'] );
+		}
+		return $og;
 	}
 }
 

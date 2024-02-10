@@ -108,6 +108,7 @@ Project maintained on github at [iworks/simple-seo-improvements](https://github.
 
 = 2.0.9 (2024-xx-xx) =
 * The JSON+LD has been improved for a product.
+* Compatibility with the [OG plugin](https://wordpress.org/plugins/og/) has been improved.
 
 = 2.0.8 (2024-02-08) =
 * The "offers"/"Offer" field has been added.
