@@ -137,6 +137,7 @@ class iworks_simple_seo_improvements extends iworks {
 		add_filter( 'og_twitter_site', array( $this, 'filter_og_twitter_site' ) );
 		add_filter( 'og_array', array( $this, 'filter_og_array_add_fb_app_id' ) );
 		add_filter( 'og_image_init', array( $this, 'filter_og_image_init' ) );
+		add_filter( 'og_is_schema_org_enabled', '__return_false' );
 		/**
 		 * get user list for options
 		 *
