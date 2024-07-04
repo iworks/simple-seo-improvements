@@ -421,11 +421,15 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		 */
 		if ( is_author() ) {
 			$author_name = get_query_var( 'author_name' );
-			$user        = get_user_by( 'login', $author_name );
-			$item        = $this->get_part_breadcrumb_list_author( $user->ID );
-			if ( $item ) {
-				$item['position']          = sizeof( $data['itemListElement'] ) + 1;
-				$data['itemListElement'][] = $item;
+			if ( ! empty( $author_name ) ) {
+				$user = get_user_by( 'login', $author_name );
+				if ( is_a( $user, 'WP_User' ) ) {
+					$item = $this->get_part_breadcrumb_list_author( $user->ID );
+					if ( $item ) {
+						$item['position']          = sizeof( $data['itemListElement'] ) + 1;
+						$data['itemListElement'][] = $item;
+					}
+				}
 			}
 		}
 		/**
