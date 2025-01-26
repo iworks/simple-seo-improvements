@@ -475,12 +475,12 @@ class iworks_simple_seo_improvements extends iworks {
 		 * og:image
 		 */
 		if ( ! $this->is_og_installed ) {
-			$value = $this->get_image_for_og_image();
+            $value = $this->get_image_for_og_image();
 			if ( ! empty( $value ) ) {
 				foreach ( $value as $key => $v ) {
 					if ( empty( $v ) ) {
 						continue;
-					}
+                    }
 					$string = '<meta property="og:image:%2$s" content="%1$s">';
 					if ( 'url' === $key ) {
 						$string = '<meta property="og:image" content="%1$s">';
@@ -656,7 +656,6 @@ class iworks_simple_seo_improvements extends iworks {
 		$attachment_id = $this->options->get_option( 'default_image' );
 		if ( empty( $attachment_id ) ) {
 			return array();
-			return $image;
 		}
 		$mime_type = get_post_mime_type( $attachment_id );
 		if ( ! preg_match( '/^image/', $mime_type ) ) {
@@ -666,15 +665,13 @@ class iworks_simple_seo_improvements extends iworks {
 		if ( empty( $data ) ) {
 			return array();
 		}
-		return array(
-			array(
-				'url'    => $data[0],
-				'width'  => $data[1],
-				'height' => $data[2],
-				'mime'   => $mime_type,
-				'alt'    => get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ),
-			),
-		);
+        return array(
+            'url'    => $data[0],
+            'width'  => $data[1],
+            'height' => $data[2],
+            'mime'   => $mime_type,
+            'alt'    => get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ),
+        );
 	}
 
 	/**
