@@ -106,6 +106,10 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.1.0 (2025-01-xx) =
+* The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.2.1.
+* The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.2.
+
 = 2.0.9 (2024-02-14) =
 * The JSON+LD has been improved for a product.
 * Compatibility with the [OG plugin](https://wordpress.org/plugins/og/) has been improved.
