@@ -1,5 +1,5 @@
-window.simple_seo_improvemnts = window.simple_seo_improvemnts || [];
-window.simple_seo_improvemnts.json_type_change = function(value) {
+window.simple_seo_improvements = window.simple_seo_improvements || [];
+window.simple_seo_improvements.json_type_change = function(value) {
     var prefix = '#tr_json_';
     var $ = jQuery;
     $(prefix + 'org_name').hide();
@@ -35,9 +35,9 @@ window.simple_seo_improvemnts.json_type_change = function(value) {
 jQuery(document).ready(function($) {
     var json_type = 'input[name="iworks_ssi_json_type"]';
     $(json_type).on('change', function() {
-        window.simple_seo_improvemnts.json_type_change($(json_type + ':checked').val());
+        window.simple_seo_improvements.json_type_change($(json_type + ':checked').val());
     });
     if ($(json_type)) {
-        window.simple_seo_improvemnts.json_type_change($(json_type + ':checked').val());
+        window.simple_seo_improvements.json_type_change($(json_type + ':checked').val());
     }
 });

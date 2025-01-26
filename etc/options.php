@@ -465,13 +465,12 @@ function iworks_simple_seo_improvements_options() {
 				'since' => '2.0.0',
 			),
 			array(
-				'name'    => 'json_org_pa_c',
-				'type'    => 'text',
-				'th'      => __( 'Address Country', 'simple-seo-improvements' ),
-				'classes' => array(
-					'large-text',
-				),
-				'since'   => '2.0.0',
+				'name'              => 'json_org_pa_c',
+				'type'              => 'select',
+				'th'                => __( 'Address Country', 'simple-seo-improvements' ),
+				'since'             => '2.0.0',
+				'options'           => iworks_simple_seo_improvements_get_countries(),
+				'sanitize_callback' => 'esc_html',
 			),
 			array(
 				'name'              => 'json_org_lb',
@@ -694,5 +693,14 @@ function iworks_simple_seo_improvements_get_users() {
  */
 function iworks_simple_seo_improvements_get_pages() {
 	return apply_filters( 'iworks_simple_seo_improvements_get_pages', array() );
+}
+
+/**
+ * get Countries list
+ *
+ * @since 2.1.0
+ */
+function iworks_simple_seo_improvements_get_countries() {
+	return apply_filters( 'iworks_simple_seo_improvements_get_countries', array() );
 }
 

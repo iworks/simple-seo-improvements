@@ -78,6 +78,34 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		add_filter( 'display_post_states', array( $this, 'filter_display_post_states' ), 10, 2 );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box_for_local_business' ) );
 		add_action( 'save_post', array( $this, 'action_save_post_local_business_fields' ), 10, 3 );
+		add_filter( 'index_iworks_ssi_json_org_lb', array( $this, 'filter_index_iworks_ssi_json_org_lb' ), 10, 2 );
+	}
+
+	public function filter_index_iworks_ssi_json_org_lb( $select, $option = array() ) {
+		if (
+			empty( $option )
+			|| ! is_array( $option )
+			|| ! isset( $option['name'] )
+		) {
+			return $select;
+		}
+		$local_business_page_id = intval( $this->options->get_option( $option['name'] ) );
+		if (
+			$local_business_page_id
+			&& 'page' === get_post_type( $local_business_page_id )
+		) {
+			$select .= sprintf(
+				' <a href="%s" target="_blank">%s</a>',
+				esc_url( get_permalink( $local_business_page_id ) ),
+				esc_html__(
+					sprintf(
+						__( 'View Page: %s', 'simple-seo-improvements' ),
+						get_the_title( $local_business_page_id )
+					)
+				)
+			);
+		}
+		return $select;
 	}
 
 	private function get_local_business_nonce_name() {
@@ -99,7 +127,11 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 					'addressLocality' => esc_html__( 'Locality', 'simple-seo-improvements' ),
 					'addressRegion'   => esc_html__( 'Region', 'simple-seo-improvements' ),
 					'postalCode'      => esc_html__( 'Postal Code', 'simple-seo-improvements' ),
-					'addressCountry'  => esc_html__( 'Country', 'simple-seo-improvements' ),
+					'addressCountry'  => array(
+						'type'    => 'select',
+						'label'   => esc_html__( 'Country', 'simple-seo-improvements' ),
+						'options' => apply_filters( 'iworks_simple_seo_improvements_get_countries', array() ),
+					),
 				),
 			),
 			'contact'                   => array(
@@ -131,38 +163,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				),
 			),
 		);
-		$this->local_business_types  = array(
-			'AnimalShelter'               => __( 'Animal Shelter', 'simple-seo-improvement' ),
-			'ArchiveOrganization'         => __( 'Archive Organization', 'simple-seo-improvement' ),
-			'AutomotiveBusiness'          => __( 'Automotive Business', 'simple-seo-improvement' ),
-			'ChildCare'                   => __( 'Child Care', 'simple-seo-improvement' ),
-			'Dentist'                     => __( 'Dentist', 'simple-seo-improvement' ),
-			'DryCleaningOrLaundry'        => __( 'Dry Cleaning Or Laundry', 'simple-seo-improvement' ),
-			'EmergencyService'            => __( 'Emergency Service', 'simple-seo-improvement' ),
-			'EmploymentAgency'            => __( 'Employment Agency', 'simple-seo-improvement' ),
-			'EntertainmentBusiness'       => __( 'Entertainment Business', 'simple-seo-improvement' ),
-			'FinancialService'            => __( 'Financial Service', 'simple-seo-improvement' ),
-			'FoodEstablishment'           => __( 'Food Establishment', 'simple-seo-improvement' ),
-			'GovernmentOffice'            => __( 'Government Office', 'simple-seo-improvement' ),
-			'HealthAndBeautyBusiness'     => __( 'Health And Beauty Business', 'simple-seo-improvement' ),
-			'HomeAndConstructionBusiness' => __( 'Home And Construction Business', 'simple-seo-improvement' ),
-			'InternetCafe'                => __( 'Internet Cafe', 'simple-seo-improvement' ),
-			'LegalService'                => __( 'Legal Service', 'simple-seo-improvement' ),
-			'Library'                     => __( 'Library', 'simple-seo-improvement' ),
-			'LodgingBusiness'             => __( 'Lodging Business', 'simple-seo-improvement' ),
-			'MedicalBusiness'             => __( 'Medical Business', 'simple-seo-improvement' ),
-			'ProfessionalService'         => __( 'Professional Service', 'simple-seo-improvement' ),
-			'RadioStation'                => __( 'Radio Station', 'simple-seo-improvement' ),
-			'RealEstateAgent'             => __( 'Real Estate Agent', 'simple-seo-improvement' ),
-			'RecyclingCenter'             => __( 'Recycling Center', 'simple-seo-improvement' ),
-			'SelfStorage'                 => __( 'Self Storage', 'simple-seo-improvement' ),
-			'ShoppingCenter'              => __( 'Shopping Center', 'simple-seo-improvement' ),
-			'SportsActivityLocation'      => __( 'Sports Activity Location', 'simple-seo-improvement' ),
-			'Store'                       => __( 'Store', 'simple-seo-improvement' ),
-			'TelevisionStation'           => __( 'Television Station', 'simple-seo-improvement' ),
-			'TouristInformationCenter'    => __( 'Tourist Information Center', 'simple-seo-improvement' ),
-			'TravelAgency'                => __( 'Travel Agency', 'simple-seo-improvement' ),
-		);
+		$this->local_business_types  = apply_filters( 'iworks_simple_seo_improvements_get_lb_types', array() );
 	}
 
 	/**
@@ -1084,6 +1085,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		/**
 		 * LocalBusiness
 		 */
+		$is_local_business = false;
 		if ( is_page() ) {
 			$local_business_page_id = intval( $this->options->get_option( 'json_org_lb' ) );
 			if (
@@ -1093,6 +1095,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				$data = $this->get_part_local_business();
 				if ( ! empty( $data ) ) {
 					$this->data['@graph'][] = $data;
+					$is_local_business      = true;
 				}
 			}
 		}
@@ -1111,7 +1114,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		/**
 		 * is singular
 		 */
-		if ( is_singular() ) {
+		if ( is_singular() && ! $is_local_business ) {
 			switch ( get_post_type() ) {
 				case 'product':
 					$this->data['@graph'][] = $this->get_part_product();
@@ -1283,11 +1286,16 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		 * type
 		 */
 		$name = 'type';
-		if (
-			isset( $value[ $name ][ $subkey ] )
-			&& isset( $this->local_business_types[ $value[ $name ] ] )
-		) {
-			$data['type'] = $value[ $name ];
+		foreach ( $value[ $name ] as $subkey ) {
+			if ( empty( $subkey ) ) {
+				continue;
+			}
+			if ( isset( $this->local_business_types[ $subkey ] ) ) {
+				if ( ! isset( $data[ $name ] ) ) {
+					$data[ $name ] = array();
+				}
+				$data[ $name ][] = $subkey;
+			}
 		}
 		/**
 		 * fields

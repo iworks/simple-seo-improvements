@@ -106,9 +106,12 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
-= 2.1.0 (2025-01-xx) =
-* The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.2.1.
+= 2.1.0 (2025-01-26) =
+* A country select has been improved.
+* A multiple LocalBusiness Type have been added.
+* The `Article` has been removed from JSON-LD on LocalBusiness page.
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.4.
+* The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.2.1.
 * The `og:image` has been fixed.
 
 = 2.0.9 (2024-02-14) =
@@ -135,7 +138,7 @@ Project maintained on github at [iworks/simple-seo-improvements](https://github.
 * The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.1.6.
 
 = 2.0.3 (2023-11-22) =
-* Check for the LocalBuisness page option has been added to avoid showing the form on all new pages.
+* Check for the LocalBusiness page option has been added to avoid showing the form on all new pages.
 
 = 2.0.2 (2023-11-15) =
 * The AI bots bloking has been added into the robots.txt file.
