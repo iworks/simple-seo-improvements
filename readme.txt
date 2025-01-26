@@ -108,7 +108,7 @@ Project maintained on github at [iworks/simple-seo-improvements](https://github.
 
 = 2.1.0 (2025-01-xx) =
 * The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.2.1.
-* The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.3.
+* The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.4.
 * The `og:image` has been fixed.
 
 = 2.0.9 (2024-02-14) =
