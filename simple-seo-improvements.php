@@ -55,12 +55,6 @@ if ( ! class_exists( 'iworks_simple_seo_improvements' ) ) {
 new iworks_simple_seo_improvements();
 
 /**
- * i18n
- */
-load_plugin_textdomain( 'simple-seo-improvements', false, plugin_basename( $base ) . '/languages' );
-
-
-/**
  * install & uninstall plugin
  */
 register_activation_hook( __FILE__, 'iworks_iworks_simple_seo_improvements_activate' );
@@ -90,17 +84,6 @@ function get_iworks_simple_seo_improvements_options() {
 	$iworks_simple_seo_improvements_options = $iworks_simple_seo_improvements_options;
 	return $iworks_simple_seo_improvements_options;
 }
-
-/**
- * Ask for vote
- */
-include_once $includes . '/iworks/rate/rate.php';
-do_action(
-	'iworks-register-plugin',
-	plugin_basename( __FILE__ ),
-	__( 'Simple SEO Improvements', 'simple-seo-improvements' ),
-	'simple-seo-improvements'
-);
 
 /**
  * Activate plugin function

@@ -26,9 +26,9 @@ if ( class_exists( 'iworks_simple_seo_improvements_json_ld' ) ) {
 	return;
 }
 
-require_once dirname( __FILE__ ) . '/class-base.php';
+require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php';
 
-class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improvements_base {
+class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improvements_base_abstract {
 
 	/**
 	 * JSON-LD data
@@ -325,7 +325,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			$data['itemListElement'][] = array(
 				'@type'    => 'ListItem',
 				'position' => sizeof( $data['itemListElement'] ) + 1,
-				'name'     => sprintf( __( 'Search Results for: %s' ), strip_tags( get_query_var( 's' ) ) ),
+				'name'     => sprintf( __( 'Search Results for: %s', 'simple-seo-improvements' ), strip_tags( get_query_var( 's' ) ) ),
 				'item'     => '',
 			);
 		}

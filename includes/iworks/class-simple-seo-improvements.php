@@ -25,9 +25,9 @@ if ( class_exists( 'iworks_simple_seo_improvements' ) ) {
 	return;
 }
 
-require_once dirname( dirname( __FILE__ ) ) . '/class-iworks.php';
+require_once __DIR__ . '/class-simple-seo-improvements-base.php';
 
-class iworks_simple_seo_improvements extends iworks {
+class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base {
 
 	protected $posttypes;
 	protected $taxonomies;
@@ -78,6 +78,7 @@ class iworks_simple_seo_improvements extends iworks {
 		 */
 		add_action( 'init', array( $this, 'maybe_load_index_now' ) );
 		add_action( 'init', array( $this, 'maybe_load_robots_txt' ) );
+		add_action( 'init', array( $this, 'action_init_register_iworks_rate' ), PHP_INT_MAX );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'wp_head', array( $this, 'add_robots' ) );
 		add_action( 'wp_head', array( $this, 'filter_wp_head_add_html_head' ), 0 );
@@ -144,6 +145,16 @@ class iworks_simple_seo_improvements extends iworks {
 		 * @since 2.0.0
 		 */
 		add_filter( 'iworks_simple_seo_improvements_get_users', array( $this, 'filter_get_user_list_options' ) );
+		/**
+		 * load github class
+		 *
+		 * @since 1.0.8
+		 */
+		$filename = __DIR__ . '/class-wp-sitemap-control-github.php';
+		if ( is_file( $filename ) ) {
+			include_once $filename;
+			new iworks_wp_sitemap_control_github();
+		}
 	}
 
 	/**
@@ -184,7 +195,7 @@ class iworks_simple_seo_improvements extends iworks {
 	public function add_settings_link( $actions ) {
 		$page      = $this->options->get_pagehook();
 		$url       = add_query_arg( 'page', $page, admin_url( 'options-general.php' ) );
-		$actions[] = sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html__( 'Settings', 'sierotki' ) );
+		$actions[] = sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html__( 'Settings', 'simple-seo-improvements' ) );
 		return $actions;
 	}
 
@@ -980,74 +991,74 @@ class iworks_simple_seo_improvements extends iworks {
 			'CD' => esc_html__( 'Congo, Democratic Republic of the', 'simple-seo-improvements' ),
 			'CK' => esc_html__( 'Cook Islands', 'simple-seo-improvements' ),
 			'CR' => esc_html__( 'Costa Rica', 'simple-seo-improvements' ),
-			'CI' => esc_html__( 'Côte d\'Ivoire', 'simple - seo - improvements' ),
-			'HR' => esc_html__( 'Croatia', 'simple - seo - improvements' ),
-			'CU' => esc_html__( 'Cuba', 'simple - seo - improvements' ),
-			'CW' => esc_html__( 'Curaçao', 'simple - seo - improvements' ),
-			'CY' => esc_html__( 'Cyprus', 'simple - seo - improvements' ),
-			'CZ' => esc_html__( 'Czechia', 'simple - seo - improvements' ),
-			'DK' => esc_html__( 'Denmark', 'simple - seo - improvements' ),
-			'DJ' => esc_html__( 'Djibouti', 'simple - seo - improvements' ),
-			'DM' => esc_html__( 'Dominica', 'simple - seo - improvements' ),
-			'DO' => esc_html__( 'Dominican Republic', 'simple - seo - improvements' ),
-			'EC' => esc_html__( 'Ecuador', 'simple - seo - improvements' ),
-			'EG' => esc_html__( 'Egypt', 'simple - seo - improvements' ),
-			'SV' => esc_html__( 'El Salvador', 'simple - seo - improvements' ),
-			'GQ' => esc_html__( 'Equatorial Guinea', 'simple - seo - improvements' ),
-			'ER' => esc_html__( 'Eritrea', 'simple - seo - improvements' ),
-			'EE' => esc_html__( 'Estonia', 'simple - seo - improvements' ),
-			'SZ' => esc_html__( 'Eswatini', 'simple - seo - improvements' ),
-			'ET' => esc_html__( 'Ethiopia', 'simple - seo - improvements' ),
-			'FK' => esc_html__( 'Falkland Islands( Malvinas )', 'simple - seo - improvements' ),
-			'FO' => esc_html__( 'Faroe Islands', 'simple - seo - improvements' ),
-			'FJ' => esc_html__( 'Fiji', 'simple - seo - improvements' ),
-			'FI' => esc_html__( 'Finland', 'simple - seo - improvements' ),
-			'FR' => esc_html__( 'France', 'simple - seo - improvements' ),
-			'GF' => esc_html__( 'French Guiana', 'simple - seo - improvements' ),
-			'PF' => esc_html__( 'French Polynesia', 'simple - seo - improvements' ),
-			'TF' => esc_html__( 'French Southern Territories', 'simple - seo - improvements' ),
-			'GA' => esc_html__( 'Gabon', 'simple - seo - improvements' ),
-			'GM' => esc_html__( 'Gambia', 'simple - seo - improvements' ),
-			'GE' => esc_html__( 'Georgia', 'simple - seo - improvements' ),
-			'DE' => esc_html__( 'Germany', 'simple - seo - improvements' ),
-			'GH' => esc_html__( 'Ghana', 'simple - seo - improvements' ),
-			'GI' => esc_html__( 'Gibraltar', 'simple - seo - improvements' ),
-			'GR' => esc_html__( 'Greece', 'simple - seo - improvements' ),
-			'GL' => esc_html__( 'Greenland', 'simple - seo - improvements' ),
-			'GD' => esc_html__( 'Grenada', 'simple - seo - improvements' ),
-			'GP' => esc_html__( 'Guadeloupe', 'simple - seo - improvements' ),
-			'GU' => esc_html__( 'Guam', 'simple - seo - improvements' ),
-			'GT' => esc_html__( 'Guatemala', 'simple - seo - improvements' ),
-			'GG' => esc_html__( 'Guernsey', 'simple - seo - improvements' ),
-			'GN' => esc_html__( 'Guinea', 'simple - seo - improvements' ),
-			'GW' => esc_html__( 'Guinea - Bissau', 'simple - seo - improvements' ),
-			'GY' => esc_html__( 'Guyana', 'simple - seo - improvements' ),
-			'HT' => esc_html__( 'Haiti', 'simple - seo - improvements' ),
-			'HM' => esc_html__( 'Heard Island and McDonald Islands', 'simple - seo - improvements' ),
-			'VA' => esc_html__( 'Holy See', 'simple - seo - improvements' ),
-			'HN' => esc_html__( 'Honduras', 'simple - seo - improvements' ),
-			'HK' => esc_html__( 'Hong Kong', 'simple - seo - improvements' ),
-			'HU' => esc_html__( 'Hungary', 'simple - seo - improvements' ),
-			'IS' => esc_html__( 'Iceland', 'simple - seo - improvements' ),
-			'IN' => esc_html__( 'India', 'simple - seo - improvements' ),
-			'ID' => esc_html__( 'Indonesia', 'simple - seo - improvements' ),
-			'IR' => esc_html__( 'Iran, Islamic Republic of', 'simple - seo - improvements' ),
-			'IQ' => esc_html__( 'Iraq', 'simple - seo - improvements' ),
-			'IE' => esc_html__( 'Ireland', 'simple - seo - improvements' ),
-			'IM' => esc_html__( 'Isle of Man', 'simple - seo - improvements' ),
-			'IL' => esc_html__( 'Israel', 'simple - seo - improvements' ),
-			'IT' => esc_html__( 'Italy', 'simple - seo - improvements' ),
-			'JM' => esc_html__( 'Jamaica', 'simple - seo - improvements' ),
-			'JP' => esc_html__( 'Japan', 'simple - seo - improvements' ),
-			'JE' => esc_html__( 'Jersey', 'simple - seo - improvements' ),
-			'JO' => esc_html__( 'Jordan', 'simple - seo - improvements' ),
-			'KZ' => esc_html__( 'Kazakhstan', 'simple - seo - improvements' ),
-			'KE' => esc_html__( 'Kenya', 'simple - seo - improvements' ),
-			'KI' => esc_html__( 'Kiribati', 'simple - seo - improvements' ),
-			'KP' => esc_html__( 'Korea, Democratic People\'s Republic of', 'simple - seo - improvements' ),
-			'KR' => esc_html__( 'Korea, Republic of', 'simple - seo - improvements' ),
-			'KW' => esc_html__( 'Kuwait', 'simple - seo - improvements' ),
-			'KG' => esc_html__( 'Kyrgyzstan', 'simple - seo - improvements' ),
+			'CI' => esc_html__( 'Côte d\'Ivoire', 'simple-seo-improvements' ),
+			'HR' => esc_html__( 'Croatia', 'simple-seo-improvements' ),
+			'CU' => esc_html__( 'Cuba', 'simple-seo-improvements' ),
+			'CW' => esc_html__( 'Curaçao', 'simple-seo-improvements' ),
+			'CY' => esc_html__( 'Cyprus', 'simple-seo-improvements' ),
+			'CZ' => esc_html__( 'Czechia', 'simple-seo-improvements' ),
+			'DK' => esc_html__( 'Denmark', 'simple-seo-improvements' ),
+			'DJ' => esc_html__( 'Djibouti', 'simple-seo-improvements' ),
+			'DM' => esc_html__( 'Dominica', 'simple-seo-improvements' ),
+			'DO' => esc_html__( 'Dominican Republic', 'simple-seo-improvements' ),
+			'EC' => esc_html__( 'Ecuador', 'simple-seo-improvements' ),
+			'EG' => esc_html__( 'Egypt', 'simple-seo-improvements' ),
+			'SV' => esc_html__( 'El Salvador', 'simple-seo-improvements' ),
+			'GQ' => esc_html__( 'Equatorial Guinea', 'simple-seo-improvements' ),
+			'ER' => esc_html__( 'Eritrea', 'simple-seo-improvements' ),
+			'EE' => esc_html__( 'Estonia', 'simple-seo-improvements' ),
+			'SZ' => esc_html__( 'Eswatini', 'simple-seo-improvements' ),
+			'ET' => esc_html__( 'Ethiopia', 'simple-seo-improvements' ),
+			'FK' => esc_html__( 'Falkland Islands( Malvinas )', 'simple-seo-improvements' ),
+			'FO' => esc_html__( 'Faroe Islands', 'simple-seo-improvements' ),
+			'FJ' => esc_html__( 'Fiji', 'simple-seo-improvements' ),
+			'FI' => esc_html__( 'Finland', 'simple-seo-improvements' ),
+			'FR' => esc_html__( 'France', 'simple-seo-improvements' ),
+			'GF' => esc_html__( 'French Guiana', 'simple-seo-improvements' ),
+			'PF' => esc_html__( 'French Polynesia', 'simple-seo-improvements' ),
+			'TF' => esc_html__( 'French Southern Territories', 'simple-seo-improvements' ),
+			'GA' => esc_html__( 'Gabon', 'simple-seo-improvements' ),
+			'GM' => esc_html__( 'Gambia', 'simple-seo-improvements' ),
+			'GE' => esc_html__( 'Georgia', 'simple-seo-improvements' ),
+			'DE' => esc_html__( 'Germany', 'simple-seo-improvements' ),
+			'GH' => esc_html__( 'Ghana', 'simple-seo-improvements' ),
+			'GI' => esc_html__( 'Gibraltar', 'simple-seo-improvements' ),
+			'GR' => esc_html__( 'Greece', 'simple-seo-improvements' ),
+			'GL' => esc_html__( 'Greenland', 'simple-seo-improvements' ),
+			'GD' => esc_html__( 'Grenada', 'simple-seo-improvements' ),
+			'GP' => esc_html__( 'Guadeloupe', 'simple-seo-improvements' ),
+			'GU' => esc_html__( 'Guam', 'simple-seo-improvements' ),
+			'GT' => esc_html__( 'Guatemala', 'simple-seo-improvements' ),
+			'GG' => esc_html__( 'Guernsey', 'simple-seo-improvements' ),
+			'GN' => esc_html__( 'Guinea', 'simple-seo-improvements' ),
+			'GW' => esc_html__( 'Guinea - Bissau', 'simple-seo-improvements' ),
+			'GY' => esc_html__( 'Guyana', 'simple-seo-improvements' ),
+			'HT' => esc_html__( 'Haiti', 'simple-seo-improvements' ),
+			'HM' => esc_html__( 'Heard Island and McDonald Islands', 'simple-seo-improvements' ),
+			'VA' => esc_html__( 'Holy See', 'simple-seo-improvements' ),
+			'HN' => esc_html__( 'Honduras', 'simple-seo-improvements' ),
+			'HK' => esc_html__( 'Hong Kong', 'simple-seo-improvements' ),
+			'HU' => esc_html__( 'Hungary', 'simple-seo-improvements' ),
+			'IS' => esc_html__( 'Iceland', 'simple-seo-improvements' ),
+			'IN' => esc_html__( 'India', 'simple-seo-improvements' ),
+			'ID' => esc_html__( 'Indonesia', 'simple-seo-improvements' ),
+			'IR' => esc_html__( 'Iran, Islamic Republic of', 'simple-seo-improvements' ),
+			'IQ' => esc_html__( 'Iraq', 'simple-seo-improvements' ),
+			'IE' => esc_html__( 'Ireland', 'simple-seo-improvements' ),
+			'IM' => esc_html__( 'Isle of Man', 'simple-seo-improvements' ),
+			'IL' => esc_html__( 'Israel', 'simple-seo-improvements' ),
+			'IT' => esc_html__( 'Italy', 'simple-seo-improvements' ),
+			'JM' => esc_html__( 'Jamaica', 'simple-seo-improvements' ),
+			'JP' => esc_html__( 'Japan', 'simple-seo-improvements' ),
+			'JE' => esc_html__( 'Jersey', 'simple-seo-improvements' ),
+			'JO' => esc_html__( 'Jordan', 'simple-seo-improvements' ),
+			'KZ' => esc_html__( 'Kazakhstan', 'simple-seo-improvements' ),
+			'KE' => esc_html__( 'Kenya', 'simple-seo-improvements' ),
+			'KI' => esc_html__( 'Kiribati', 'simple-seo-improvements' ),
+			'KP' => esc_html__( 'Korea, Democratic People\'s Republic of', 'simple-seo-improvements' ),
+			'KR' => esc_html__( 'Korea, Republic of', 'simple-seo-improvements' ),
+			'KW' => esc_html__( 'Kuwait', 'simple-seo-improvements' ),
+			'KG' => esc_html__( 'Kyrgyzstan', 'simple-seo-improvements' ),
 			'LA' => esc_html__( 'Lao People\'s Democratic Republic', 'simple-seo-improvements' ),
 			'LV' => esc_html__( 'Latvia', 'simple-seo-improvements' ),
 			'LB' => esc_html__( 'Lebanon', 'simple-seo-improvements' ),
@@ -1179,6 +1190,23 @@ class iworks_simple_seo_improvements extends iworks {
 		asort( $options );
 		array_unshift( $options, esc_html__( '--- select ---', 'simple-seo-improvements' ) );
 		return $options;
+	}
+
+		/**
+		 * register plugin to iWorks Rate Helper
+		 *
+		 * @since 1.0.0
+		 */
+	public function action_init_register_iworks_rate() {
+		if ( ! class_exists( 'iworks_rate' ) ) {
+			include_once dirname( __FILE__ ) . '/rate/rate.php';
+		}
+		do_action(
+			'iworks-register-plugin',
+			plugin_basename( $this->plugin_file ),
+			__( 'Simple SEO Improvements', 'simple-seo-improvements' ),
+			'simple-seo-improvements'
+		);
 	}
 }
 

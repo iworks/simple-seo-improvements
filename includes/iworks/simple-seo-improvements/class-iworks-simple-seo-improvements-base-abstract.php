@@ -22,12 +22,12 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( class_exists( 'iworks_simple_seo_improvements_base' ) ) {
+if ( class_exists( 'iworks_simple_seo_improvements_base_abstract' ) ) {
 	return;
 }
 
 
-abstract class iworks_simple_seo_improvements_base {
+abstract class iworks_simple_seo_improvements_base_abstract {
 
 	private $nonce_name   = 'iworks_simple_seo_improvements_nonce';
 	protected $field_name = 'iworks_simple_seo_improvements';

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Simple SEO Improvements - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-02-13 19:19:50+00:00\n"
+"POT-Creation-Date: 2025-02-13 19:45:50+00:00\n"
 "PO-Revision-Date: 2025-02-13 19:18:56+0000\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -538,21 +538,21 @@ msgstr "Odnośnik do wtyczki - żeby łatwo było znaleźć"
 msgid "WordPress Help Forum"
 msgstr "Forum Pomocy WordPressa"
 
-#: includes/iworks/class-simple-seo-improvements.php:187
+#: includes/iworks/class-simple-seo-improvements.php:198
 #: includes/iworks/rate/rate.php:133
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: includes/iworks/class-simple-seo-improvements.php:262
-#: includes/iworks/class-simple-seo-improvements.php:264
+#: includes/iworks/class-simple-seo-improvements.php:273
+#: includes/iworks/class-simple-seo-improvements.php:275
 msgid "Any post type"
 msgstr "Dowalny typ treści"
 
-#: includes/iworks/class-simple-seo-improvements.php:265
+#: includes/iworks/class-simple-seo-improvements.php:276
 msgid "Any post type archive"
 msgstr "Archiwum dowolnego typu treści"
 
-#: includes/iworks/class-simple-seo-improvements.php:300
+#: includes/iworks/class-simple-seo-improvements.php:311
 msgid ""
 "Allow to set for entries separately. Settings will apply as default for new "
 "entries."
@@ -560,19 +560,19 @@ msgstr ""
 "Pozwól ustawić dla wpisów osobno. Ustawienie będzie stosowane jako domyślne "
 "dla nowych wpisów."
 
-#: includes/iworks/class-simple-seo-improvements.php:303
+#: includes/iworks/class-simple-seo-improvements.php:314
 msgid "Force setting to all entries"
 msgstr "Wymuś ustawienia dla wszystkich wpisów"
 
-#: includes/iworks/class-simple-seo-improvements.php:317
-#: includes/iworks/class-simple-seo-improvements.php:347
+#: includes/iworks/class-simple-seo-improvements.php:328
+#: includes/iworks/class-simple-seo-improvements.php:358
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:163
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:314
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:134
 msgid "Add \"%s\"."
 msgstr "Dodaj \"%s\"."
 
-#: includes/iworks/class-simple-seo-improvements.php:334
+#: includes/iworks/class-simple-seo-improvements.php:345
 msgid "Add meta tags for %s."
 msgstr "Dodaj meta tagi dla %s."
 
@@ -580,1584 +580,1584 @@ msgstr "Dodaj meta tagi dla %s."
 msgid "Simple SEO Improvements"
 msgstr "Simple SEO Improvements"
 
-#: includes/iworks/class-simple-seo-improvements.php:748
-#: includes/iworks/class-simple-seo-improvements.php:917
-#: includes/iworks/class-simple-seo-improvements.php:1180
+#: includes/iworks/class-simple-seo-improvements.php:759
+#: includes/iworks/class-simple-seo-improvements.php:928
+#: includes/iworks/class-simple-seo-improvements.php:1191
 msgid "--- select ---"
 msgstr "--- wybierz ---"
 
-#: includes/iworks/class-simple-seo-improvements.php:763
+#: includes/iworks/class-simple-seo-improvements.php:774
 msgid "Animal Shelter"
 msgstr "Schronisko dla zwierząt"
 
-#: includes/iworks/class-simple-seo-improvements.php:764
+#: includes/iworks/class-simple-seo-improvements.php:775
 msgid "Automotive Business"
 msgstr "Działalność motoryzacyjna"
 
-#: includes/iworks/class-simple-seo-improvements.php:765
+#: includes/iworks/class-simple-seo-improvements.php:776
 msgid "Child Care"
 msgstr "Opieka nad dziećmi"
 
-#: includes/iworks/class-simple-seo-improvements.php:766
-#: includes/iworks/class-simple-seo-improvements.php:848
+#: includes/iworks/class-simple-seo-improvements.php:777
+#: includes/iworks/class-simple-seo-improvements.php:859
 msgid "Dentist"
 msgstr "Dentysta"
 
-#: includes/iworks/class-simple-seo-improvements.php:767
+#: includes/iworks/class-simple-seo-improvements.php:778
 msgid "Dry Cleaning or Laundry"
 msgstr "Czyszczenie chemiczne lub pralnia"
 
-#: includes/iworks/class-simple-seo-improvements.php:768
+#: includes/iworks/class-simple-seo-improvements.php:779
 msgid "Emergency Service"
 msgstr "Usługi awaryjne lub ratunkowe"
 
-#: includes/iworks/class-simple-seo-improvements.php:769
+#: includes/iworks/class-simple-seo-improvements.php:780
 msgid "Employment Agency"
 msgstr "Agencja zatrudnienia"
 
-#: includes/iworks/class-simple-seo-improvements.php:770
+#: includes/iworks/class-simple-seo-improvements.php:781
 msgid "Entertainment Business"
 msgstr "Działalność rozrywkowa"
 
-#: includes/iworks/class-simple-seo-improvements.php:771
+#: includes/iworks/class-simple-seo-improvements.php:782
 msgid "Financial Service"
 msgstr "Usługi finansowe"
 
-#: includes/iworks/class-simple-seo-improvements.php:772
+#: includes/iworks/class-simple-seo-improvements.php:783
 msgid "Food Establishment"
 msgstr "Obiekt gastronomiczny"
 
-#: includes/iworks/class-simple-seo-improvements.php:773
+#: includes/iworks/class-simple-seo-improvements.php:784
 msgid "Government Office"
 msgstr "Urząd"
 
-#: includes/iworks/class-simple-seo-improvements.php:774
+#: includes/iworks/class-simple-seo-improvements.php:785
 msgid "Health and Beauty Business"
 msgstr "Zdrowie i uroda"
 
-#: includes/iworks/class-simple-seo-improvements.php:775
+#: includes/iworks/class-simple-seo-improvements.php:786
 msgid "Home and Construction Business"
 msgstr "Dom i działalność budowlana"
 
-#: includes/iworks/class-simple-seo-improvements.php:776
+#: includes/iworks/class-simple-seo-improvements.php:787
 msgid "Internet Cafe"
 msgstr "Kawiarenka internetowa"
 
-#: includes/iworks/class-simple-seo-improvements.php:777
+#: includes/iworks/class-simple-seo-improvements.php:788
 msgid "Legal Service"
 msgstr "Usługi prawne"
 
-#: includes/iworks/class-simple-seo-improvements.php:778
+#: includes/iworks/class-simple-seo-improvements.php:789
 msgid "Library"
 msgstr "Biblioteka"
 
-#: includes/iworks/class-simple-seo-improvements.php:779
+#: includes/iworks/class-simple-seo-improvements.php:790
 msgid "Lodging Business"
 msgstr "Zakwaterowanie"
 
-#: includes/iworks/class-simple-seo-improvements.php:780
+#: includes/iworks/class-simple-seo-improvements.php:791
 msgid "Medical Business"
 msgstr "Działalność medyczna"
 
-#: includes/iworks/class-simple-seo-improvements.php:781
+#: includes/iworks/class-simple-seo-improvements.php:792
 msgid "Professional Service"
 msgstr "Usługi profesjonalne"
 
-#: includes/iworks/class-simple-seo-improvements.php:782
+#: includes/iworks/class-simple-seo-improvements.php:793
 msgid "Radio Station"
 msgstr "Stacja radiowa"
 
-#: includes/iworks/class-simple-seo-improvements.php:783
+#: includes/iworks/class-simple-seo-improvements.php:794
 msgid "Real Estate Agent"
 msgstr "Agent nieruchomości"
 
-#: includes/iworks/class-simple-seo-improvements.php:784
+#: includes/iworks/class-simple-seo-improvements.php:795
 msgid "Recycling Center"
 msgstr "Punkt recyklingu"
 
-#: includes/iworks/class-simple-seo-improvements.php:785
+#: includes/iworks/class-simple-seo-improvements.php:796
 msgid "Self Storage"
 msgstr "Magazyn samoobsługowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:786
+#: includes/iworks/class-simple-seo-improvements.php:797
 msgid "Shopping Center"
 msgstr "Centrum handlowe"
 
-#: includes/iworks/class-simple-seo-improvements.php:787
+#: includes/iworks/class-simple-seo-improvements.php:798
 msgid "Sports Activity Location"
 msgstr "Obiekt sportowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:788
+#: includes/iworks/class-simple-seo-improvements.php:799
 msgid "Store"
 msgstr "Sklep"
 
-#: includes/iworks/class-simple-seo-improvements.php:789
+#: includes/iworks/class-simple-seo-improvements.php:800
 msgid "Television Station"
 msgstr "Stacja telewizyjna"
 
-#: includes/iworks/class-simple-seo-improvements.php:790
+#: includes/iworks/class-simple-seo-improvements.php:801
 msgid "Tourist Information Center"
 msgstr "Punkt informacji turystycznej"
 
-#: includes/iworks/class-simple-seo-improvements.php:791
+#: includes/iworks/class-simple-seo-improvements.php:802
 msgid "Travel Agency"
 msgstr "Biuro podróży"
 
-#: includes/iworks/class-simple-seo-improvements.php:792
+#: includes/iworks/class-simple-seo-improvements.php:803
 msgid "Auto Body Shop"
 msgstr "Warsztat samochodowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:793
+#: includes/iworks/class-simple-seo-improvements.php:804
 msgid "Auto Dealer"
 msgstr "Dealer samochodów"
 
-#: includes/iworks/class-simple-seo-improvements.php:794
-#: includes/iworks/class-simple-seo-improvements.php:880
+#: includes/iworks/class-simple-seo-improvements.php:805
+#: includes/iworks/class-simple-seo-improvements.php:891
 msgid "Auto Parts Store"
 msgstr "Sklep z częściami samochodowymi"
 
-#: includes/iworks/class-simple-seo-improvements.php:795
+#: includes/iworks/class-simple-seo-improvements.php:806
 msgid "Auto Rental"
 msgstr "Wynajem samochodów"
 
-#: includes/iworks/class-simple-seo-improvements.php:796
+#: includes/iworks/class-simple-seo-improvements.php:807
 msgid "Auto Repair"
 msgstr "Mechanik samochodowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:797
+#: includes/iworks/class-simple-seo-improvements.php:808
 msgid "Auto Wash"
 msgstr "Myjnia samochodowa"
 
-#: includes/iworks/class-simple-seo-improvements.php:798
+#: includes/iworks/class-simple-seo-improvements.php:809
 msgid "Gas Station"
 msgstr "Stacja benzynowa"
 
-#: includes/iworks/class-simple-seo-improvements.php:799
+#: includes/iworks/class-simple-seo-improvements.php:810
 msgid "Motorcycle Dealer"
 msgstr "Sprzedaż motocykli"
 
-#: includes/iworks/class-simple-seo-improvements.php:800
+#: includes/iworks/class-simple-seo-improvements.php:811
 msgid "Motorcycle Repair"
 msgstr "Naprawa motocykli"
 
-#: includes/iworks/class-simple-seo-improvements.php:801
+#: includes/iworks/class-simple-seo-improvements.php:812
 msgid "Fire Station"
 msgstr "Straż pożarna"
 
-#: includes/iworks/class-simple-seo-improvements.php:802
+#: includes/iworks/class-simple-seo-improvements.php:813
 msgid "Hospital"
 msgstr "Szpital"
 
-#: includes/iworks/class-simple-seo-improvements.php:803
+#: includes/iworks/class-simple-seo-improvements.php:814
 msgid "Police Station"
 msgstr "Policja"
 
-#: includes/iworks/class-simple-seo-improvements.php:804
+#: includes/iworks/class-simple-seo-improvements.php:815
 msgid "Adult Entertainment"
 msgstr "Rozrywka dla dorosłych"
 
-#: includes/iworks/class-simple-seo-improvements.php:805
+#: includes/iworks/class-simple-seo-improvements.php:816
 msgid "Amusement Park"
 msgstr "Park rozrywki"
 
-#: includes/iworks/class-simple-seo-improvements.php:806
+#: includes/iworks/class-simple-seo-improvements.php:817
 msgid "Art Gallery"
 msgstr "Galeria sztuki"
 
-#: includes/iworks/class-simple-seo-improvements.php:807
+#: includes/iworks/class-simple-seo-improvements.php:818
 msgid "Casino"
 msgstr "Kasyno"
 
-#: includes/iworks/class-simple-seo-improvements.php:808
+#: includes/iworks/class-simple-seo-improvements.php:819
 msgid "Comedy Club"
 msgstr "Klub komediowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:809
+#: includes/iworks/class-simple-seo-improvements.php:820
 msgid "Movie Theater"
 msgstr "Kino"
 
-#: includes/iworks/class-simple-seo-improvements.php:810
+#: includes/iworks/class-simple-seo-improvements.php:821
 msgid "Night Club"
 msgstr "Klub nocny"
 
-#: includes/iworks/class-simple-seo-improvements.php:811
+#: includes/iworks/class-simple-seo-improvements.php:822
 msgid "Accounting Service"
 msgstr "Księgowość"
 
-#: includes/iworks/class-simple-seo-improvements.php:812
+#: includes/iworks/class-simple-seo-improvements.php:823
 msgid "Automated Teller"
 msgstr "Automatyczna kasjerka"
 
-#: includes/iworks/class-simple-seo-improvements.php:813
+#: includes/iworks/class-simple-seo-improvements.php:824
 msgid "Bank or CreditUnion"
 msgstr "Bank lub Placówka Kredytowa"
 
-#: includes/iworks/class-simple-seo-improvements.php:814
+#: includes/iworks/class-simple-seo-improvements.php:825
 msgid "Insurance Agency"
 msgstr "Agencja ubezpieczeniowa"
 
-#: includes/iworks/class-simple-seo-improvements.php:815
+#: includes/iworks/class-simple-seo-improvements.php:826
 msgid "Bakery"
 msgstr "Piekarnia"
 
-#: includes/iworks/class-simple-seo-improvements.php:816
+#: includes/iworks/class-simple-seo-improvements.php:827
 msgid "Bar or Pub"
 msgstr "Bar lub pub"
 
-#: includes/iworks/class-simple-seo-improvements.php:817
+#: includes/iworks/class-simple-seo-improvements.php:828
 msgid "Brewery"
 msgstr "Browar"
 
-#: includes/iworks/class-simple-seo-improvements.php:818
+#: includes/iworks/class-simple-seo-improvements.php:829
 msgid "Cafe or Coffee Shop"
 msgstr "Kawiarnia lub sklep z kawą"
 
-#: includes/iworks/class-simple-seo-improvements.php:819
+#: includes/iworks/class-simple-seo-improvements.php:830
 msgid "Fast Food Restaurant"
 msgstr "Fast-food"
 
-#: includes/iworks/class-simple-seo-improvements.php:820
+#: includes/iworks/class-simple-seo-improvements.php:831
 msgid "Ice Cream Shop"
 msgstr "Lodziarnia"
 
-#: includes/iworks/class-simple-seo-improvements.php:821
+#: includes/iworks/class-simple-seo-improvements.php:832
 msgid "Restaurant"
 msgstr "Restauracja"
 
-#: includes/iworks/class-simple-seo-improvements.php:822
+#: includes/iworks/class-simple-seo-improvements.php:833
 msgid "Winery"
 msgstr "Winiarnia"
 
-#: includes/iworks/class-simple-seo-improvements.php:823
+#: includes/iworks/class-simple-seo-improvements.php:834
 msgid "Distillery"
 msgstr "Destylarnia"
 
-#: includes/iworks/class-simple-seo-improvements.php:824
+#: includes/iworks/class-simple-seo-improvements.php:835
 msgid "Post Office"
 msgstr "Poczta"
 
-#: includes/iworks/class-simple-seo-improvements.php:825
+#: includes/iworks/class-simple-seo-improvements.php:836
 msgid "Beauty Salon"
 msgstr "Salon piękności"
 
-#: includes/iworks/class-simple-seo-improvements.php:826
+#: includes/iworks/class-simple-seo-improvements.php:837
 msgid "Day Spa"
 msgstr "SPA"
 
-#: includes/iworks/class-simple-seo-improvements.php:827
+#: includes/iworks/class-simple-seo-improvements.php:838
 msgid "Hair Salon"
 msgstr "Salon fryzjerski"
 
-#: includes/iworks/class-simple-seo-improvements.php:828
-#: includes/iworks/class-simple-seo-improvements.php:874
+#: includes/iworks/class-simple-seo-improvements.php:839
+#: includes/iworks/class-simple-seo-improvements.php:885
 msgid "Health Club"
 msgstr "Klub zdrowia"
 
-#: includes/iworks/class-simple-seo-improvements.php:829
+#: includes/iworks/class-simple-seo-improvements.php:840
 msgid "Nail Salon"
 msgstr "Salon paznokci"
 
-#: includes/iworks/class-simple-seo-improvements.php:830
+#: includes/iworks/class-simple-seo-improvements.php:841
 msgid "Tattoo Parlor"
 msgstr "Salon tatuażu"
 
-#: includes/iworks/class-simple-seo-improvements.php:831
+#: includes/iworks/class-simple-seo-improvements.php:842
 msgid "Electrician"
 msgstr "Elektryk"
 
-#: includes/iworks/class-simple-seo-improvements.php:832
+#: includes/iworks/class-simple-seo-improvements.php:843
 msgid "General Contractor"
 msgstr "Generalny wykonawca"
 
-#: includes/iworks/class-simple-seo-improvements.php:833
+#: includes/iworks/class-simple-seo-improvements.php:844
 msgid "HVAC Business"
 msgstr "Ogrzewanie, klimatyzacja i wentylacja"
 
-#: includes/iworks/class-simple-seo-improvements.php:834
+#: includes/iworks/class-simple-seo-improvements.php:845
 msgid "House Painter"
 msgstr "Malowanie"
 
-#: includes/iworks/class-simple-seo-improvements.php:835
+#: includes/iworks/class-simple-seo-improvements.php:846
 msgid "Locksmith"
 msgstr "Ślusarz"
 
-#: includes/iworks/class-simple-seo-improvements.php:836
+#: includes/iworks/class-simple-seo-improvements.php:847
 msgid "Moving Company"
 msgstr "Przeprowadzki"
 
-#: includes/iworks/class-simple-seo-improvements.php:837
+#: includes/iworks/class-simple-seo-improvements.php:848
 msgid "Plumber"
 msgstr "Hydraulik"
 
-#: includes/iworks/class-simple-seo-improvements.php:838
+#: includes/iworks/class-simple-seo-improvements.php:849
 msgid "Roofing Contractor"
 msgstr "Dekarz"
 
-#: includes/iworks/class-simple-seo-improvements.php:839
+#: includes/iworks/class-simple-seo-improvements.php:850
 msgid "Attorney"
 msgstr "Adwokat"
 
-#: includes/iworks/class-simple-seo-improvements.php:840
+#: includes/iworks/class-simple-seo-improvements.php:851
 msgid "Notary"
 msgstr "Notariusz"
 
-#: includes/iworks/class-simple-seo-improvements.php:841
+#: includes/iworks/class-simple-seo-improvements.php:852
 msgid "Bed and Breakfast"
 msgstr "Bed and breakfast"
 
-#: includes/iworks/class-simple-seo-improvements.php:842
+#: includes/iworks/class-simple-seo-improvements.php:853
 msgid "Campground"
 msgstr "Biwak"
 
-#: includes/iworks/class-simple-seo-improvements.php:843
+#: includes/iworks/class-simple-seo-improvements.php:854
 msgid "Hostel"
 msgstr "Hostel"
 
-#: includes/iworks/class-simple-seo-improvements.php:844
+#: includes/iworks/class-simple-seo-improvements.php:855
 msgid "Hotel"
 msgstr "Hotel"
 
-#: includes/iworks/class-simple-seo-improvements.php:845
+#: includes/iworks/class-simple-seo-improvements.php:856
 msgid "Motel"
 msgstr "Motel"
 
-#: includes/iworks/class-simple-seo-improvements.php:846
+#: includes/iworks/class-simple-seo-improvements.php:857
 msgid "Resort"
 msgstr "Kurort"
 
-#: includes/iworks/class-simple-seo-improvements.php:847
+#: includes/iworks/class-simple-seo-improvements.php:858
 msgid "Community Health"
 msgstr "Zdrowie publiczne"
 
-#: includes/iworks/class-simple-seo-improvements.php:849
+#: includes/iworks/class-simple-seo-improvements.php:860
 msgid "Dermatology"
 msgstr "Dermatologia"
 
-#: includes/iworks/class-simple-seo-improvements.php:850
+#: includes/iworks/class-simple-seo-improvements.php:861
 msgid "Diet Nutrition"
 msgstr "Dietetyka"
 
-#: includes/iworks/class-simple-seo-improvements.php:851
+#: includes/iworks/class-simple-seo-improvements.php:862
 msgid "Emergency"
 msgstr "Awarie"
 
-#: includes/iworks/class-simple-seo-improvements.php:852
+#: includes/iworks/class-simple-seo-improvements.php:863
 msgid "Geriatric"
 msgstr "Geriatria"
 
-#: includes/iworks/class-simple-seo-improvements.php:853
+#: includes/iworks/class-simple-seo-improvements.php:864
 msgid "Gynecologic"
 msgstr "Ginekologia"
 
-#: includes/iworks/class-simple-seo-improvements.php:854
+#: includes/iworks/class-simple-seo-improvements.php:865
 msgid "Medical Clinic"
 msgstr "Klinika medyczna"
 
-#: includes/iworks/class-simple-seo-improvements.php:855
+#: includes/iworks/class-simple-seo-improvements.php:866
 msgid "Midwifery"
 msgstr "Akuszerka"
 
-#: includes/iworks/class-simple-seo-improvements.php:856
+#: includes/iworks/class-simple-seo-improvements.php:867
 msgid "Nursing"
 msgstr "Pielęgniarstwo"
 
-#: includes/iworks/class-simple-seo-improvements.php:857
+#: includes/iworks/class-simple-seo-improvements.php:868
 msgid "Obstetric"
 msgstr "Położnictwo"
 
-#: includes/iworks/class-simple-seo-improvements.php:858
+#: includes/iworks/class-simple-seo-improvements.php:869
 msgid "Oncologic"
 msgstr "Onkolog"
 
-#: includes/iworks/class-simple-seo-improvements.php:859
+#: includes/iworks/class-simple-seo-improvements.php:870
 msgid "Optician"
 msgstr "Optyk"
 
-#: includes/iworks/class-simple-seo-improvements.php:860
+#: includes/iworks/class-simple-seo-improvements.php:871
 msgid "Optometric"
 msgstr "Optometria"
 
-#: includes/iworks/class-simple-seo-improvements.php:861
+#: includes/iworks/class-simple-seo-improvements.php:872
 msgid "Otolaryngologic"
 msgstr "Otolaryngolog"
 
-#: includes/iworks/class-simple-seo-improvements.php:862
+#: includes/iworks/class-simple-seo-improvements.php:873
 msgid "Pediatric"
 msgstr "Pediatria"
 
-#: includes/iworks/class-simple-seo-improvements.php:863
+#: includes/iworks/class-simple-seo-improvements.php:874
 msgid "Pharmacy"
 msgstr "Apteka"
 
-#: includes/iworks/class-simple-seo-improvements.php:864
+#: includes/iworks/class-simple-seo-improvements.php:875
 msgid "Physician"
 msgstr "Lekarz"
 
-#: includes/iworks/class-simple-seo-improvements.php:865
+#: includes/iworks/class-simple-seo-improvements.php:876
 msgid "Physiotherapy"
 msgstr "Fizjoterapia"
 
-#: includes/iworks/class-simple-seo-improvements.php:866
+#: includes/iworks/class-simple-seo-improvements.php:877
 msgid "Plastic Surgery"
 msgstr "Chirurgia plastyczna"
 
-#: includes/iworks/class-simple-seo-improvements.php:867
+#: includes/iworks/class-simple-seo-improvements.php:878
 msgid "Podiatric"
 msgstr "Podiatria"
 
-#: includes/iworks/class-simple-seo-improvements.php:868
+#: includes/iworks/class-simple-seo-improvements.php:879
 msgid "Primary Care"
 msgstr "Podstawowa opieka zdrowotna"
 
-#: includes/iworks/class-simple-seo-improvements.php:869
+#: includes/iworks/class-simple-seo-improvements.php:880
 msgid "Psychiatric"
 msgstr "Placówka zdrowia psychicznego"
 
-#: includes/iworks/class-simple-seo-improvements.php:870
+#: includes/iworks/class-simple-seo-improvements.php:881
 msgid "Public Health"
 msgstr "Placówka zdrowotna"
 
-#: includes/iworks/class-simple-seo-improvements.php:871
+#: includes/iworks/class-simple-seo-improvements.php:882
 msgid "Bowling Alleyt"
 msgstr "Kręgielnia"
 
-#: includes/iworks/class-simple-seo-improvements.php:872
+#: includes/iworks/class-simple-seo-improvements.php:883
 msgid "Exercise Gym"
 msgstr "Siłownia"
 
-#: includes/iworks/class-simple-seo-improvements.php:873
+#: includes/iworks/class-simple-seo-improvements.php:884
 msgid "Golf Course"
 msgstr "Pole golfowe"
 
-#: includes/iworks/class-simple-seo-improvements.php:875
+#: includes/iworks/class-simple-seo-improvements.php:886
 msgid "Public Swimming Pool"
 msgstr "Basen publiczny"
 
-#: includes/iworks/class-simple-seo-improvements.php:876
+#: includes/iworks/class-simple-seo-improvements.php:887
 msgid "Ski Resort"
 msgstr "Ośrodek narciarski"
 
-#: includes/iworks/class-simple-seo-improvements.php:877
+#: includes/iworks/class-simple-seo-improvements.php:888
 msgid "Sports Club"
 msgstr "Klub sportowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:878
+#: includes/iworks/class-simple-seo-improvements.php:889
 msgid "Stadium or Arena"
 msgstr "Stadion lub hala sportowa"
 
-#: includes/iworks/class-simple-seo-improvements.php:879
+#: includes/iworks/class-simple-seo-improvements.php:890
 msgid "Tennis Complex"
 msgstr "Kompleks tenisowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:881
+#: includes/iworks/class-simple-seo-improvements.php:892
 msgid "Bike Store"
 msgstr "Sklep z rowerami"
 
-#: includes/iworks/class-simple-seo-improvements.php:882
+#: includes/iworks/class-simple-seo-improvements.php:893
 msgid "Book Store"
 msgstr "Księgarnia"
 
-#: includes/iworks/class-simple-seo-improvements.php:883
+#: includes/iworks/class-simple-seo-improvements.php:894
 msgid "Clothing Store"
 msgstr "Sklep odzieżowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:884
+#: includes/iworks/class-simple-seo-improvements.php:895
 msgid "Computer Store"
 msgstr "Sklep komputerowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:885
+#: includes/iworks/class-simple-seo-improvements.php:896
 msgid "Convenience Store"
 msgstr "Sklep wielobranżowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:886
+#: includes/iworks/class-simple-seo-improvements.php:897
 msgid "Department Store"
 msgstr "Dom handlowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:887
+#: includes/iworks/class-simple-seo-improvements.php:898
 msgid "Electronics Store"
 msgstr "Sklep z elektroniką"
 
-#: includes/iworks/class-simple-seo-improvements.php:888
+#: includes/iworks/class-simple-seo-improvements.php:899
 msgid "Florist"
 msgstr "Kwiaciarnia"
 
-#: includes/iworks/class-simple-seo-improvements.php:889
+#: includes/iworks/class-simple-seo-improvements.php:900
 msgid "Furniture Store"
 msgstr "Sklep meblowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:890
+#: includes/iworks/class-simple-seo-improvements.php:901
 msgid "Garden Store"
 msgstr "Sklep ogrodniczy"
 
-#: includes/iworks/class-simple-seo-improvements.php:891
+#: includes/iworks/class-simple-seo-improvements.php:902
 msgid "Grocery Store"
 msgstr "Sklep spożywczy"
 
-#: includes/iworks/class-simple-seo-improvements.php:892
+#: includes/iworks/class-simple-seo-improvements.php:903
 msgid "Hardware Store"
 msgstr "Sklep z narzędziami"
 
-#: includes/iworks/class-simple-seo-improvements.php:893
+#: includes/iworks/class-simple-seo-improvements.php:904
 msgid "Hobby Shop"
 msgstr "Sklep dla hobby"
 
-#: includes/iworks/class-simple-seo-improvements.php:894
+#: includes/iworks/class-simple-seo-improvements.php:905
 msgid "Home Goods Store"
 msgstr "Sklep z artykułami domowymi"
 
-#: includes/iworks/class-simple-seo-improvements.php:895
+#: includes/iworks/class-simple-seo-improvements.php:906
 msgid "Jewelry Store"
 msgstr "Sklep jubilerski"
 
-#: includes/iworks/class-simple-seo-improvements.php:896
+#: includes/iworks/class-simple-seo-improvements.php:907
 msgid "Liquor Store"
 msgstr "Sklep monopolowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:897
+#: includes/iworks/class-simple-seo-improvements.php:908
 msgid "Mens Clothing Store"
 msgstr "Sklep z odzieżą męską"
 
-#: includes/iworks/class-simple-seo-improvements.php:898
+#: includes/iworks/class-simple-seo-improvements.php:909
 msgid "Mobile Phone Store"
 msgstr "Sklep z telefonami komórkowymi"
 
-#: includes/iworks/class-simple-seo-improvements.php:899
+#: includes/iworks/class-simple-seo-improvements.php:910
 msgid "Movie Rental Store"
 msgstr "Wypożyczalnia filmów"
 
-#: includes/iworks/class-simple-seo-improvements.php:900
+#: includes/iworks/class-simple-seo-improvements.php:911
 msgid "Music Store"
 msgstr "Sklep muzyczny"
 
-#: includes/iworks/class-simple-seo-improvements.php:901
+#: includes/iworks/class-simple-seo-improvements.php:912
 msgid "Office Equipment Store"
 msgstr "Sklep z wyposażeniem biurowym"
 
-#: includes/iworks/class-simple-seo-improvements.php:902
+#: includes/iworks/class-simple-seo-improvements.php:913
 msgid "Outlet Store"
 msgstr "Outlet"
 
-#: includes/iworks/class-simple-seo-improvements.php:903
+#: includes/iworks/class-simple-seo-improvements.php:914
 msgid "Pawn Shop"
 msgstr "Lombard"
 
-#: includes/iworks/class-simple-seo-improvements.php:904
+#: includes/iworks/class-simple-seo-improvements.php:915
 msgid "Pet Store"
 msgstr "Sklep zoologiczny"
 
-#: includes/iworks/class-simple-seo-improvements.php:905
+#: includes/iworks/class-simple-seo-improvements.php:916
 msgid "Shoe Store"
 msgstr "Sklep z butami"
 
-#: includes/iworks/class-simple-seo-improvements.php:906
+#: includes/iworks/class-simple-seo-improvements.php:917
 msgid "Sporting Goods Store"
 msgstr "Sklep sportowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:907
+#: includes/iworks/class-simple-seo-improvements.php:918
 msgid "Tire Shop"
 msgstr "Sklep z oponami"
 
-#: includes/iworks/class-simple-seo-improvements.php:908
+#: includes/iworks/class-simple-seo-improvements.php:919
 msgid "Toy Store"
 msgstr "Sklep z zabawkami"
 
-#: includes/iworks/class-simple-seo-improvements.php:909
+#: includes/iworks/class-simple-seo-improvements.php:920
 msgid "Wholesale Store"
 msgstr "Hurtownia"
 
-#: includes/iworks/class-simple-seo-improvements.php:929
+#: includes/iworks/class-simple-seo-improvements.php:940
 msgid "Afghanistan"
 msgstr "Afghanistan"
 
-#: includes/iworks/class-simple-seo-improvements.php:930
+#: includes/iworks/class-simple-seo-improvements.php:941
 msgid "Åland Islands"
 msgstr "Wyspy Alandzkie"
 
-#: includes/iworks/class-simple-seo-improvements.php:931
+#: includes/iworks/class-simple-seo-improvements.php:942
 msgid "Albania"
 msgstr "Albania"
 
-#: includes/iworks/class-simple-seo-improvements.php:932
+#: includes/iworks/class-simple-seo-improvements.php:943
 msgid "Algeria"
 msgstr "Algeria"
 
-#: includes/iworks/class-simple-seo-improvements.php:933
+#: includes/iworks/class-simple-seo-improvements.php:944
 msgid "American Samoa"
 msgstr "Samoa Amerykańskie"
 
-#: includes/iworks/class-simple-seo-improvements.php:934
+#: includes/iworks/class-simple-seo-improvements.php:945
 msgid "Andorra"
 msgstr "Andorra"
 
-#: includes/iworks/class-simple-seo-improvements.php:935
+#: includes/iworks/class-simple-seo-improvements.php:946
 msgid "Angola"
 msgstr "Angola"
 
-#: includes/iworks/class-simple-seo-improvements.php:936
+#: includes/iworks/class-simple-seo-improvements.php:947
 msgid "Anguilla"
 msgstr "Anguilla"
 
-#: includes/iworks/class-simple-seo-improvements.php:937
+#: includes/iworks/class-simple-seo-improvements.php:948
 msgid "Antarctica"
 msgstr "Antarktyda"
 
-#: includes/iworks/class-simple-seo-improvements.php:938
+#: includes/iworks/class-simple-seo-improvements.php:949
 msgid "Antigua and Barbuda"
 msgstr "Antigua i Barbuda"
 
-#: includes/iworks/class-simple-seo-improvements.php:939
+#: includes/iworks/class-simple-seo-improvements.php:950
 msgid "Argentina"
 msgstr "Argentyna"
 
-#: includes/iworks/class-simple-seo-improvements.php:940
+#: includes/iworks/class-simple-seo-improvements.php:951
 msgid "Armenia"
 msgstr "Armenia"
 
-#: includes/iworks/class-simple-seo-improvements.php:941
+#: includes/iworks/class-simple-seo-improvements.php:952
 msgid "Aruba"
 msgstr "Aruba"
 
-#: includes/iworks/class-simple-seo-improvements.php:942
+#: includes/iworks/class-simple-seo-improvements.php:953
 msgid "Australia"
 msgstr "Australia"
 
-#: includes/iworks/class-simple-seo-improvements.php:943
+#: includes/iworks/class-simple-seo-improvements.php:954
 msgid "Austria"
 msgstr "Austria"
 
-#: includes/iworks/class-simple-seo-improvements.php:944
+#: includes/iworks/class-simple-seo-improvements.php:955
 msgid "Azerbaijan"
 msgstr "Azerbaijan"
 
-#: includes/iworks/class-simple-seo-improvements.php:945
+#: includes/iworks/class-simple-seo-improvements.php:956
 msgid "Bahamas"
 msgstr "Bahamy"
 
-#: includes/iworks/class-simple-seo-improvements.php:946
+#: includes/iworks/class-simple-seo-improvements.php:957
 msgid "Bahrain"
 msgstr "Bahrain"
 
-#: includes/iworks/class-simple-seo-improvements.php:947
+#: includes/iworks/class-simple-seo-improvements.php:958
 msgid "Bangladesh"
 msgstr "Bangladesh"
 
-#: includes/iworks/class-simple-seo-improvements.php:948
+#: includes/iworks/class-simple-seo-improvements.php:959
 msgid "Barbados"
 msgstr "Barbados"
 
-#: includes/iworks/class-simple-seo-improvements.php:949
+#: includes/iworks/class-simple-seo-improvements.php:960
 msgid "Belarus"
 msgstr "Belarus"
 
-#: includes/iworks/class-simple-seo-improvements.php:950
+#: includes/iworks/class-simple-seo-improvements.php:961
 msgid "Belgium"
 msgstr "Belgia"
 
-#: includes/iworks/class-simple-seo-improvements.php:951
+#: includes/iworks/class-simple-seo-improvements.php:962
 msgid "Belize"
 msgstr "Belize"
 
-#: includes/iworks/class-simple-seo-improvements.php:952
+#: includes/iworks/class-simple-seo-improvements.php:963
 msgid "Benin"
 msgstr "Benin"
 
-#: includes/iworks/class-simple-seo-improvements.php:953
+#: includes/iworks/class-simple-seo-improvements.php:964
 msgid "Bermuda"
 msgstr "Bermuda"
 
-#: includes/iworks/class-simple-seo-improvements.php:954
+#: includes/iworks/class-simple-seo-improvements.php:965
 msgid "Bhutan"
 msgstr "Bhutan"
 
-#: includes/iworks/class-simple-seo-improvements.php:955
+#: includes/iworks/class-simple-seo-improvements.php:966
 msgid "Bolivia, Plurinational State of"
 msgstr "Wielonarodowe Państwo Boliwia"
 
-#: includes/iworks/class-simple-seo-improvements.php:956
+#: includes/iworks/class-simple-seo-improvements.php:967
 msgid "Bonaire, Sint Eustatius and Saba"
 msgstr "Bonaire, Sint Eustatius i Saba"
 
-#: includes/iworks/class-simple-seo-improvements.php:957
+#: includes/iworks/class-simple-seo-improvements.php:968
 msgid "Bosnia and Herzegovina"
 msgstr "Bośnia i Hercegowina"
 
-#: includes/iworks/class-simple-seo-improvements.php:958
+#: includes/iworks/class-simple-seo-improvements.php:969
 msgid "Botswana"
 msgstr "Botswana"
 
-#: includes/iworks/class-simple-seo-improvements.php:959
+#: includes/iworks/class-simple-seo-improvements.php:970
 msgid "Bouvet Island"
 msgstr "Wyspa Bouveta"
 
-#: includes/iworks/class-simple-seo-improvements.php:960
+#: includes/iworks/class-simple-seo-improvements.php:971
 msgid "Brazil"
 msgstr "Brazylia"
 
-#: includes/iworks/class-simple-seo-improvements.php:961
+#: includes/iworks/class-simple-seo-improvements.php:972
 msgid "British Indian Ocean Territory"
 msgstr "Brytyjskie Terytorium Oceanu Indyjskiego"
 
-#: includes/iworks/class-simple-seo-improvements.php:962
+#: includes/iworks/class-simple-seo-improvements.php:973
 msgid "Brunei Darussalam"
 msgstr "Państwo Brunei Darussalam"
 
-#: includes/iworks/class-simple-seo-improvements.php:963
+#: includes/iworks/class-simple-seo-improvements.php:974
 msgid "Bulgaria"
 msgstr "Bułgaria"
 
-#: includes/iworks/class-simple-seo-improvements.php:964
+#: includes/iworks/class-simple-seo-improvements.php:975
 msgid "Burkina Faso"
 msgstr "Burkina Faso"
 
-#: includes/iworks/class-simple-seo-improvements.php:965
+#: includes/iworks/class-simple-seo-improvements.php:976
 msgid "Burundi"
 msgstr "Burundi"
 
-#: includes/iworks/class-simple-seo-improvements.php:966
+#: includes/iworks/class-simple-seo-improvements.php:977
 msgid "Cabo Verde"
 msgstr "Republika Zielonego Przylądka"
 
-#: includes/iworks/class-simple-seo-improvements.php:967
+#: includes/iworks/class-simple-seo-improvements.php:978
 msgid "Cambodia"
 msgstr "Kambodża"
 
-#: includes/iworks/class-simple-seo-improvements.php:968
+#: includes/iworks/class-simple-seo-improvements.php:979
 msgid "Cameroon"
 msgstr "Kamerun"
 
-#: includes/iworks/class-simple-seo-improvements.php:969
+#: includes/iworks/class-simple-seo-improvements.php:980
 msgid "Canada"
 msgstr "Kanada"
 
-#: includes/iworks/class-simple-seo-improvements.php:970
+#: includes/iworks/class-simple-seo-improvements.php:981
 msgid "Cayman Islands"
 msgstr "Kajmany"
 
-#: includes/iworks/class-simple-seo-improvements.php:971
+#: includes/iworks/class-simple-seo-improvements.php:982
 msgid "Central African Republic"
 msgstr "Republika Środkowoafrykańska"
 
-#: includes/iworks/class-simple-seo-improvements.php:972
+#: includes/iworks/class-simple-seo-improvements.php:983
 msgid "Chad"
 msgstr "Chad"
 
-#: includes/iworks/class-simple-seo-improvements.php:973
+#: includes/iworks/class-simple-seo-improvements.php:984
 msgid "Chile"
 msgstr "Chile"
 
-#: includes/iworks/class-simple-seo-improvements.php:974
+#: includes/iworks/class-simple-seo-improvements.php:985
 msgid "China"
 msgstr "Chiny"
 
-#: includes/iworks/class-simple-seo-improvements.php:975
+#: includes/iworks/class-simple-seo-improvements.php:986
 msgid "Christmas Island"
 msgstr "Wyspa Bożego Narodzenia"
 
-#: includes/iworks/class-simple-seo-improvements.php:976
+#: includes/iworks/class-simple-seo-improvements.php:987
 msgid "Cocos (Keeling) Islands"
 msgstr "Wyspy Kokosowe"
 
-#: includes/iworks/class-simple-seo-improvements.php:977
+#: includes/iworks/class-simple-seo-improvements.php:988
 msgid "Colombia"
 msgstr "Colombia"
 
-#: includes/iworks/class-simple-seo-improvements.php:978
+#: includes/iworks/class-simple-seo-improvements.php:989
 msgid "Comoros"
 msgstr "Komory"
 
-#: includes/iworks/class-simple-seo-improvements.php:979
+#: includes/iworks/class-simple-seo-improvements.php:990
 msgid "Congo"
 msgstr "Kongo"
 
-#: includes/iworks/class-simple-seo-improvements.php:980
+#: includes/iworks/class-simple-seo-improvements.php:991
 msgid "Congo, Democratic Republic of the"
 msgstr "Demokratyczna Republika Konga"
 
-#: includes/iworks/class-simple-seo-improvements.php:981
+#: includes/iworks/class-simple-seo-improvements.php:992
 msgid "Cook Islands"
 msgstr "Wyspy Cooka"
 
-#: includes/iworks/class-simple-seo-improvements.php:982
+#: includes/iworks/class-simple-seo-improvements.php:993
 msgid "Costa Rica"
 msgstr "Kostaryka"
 
-#: includes/iworks/class-simple-seo-improvements.php:983
+#: includes/iworks/class-simple-seo-improvements.php:994
 msgid "Côte d'Ivoire"
 msgstr "Wybrzeże Kości Słoniowej"
 
-#: includes/iworks/class-simple-seo-improvements.php:984
+#: includes/iworks/class-simple-seo-improvements.php:995
 msgid "Croatia"
 msgstr "Chorwacja"
 
-#: includes/iworks/class-simple-seo-improvements.php:985
+#: includes/iworks/class-simple-seo-improvements.php:996
 msgid "Cuba"
 msgstr "Kuba"
 
-#: includes/iworks/class-simple-seo-improvements.php:986
+#: includes/iworks/class-simple-seo-improvements.php:997
 msgid "Curaçao"
 msgstr "Curaçao"
 
-#: includes/iworks/class-simple-seo-improvements.php:987
+#: includes/iworks/class-simple-seo-improvements.php:998
 msgid "Cyprus"
 msgstr "Cypr"
 
-#: includes/iworks/class-simple-seo-improvements.php:988
+#: includes/iworks/class-simple-seo-improvements.php:999
 msgid "Czechia"
 msgstr "Czechy"
 
-#: includes/iworks/class-simple-seo-improvements.php:989
+#: includes/iworks/class-simple-seo-improvements.php:1000
 msgid "Denmark"
 msgstr "Dania"
 
-#: includes/iworks/class-simple-seo-improvements.php:990
+#: includes/iworks/class-simple-seo-improvements.php:1001
 msgid "Djibouti"
 msgstr "Dżibuti"
 
-#: includes/iworks/class-simple-seo-improvements.php:991
+#: includes/iworks/class-simple-seo-improvements.php:1002
 msgid "Dominica"
 msgstr "Wspólnota Dominiki"
 
-#: includes/iworks/class-simple-seo-improvements.php:992
+#: includes/iworks/class-simple-seo-improvements.php:1003
 msgid "Dominican Republic"
 msgstr "Republika Dominikańska"
 
-#: includes/iworks/class-simple-seo-improvements.php:993
+#: includes/iworks/class-simple-seo-improvements.php:1004
 msgid "Ecuador"
 msgstr "Ekwador"
 
-#: includes/iworks/class-simple-seo-improvements.php:994
+#: includes/iworks/class-simple-seo-improvements.php:1005
 msgid "Egypt"
 msgstr "Egipt"
 
-#: includes/iworks/class-simple-seo-improvements.php:995
+#: includes/iworks/class-simple-seo-improvements.php:1006
 msgid "El Salvador"
 msgstr "Salwador"
 
-#: includes/iworks/class-simple-seo-improvements.php:996
+#: includes/iworks/class-simple-seo-improvements.php:1007
 msgid "Equatorial Guinea"
 msgstr "Gwinea Równikowa"
 
-#: includes/iworks/class-simple-seo-improvements.php:997
+#: includes/iworks/class-simple-seo-improvements.php:1008
 msgid "Eritrea"
 msgstr "Eritrea"
 
-#: includes/iworks/class-simple-seo-improvements.php:998
+#: includes/iworks/class-simple-seo-improvements.php:1009
 msgid "Estonia"
 msgstr "Estonia"
 
-#: includes/iworks/class-simple-seo-improvements.php:999
+#: includes/iworks/class-simple-seo-improvements.php:1010
 msgid "Eswatini"
 msgstr "Eswatini"
 
-#: includes/iworks/class-simple-seo-improvements.php:1000
+#: includes/iworks/class-simple-seo-improvements.php:1011
 msgid "Ethiopia"
 msgstr "Etiopia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1001
+#: includes/iworks/class-simple-seo-improvements.php:1012
 msgid "Falkland Islands( Malvinas )"
 msgstr "Falklandy (Malwiny)"
 
-#: includes/iworks/class-simple-seo-improvements.php:1002
+#: includes/iworks/class-simple-seo-improvements.php:1013
 msgid "Faroe Islands"
 msgstr "Faroe Islands"
 
-#: includes/iworks/class-simple-seo-improvements.php:1003
+#: includes/iworks/class-simple-seo-improvements.php:1014
 msgid "Fiji"
 msgstr "Fidżi"
 
-#: includes/iworks/class-simple-seo-improvements.php:1004
+#: includes/iworks/class-simple-seo-improvements.php:1015
 msgid "Finland"
 msgstr "Finland"
 
-#: includes/iworks/class-simple-seo-improvements.php:1005
+#: includes/iworks/class-simple-seo-improvements.php:1016
 msgid "France"
 msgstr "Francja"
 
-#: includes/iworks/class-simple-seo-improvements.php:1006
+#: includes/iworks/class-simple-seo-improvements.php:1017
 msgid "French Guiana"
 msgstr "Gujana Francuska"
 
-#: includes/iworks/class-simple-seo-improvements.php:1007
+#: includes/iworks/class-simple-seo-improvements.php:1018
 msgid "French Polynesia"
 msgstr "French Polynesia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1008
+#: includes/iworks/class-simple-seo-improvements.php:1019
 msgid "French Southern Territories"
 msgstr "Francuskie Terytoria Południowe"
 
-#: includes/iworks/class-simple-seo-improvements.php:1009
+#: includes/iworks/class-simple-seo-improvements.php:1020
 msgid "Gabon"
 msgstr "Republika Gabońska"
 
-#: includes/iworks/class-simple-seo-improvements.php:1010
+#: includes/iworks/class-simple-seo-improvements.php:1021
 msgid "Gambia"
 msgstr "Gambia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1011
+#: includes/iworks/class-simple-seo-improvements.php:1022
 msgid "Georgia"
 msgstr "Gruzja"
 
-#: includes/iworks/class-simple-seo-improvements.php:1012
+#: includes/iworks/class-simple-seo-improvements.php:1023
 msgid "Germany"
 msgstr "Germany"
 
-#: includes/iworks/class-simple-seo-improvements.php:1013
+#: includes/iworks/class-simple-seo-improvements.php:1024
 msgid "Ghana"
 msgstr "Ghana"
 
-#: includes/iworks/class-simple-seo-improvements.php:1014
+#: includes/iworks/class-simple-seo-improvements.php:1025
 msgid "Gibraltar"
 msgstr "Gibraltar"
 
-#: includes/iworks/class-simple-seo-improvements.php:1015
+#: includes/iworks/class-simple-seo-improvements.php:1026
 msgid "Greece"
 msgstr "Grecja"
 
-#: includes/iworks/class-simple-seo-improvements.php:1016
+#: includes/iworks/class-simple-seo-improvements.php:1027
 msgid "Greenland"
 msgstr "Grenlandia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1017
+#: includes/iworks/class-simple-seo-improvements.php:1028
 msgid "Grenada"
 msgstr "Grenada"
 
-#: includes/iworks/class-simple-seo-improvements.php:1018
+#: includes/iworks/class-simple-seo-improvements.php:1029
 msgid "Guadeloupe"
 msgstr "Gwadelupa"
 
-#: includes/iworks/class-simple-seo-improvements.php:1019
+#: includes/iworks/class-simple-seo-improvements.php:1030
 msgid "Guam"
 msgstr "Guam"
 
-#: includes/iworks/class-simple-seo-improvements.php:1020
+#: includes/iworks/class-simple-seo-improvements.php:1031
 msgid "Guatemala"
 msgstr "Gwatemala"
 
-#: includes/iworks/class-simple-seo-improvements.php:1021
+#: includes/iworks/class-simple-seo-improvements.php:1032
 msgid "Guernsey"
 msgstr "Guernsey"
 
-#: includes/iworks/class-simple-seo-improvements.php:1022
+#: includes/iworks/class-simple-seo-improvements.php:1033
 msgid "Guinea"
 msgstr "Guinea"
 
-#: includes/iworks/class-simple-seo-improvements.php:1023
+#: includes/iworks/class-simple-seo-improvements.php:1034
 msgid "Guinea - Bissau"
 msgstr "Gwinea Bissau"
 
-#: includes/iworks/class-simple-seo-improvements.php:1024
+#: includes/iworks/class-simple-seo-improvements.php:1035
 msgid "Guyana"
 msgstr "Guyana"
 
-#: includes/iworks/class-simple-seo-improvements.php:1025
+#: includes/iworks/class-simple-seo-improvements.php:1036
 msgid "Haiti"
 msgstr "Haiti"
 
-#: includes/iworks/class-simple-seo-improvements.php:1026
+#: includes/iworks/class-simple-seo-improvements.php:1037
 msgid "Heard Island and McDonald Islands"
 msgstr "Wyspy Heard i McDonald"
 
-#: includes/iworks/class-simple-seo-improvements.php:1027
+#: includes/iworks/class-simple-seo-improvements.php:1038
 msgid "Holy See"
 msgstr "Stolica Apostolska"
 
-#: includes/iworks/class-simple-seo-improvements.php:1028
+#: includes/iworks/class-simple-seo-improvements.php:1039
 msgid "Honduras"
 msgstr "Honduras"
 
-#: includes/iworks/class-simple-seo-improvements.php:1029
+#: includes/iworks/class-simple-seo-improvements.php:1040
 msgid "Hong Kong"
 msgstr "Hongkong"
 
-#: includes/iworks/class-simple-seo-improvements.php:1030
+#: includes/iworks/class-simple-seo-improvements.php:1041
 msgid "Hungary"
 msgstr "Węgry"
 
-#: includes/iworks/class-simple-seo-improvements.php:1031
+#: includes/iworks/class-simple-seo-improvements.php:1042
 msgid "Iceland"
 msgstr "Islandia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1032
+#: includes/iworks/class-simple-seo-improvements.php:1043
 msgid "India"
 msgstr "India"
 
-#: includes/iworks/class-simple-seo-improvements.php:1033
+#: includes/iworks/class-simple-seo-improvements.php:1044
 msgid "Indonesia"
 msgstr "Indonezja"
 
-#: includes/iworks/class-simple-seo-improvements.php:1034
+#: includes/iworks/class-simple-seo-improvements.php:1045
 msgid "Iran, Islamic Republic of"
 msgstr "Islamska Republika Iranu"
 
-#: includes/iworks/class-simple-seo-improvements.php:1035
+#: includes/iworks/class-simple-seo-improvements.php:1046
 msgid "Iraq"
 msgstr "Irak"
 
-#: includes/iworks/class-simple-seo-improvements.php:1036
+#: includes/iworks/class-simple-seo-improvements.php:1047
 msgid "Ireland"
 msgstr "Irlandia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1037
+#: includes/iworks/class-simple-seo-improvements.php:1048
 msgid "Isle of Man"
 msgstr "Wyspa Man"
 
-#: includes/iworks/class-simple-seo-improvements.php:1038
+#: includes/iworks/class-simple-seo-improvements.php:1049
 msgid "Israel"
 msgstr "Izrael"
 
-#: includes/iworks/class-simple-seo-improvements.php:1039
+#: includes/iworks/class-simple-seo-improvements.php:1050
 msgid "Italy"
 msgstr "Włochy"
 
-#: includes/iworks/class-simple-seo-improvements.php:1040
+#: includes/iworks/class-simple-seo-improvements.php:1051
 msgid "Jamaica"
 msgstr "Jamajka"
 
-#: includes/iworks/class-simple-seo-improvements.php:1041
+#: includes/iworks/class-simple-seo-improvements.php:1052
 msgid "Japan"
 msgstr "Japonia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1042
+#: includes/iworks/class-simple-seo-improvements.php:1053
 msgid "Jersey"
 msgstr "Jersey"
 
-#: includes/iworks/class-simple-seo-improvements.php:1043
+#: includes/iworks/class-simple-seo-improvements.php:1054
 msgid "Jordan"
 msgstr "Jordan"
 
-#: includes/iworks/class-simple-seo-improvements.php:1044
+#: includes/iworks/class-simple-seo-improvements.php:1055
 msgid "Kazakhstan"
 msgstr "Kazachstan"
 
-#: includes/iworks/class-simple-seo-improvements.php:1045
+#: includes/iworks/class-simple-seo-improvements.php:1056
 msgid "Kenya"
 msgstr "Kenya"
 
-#: includes/iworks/class-simple-seo-improvements.php:1046
+#: includes/iworks/class-simple-seo-improvements.php:1057
 msgid "Kiribati"
 msgstr "Kiribati"
 
-#: includes/iworks/class-simple-seo-improvements.php:1047
+#: includes/iworks/class-simple-seo-improvements.php:1058
 msgid "Korea, Democratic People's Republic of"
 msgstr "Koreańska Republika Ludowo-Demokratyczna"
 
-#: includes/iworks/class-simple-seo-improvements.php:1048
+#: includes/iworks/class-simple-seo-improvements.php:1059
 msgid "Korea, Republic of"
 msgstr "Korea Południowa"
 
-#: includes/iworks/class-simple-seo-improvements.php:1049
+#: includes/iworks/class-simple-seo-improvements.php:1060
 msgid "Kuwait"
 msgstr "Kuwejt"
 
-#: includes/iworks/class-simple-seo-improvements.php:1050
+#: includes/iworks/class-simple-seo-improvements.php:1061
 msgid "Kyrgyzstan"
 msgstr "Kyrgyzstan"
 
-#: includes/iworks/class-simple-seo-improvements.php:1051
+#: includes/iworks/class-simple-seo-improvements.php:1062
 msgid "Lao People's Democratic Republic"
 msgstr "Laos, Laotańska Republika Ludowo-Demokratyczna"
 
-#: includes/iworks/class-simple-seo-improvements.php:1052
+#: includes/iworks/class-simple-seo-improvements.php:1063
 msgid "Latvia"
 msgstr "Latvia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1053
+#: includes/iworks/class-simple-seo-improvements.php:1064
 msgid "Lebanon"
 msgstr "Liban"
 
-#: includes/iworks/class-simple-seo-improvements.php:1054
+#: includes/iworks/class-simple-seo-improvements.php:1065
 msgid "Lesotho"
 msgstr "Lesoto"
 
-#: includes/iworks/class-simple-seo-improvements.php:1055
+#: includes/iworks/class-simple-seo-improvements.php:1066
 msgid "Liberia"
 msgstr "Liberia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1056
+#: includes/iworks/class-simple-seo-improvements.php:1067
 msgid "Libya"
 msgstr "Libya"
 
-#: includes/iworks/class-simple-seo-improvements.php:1057
+#: includes/iworks/class-simple-seo-improvements.php:1068
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: includes/iworks/class-simple-seo-improvements.php:1058
+#: includes/iworks/class-simple-seo-improvements.php:1069
 msgid "Lithuania"
 msgstr "Lithuania"
 
-#: includes/iworks/class-simple-seo-improvements.php:1059
+#: includes/iworks/class-simple-seo-improvements.php:1070
 msgid "Luxembourg"
 msgstr "Luksemburg"
 
-#: includes/iworks/class-simple-seo-improvements.php:1060
+#: includes/iworks/class-simple-seo-improvements.php:1071
 msgid "Macao"
 msgstr "Makau"
 
-#: includes/iworks/class-simple-seo-improvements.php:1061
+#: includes/iworks/class-simple-seo-improvements.php:1072
 msgid "Madagascar"
 msgstr "Madagaskar"
 
-#: includes/iworks/class-simple-seo-improvements.php:1062
+#: includes/iworks/class-simple-seo-improvements.php:1073
 msgid "Malawi"
 msgstr "Malawi"
 
-#: includes/iworks/class-simple-seo-improvements.php:1063
+#: includes/iworks/class-simple-seo-improvements.php:1074
 msgid "Malaysia"
 msgstr "Malezja"
 
-#: includes/iworks/class-simple-seo-improvements.php:1064
+#: includes/iworks/class-simple-seo-improvements.php:1075
 msgid "Maldives"
 msgstr "Maldives"
 
-#: includes/iworks/class-simple-seo-improvements.php:1065
+#: includes/iworks/class-simple-seo-improvements.php:1076
 msgid "Mali"
 msgstr "Mali"
 
-#: includes/iworks/class-simple-seo-improvements.php:1066
+#: includes/iworks/class-simple-seo-improvements.php:1077
 msgid "Malta"
 msgstr "Malta"
 
-#: includes/iworks/class-simple-seo-improvements.php:1067
+#: includes/iworks/class-simple-seo-improvements.php:1078
 msgid "Marshall Islands"
 msgstr "Wyspy Marshalla"
 
-#: includes/iworks/class-simple-seo-improvements.php:1068
+#: includes/iworks/class-simple-seo-improvements.php:1079
 msgid "Martinique"
 msgstr "Martynika"
 
-#: includes/iworks/class-simple-seo-improvements.php:1069
+#: includes/iworks/class-simple-seo-improvements.php:1080
 msgid "Mauritania"
 msgstr "Mauritania"
 
-#: includes/iworks/class-simple-seo-improvements.php:1070
+#: includes/iworks/class-simple-seo-improvements.php:1081
 msgid "Mauritius"
 msgstr "Mauritius"
 
-#: includes/iworks/class-simple-seo-improvements.php:1071
+#: includes/iworks/class-simple-seo-improvements.php:1082
 msgid "Mayotte"
 msgstr "Majotta"
 
-#: includes/iworks/class-simple-seo-improvements.php:1072
+#: includes/iworks/class-simple-seo-improvements.php:1083
 msgid "Mexico"
 msgstr "Meksyk"
 
-#: includes/iworks/class-simple-seo-improvements.php:1073
+#: includes/iworks/class-simple-seo-improvements.php:1084
 msgid "Micronesia, Federated States of"
 msgstr "Mikronezja"
 
-#: includes/iworks/class-simple-seo-improvements.php:1074
+#: includes/iworks/class-simple-seo-improvements.php:1085
 msgid "Moldova, Republic of"
 msgstr "Mołdawia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1075
+#: includes/iworks/class-simple-seo-improvements.php:1086
 msgid "Monaco"
 msgstr "Monaco"
 
-#: includes/iworks/class-simple-seo-improvements.php:1076
+#: includes/iworks/class-simple-seo-improvements.php:1087
 msgid "Mongolia"
 msgstr "Mongolia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1077
+#: includes/iworks/class-simple-seo-improvements.php:1088
 msgid "Montenegro"
 msgstr "Czarnogóra"
 
-#: includes/iworks/class-simple-seo-improvements.php:1078
+#: includes/iworks/class-simple-seo-improvements.php:1089
 msgid "Montserrat"
 msgstr "Montserrat"
 
-#: includes/iworks/class-simple-seo-improvements.php:1079
+#: includes/iworks/class-simple-seo-improvements.php:1090
 msgid "Morocco"
 msgstr "Maroko"
 
-#: includes/iworks/class-simple-seo-improvements.php:1080
+#: includes/iworks/class-simple-seo-improvements.php:1091
 msgid "Mozambique"
 msgstr "Mozambique"
 
-#: includes/iworks/class-simple-seo-improvements.php:1081
+#: includes/iworks/class-simple-seo-improvements.php:1092
 msgid "Myanmar"
 msgstr "Mjanma"
 
-#: includes/iworks/class-simple-seo-improvements.php:1082
+#: includes/iworks/class-simple-seo-improvements.php:1093
 msgid "Namibia"
 msgstr "Namibia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1083
+#: includes/iworks/class-simple-seo-improvements.php:1094
 msgid "Nauru"
 msgstr "Nauru"
 
-#: includes/iworks/class-simple-seo-improvements.php:1084
+#: includes/iworks/class-simple-seo-improvements.php:1095
 msgid "Nepal"
 msgstr "Nepal"
 
-#: includes/iworks/class-simple-seo-improvements.php:1085
+#: includes/iworks/class-simple-seo-improvements.php:1096
 msgid "Netherlands, Kingdom of the"
 msgstr "Niderlandy, Królestwo"
 
-#: includes/iworks/class-simple-seo-improvements.php:1086
+#: includes/iworks/class-simple-seo-improvements.php:1097
 msgid "New Caledonia"
 msgstr "Nowa Kaledonia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1087
+#: includes/iworks/class-simple-seo-improvements.php:1098
 msgid "New Zealand"
 msgstr "Nowa Zelandia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1088
+#: includes/iworks/class-simple-seo-improvements.php:1099
 msgid "Nicaragua"
 msgstr "Nikaragua"
 
-#: includes/iworks/class-simple-seo-improvements.php:1089
+#: includes/iworks/class-simple-seo-improvements.php:1100
 msgid "Niger"
 msgstr "Niger"
 
-#: includes/iworks/class-simple-seo-improvements.php:1090
+#: includes/iworks/class-simple-seo-improvements.php:1101
 msgid "Nigeria"
 msgstr "Nigeria"
 
-#: includes/iworks/class-simple-seo-improvements.php:1091
+#: includes/iworks/class-simple-seo-improvements.php:1102
 msgid "Niue"
 msgstr "Niue"
 
-#: includes/iworks/class-simple-seo-improvements.php:1092
+#: includes/iworks/class-simple-seo-improvements.php:1103
 msgid "Norfolk Island"
 msgstr "Norfolk"
 
-#: includes/iworks/class-simple-seo-improvements.php:1093
+#: includes/iworks/class-simple-seo-improvements.php:1104
 msgid "North Macedonia"
 msgstr "Macedonia Północna"
 
-#: includes/iworks/class-simple-seo-improvements.php:1094
+#: includes/iworks/class-simple-seo-improvements.php:1105
 msgid "Northern Mariana Islands"
 msgstr "Mariany Północne"
 
-#: includes/iworks/class-simple-seo-improvements.php:1095
+#: includes/iworks/class-simple-seo-improvements.php:1106
 msgid "Norway"
 msgstr "Norwegia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1096
+#: includes/iworks/class-simple-seo-improvements.php:1107
 msgid "Oman"
 msgstr "Oman"
 
-#: includes/iworks/class-simple-seo-improvements.php:1097
+#: includes/iworks/class-simple-seo-improvements.php:1108
 msgid "Pakistan"
 msgstr "Pakistan"
 
-#: includes/iworks/class-simple-seo-improvements.php:1098
+#: includes/iworks/class-simple-seo-improvements.php:1109
 msgid "Palau"
 msgstr "Palau"
 
-#: includes/iworks/class-simple-seo-improvements.php:1099
+#: includes/iworks/class-simple-seo-improvements.php:1110
 msgid "Palestine, State of"
 msgstr "Autonomia Palestyńska"
 
-#: includes/iworks/class-simple-seo-improvements.php:1100
+#: includes/iworks/class-simple-seo-improvements.php:1111
 msgid "Panama"
 msgstr "Panama"
 
-#: includes/iworks/class-simple-seo-improvements.php:1101
+#: includes/iworks/class-simple-seo-improvements.php:1112
 msgid "Papua New Guinea"
 msgstr "Papua-Nowa Gwinea"
 
-#: includes/iworks/class-simple-seo-improvements.php:1102
+#: includes/iworks/class-simple-seo-improvements.php:1113
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: includes/iworks/class-simple-seo-improvements.php:1103
+#: includes/iworks/class-simple-seo-improvements.php:1114
 msgid "Peru"
 msgstr "Peru"
 
-#: includes/iworks/class-simple-seo-improvements.php:1104
+#: includes/iworks/class-simple-seo-improvements.php:1115
 msgid "Philippines"
 msgstr "Philippines"
 
-#: includes/iworks/class-simple-seo-improvements.php:1105
+#: includes/iworks/class-simple-seo-improvements.php:1116
 msgid "Pitcairn"
 msgstr "Pitcairn"
 
-#: includes/iworks/class-simple-seo-improvements.php:1106
+#: includes/iworks/class-simple-seo-improvements.php:1117
 msgid "Poland"
 msgstr "Polska"
 
-#: includes/iworks/class-simple-seo-improvements.php:1107
+#: includes/iworks/class-simple-seo-improvements.php:1118
 msgid "Portugal"
 msgstr "Portugalia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1108
+#: includes/iworks/class-simple-seo-improvements.php:1119
 msgid "Puerto Rico"
 msgstr "Portoryko"
 
-#: includes/iworks/class-simple-seo-improvements.php:1109
+#: includes/iworks/class-simple-seo-improvements.php:1120
 msgid "Qatar"
 msgstr "Katar"
 
-#: includes/iworks/class-simple-seo-improvements.php:1110
+#: includes/iworks/class-simple-seo-improvements.php:1121
 msgid "Réunion"
 msgstr "Reunion"
 
-#: includes/iworks/class-simple-seo-improvements.php:1111
+#: includes/iworks/class-simple-seo-improvements.php:1122
 msgid "Romania"
 msgstr "Rumunia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1112
+#: includes/iworks/class-simple-seo-improvements.php:1123
 msgid "Russian Federation"
 msgstr "Rosja"
 
-#: includes/iworks/class-simple-seo-improvements.php:1113
+#: includes/iworks/class-simple-seo-improvements.php:1124
 msgid "Rwanda"
 msgstr "Rwanda"
 
-#: includes/iworks/class-simple-seo-improvements.php:1114
+#: includes/iworks/class-simple-seo-improvements.php:1125
 msgid "Saint Barthélemy"
 msgstr "Saint Barthélemy"
 
-#: includes/iworks/class-simple-seo-improvements.php:1115
+#: includes/iworks/class-simple-seo-improvements.php:1126
 msgid "Saint Helena, Ascension and Tristan da Cunha"
 msgstr "Wyspa Świętej Heleny"
 
-#: includes/iworks/class-simple-seo-improvements.php:1116
+#: includes/iworks/class-simple-seo-improvements.php:1127
 msgid "Saint Kitts and Nevis"
 msgstr "Saint Kitts i Nevis"
 
-#: includes/iworks/class-simple-seo-improvements.php:1117
+#: includes/iworks/class-simple-seo-improvements.php:1128
 msgid "Saint Lucia"
 msgstr "Saint Lucia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1118
+#: includes/iworks/class-simple-seo-improvements.php:1129
 msgid "Saint Martin (French part)"
 msgstr "Saint-Martin"
 
-#: includes/iworks/class-simple-seo-improvements.php:1119
+#: includes/iworks/class-simple-seo-improvements.php:1130
 msgid "Saint Pierre and Miquelon"
 msgstr "Saint-Pierre i Miquelon"
 
-#: includes/iworks/class-simple-seo-improvements.php:1120
+#: includes/iworks/class-simple-seo-improvements.php:1131
 msgid "Saint Vincent and the Grenadines"
 msgstr "Saint Vincent and the Grenadines"
 
-#: includes/iworks/class-simple-seo-improvements.php:1121
+#: includes/iworks/class-simple-seo-improvements.php:1132
 msgid "Samoa"
 msgstr "Samoa"
 
-#: includes/iworks/class-simple-seo-improvements.php:1122
+#: includes/iworks/class-simple-seo-improvements.php:1133
 msgid "San Marino"
 msgstr "San Marino"
 
-#: includes/iworks/class-simple-seo-improvements.php:1123
+#: includes/iworks/class-simple-seo-improvements.php:1134
 msgid "Sao Tome and Principe"
 msgstr "Wyspy Świętego Tomasza i Książęca"
 
-#: includes/iworks/class-simple-seo-improvements.php:1124
+#: includes/iworks/class-simple-seo-improvements.php:1135
 msgid "Saudi Arabia"
 msgstr "Saudi Arabia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1125
+#: includes/iworks/class-simple-seo-improvements.php:1136
 msgid "Senegal"
 msgstr "Senegal"
 
-#: includes/iworks/class-simple-seo-improvements.php:1126
+#: includes/iworks/class-simple-seo-improvements.php:1137
 msgid "Serbia"
 msgstr "Serbia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1127
+#: includes/iworks/class-simple-seo-improvements.php:1138
 msgid "Seychelles"
 msgstr "Seychelles"
 
-#: includes/iworks/class-simple-seo-improvements.php:1128
+#: includes/iworks/class-simple-seo-improvements.php:1139
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#: includes/iworks/class-simple-seo-improvements.php:1129
+#: includes/iworks/class-simple-seo-improvements.php:1140
 msgid "Singapore"
 msgstr "Singapur"
 
-#: includes/iworks/class-simple-seo-improvements.php:1130
+#: includes/iworks/class-simple-seo-improvements.php:1141
 msgid "Sint Maarten (Dutch part)"
 msgstr "Sint Maarten"
 
-#: includes/iworks/class-simple-seo-improvements.php:1131
+#: includes/iworks/class-simple-seo-improvements.php:1142
 msgid "Slovakia"
 msgstr "Słowacja"
 
-#: includes/iworks/class-simple-seo-improvements.php:1132
+#: includes/iworks/class-simple-seo-improvements.php:1143
 msgid "Slovenia"
 msgstr "Słowenia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1133
+#: includes/iworks/class-simple-seo-improvements.php:1144
 msgid "Solomon Islands"
 msgstr "Solomon Islands"
 
-#: includes/iworks/class-simple-seo-improvements.php:1134
+#: includes/iworks/class-simple-seo-improvements.php:1145
 msgid "Somalia"
 msgstr "Somalia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1135
+#: includes/iworks/class-simple-seo-improvements.php:1146
 msgid "South Africa"
 msgstr "Republika Południowej Afryki"
 
-#: includes/iworks/class-simple-seo-improvements.php:1136
+#: includes/iworks/class-simple-seo-improvements.php:1147
 msgid "South Georgia and the South Sandwich Islands"
 msgstr "South Georgia and the South Sandwich Islands"
 
-#: includes/iworks/class-simple-seo-improvements.php:1137
+#: includes/iworks/class-simple-seo-improvements.php:1148
 msgid "South Sudan"
 msgstr "Sudan Południowy"
 
-#: includes/iworks/class-simple-seo-improvements.php:1138
+#: includes/iworks/class-simple-seo-improvements.php:1149
 msgid "Spain"
 msgstr "Hiszpania"
 
-#: includes/iworks/class-simple-seo-improvements.php:1139
+#: includes/iworks/class-simple-seo-improvements.php:1150
 msgid "Sri Lanka"
 msgstr "Sri Lanka"
 
-#: includes/iworks/class-simple-seo-improvements.php:1140
+#: includes/iworks/class-simple-seo-improvements.php:1151
 msgid "Sudan"
 msgstr "Sudan"
 
-#: includes/iworks/class-simple-seo-improvements.php:1141
+#: includes/iworks/class-simple-seo-improvements.php:1152
 msgid "Suriname"
 msgstr "Suriname"
 
-#: includes/iworks/class-simple-seo-improvements.php:1142
+#: includes/iworks/class-simple-seo-improvements.php:1153
 msgid "Svalbard and Jan Mayen"
 msgstr "Svalbard i Jan Mayen"
 
-#: includes/iworks/class-simple-seo-improvements.php:1143
+#: includes/iworks/class-simple-seo-improvements.php:1154
 msgid "Sweden"
 msgstr "Szwecja"
 
-#: includes/iworks/class-simple-seo-improvements.php:1144
+#: includes/iworks/class-simple-seo-improvements.php:1155
 msgid "Switzerland"
 msgstr "Szwajcaria"
 
-#: includes/iworks/class-simple-seo-improvements.php:1145
+#: includes/iworks/class-simple-seo-improvements.php:1156
 msgid "Syrian Arab Republic"
 msgstr "Syryjska Republika Arabska"
 
-#: includes/iworks/class-simple-seo-improvements.php:1146
+#: includes/iworks/class-simple-seo-improvements.php:1157
 msgid "Taiwan, Province of China"
 msgstr "Tajwan, prowincja Chin"
 
-#: includes/iworks/class-simple-seo-improvements.php:1147
+#: includes/iworks/class-simple-seo-improvements.php:1158
 msgid "Tajikistan"
 msgstr "Tadżykistan"
 
-#: includes/iworks/class-simple-seo-improvements.php:1148
+#: includes/iworks/class-simple-seo-improvements.php:1159
 msgid "Tanzania, United Republic of"
 msgstr "Zjednoczona Republika Tanzanii"
 
-#: includes/iworks/class-simple-seo-improvements.php:1149
+#: includes/iworks/class-simple-seo-improvements.php:1160
 msgid "Thailand"
 msgstr "Tajlandia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1150
+#: includes/iworks/class-simple-seo-improvements.php:1161
 msgid "Timor-Leste"
 msgstr "Timor Wschodni"
 
-#: includes/iworks/class-simple-seo-improvements.php:1151
+#: includes/iworks/class-simple-seo-improvements.php:1162
 msgid "Togo"
 msgstr "Togo"
 
-#: includes/iworks/class-simple-seo-improvements.php:1152
+#: includes/iworks/class-simple-seo-improvements.php:1163
 msgid "Tokelau"
 msgstr "Tokelau"
 
-#: includes/iworks/class-simple-seo-improvements.php:1153
+#: includes/iworks/class-simple-seo-improvements.php:1164
 msgid "Tonga"
 msgstr "Tonga"
 
-#: includes/iworks/class-simple-seo-improvements.php:1154
+#: includes/iworks/class-simple-seo-improvements.php:1165
 msgid "Trinidad and Tobago"
 msgstr "Trynidad i Tobago"
 
-#: includes/iworks/class-simple-seo-improvements.php:1155
+#: includes/iworks/class-simple-seo-improvements.php:1166
 msgid "Tunisia"
 msgstr "Tunisia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1156
+#: includes/iworks/class-simple-seo-improvements.php:1167
 msgid "Türkiye"
 msgstr "Turcja"
 
-#: includes/iworks/class-simple-seo-improvements.php:1157
+#: includes/iworks/class-simple-seo-improvements.php:1168
 msgid "Turkmenistan"
 msgstr "Turkmenia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1158
+#: includes/iworks/class-simple-seo-improvements.php:1169
 msgid "Turks and Caicos Islands"
 msgstr "Turks i Caicos"
 
-#: includes/iworks/class-simple-seo-improvements.php:1159
+#: includes/iworks/class-simple-seo-improvements.php:1170
 msgid "Tuvalu"
 msgstr "Tuvalu"
 
-#: includes/iworks/class-simple-seo-improvements.php:1160
+#: includes/iworks/class-simple-seo-improvements.php:1171
 msgid "Uganda"
 msgstr "Uganda"
 
-#: includes/iworks/class-simple-seo-improvements.php:1161
+#: includes/iworks/class-simple-seo-improvements.php:1172
 msgid "Ukraine"
 msgstr "Ukraina"
 
-#: includes/iworks/class-simple-seo-improvements.php:1162
+#: includes/iworks/class-simple-seo-improvements.php:1173
 msgid "United Arab Emirates"
 msgstr "Zjednoczone Emiraty Arabskie"
 
-#: includes/iworks/class-simple-seo-improvements.php:1163
+#: includes/iworks/class-simple-seo-improvements.php:1174
 msgid "United Kingdom of Great Britain and Northern Ireland"
 msgstr "Zjednoczone Królestwo Wielkiej Brytanii i Irlandii Północnej"
 
-#: includes/iworks/class-simple-seo-improvements.php:1164
+#: includes/iworks/class-simple-seo-improvements.php:1175
 msgid "United States of America"
 msgstr "Stany Zjednoczone"
 
-#: includes/iworks/class-simple-seo-improvements.php:1165
+#: includes/iworks/class-simple-seo-improvements.php:1176
 msgid "United States Minor Outlying Islands"
 msgstr "Dalekie Wyspy Mniejsze Stanów Zjednoczonych"
 
-#: includes/iworks/class-simple-seo-improvements.php:1166
+#: includes/iworks/class-simple-seo-improvements.php:1177
 msgid "Uruguay"
 msgstr "Urugwaj"
 
-#: includes/iworks/class-simple-seo-improvements.php:1167
+#: includes/iworks/class-simple-seo-improvements.php:1178
 msgid "Uzbekistan"
 msgstr "Uzbekistan"
 
-#: includes/iworks/class-simple-seo-improvements.php:1168
+#: includes/iworks/class-simple-seo-improvements.php:1179
 msgid "Vanuatu"
 msgstr "Wanuatu"
 
-#: includes/iworks/class-simple-seo-improvements.php:1169
+#: includes/iworks/class-simple-seo-improvements.php:1180
 msgid "Venezuela, Bolivarian Republic of"
 msgstr "Wenezuela, Republika Boliwii"
 
-#: includes/iworks/class-simple-seo-improvements.php:1170
+#: includes/iworks/class-simple-seo-improvements.php:1181
 msgid "Viet Nam"
 msgstr "Wietnam"
 
-#: includes/iworks/class-simple-seo-improvements.php:1171
+#: includes/iworks/class-simple-seo-improvements.php:1182
 msgid "Virgin Islands (British)"
 msgstr "Wyspy Dziewicze (Wielka Brytania)"
 
-#: includes/iworks/class-simple-seo-improvements.php:1172
+#: includes/iworks/class-simple-seo-improvements.php:1183
 msgid "Virgin Islands (U.S.)"
 msgstr "Wyspy Dziewicze (USA)"
 
-#: includes/iworks/class-simple-seo-improvements.php:1173
+#: includes/iworks/class-simple-seo-improvements.php:1184
 msgid "Wallis and Futuna"
 msgstr "Wallis i Futuna"
 
-#: includes/iworks/class-simple-seo-improvements.php:1174
+#: includes/iworks/class-simple-seo-improvements.php:1185
 msgid "Western Sahara"
 msgstr "Sahara Zachodnia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1175
+#: includes/iworks/class-simple-seo-improvements.php:1186
 msgid "Yemen"
 msgstr "Jemen"
 
-#: includes/iworks/class-simple-seo-improvements.php:1176
+#: includes/iworks/class-simple-seo-improvements.php:1187
 msgid "Zambia"
 msgstr "Zambia"
 
-#: includes/iworks/class-simple-seo-improvements.php:1177
+#: includes/iworks/class-simple-seo-improvements.php:1188
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 

@@ -26,9 +26,9 @@ if ( class_exists( 'iworks_simple_seo_improvements_index_now' ) ) {
 	return;
 }
 
-require_once dirname( dirname( __FILE__ ) ) . '/class-base.php';
+require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php';
 
-class iworks_simple_seo_improvements_index_now extends iworks_simple_seo_improvements_base {
+class iworks_simple_seo_improvements_index_now extends iworks_simple_seo_improvements_base_abstract {
 
 	/**
 	 * bing api key

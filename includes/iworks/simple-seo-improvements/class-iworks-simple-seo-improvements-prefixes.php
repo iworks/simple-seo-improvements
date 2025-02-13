@@ -33,9 +33,9 @@ if ( class_exists( 'iworks_simple_seo_improvements_prefixes' ) ) {
 	return;
 }
 
-require_once dirname( __FILE__ ) . '/class-base.php';
+require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php';
 
-class iworks_simple_seo_improvements_prefixes extends iworks_simple_seo_improvements_base {
+class iworks_simple_seo_improvements_prefixes extends iworks_simple_seo_improvements_base_abstract {
 
 	public function __construct( $iworks ) {
 		$this->options = get_iworks_simple_seo_improvements_options();

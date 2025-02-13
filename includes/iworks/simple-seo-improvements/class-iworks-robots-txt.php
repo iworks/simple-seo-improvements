@@ -26,9 +26,9 @@ if ( class_exists( 'iworks_simple_seo_improvements_robots_txt' ) ) {
 	return;
 }
 
-require_once dirname( __FILE__ ) . '/class-base.php';
+require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php';
 
-class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improvements_base {
+class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improvements_base_abstract {
 
 	public function __construct() {
 		add_filter( 'robots_txt', array( $this, 'filter_robots_txt_add' ), 11, 2 );

@@ -27,7 +27,7 @@ if ( class_exists( 'iworks' ) ) {
 	return;
 }
 
-class iworks {
+class iworks_simple_seo_improvements_base {
 
 	protected $dev;
 	protected $meta_prefix = '_';
@@ -40,7 +40,7 @@ class iworks {
 		 * static settings
 		 */
 		$this->dev  = ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE ) ? '' : '.min';
-		$this->base = dirname( __FILE__ );
+		$this->base = dirname( dirname( __FILE__ ) );
 		$this->dir  = basename( dirname( $this->base ) );
 	}
 
