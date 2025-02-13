@@ -1,7 +1,7 @@
 === PLUGIN_TITLE ===
 Contributors: iworks
 Donate link: https://ko-fi.com/iworks?utm_source=simple-seo-improvements&utm_medium=readme-donate
-Tags: seo, robots, meta robots, meta description, google search console. facebook, twitter, category, tag
+Tags: seo, schema, json-ld, google search console, meta data
 Requires at least: PLUGIN_REQUIRES_WORDPRESS
 Tested up to: PLUGIN_TESTED_WORDPRESS
 Stable tag: PLUGIN_VERSION
@@ -105,6 +105,12 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 == Changelog ==
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
+
+= 2.1.1 (2025-02-13) =
+* The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.5.
+* The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.2.3.
+* The `_load_textdomain_just_in_time()` notice has been fixed. [#6](https://github.com/iworks/wp-sitemap-control/issues/6).
+* The build process has been improved.
 
 = 2.1.0 (2025-01-26) =
 * Multiple `LocalBusiness` `Type` have been added.
@@ -316,4 +322,7 @@ Project maintained on github at [iworks/simple-seo-improvements](https://github.
 * Added HTML meta `robots` for taxonomies.
 
 == Upgrade Notice ==
+
+= 2.1.0 =
+After the upgrade please visit the settings page and LocalBusiness Page to select a country.
 
