@@ -1,28 +1,17 @@
-# Copyright (C) 2025 AUTHOR_NAME
-# This file is distributed under the GPL v2 or later.
+# Translation of Plugins - Simple SEO Improvements - Development (trunk) in Swedish
+# This file is distributed under the same license as the Plugins - Simple SEO Improvements - Development (trunk) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.0\n"
+"Project-Id-Version: Plugins - Simple SEO Improvements - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
 "POT-Creation-Date: 2025-02-13 19:19:50+00:00\n"
+"PO-Revision-Date: 2023-11-01 10:54:33+0000\n"
+"Language: sv_SE\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
-"Language-Team: iWorks <support@iworks.pl>\n"
-"Language: en\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Country: United States\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Bookmarks: \n"
-"X-Textdomain-Support: yes\n"
-"X-Generator: grunt-wp-i18n 1.0.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
 
 #: assets/templates/meta-boxes/localbusiness.php:55
 msgid "Delete Local Business Type"
@@ -46,15 +35,15 @@ msgstr ""
 
 #: etc/options.php:11
 msgid "Simple SEO Improvements Configuration"
-msgstr ""
+msgstr "Konfiguration för ”Simple SEO Improvements”"
 
 #: etc/options.php:12
 msgid "SEO Improvements"
-msgstr ""
+msgstr "SEO-förbättringar"
 
 #: etc/options.php:21
 msgid "General"
-msgstr ""
+msgstr "Allmänt"
 
 #: etc/options.php:25
 msgid "Appearance"
@@ -70,33 +59,34 @@ msgstr ""
 
 #: etc/options.php:46
 msgid "Home meta description"
-msgstr ""
+msgstr "Startsidans metabeskrivning"
 
 #: etc/options.php:47
 msgid ""
-"This field is avaialble only when your homepage show blog posts not as a "
-"page"
+"This field is avaialble only when your homepage show blog posts not as a page"
 msgstr ""
+"Detta fält är endast tillgängligt när din startsida visar blogginlägg utan "
+"att vara en sida"
 
 #: etc/options.php:61
 msgid "Remove category URL prefix"
-msgstr ""
+msgstr "Ta bort URL-prefix för kategorier"
 
 #: etc/options.php:65
 msgid "Turn it on to remove the category prefix."
-msgstr ""
+msgstr "Aktivera detta för att ta bort kategoriprefixet."
 
 #: etc/options.php:72
 msgid "Remove tag URL prefix"
-msgstr ""
+msgstr "Ta bort URL-prefix för etiketter"
 
 #: etc/options.php:76
 msgid "Turn it on to remove the tag prefix."
-msgstr ""
+msgstr "Aktivera detta för att ta bort etikettprefixet."
 
 #: etc/options.php:87
 msgid "Social Media"
-msgstr ""
+msgstr "Sociala medier"
 
 #: etc/options.php:88
 msgid ""
@@ -107,25 +97,27 @@ msgstr ""
 
 #: etc/options.php:93
 msgid "Facebook app ID"
-msgstr ""
+msgstr "Facebook App-ID"
 
 #: etc/options.php:95
 msgid ""
 "A Facebook App ID is a unique number that identifies your app when you "
 "request ads from Audience Network."
 msgstr ""
+"Ett Facebook-APP-ID är ett unikt nummer som identifierar din app när du "
+"begär annonser från ”Audience Network”."
 
 #: etc/options.php:100
 msgid "Twitter site"
-msgstr ""
+msgstr "Twitter-webbplats"
 
 #: etc/options.php:103
 msgid "@username for the website used in the card footer."
-msgstr ""
+msgstr "Webbplatsens @anvandarnamn som används i kortets sidfot."
 
 #: etc/options.php:112
 msgid "Other"
-msgstr ""
+msgstr "Övrigt"
 
 #: etc/options.php:117
 msgid "Post types"
@@ -168,13 +160,13 @@ msgstr ""
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:302
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:115
 msgid "Robots"
-msgstr ""
+msgstr "Robotar"
 
 #: etc/options.php:160
 msgid ""
 "A robots.txt is nothing but a text file instructs robots, such as search "
-"engine robots, how to crawl and index pages on their website. You can "
-"block/allow good or bad bots that follow your robots.txt file."
+"engine robots, how to crawl and index pages on their website. You can block/"
+"allow good or bad bots that follow your robots.txt file."
 msgstr ""
 
 #: etc/options.php:161
@@ -183,13 +175,15 @@ msgstr ""
 
 #: etc/options.php:172
 msgid "Improve robots.txt"
-msgstr ""
+msgstr "Förbättra robots.txt"
 
 #: etc/options.php:176
 msgid ""
 "A robots.txt file tells search engine crawlers which URLs the crawler can "
 "access on your site."
 msgstr ""
+"En robots.txt-fil berättar för sökmotorernas sökrobotar vilka URL:er "
+"sökroboten kan komma åt på din webbplats."
 
 #: etc/options.php:186
 msgid "Disallow:"
@@ -209,7 +203,7 @@ msgstr ""
 
 #: etc/options.php:220
 msgid "IndexNow for Bing"
-msgstr ""
+msgstr "IndexNow för Bing"
 
 #: etc/options.php:224
 msgid ""
@@ -253,11 +247,10 @@ msgstr ""
 #: etc/options.php:275
 msgid ""
 "Use a maximum of [number] characters as a textual snippet for this search "
-"result. If you don't specify this rule, Google will choose the length of "
-"the snippet. Set -1 and Google will choose the snippet length that it "
-"believes is most effective to help users discover your content and direct "
-"users to your site. Set 0 - no snippet is to be shown. Equivalent to "
-"nosnippet."
+"result. If you don't specify this rule, Google will choose the length of the "
+"snippet. Set -1 and Google will choose the snippet length that it believes "
+"is most effective to help users discover your content and direct users to "
+"your site. Set 0 - no snippet is to be shown. Equivalent to nosnippet."
 msgstr ""
 
 #: etc/options.php:285
@@ -436,72 +429,82 @@ msgstr ""
 
 #: etc/options.php:521
 msgid "Custom Code"
-msgstr ""
+msgstr "Anpassad kod"
 
 #: etc/options.php:522
 msgid ""
 "Use these settings to insert code from Google Tag Manager, Google Analytics "
 "or webmaster tools verification."
 msgstr ""
+"Använd dessa inställningar för att infoga kod från Google Tag Manager, "
+"Google Analytics eller verifiering av verktyg för webbansvariga."
 
 #: etc/options.php:527
 msgid "Header Code"
-msgstr ""
+msgstr "Kod i sidhuvudet"
 
 #: etc/options.php:528
 msgid ""
 "Code entered in this box will be printed in the <code>&lt;head&gt;</code> "
 "section."
 msgstr ""
+"Koden som skrivs in i denna ruta kommer att skrivas ut i sektionen <code>&lt;"
+"head&gt;</code>."
 
 #: etc/options.php:538
 msgid "Body Start"
-msgstr ""
+msgstr "Start av body"
 
 #: etc/options.php:539
 msgid ""
-"Code entered in this box will be printed after the opening "
-"<code>&lt;body&gt;</code> tag."
+"Code entered in this box will be printed after the opening <code>&lt;body&gt;"
+"</code> tag."
 msgstr ""
+"Koden som anges i denna ruta kommer att skrivas ut efter den inledande "
+"<code>&lt;body&gt;</code>-taggen."
 
 #: etc/options.php:549
 msgid "Body End"
-msgstr ""
+msgstr "Slutet av body"
 
 #: etc/options.php:550
 msgid ""
-"Code entered in this box will be printed before the closing "
-"<code>&lt;/body&gt;</code> tag."
+"Code entered in this box will be printed before the closing <code>&lt;/"
+"body&gt;</code> tag."
 msgstr ""
+"Koden som skrivs in i denna ruta kommer att skrivas ut precis innan "
+"sektionen <code>&lt;/body&gt;</code> avslutas."
 
 #: etc/options.php:560 etc/options.php:614
 msgid "We are waiting for your message"
-msgstr ""
+msgstr "Vi ser fram emot ditt meddelande"
 
 #: etc/options.php:566
 msgid "I love what I do!"
-msgstr ""
+msgstr "Jag älskar det jag gör!"
 
 #: etc/options.php:598
 msgid "Below are some links to help spread this plugin to other users"
 msgstr ""
+"Nedan finns några länkar som hjälper till att sprida detta tillägg till "
+"andra användare"
 
 #: etc/options.php:600
 msgid "Give it a five stars on WordPress.org"
-msgstr ""
+msgstr "Ge det 5 stjärnor på WordPress.org"
 
 #: etc/options.php:601
 msgid "Link to it so others can easily find it"
-msgstr ""
+msgstr "Länka till det så att andra enkelt kan hitta det"
 
 #: etc/options.php:616
 msgid "WordPress Help Forum"
-msgstr ""
+msgstr "WordPress hjälpforum"
 
 #: includes/iworks/class-simple-seo-improvements.php:187
 #: includes/iworks/rate/rate.php:133
 msgid "Settings"
-msgstr ""
+msgstr "Inställningar"
 
 #: includes/iworks/class-simple-seo-improvements.php:262
 #: includes/iworks/class-simple-seo-improvements.php:264
@@ -520,7 +523,7 @@ msgstr ""
 
 #: includes/iworks/class-simple-seo-improvements.php:303
 msgid "Force setting to all entries"
-msgstr ""
+msgstr "Tvinga inställning till alla inlägg"
 
 #: includes/iworks/class-simple-seo-improvements.php:317
 #: includes/iworks/class-simple-seo-improvements.php:347
@@ -528,15 +531,15 @@ msgstr ""
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:314
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:134
 msgid "Add \"%s\"."
-msgstr ""
+msgstr "Lägg till ”%s”."
 
 #: includes/iworks/class-simple-seo-improvements.php:334
 msgid "Add meta tags for %s."
-msgstr ""
+msgstr "Lägg till meta-taggar för %s."
 
 #. Plugin Name of the plugin/theme
 msgid "Simple SEO Improvements"
-msgstr ""
+msgstr "Simple SEO Improvements"
 
 #: includes/iworks/class-simple-seo-improvements.php:748
 #: includes/iworks/class-simple-seo-improvements.php:917
@@ -2121,45 +2124,45 @@ msgstr ""
 
 #: includes/iworks/options/options.php:263
 msgid "An error occurred while getting the configuration."
-msgstr ""
+msgstr "Ett fel uppstod när konfigurationen hämtades."
 
 #: includes/iworks/options/options.php:816
 #: includes/iworks/options/options.php:1910
 msgid "Select Image"
-msgstr ""
+msgstr "Välj bild"
 
 #: includes/iworks/options/options.php:821
 msgid "Delete image"
-msgstr ""
+msgstr "Ta bort bild"
 
 #: includes/iworks/options/options.php:927
 msgid "Save Changes"
-msgstr ""
+msgstr "Spara ändringarna"
 
 #: includes/iworks/options/options.php:1804
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:132
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 #: includes/iworks/options/options.php:1805
 msgid "City"
-msgstr ""
+msgstr "Ort"
 
 #: includes/iworks/options/options.php:1806
 msgid "Street"
-msgstr ""
+msgstr "Gata"
 
 #: includes/iworks/options/options.php:1807
 msgid "ZIP code"
-msgstr ""
+msgstr "Postnummer"
 
 #: includes/iworks/options/options.php:1963
 msgid "OFF"
-msgstr ""
+msgstr "AV"
 
 #: includes/iworks/options/options.php:1964
 msgid "ON"
-msgstr ""
+msgstr "PÅ"
 
 #: includes/iworks/options/options.php:2029
 msgid "Failed Security Check"
@@ -2168,46 +2171,46 @@ msgstr ""
 #: includes/iworks/rate/rate.php:147
 #: includes/iworks/rate/templates/thanks.php:39
 msgid "Provide us a coffee"
-msgstr ""
+msgstr "Köp en kopp kaffe till oss"
 
-#: includes/iworks/rate/rate.php:446
 #. translators: %s: plugin id
+#: includes/iworks/rate/rate.php:446
 msgid "There is no plugin with id: %s."
 msgstr ""
 
 #: includes/iworks/rate/rate.php:563
 msgid "OpenGraph"
-msgstr ""
+msgstr "OpenGraph"
 
 #: includes/iworks/rate/rate.php:579
 msgid "OG — Better Share on Social Media"
-msgstr ""
+msgstr "OG — Better Share on Social Media"
 
 #: includes/iworks/rate/rate.php:580
 msgid "https://wordpress.org/plugins/og/"
-msgstr ""
+msgstr "https://wordpress.org/plugins/og/"
 
 #: includes/iworks/rate/templates/plugins/og.php:4
 msgid "Would you like to boost your website sharing abilities?"
 msgstr ""
 
-#: includes/iworks/rate/templates/plugins/og.php:9
 #. translators: %s is a plugin name with url
+#: includes/iworks/rate/templates/plugins/og.php:9
 msgid "Don't wait, install plugin %s!"
-msgstr ""
+msgstr "Vänta inte, installera tillägget %s!"
 
-#: includes/iworks/rate/templates/plugins/og.php:20
 #. translators: %s is a plugin wp home name, %s plugin name
+#: includes/iworks/rate/templates/plugins/og.php:20
 msgid "Install"
-msgstr ""
+msgstr "Installera"
 
-#: includes/iworks/rate/templates/thanks.php:23
 #. translators: %s is a plugin name wrapped by strong html tag
+#: includes/iworks/rate/templates/thanks.php:23
 msgid "Thank you for using our plugin %s!"
-msgstr ""
+msgstr "Tack för att du använder vårt tillägg %s!"
 
-#: includes/iworks/rate/templates/thanks.php:31
 #. translators: %1$s: open anchor tag, %2$s: close anchor tag
+#: includes/iworks/rate/templates/thanks.php:31
 msgid ""
 "Please let us know what you think about our plugin. It is important that we "
 "can develop this tool. Thank you for all the ratings, reviews and donates. "
@@ -2215,26 +2218,33 @@ msgid ""
 "our FAQ%2$s or contact us if you did not find help there. We will try to "
 "help you!"
 msgstr ""
+"Berätta vad du tycker om vårt tillägg. Det är viktigt och hjälper oss så att "
+"vi kan utveckla detta verktyg. Tack för alla betyg, recensioner och "
+"donationer. Om du har ett tekniskt problem och innan du lägger till en "
+"recension %1$skolla in våra vanliga frågor%2$s eller kontakta oss om du inte "
+"hittade hjälp där. Vi ska försöka hjälpa dig!"
 
 #: includes/iworks/rate/templates/thanks.php:35
 #: includes/iworks/rate/templates/widgets/support.php:21
 msgid "Get help"
-msgstr ""
+msgstr "Skaffa hjälp"
 
 #: includes/iworks/rate/templates/thanks.php:37
 #: includes/iworks/rate/templates/widgets/support.php:31
 msgid "Add review"
-msgstr ""
+msgstr "Lägg till recension"
 
 #: includes/iworks/rate/templates/thanks.php:41
 msgid "I added review, do not show again"
-msgstr ""
+msgstr "Jag har redan skrivit en recension, visa inte igen"
 
 #: includes/iworks/rate/templates/widgets/donate.php:2
 msgid ""
 "However, working on plugins and technical support requires many hours of "
 "work. If you want to appreciate it, you can provide me a coffee."
 msgstr ""
+"Att arbeta med tillägg och teknisk support kräver många timmars arbete. Om "
+"du vill visa din uppskattning kan du köpa en kopp kaffe till mig."
 
 #: includes/iworks/rate/templates/widgets/donate.php:3
 msgid ""
@@ -2244,30 +2254,39 @@ msgstr ""
 
 #: includes/iworks/rate/templates/widgets/donate.php:4
 msgid "Provide me a coffee"
-msgstr ""
+msgstr "Köp en kopp kaffe till mig"
 
 #: includes/iworks/rate/templates/widgets/support.php:4
 msgid ""
-"Do you have a technical problem? Please contact us. We will be happy to "
-"help you. Or maybe you have an idea for a new feature? Please let us know "
-"about it by filling the support form. We will try to add it!"
+"Do you have a technical problem? Please contact us. We will be happy to help "
+"you. Or maybe you have an idea for a new feature? Please let us know about "
+"it by filling the support form. We will try to add it!"
 msgstr ""
+"Har du ett tekniskt problem? Kontakta oss. Vi hjälper dig gärna. Eller "
+"kanske du har en idé om en ny funktion? Berätta det genom att fylla i "
+"supportformuläret. Vi kommer att försöka lägga till det!"
 
-#: includes/iworks/rate/templates/widgets/support.php:11
 #. translators: %1$s: open anchor tag, %2$s: close anchor tag, %3$s: open
 #. anchor tag, %4$s: close anchor tag
+#: includes/iworks/rate/templates/widgets/support.php:11
 msgid ""
 "Please %1$scheck our FAQ%2$s before adding a thread with technical problem. "
 "If you do not find help there, %3$scheck support forum%4$s for similar "
 "problems."
 msgstr ""
+"%1$sKolla in våra vanliga frågor%2$s innan du lägger till en tråd med "
+"tekniskt problem. Om du inte hittar hjälp där, %3$skolla in "
+"supportforumet%4$s för liknande problem."
 
 #: includes/iworks/rate/templates/widgets/support.php:26
 msgid ""
 "Do you like our plugin? Could you rate him? Please let us know what you "
-"think about our plugin. It is important that we can develop this tool. "
-"Thank you for all the ratings, reviews and donates."
+"think about our plugin. It is important that we can develop this tool. Thank "
+"you for all the ratings, reviews and donates."
 msgstr ""
+"Gillar du vårt tillägg? Kan du betygsätta det? Berätta för oss vad du tycker "
+"om vårt tillägg. Det är viktigt att vi kan utveckla detta verktyg. Tack för "
+"alla betyg, recensioner och donationer."
 
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:130
 msgid "Use these settings to controll date related & author archive."
@@ -2390,20 +2409,20 @@ msgstr ""
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:298
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:85
 msgid "HTML Title"
-msgstr ""
+msgstr "HTML-rubrik"
 
 #: includes/iworks/simple-seo-improvements/class-posttypes.php:324
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:100
 msgid "HTML description"
-msgstr ""
+msgstr "HTML-beskrivning"
 
 #: includes/iworks/simple-seo-improvements/class-sitemap.php:46
 msgid "Sitemap XML"
-msgstr ""
+msgstr "XML-webbplatskarta"
 
 #: includes/iworks/simple-seo-improvements/class-sitemap.php:60
 msgid "Add images to WordPress Sitemap XML?"
-msgstr ""
+msgstr "Vill du lägga till bilder i din XML-webbplatskarta för WordPress?"
 
 #. Plugin URI of the plugin/theme
 msgid "PLUGIN_URI"
@@ -2424,26 +2443,35 @@ msgstr ""
 #: etc/options.php:102
 msgctxt "placeholder"
 msgid "@account_name"
-msgstr ""
+msgstr "@kontonamn"
 
 #: etc/options.php:601
 msgctxt "plugin home page on WordPress.org"
 msgid "https://wordpress.org/plugins/simple-seo-improvements/"
-msgstr ""
+msgstr "https://wordpress.org/plugins/simple-seo-improvements/"
 
 #: etc/options.php:616
 msgctxt "link to support forum on WordPress.org"
 msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
-msgstr ""
+msgstr "https://wordpress.org/support/plugin/simple-seo-improvements/"
 
-#: includes/iworks/rate/rate.php:469
 #. translators: %s: plugin slug
+#: includes/iworks/rate/rate.php:469
 msgctxt "plugins home"
 msgid "https://wordpress.org/plugins/%s"
-msgstr ""
+msgstr "https://wordpress.org/plugins/%s"
 
-#: includes/iworks/rate/rate.php:476
 #. translators: %s: plugin slug
+#: includes/iworks/rate/rate.php:476
 msgctxt "plugins support home"
 msgid "https://wordpress.org/support/plugin/%s"
-msgstr ""
+msgstr "https://wordpress.org/support/plugin/%s"
+
+#~ msgid "http://iworks.pl/en/plugins/simple-seo-improvements/"
+#~ msgstr "http://iworks.pl/en/plugins/simple-seo-improvements/"
+
+#~ msgid "http://iworks.pl/"
+#~ msgstr "http://iworks.pl/"
+
+#~ msgid "Marcin Pietrzak"
+#~ msgstr "Marcin Pietrzak"
