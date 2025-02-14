@@ -131,6 +131,7 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 				esc_attr( $key ),
 				checked( $value, 1, false ),
 				sprintf(
+					/* translators: %s robots option */
 					esc_html__( 'Add "%s".', 'simple-seo-improvements' ),
 					$key
 				)

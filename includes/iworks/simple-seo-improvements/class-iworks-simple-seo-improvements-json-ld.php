@@ -99,8 +99,9 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				esc_url( get_permalink( $local_business_page_id ) ),
 				esc_html__(
 					sprintf(
+						/* translators: title of a page %s  */
 						__( 'View Page: %s', 'simple-seo-improvements' ),
-						get_the_title( $local_business_page_id )
+						esc_html( get_the_title( $local_business_page_id ) )
 					)
 				)
 			);
@@ -260,6 +261,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			return
 				array(
 					'@type' => 'ListItem',
+					/* translators: archive name %s  */
 					'name'  => sprintf( esc_html__( 'Archives for %s', 'simple-seo-improvements' ), $user->display_name ),
 					'item'  => get_author_posts_url( $author_id ),
 				);
@@ -325,6 +327,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			$data['itemListElement'][] = array(
 				'@type'    => 'ListItem',
 				'position' => sizeof( $data['itemListElement'] ) + 1,
+				/* translators: %s  search query */
 				'name'     => sprintf( __( 'Search Results for: %s', 'simple-seo-improvements' ), strip_tags( get_query_var( 's' ) ) ),
 				'item'     => '',
 			);
@@ -367,6 +370,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				$data['itemListElement'][] = array(
 					'@type'    => 'ListItem',
 					'position' => sizeof( $data['itemListElement'] ) + 1,
+					/* translators: %s archive name */
 					'name'     => sprintf( esc_html__( 'Archives for %d', 'simple-seo-improvements' ), $year ),
 					'item'     => get_year_link( $year ),
 				);
@@ -377,6 +381,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 					'@type'    => 'ListItem',
 					'position' => sizeof( $data['itemListElement'] ) + 1,
 					'name'     => sprintf(
+						/* translators: %s archive name */
 						esc_html__( 'Archives for %s', 'simple-seo-improvements' ),
 						date_i18n(
 							'F Y',
@@ -398,6 +403,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 					'@type'    => 'ListItem',
 					'position' => sizeof( $data['itemListElement'] ) + 1,
 					'name'     => sprintf(
+						/* translators: %s archive name */
 						esc_html__( 'Archives for %s', 'simple-seo-improvements' ),
 						date_i18n(
 							'j F Y',

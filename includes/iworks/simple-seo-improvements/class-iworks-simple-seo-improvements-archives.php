@@ -160,6 +160,7 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 				),
 				'type'              => 'checkbox',
 				'th'                => sprintf(
+					/* translators: %s robot option name */
 					esc_html__( 'Add "%s".', 'simple-seo-improvements' ),
 					$key
 				),

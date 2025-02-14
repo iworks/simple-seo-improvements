@@ -311,6 +311,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 				esc_attr( $key ),
 				checked( $value, 1, false ),
 				sprintf(
+					/* translators: %s robot ooption name */
 					esc_html__( 'Add "%s".', 'simple-seo-improvements' ),
 					$key
 				)

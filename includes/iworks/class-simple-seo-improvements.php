@@ -325,6 +325,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 					),
 					'type'              => 'checkbox',
 					'th'                => sprintf(
+						/* translators: %s robots option */
 						esc_html__( 'Add "%s".', 'simple-seo-improvements' ),
 						$key
 					),
@@ -342,6 +343,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 			$opts[] = array(
 				'type'  => 'subheading',
 				'label' => sprintf(
+					/* translators: %s archive name */
 					esc_html__( 'Add meta tags for %s.', 'simple-seo-improvements' ),
 					strtolower( $post_type->labels->archives )
 				),
@@ -355,6 +357,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 					),
 					'type'              => 'checkbox',
 					'th'                => sprintf(
+						/* translators: %s robots option */
 						esc_html__( 'Add "%s".', 'simple-seo-improvements' ),
 						$key
 					),
