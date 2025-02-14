@@ -154,7 +154,7 @@ function iworks_simple_seo_improvements_options() {
 			array(
 				'type'  => 'subheading',
 				'label' => __( 'External Links', 'simple-seo-improvements' ),
-				'since' => '2.2.0',
+				'since' => '2.3.0',
 			),
 			array(
 				'name'              => 'exli:nofollow',
@@ -164,7 +164,7 @@ function iworks_simple_seo_improvements_options() {
 				'sanitize_callback' => 'absint',
 				'classes'           => array( 'switch-button' ),
 				'description'       => __( 'The nofollow attribute in the &lt;a&gt; tag tells search engines not to follow the link or pass link authority to the destination.', 'simple-seo-improvements' ),
-				'since'             => '2.2.0',
+				'since'             => '2.3.0',
 			),
 			array(
 				'name'              => 'exli:class',
@@ -173,7 +173,7 @@ function iworks_simple_seo_improvements_options() {
 				'sanitize_callback' => 'esc_html',
 				'default'           => 'external',
 				'description'       => __( 'Separate classes by space, leave empty to no changes.', 'simple-seo-improvements' ),
-				'since'             => '2.2.0',
+				'since'             => '2.3.0',
 			),
 			/**
 			 * Section: ROBOTS
