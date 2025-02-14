@@ -106,6 +106,11 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.2.1 (2025-02-13) =
+* Translation placeholders has been added.
+* The translation domain for few strings where been fixed.
+
+
 = 2.2.0 (2025-02-13) =
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.5.
 * The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.2.3.

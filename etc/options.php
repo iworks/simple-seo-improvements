@@ -27,7 +27,7 @@ function iworks_simple_seo_improvements_options() {
 			array(
 				'name'              => 'default_image',
 				'type'              => 'image',
-				'th'                => __( 'Default Site Icon', 'iworks-pwa' ),
+				'th'                => __( 'Default Site Icon', 'simple-seo-improvements' ),
 				'sanitize_callback' => 'intval',
 				'max-width'         => 64,
 			),
@@ -146,6 +146,38 @@ function iworks_simple_seo_improvements_options() {
 				),
 				'description' => __( 'Date (day/month/year) and author archive.', 'simple-seo-improvements' ),
 			),
+			/**
+			 * Other
+			 *
+			 * @since 2.2.0
+			 */
+			array(
+				'type'  => 'subheading',
+				'label' => __( 'External Links', 'simple-seo-improvements' ),
+				'since' => '2.2.0',
+			),
+			array(
+				'name'              => 'exli:nofollow',
+				'type'              => 'checkbox',
+				'th'                => __( 'No follow', 'simple-seo-improvements' ),
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'description'       => __( 'The nofollow attribute in the &lt;a&gt; tag tells search engines not to follow the link or pass link authority to the destination.', 'simple-seo-improvements' ),
+				'since'             => '2.2.0',
+			),
+			array(
+				'name'              => 'exli:class',
+				'type'              => 'text',
+				'th'                => __( 'CSS class', 'simple-seo-improvements' ),
+				'sanitize_callback' => 'esc_html',
+				'default'           => 'external',
+				'description'       => __( 'Separate classes by space, leave empty to no changes.', 'simple-seo-improvements' ),
+				'since'             => '2.2.0',
+			),
+			/**
+			 * Section: ROBOTS
+			 */
 			array(
 				'type'  => 'heading',
 				'label' => __( 'Robots', 'simple-seo-improvements' ),
@@ -425,7 +457,7 @@ function iworks_simple_seo_improvements_options() {
 			array(
 				'name'              => 'json_org_img',
 				'type'              => 'image',
-				'th'                => __( 'Organization logo', 'iworks-pwa' ),
+				'th'                => __( 'Organization logo', 'simple-seo-improvements' ),
 				'sanitize_callback' => 'intval',
 				'max-width'         => 64,
 				'since'             => '2.0.0',
@@ -493,7 +525,7 @@ function iworks_simple_seo_improvements_options() {
 			array(
 				'name'              => 'json_person_img',
 				'type'              => 'image',
-				'th'                => __( 'Personal logo or avatar', 'iworks-pwa' ),
+				'th'                => __( 'Personal logo or avatar', 'simple-seo-improvements' ),
 				'sanitize_callback' => 'intval',
 				'max-width'         => 64,
 				'since'             => '2.0.0',
