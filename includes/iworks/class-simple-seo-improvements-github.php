@@ -19,11 +19,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'iworks_wp_sitemap_control_github' ) ) {
+if ( class_exists( 'iworks_simple_seo_improvements_github' ) ) {
 	return;
 }
 
-class iworks_wp_sitemap_control_github {
+class iworks_simple_seo_improvements_github {
 
 	public function __construct() {
 		/**

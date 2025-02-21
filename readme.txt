@@ -108,13 +108,16 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
-= 2.2.0 (2025-02-13) =
+= 2.2.1 (2025-02-21) =
+* A typo has been fixed.
+
+= 2.2.0 (2025-02-21) =
 * The build process has been improved.
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.5.
 * The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to 2.2.3.
-* The `_load_textdomain_just_in_time()` notice has been fixed. [#6](https://github.com/iworks/wp-sitemap-control/issues/6).
-* The rel="nofollow" attribute can be added now. [#4](https://github.com/iworks/wp-sitemap-control/issues/4). Props for [sylwiastein](https://github.com/sylwiastein).
-* The target="blank" attribute can be added now. [#4](https://github.com/iworks/wp-sitemap-control/issues/4). Props for [sylwiastein](https://github.com/sylwiastein).
+* The `_load_textdomain_just_in_time()` notice has been fixed. [#6](https://github.com/iworks/simple-seo-improvements/issues/6).
+* The rel="nofollow" attribute can be added now. [#4](https://github.com/iworks/simple-seo-improvements/issues/4). Props for [sylwiastein](https://github.com/sylwiastein).
+* The target="blank" attribute can be added now. [#4](https://github.com/iworks/simple-seo-improvements/issues/4). Props for [sylwiastein](https://github.com/sylwiastein).
 * The translation domain for few strings where been fixed.
 * Translation placeholders has been added.
 
