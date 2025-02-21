@@ -13,51 +13,53 @@ PLUGIN_TAGLINE
 
 == Description ==
 
-PLUGIN_DESCRIPTION
+Simple SEO Improvements offers a lightweight solution to enhance your website's search engine optimization (SEO) effortlessly.
 
-Change the HTML title and META robots fields for all post types and taxonomies.
+Easily modify HTML titles and META robots fields across all post types and taxonomies.
 
-Content editing allows you to set a meta value for the page title and description, posts, and content types.
+Content editing allows you to set custom meta values for page titles, descriptions, posts, and other content types.
 
-The configuration allows you to set the default values of the "robots" meta field for pages, entries, attachments, and your content types.
+With flexible configuration options, you can define default values for the "robots" meta field for pages, posts, attachments, and custom content types.
 
-You can block the indexing of unwanted pages, such as attachment pages, but leave the link-follow parameter.
+You can prevent the indexing of unwanted pages, such as attachment pages, while keeping the link-follow attribute intact. Additionally, choose whether global settings should apply to new content or be enforced for each content type individually.
 
-You can also choose whether the global settings will set values for new content or be enforced for each content type.
 
-= List of features =
+= Key Features =
 
-* Add Facebook application ID.
-* Add IndexNow for Bing.
-* Add the Twitter site.
-* Insert custom HTML code after the `<BODY>` tag.
-* Insert custom HTML code before the `</BODY>` tag.
-* Insert custom HTML code in the `<HEAD>` section.
-* Add default site og:image.
-* Add a different HTML title for a single entry.
-* Add meta description for the homepage when it displays posts.
-* Include a meta description for each entry.
-* Include meta robots in all build post types (post, page, and media).
-* Include meta robots in all custom post types.
-* Include meta robots in a single entry.
-* Include meta robots in an author archive.
-* Include meta robots in a date archive.
-* Allows the category prefix to be removed from the URL.
-* Allows the tag prefix to be removed from the URL.
-* Allows to set the "Max Image Preview".
-* Allows to set the "Max Snippet".
-* Allows to set the "Max Video Preview".
+* Add a Facebook application ID.
+* Integrate IndexNow for Bing.
+* Add a Twitter site tag.
+* Insert custom HTML code after the <BODY> tag.
+* Insert custom HTML code before the </BODY> tag.
+* Insert custom HTML code in the <HEAD> section.
+* Set a default og:image for the site.
+* Set a unique HTML title for individual entries.
+* Add meta descriptions for the homepage when displaying posts.
+* Include meta descriptions for each entry.
+* Apply meta robots to all post types (posts, pages, and media).
+* Include meta robots for all custom post types.
+* Customize meta robots for individual entries.
+* Control meta robots for author archives.
+* Manage meta robots for date archives.
+* Remove category prefixes from URLs.
+* Remove tag prefixes from URLs.
+* Configure "Max Image Preview" settings.
+* Set "Max Snippet" options.
+* Set "Max Video Preview" options.
 * Add structured data.
+* Add rel="nofollow" to externals links.
+* Add target="blank" to externals links.
+* Add own CSS classes to externals links.
 
-= See room for improvement? =
+= Room for Improvement? =
 
-Great! There are several ways you can get involved to help make Simple SEO Improvements better:
+We'd love your help to make Simple SEO Improvements even better!
 
-1. **Report Bugs:** If you find a bug, error or other problem, please report it! You can do this by [creating a new topic](https://wordpress.org/support/plugin/simple-seo-improvements/) in the plugin forum. Once a developer can verify the bug by reproducing it, they will create an official bug report in GitHub where the bug will be worked on.
-2. **Suggest New Features:** Have an awesome idea? Please share it! Simply [create a new topic](https://wordpress.org/support/plugin/simple-seo-improvements/) in the plugin forum to express your thoughts on why the feature should be included and get a discussion going around your idea.
-3. **Issue Pull Requests:** If you're a developer, the easiest way to get involved is to help out on [issues already reported](https://github.com/iworks/simple-seo-improvements/issues) in GitHub. Be sure to check out the [contributing guide](https://github.com/iworks/simple-seo-improvements/blob/master/contributing.md) for developers.
+1. **Report Bugs**: Found an issue? Report it by [creating a new topic](https://wordpress.org/support/plugin/simple-seo-improvements/)     in the plugin forum. Once verified, the issue will be tracked in GitHub for resolution.
+1. **Suggest New Features**: Have an idea for a new feature? Share it by creating a topic in the plugin forum to discuss its potential.
+1. **Submit Pull Requests**: If you're a developer, contribute by addressing [existing issues on GitHub](https://github.com/iworks/simple-seo-improvements/issues). Be sure to check our contributing [guide for developers](https://github.com/iworks/simple-seo-improvements/blob/master/contributing.md).
 
-Thank you for wanting to make Simple SEO Improvements  better for everyone!
+Thank you for helping improve Simple SEO Improvements for everyone!
 
 == Installation ==
 
