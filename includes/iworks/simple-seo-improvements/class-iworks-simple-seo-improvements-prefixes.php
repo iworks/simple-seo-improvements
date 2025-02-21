@@ -38,6 +38,15 @@ require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php'
 class iworks_simple_seo_improvements_prefixes extends iworks_simple_seo_improvements_base_abstract {
 
 	public function __construct( $iworks ) {
+		add_action( 'init', array( $this, 'action_init_set_options' ) );
+	}
+
+	/**
+	 * set Options
+	 *
+	 * @since 2.2.0
+	 */
+	public function action_init_set_options() {
 		$this->options = get_iworks_simple_seo_improvements_options();
 		/**
 		 * category_no_slug
@@ -46,7 +55,7 @@ class iworks_simple_seo_improvements_prefixes extends iworks_simple_seo_improvem
 			add_action( 'created_category', array( $this, 'flush_rules' ) );
 			add_action( 'delete_category', array( $this, 'flush_rules' ) );
 			add_action( 'edited_category', array( $this, 'flush_rules' ) );
-			add_action( 'init', array( $this, 'category_permastruct' ) );
+			add_action( 'init', array( $this, 'category_permastruct' ), 117 );
 			add_filter( 'category_rewrite_rules', array( $this, 'category_rewrite_rules' ) );
 			add_filter( 'query_vars', array( $this, 'category_query_vars' ) );
 			add_filter( 'request', array( $this, 'category_request' ) );
@@ -58,7 +67,7 @@ class iworks_simple_seo_improvements_prefixes extends iworks_simple_seo_improvem
 			add_action( 'created_post_tag', array( $this, 'flush_rules' ) );
 			add_action( 'delete_post_tag', array( $this, 'flush_rules' ) );
 			add_action( 'edited_post_tag', array( $this, 'flush_rules' ) );
-			add_action( 'init', array( $this, 'tag_permastruct' ) );
+			add_action( 'init', array( $this, 'tag_permastruct' ), 117 );
 			add_filter( 'query_vars', array( $this, 'tag_query_vars' ) );
 			add_filter( 'request', array( $this, 'tag_request' ) );
 			add_filter( 'tag_rewrite_rules', array( $this, 'tag_rewrite_rules' ) );

@@ -81,7 +81,6 @@ function get_iworks_simple_seo_improvements_options() {
 		$iworks_simple_seo_improvements_options->set_plugin( basename( __FILE__ ) );
 	}
 	$iworks_simple_seo_improvements_options->init();
-	$iworks_simple_seo_improvements_options = $iworks_simple_seo_improvements_options;
 	return $iworks_simple_seo_improvements_options;
 }
 

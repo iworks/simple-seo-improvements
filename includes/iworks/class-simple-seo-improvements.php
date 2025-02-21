@@ -76,6 +76,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		/**
 		 * WordPress Hooks
 		 */
+		add_action( 'init', array( $this, 'action_init_set_options' ) );
 		add_action( 'init', array( $this, 'maybe_load_index_now' ) );
 		add_action( 'init', array( $this, 'maybe_load_robots_txt' ) );
 		add_action( 'init', array( $this, 'action_init_register_iworks_rate' ), PHP_INT_MAX );
@@ -87,14 +88,12 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		/**
 		 * options
 		 */
-		$this->options = get_iworks_simple_seo_improvements_options();
 		add_filter( 'iworks_plugin_get_options', array( $this, 'filter_add_post_types_options' ), 10, 2 );
 		add_filter( 'iworks_plugin_get_options', array( $this, 'filter_maybe_add_advertising' ), 10, 2 );
-		$this->set_robots_options();
 		/**
 		 * post types
 		 */
-		require_once $this->base . '/iworks/simple-seo-improvements/class-posttypes.php';
+		require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php';
 		new iworks_simple_seo_improvements_posttypes( $this );
 		/**
 		 * bind taxonomies
@@ -117,14 +116,10 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-prefixes.php';
 		new iworks_simple_seo_improvements_prefixes( $this );
 		/**
-		 * JSON-D
-		 *
-		 * @since 1.5.7
+		 * links
 		 */
-		if ( $this->options->get_option( 'use_json_ld' ) ) {
-			require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php';
-			new iworks_simple_seo_improvements_json_ld( $this );
-		}
+		require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-links.php';
+		new iworks_simple_seo_improvements_links( $this );
 		/**
 		 * iWorks Rate integration - change logo for rate
 		 */
@@ -154,6 +149,25 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		if ( is_file( $filename ) ) {
 			include_once $filename;
 			new iworks_wp_sitemap_control_github();
+		}
+	}
+
+	/**
+	 * set Options
+	 *
+	 * @since 2.2.0
+	 */
+	public function action_init_set_options() {
+		$this->options = get_iworks_simple_seo_improvements_options();
+		$this->set_robots_options();
+		/**
+		 * JSON-D
+		 *
+		 * @since 1.5.7
+		 */
+		if ( $this->options->get_option( 'use_json_ld' ) ) {
+			require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php';
+			new iworks_simple_seo_improvements_json_ld( $this );
 		}
 	}
 
@@ -293,7 +307,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		foreach ( $post_types as $post_type_slug => $post_type ) {
 			/**
 			 *  settings for attachements
-			 */
+		 */
 			$is_attachment = 'attachment' === $post_type->name;
 			/**
 			 * $opts
@@ -378,7 +392,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 	 * Add meta "robots" tag.
 	 *
 	 * @since 1.0.6
-	 */
+		 */
 	public function add_robots() {
 		if ( is_admin() ) {
 			return;
@@ -386,7 +400,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		$post_type = null;
 		/**
 		 * home page
-		 */
+	 */
 		if ( is_home() ) {
 			$post_type = 'post';
 		} elseif ( is_front_page() ) {
@@ -422,11 +436,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		);
 	}
 
-	/**
-	 * check for OG plugin
-	 *
-	 * @since 1.1.0
-	 */
+		/**
+		 * check for OG plugin
+		 *
+		 * @since 1.1.0
+		 */
 	public function check_og_plugin() {
 		if ( null !== $this->is_og_installed ) {
 			return;
@@ -444,18 +458,18 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		}
 	}
 
-	/**
-	 * fallback if OG plugin is not installed
-	 *
-	 * @since 1.1.0
-	 */
+		/**
+		 * fallback if OG plugin is not installed
+		 *
+		 * @since 1.1.0
+		 */
 	public function filter_wp_head_add_html_head() {
 		$content = '';
 		/**
 		 * favicon
 		 *
 		 * @since 1.4.2
-		 */
+	 */
 		$attachment_id = $this->options->get_option( 'default_image' );
 		if ( ! empty( $attachment_id ) && $this->options->get_option( 'use_as_favicon' ) ) {
 			$url       = wp_make_link_relative( wp_get_attachment_image_url( $attachment_id, 'full' ) );
@@ -513,7 +527,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 			}
 			/**
 			 * fb:app_id
-			 */
+		 */
 			$value = $this->options->get_option( 'fb:app_id' );
 			if ( ! empty( $value ) ) {
 				$content .= sprintf(
@@ -544,11 +558,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		echo $this->wrap_code_in_comments( $content );
 	}
 
-	/**
-	 * Add twitter:site to OG plugin
-	 *
-	 * @since 1.1.0
-	 */
+		/**
+		 * Add twitter:site to OG plugin
+		 *
+		 * @since 1.1.0
+		 */
 	public function filter_og_twitter_site( $value ) {
 		$v = $this->options->get_option( 'twitter:site' );
 		if ( empty( $v ) ) {
@@ -560,11 +574,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		return $v;
 	}
 
-	/**
-	 * Add FB:app_id to OG plugin
-	 *
-	 * @since 1.1.0
-	 */
+		/**
+		 * Add FB:app_id to OG plugin
+		 *
+		 * @since 1.1.0
+		 */
 	public function filter_og_array_add_fb_app_id( $og ) {
 		$value = $this->options->get_option( 'fb:app_id' );
 		if ( ! empty( $value ) ) {
@@ -576,20 +590,20 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		return $og;
 	}
 
-	/**
-	 * add default OG image to OG plugin
-	 *
-	 * @since 1.2.0
-	 */
+		/**
+		 * add default OG image to OG plugin
+		 *
+		 * @since 1.2.0
+		 */
 	public function filter_og_image_init( $og ) {
 		return $this->get_image_for_og_image();
 	}
 
-	/**
-	 * Add code after <body> tag.
-	 *
-	 * @since 1.1.0
-	 */
+		/**
+		 * Add code after <body> tag.
+		 *
+		 * @since 1.1.0
+		 */
 	public function action_wp_body_open_add_html_body_start() {
 		$value = $this->options->get_option( 'html_body_start' );
 		if ( empty( $value ) ) {
@@ -598,11 +612,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		echo $this->wrap_code_in_comments( $value );
 	}
 
-	/**
-	 * Add code before </body> tag.
-	 *
-	 * @since 1.1.0
-	 */
+		/**
+		 * Add code before </body> tag.
+		 *
+		 * @since 1.1.0
+		 */
 	public function action_wp_footer_add_html_body_end() {
 		$value = $this->options->get_option( 'html_body_end' );
 		if ( empty( $value ) ) {
@@ -611,11 +625,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		echo $this->wrap_code_in_comments( $value );
 	}
 
-	/**
-	 * Wrap output code with comment
-	 *
-	 * @since 1.1.1
-	 */
+		/**
+		 * Wrap output code with comment
+		 *
+		 * @since 1.1.1
+		 */
 	private function wrap_code_in_comments( $code ) {
 		$content  = sprintf(
 			'%3$s<!-- %1$s - %2$s -->%3$s',
@@ -633,11 +647,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		return $content;
 	}
 
-	/**
-	 * Filter options for some advertising
-	 *
-	 * @since 1.2.0
-	 */
+		/**
+		 * Filter options for some advertising
+		 *
+		 * @since 1.2.0
+		 */
 	public function filter_maybe_add_advertising( $options, $plugin ) {
 		if ( 'simple-seo-improvements' !== $plugin ) {
 			return $options;
@@ -654,11 +668,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		return $options;
 	}
 
-	/**
-	 * set robots options
-	 *
-	 * @since 1.2.0
-	 */
+		/**
+		 * set robots options
+		 *
+		 * @since 1.2.0
+		 */
 	protected function set_robots_options() {
 		if ( ! empty( $this->robots_options ) ) {
 			return;
@@ -669,11 +683,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		}
 	}
 
-	/**
-	 * get og:image
-	 *
-	 * @since 1.2.0
-	 */
+		/**
+		 * get og:image
+		 *
+		 * @since 1.2.0
+		 */
 	private function get_image_for_og_image() {
 		$attachment_id = $this->options->get_option( 'default_image' );
 		if ( empty( $attachment_id ) ) {
@@ -696,11 +710,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		);
 	}
 
-	/**
-	 * get or generate IndexNow api key
-	 *
-	 * @since 1.3.0
-	 */
+		/**
+		 * get or generate IndexNow api key
+		 *
+		 * @since 1.3.0
+		 */
 	private function get_indexnow_key() {
 		$key = $this->options->get_option( 'indexnow' );
 		if ( empty( $key ) ) {
@@ -710,11 +724,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		return $key;
 	}
 
-	/**
-	 * IndexNow
-	 *
-	 * @since 1.3.0
-	 */
+		/**
+		 * IndexNow
+		 *
+		 * @since 1.3.0
+		 */
 	public function maybe_load_index_now() {
 		if ( ! empty( $this->options->get_option( 'indexnow_bing' ) ) ) {
 			$key = $this->get_indexnow_key();
@@ -723,11 +737,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		}
 	}
 
-	/**
-	 * IndexNow
-	 *
-	 * @since 1.4.0
-	 */
+		/**
+		 * IndexNow
+		 *
+		 * @since 1.4.0
+		 */
 	public function maybe_load_robots_txt() {
 		if ( ! empty( $this->options->get_option( 'robots_txt' ) ) ) {
 			require_once( $this->base . '/iworks/simple-seo-improvements/class-iworks-robots-txt.php' );
@@ -735,11 +749,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		}
 	}
 
-	/**
-	 * get user list for options
-	 *
-	 * @since 2.0.0
-	 */
+		/**
+		 * get user list for options
+		 *
+		 * @since 2.0.0
+		 */
 	public function filter_get_user_list_options( $options ) {
 		$args  = array(
 			'fields' => array( 'id', 'display_name' ),
@@ -752,11 +766,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		return $options;
 	}
 
-	/**
-	 * helper for page lists.
-	 *
-	 * @since 2.0.0
-	 */
+		/**
+		 * helper for page lists.
+		 *
+		 * @since 2.0.0
+		 */
 	public function filter_get_pages() {
 		$options    = array();
 		$options[0] = esc_html__( '--- select ---', 'simple-seo-improvements' );
@@ -767,11 +781,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		return $options;
 	}
 
-	/**
-	 * helper for LocalBuissness type list.
-	 *
-	 * @since 2.1.0
-	 */
+		/**
+		 * helper for LocalBuissness type list.
+		 *
+		 * @since 2.1.0
+		 */
 	public function filter_get_lb_types( $options ) {
 		$data = array(
 			'Animal Shelter'                 => esc_html__( 'Animal Shelter', 'simple-seo-improvements' ),
@@ -933,11 +947,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 	}
 
 
-	/**
-	 * helper for LocalBuissness countries list.
-	 *
-	 * @since 2.1.0
-	 */
+		/**
+		 * helper for LocalBuissness countries list.
+		 *
+		 * @since 2.1.0
+		 */
 	public function filter_get_countries( $options ) {
 		$options = array(
 			'AF' => esc_html__( 'Afghanistan', 'simple-seo-improvements' ),
@@ -1211,5 +1225,6 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 			'simple-seo-improvements'
 		);
 	}
+
 }
 

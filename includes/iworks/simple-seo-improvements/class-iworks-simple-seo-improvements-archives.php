@@ -39,6 +39,15 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 		 * options
 		 */
 		add_filter( 'iworks_plugin_get_options', array( $this, 'filter_add_options' ), 10, 2 );
+		add_action( 'init', array( $this, 'action_init_set_options' ) );
+	}
+
+	/**
+	 * set Options
+	 *
+	 * @since 2.2.0
+	 */
+	public function action_init_set_options() {
 		$this->options = get_iworks_simple_seo_improvements_options();
 		$this->set_robots_options();
 	}

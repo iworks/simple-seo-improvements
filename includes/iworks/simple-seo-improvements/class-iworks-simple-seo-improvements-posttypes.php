@@ -37,6 +37,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	public function __construct( $iworks ) {
 		$this->iworks = $iworks;
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'init', array( $this, 'action_init_set_options' ) );
 		add_action( 'edit_attachment', array( $this, 'save_data' ) );
 		add_action( 'save_post', array( $this, 'save_data' ) );
 		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_robots' ) );
@@ -48,9 +49,14 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		 * @since 1.0.1
 		 */
 		add_filter( 'og_array', array( $this, 'filter_og_array' ) );
-		/**
-		 * options
-		 */
+	}
+
+	/**
+	 * set Options
+	 *
+	 * @since 2.2.0
+	 */
+	public function action_init_set_options() {
 		$this->options = get_iworks_simple_seo_improvements_options();
 		$this->set_robots_options();
 	}

@@ -154,17 +154,27 @@ function iworks_simple_seo_improvements_options() {
 			array(
 				'type'  => 'subheading',
 				'label' => __( 'External Links', 'simple-seo-improvements' ),
-				'since' => '2.3.0',
+				'since' => '2.2.0',
 			),
 			array(
-				'name'              => 'exli:nofollow',
+				'name'              => 'exli:rel:nofollow',
 				'type'              => 'checkbox',
-				'th'                => __( 'No follow', 'simple-seo-improvements' ),
+				'th'                => __( 'Nofollow', 'simple-seo-improvements' ),
 				'default'           => 0,
 				'sanitize_callback' => 'absint',
 				'classes'           => array( 'switch-button' ),
 				'description'       => __( 'The nofollow attribute in the &lt;a&gt; tag tells search engines not to follow the link or pass link authority to the destination.', 'simple-seo-improvements' ),
-				'since'             => '2.3.0',
+				'since'             => '2.2.0',
+			),
+			array(
+				'name'              => 'exli:target:blank',
+				'type'              => 'checkbox',
+				'th'                => __( 'Open in new window', 'simple-seo-improvements' ),
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'description'       => __( 'The target="_blank" attribute is used in HTML to specify that a link should open in a new browser tab or window. By adding this attribute to a hyperlink (<a> tag), users can navigate to the linked page without leaving the current page. This is often used for external links, ensuring users can easily return to the original site.', 'simple-seo-improvements' ),
+				'since'             => '2.2.0',
 			),
 			array(
 				'name'              => 'exli:class',
@@ -173,7 +183,7 @@ function iworks_simple_seo_improvements_options() {
 				'sanitize_callback' => 'esc_html',
 				'default'           => 'external',
 				'description'       => __( 'Separate classes by space, leave empty to no changes.', 'simple-seo-improvements' ),
-				'since'             => '2.3.0',
+				'since'             => '2.2.0',
 			),
 			/**
 			 * Section: ROBOTS
