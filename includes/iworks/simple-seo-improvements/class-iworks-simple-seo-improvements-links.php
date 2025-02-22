@@ -81,12 +81,21 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 	 * @since 2.2.0
 	 */
 	public function filter_replace( $content ) {
+		if ( empty( $content ) ) {
+			return $content;
+		}
+		if ( ! preg_match( '/<a/', $content ) ) {
+			return $content;
+		}
 		$class            = esc_attr( $this->options->get_option( 'exli:class' ) );
 		$set_rel_nofollow = 0 < intval( $this->options->get_option( 'exli:rel:nofollow' ) );
 		$set_target_blank = 0 < intval( $this->options->get_option( 'exli:target:blank' ) );
 		$html             = str_get_html( $content );
 		$domain_regexp    = $this->get_domain_regexp();
 		$elements         = $html->find( 'a' );
+		if ( empty( $elements ) || ! is_array( $elements ) ) {
+			return $content;
+		}
 		foreach ( $elements as $one ) {
 			/**
 			 * check exists href

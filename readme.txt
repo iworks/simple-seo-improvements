@@ -108,6 +108,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.2.2 (2025-02-22) =
+* An error with replacement on older PHP has been fixed.
+
 = 2.2.1 (2025-02-21) =
 * A typo has been fixed.
 
