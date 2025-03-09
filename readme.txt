@@ -28,10 +28,10 @@ You can prevent the indexing of unwanted pages, such as attachment pages, while 
 
 * Add a Facebook application ID.
 * Integrate IndexNow for Bing.
-* Add a Twitter site tag.
-* Insert custom HTML code after the <BODY> tag.
-* Insert custom HTML code before the </BODY> tag.
-* Insert custom HTML code in the <HEAD> section.
+* Add a X site tag.
+* Insert custom HTML code after the &lt;BODY&gt; tag.
+* Insert custom HTML code before the &lt;/BODY&gt; tag.
+* Insert custom HTML code in the &lt;HEAD&gt; section.
 * Set a default og:image for the site.
 * Set a unique HTML title for individual entries.
 * Add meta descriptions for the homepage when displaying posts.
@@ -107,6 +107,10 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 == Changelog ==
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
+
+= 2.2.4 (2025-03-922) =
+* The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.7.
+* Too aggressive sanitation has been fixed. Props for [Gabi](https://infoblogerka.pl/). [#12](https://github.com/iworks/simple-seo-improvements/issues/12).
 
 = 2.2.3 (2025-02-22) =
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.6.
