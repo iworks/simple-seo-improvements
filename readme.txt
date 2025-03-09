@@ -51,6 +51,8 @@ You can prevent the indexing of unwanted pages, such as attachment pages, while 
 * Add target="blank" to externals links.
 * Add own CSS classes to externals links.
 
+Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
+
 = Room for Improvement? =
 
 We'd love your help to make Simple SEO Improvements even better!
@@ -111,6 +113,7 @@ Project maintained on github at [iworks/simple-seo-improvements](https://github.
 = 2.2.4 (2025-03-922) =
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.7.
 * Too aggressive sanitation has been fixed. Props for [Gabi](https://infoblogerka.pl/). [#12](https://github.com/iworks/simple-seo-improvements/issues/12).
+* Update plugin from GitHub releases has been improved.
 
 = 2.2.3 (2025-02-22) =
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.6.

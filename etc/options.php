@@ -564,37 +564,40 @@ function iworks_simple_seo_improvements_options() {
 				'description' => __( 'Use these settings to insert code from Google Tag Manager, Google Analytics or webmaster tools verification.', 'simple-seo-improvements' ),
 			),
 			array(
-				'name'        => 'html_head',
-				'type'        => 'textarea',
-				'th'          => __( 'Header Code', 'simple-seo-improvements' ),
-				'description' => __( 'Code entered in this box will be printed in the <code>&lt;head&gt;</code> section.', 'simple-seo-improvements' ),
-				'classes'     => array(
+				'name'              => 'html_head',
+				'type'              => 'textarea',
+				'th'                => __( 'Header Code', 'simple-seo-improvements' ),
+				'description'       => __( 'Code entered in this box will be printed in the <code>&lt;head&gt;</code> section.', 'simple-seo-improvements' ),
+				'classes'           => array(
 					'large-text',
 					'code',
 				),
-				'rows'        => 10,
+				'rows'              => 10,
+				'sanitize_callback' => 'iworks_seo_improvements_no_sanitization',
 			),
 			array(
-				'name'        => 'html_body_start',
-				'type'        => 'textarea',
-				'th'          => __( 'Body Start', 'simple-seo-improvements' ),
-				'description' => __( 'Code entered in this box will be printed after the opening <code>&lt;body&gt;</code> tag.', 'simple-seo-improvements' ),
-				'classes'     => array(
+				'name'              => 'html_body_start',
+				'type'              => 'textarea',
+				'th'                => __( 'Body Start', 'simple-seo-improvements' ),
+				'description'       => __( 'Code entered in this box will be printed after the opening <code>&lt;body&gt;</code> tag.', 'simple-seo-improvements' ),
+				'classes'           => array(
 					'large-text',
 					'code',
 				),
-				'rows'        => 10,
+				'rows'              => 10,
+				'sanitize_callback' => 'iworks_seo_improvements_no_sanitization',
 			),
 			array(
-				'name'        => 'html_body_end',
-				'type'        => 'textarea',
-				'th'          => __( 'Body End', 'simple-seo-improvements' ),
-				'description' => __( 'Code entered in this box will be printed before the closing <code>&lt;/body&gt;</code> tag.', 'simple-seo-improvements' ),
-				'classes'     => array(
+				'name'              => 'html_body_end',
+				'type'              => 'textarea',
+				'th'                => __( 'Body End', 'simple-seo-improvements' ),
+				'description'       => __( 'Code entered in this box will be printed before the closing <code>&lt;/body&gt;</code> tag.', 'simple-seo-improvements' ),
+				'classes'           => array(
 					'large-text',
 					'code',
 				),
-				'rows'        => 10,
+				'rows'              => 10,
+				'sanitize_callback' => 'iworks_seo_improvements_no_sanitization',
 			),
 		),
 		'metaboxes'       => array(
@@ -744,5 +747,14 @@ function iworks_simple_seo_improvements_get_pages() {
  */
 function iworks_simple_seo_improvements_get_countries() {
 	return apply_filters( 'iworks_simple_seo_improvements_get_countries', array() );
+}
+
+/**
+ * custom avoid sanityzation
+ *
+ * @saince 2.2.4
+ */
+function iworks_seo_improvements_no_sanitization( $content ) {
+	return $content;
 }
 
