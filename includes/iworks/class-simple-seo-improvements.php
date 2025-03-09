@@ -145,7 +145,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		 *
 		 * @since 1.0.8
 		 */
-		$filename = __DIR__ . '/class-simple-seo-improvements-github.php';
+		$filename = __DIR__ . '/simple-seo-improvements/class-iworks-simple-seo-improvements-github.php';
 		if ( is_file( $filename ) ) {
 			include_once $filename;
 			new iworks_simple_seo_improvements_github();
