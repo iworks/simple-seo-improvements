@@ -110,7 +110,7 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
-= 2.2.4 (2025-03-922) =
+= 2.2.4 (2025-03-09) =
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.7.
 * Too aggressive sanitation has been fixed. Props for [Gabi](https://infoblogerka.pl/). [#12](https://github.com/iworks/simple-seo-improvements/issues/12).
 * Update plugin from GitHub releases has been improved.
