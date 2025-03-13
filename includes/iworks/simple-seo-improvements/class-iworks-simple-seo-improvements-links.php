@@ -104,6 +104,14 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 				continue;
 			}
 			/**
+			 * check internal anchors
+			 *
+			 * @since 2.2.6
+			 */
+			if ( preg_match( '/^#/', $one->href ) ) {
+				continue;
+			}
+			/**
 			 * check domain
 			 */
 			if ( preg_match( $domain_regexp, $one->href ) ) {

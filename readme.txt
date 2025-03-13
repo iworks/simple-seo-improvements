@@ -112,6 +112,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.2.6 (2025-03-13) =
+* Removed the external class from internal links for improved consistency. Props for [Michał Rogalski](https://dribbble.com/Rogalski_777).
+
 = 2.2.5 (2025-03-11) =
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.8.
 * Too aggressive sanitation has been fixed. Props for [Gabi](https://infoblogerka.pl/). [#12](https://github.com/iworks/simple-seo-improvements/issues/12).
