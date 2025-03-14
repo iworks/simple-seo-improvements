@@ -63,8 +63,6 @@ We'd love your help to make Simple SEO Improvements even better!
 
 Thank you for helping improve Simple SEO Improvements for everyone!
 
-The Simple SEO Improvements plugin is available also on [GitHub - Orphans](https://github.com/iworks/simple-seo-improvements).
-
 == Installation ==
 
 There are 3 ways to install this plugin:
@@ -110,7 +108,7 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 == Changelog ==
 
-Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
+Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
 = 2.2.7 (2025-03-14) =
 * Removed the external class from internal links for improved consistency. Props for [Rafał Jendrzejewski](https://www.linkedin.com/in/rafaljendrzejewski/).
