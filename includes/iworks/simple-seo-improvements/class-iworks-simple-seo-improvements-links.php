@@ -104,11 +104,11 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 				continue;
 			}
 			/**
-			 * check internal anchors
+			 * check only started with http
 			 *
 			 * @since 2.2.6
 			 */
-			if ( preg_match( '/^#/', $one->href ) ) {
+			if ( !preg_match( '/^http/', $one->href ) ) {
 				continue;
 			}
 			/**

@@ -112,6 +112,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on github at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.2.7 (2025-03-14) =
+* Removed the external class from internal links for improved consistency. Props for [Rafał Jendrzejewski](https://www.linkedin.com/in/rafaljendrzejewski/).
+
 = 2.2.6 (2025-03-13) =
 * Removed the external class from internal links for improved consistency. Props for [Michał Rogalski](https://dribbble.com/Rogalski_777).
 
