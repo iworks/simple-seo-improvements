@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Simple SEO Improvements - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-03-09 06:33:45+00:00\n"
+"POT-Creation-Date: 2025-05-07 15:50:46+00:00\n"
 "PO-Revision-Date: 2025-02-22 09:37:07+0000\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -2215,7 +2215,7 @@ msgid "An error occurred while getting the configuration."
 msgstr "Wystąpił błąd przy pobieraniu konfiguracji."
 
 #: includes/iworks/options/options.php:842
-#: includes/iworks/options/options.php:1950
+#: includes/iworks/options/options.php:1965
 msgid "Select Image"
 msgstr "Wybierz obrazek"
 
@@ -2227,32 +2227,32 @@ msgstr "Usuń obrazek"
 msgid "Save Changes"
 msgstr "Zachowaj zmiany"
 
-#: includes/iworks/options/options.php:1844
+#: includes/iworks/options/options.php:1859
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:133
 msgid "Country"
 msgstr "Kraj"
 
-#: includes/iworks/options/options.php:1845
+#: includes/iworks/options/options.php:1860
 msgid "City"
 msgstr "Miejscowość"
 
-#: includes/iworks/options/options.php:1846
+#: includes/iworks/options/options.php:1861
 msgid "Street"
 msgstr "Ulica"
 
-#: includes/iworks/options/options.php:1847
+#: includes/iworks/options/options.php:1862
 msgid "ZIP code"
 msgstr "Kod pocztowy"
 
-#: includes/iworks/options/options.php:2003
+#: includes/iworks/options/options.php:2018
 msgid "OFF"
 msgstr "Wyłącz"
 
-#: includes/iworks/options/options.php:2004
+#: includes/iworks/options/options.php:2019
 msgid "ON"
 msgstr "Włącz"
 
-#: includes/iworks/options/options.php:2069
+#: includes/iworks/options/options.php:2084
 msgid "Failed Security Check"
 msgstr "Niepowodzenie kontroli bezpieczeństwa"
 
