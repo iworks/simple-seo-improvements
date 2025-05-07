@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Simple SEO Improvements - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-05-07 15:50:46+00:00\n"
-"PO-Revision-Date: 2025-02-22 09:37:07+0000\n"
+"POT-Creation-Date: 2025-05-07 16:45:58+00:00\n"
+"PO-Revision-Date: 2025-02-23 18:32:14+0000\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2254,7 +2254,7 @@ msgstr "Włącz"
 
 #: includes/iworks/options/options.php:2084
 msgid "Failed Security Check"
-msgstr "Niepowodzenie kontroli bezpieczeństwa"
+msgstr "Nieudana kontrola bezpieczeństwa"
 
 #: includes/iworks/rate/rate.php:147
 #: includes/iworks/rate/templates/thanks.php:39
