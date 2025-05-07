@@ -80,7 +80,7 @@ function get_iworks_simple_seo_improvements_options() {
 	if ( method_exists( $iworks_simple_seo_improvements_options, 'set_plugin' ) ) {
 		$iworks_simple_seo_improvements_options->set_plugin( basename( __FILE__ ) );
 	}
-	$iworks_simple_seo_improvements_options->init();
+	$iworks_simple_seo_improvements_options->options_init();
 	return $iworks_simple_seo_improvements_options;
 }
 
