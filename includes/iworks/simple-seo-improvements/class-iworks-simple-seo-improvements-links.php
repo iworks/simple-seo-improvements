@@ -72,7 +72,10 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 	 */
 	private function get_domain_regexp() {
 		$data = parse_url( get_site_url() );
-		return sprintf( '@https?://%s@', $data['host'] );
+		if ( preg_match( '/^www\./', $data['host'] ) ) {
+			return sprintf( '@https?://%s@', $data['host'] );
+		}
+		return sprintf( '@https?://(www\.)?%s@', $data['host'] );
 	}
 
 	/**
@@ -108,7 +111,7 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 			 *
 			 * @since 2.2.6
 			 */
-			if ( !preg_match( '/^http/', $one->href ) ) {
+			if ( ! preg_match( '/^http/', $one->href ) ) {
 				continue;
 			}
 			/**

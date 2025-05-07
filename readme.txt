@@ -113,6 +113,7 @@ Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.
 = 2.2.8 (2025-05-07) =
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 3.0.0.
 * Fixed an issue with saving multiline text. [#16](https://github.com/iworks/simple-seo-improvements/issues/16).
+* Added the `www` prefix to site url during checking externals. [#14](https://github.com/iworks/simple-seo-improvements/issues/14).
 
 = 2.2.7 (2025-03-14) =
 * Removed the external class from internal links for improved consistency. Props for [Rafał Jendrzejewski](https://www.linkedin.com/in/rafaljendrzejewski/).
