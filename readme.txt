@@ -110,6 +110,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.2.9 (2025-05-09) =
+* Fixed an issue where the $content string was not parseable as HTML. Props for [anoriell - Katarzyna Janoska](https://profiles.wordpress.org/anoriell/).  [#17](https://github.com/iworks/simple-seo-improvements/issues/17).
+
 = 2.2.8 (2025-05-07) =
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 3.0.0.
 * Fixed an issue with saving multiline text. [#16](https://github.com/iworks/simple-seo-improvements/issues/16).

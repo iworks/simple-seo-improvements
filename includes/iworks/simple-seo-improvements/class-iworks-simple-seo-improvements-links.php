@@ -87,18 +87,41 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 		if ( empty( $content ) ) {
 			return $content;
 		}
-		if ( ! preg_match( '/<a/', $content ) ) {
+		/**
+		 * check for `<a ` string, no tags, no work
+		 */
+		if ( ! preg_match( '/<a /', $content ) ) {
 			return $content;
 		}
+		/**
+		 * try to parse `$content`
+		 */
+		$html = str_get_html( $content );
+		/**
+		 * check parsed string
+		 *
+		 * @since 2.2.9
+		 */
+		if ( false === $html ) {
+			return $content;
+		}
+		/**
+		 * get settings
+		 */
 		$class            = esc_attr( $this->options->get_option( 'exli:class' ) );
 		$set_rel_nofollow = 0 < intval( $this->options->get_option( 'exli:rel:nofollow' ) );
 		$set_target_blank = 0 < intval( $this->options->get_option( 'exli:target:blank' ) );
-		$html             = str_get_html( $content );
 		$domain_regexp    = $this->get_domain_regexp();
-		$elements         = $html->find( 'a' );
+		/**
+		 * find links
+		 */
+		$elements = $html->find( 'a' );
 		if ( empty( $elements ) || ! is_array( $elements ) ) {
 			return $content;
 		}
+		/**
+		 * parse & maybe add class
+		 */
 		foreach ( $elements as $one ) {
 			/**
 			 * check exists href
