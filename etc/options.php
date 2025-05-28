@@ -19,10 +19,7 @@ function iworks_simple_seo_improvements_options() {
 			array(
 				'type'  => 'heading',
 				'label' => __( 'General', 'simple-seo-improvements' ),
-			),
-			array(
-				'type'  => 'subheading',
-				'label' => __( 'Appearance', 'simple-seo-improvements' ),
+				'since' => '1.0.0',
 			),
 			array(
 				'name'              => 'default_image',
@@ -30,6 +27,7 @@ function iworks_simple_seo_improvements_options() {
 				'th'                => __( 'Default Site Icon', 'simple-seo-improvements' ),
 				'sanitize_callback' => 'intval',
 				'max-width'         => 64,
+				'since'             => '1.0.0',
 			),
 			array(
 				'name'              => 'use_as_favicon',
@@ -39,6 +37,7 @@ function iworks_simple_seo_improvements_options() {
 				'sanitize_callback' => 'absint',
 				'classes'           => array( 'switch-button' ),
 				'group'             => 'prefixes',
+				'since'             => '1.0.0',
 			),
 			array(
 				'name'        => 'home_meta_description',
@@ -51,6 +50,7 @@ function iworks_simple_seo_improvements_options() {
 				),
 				'rows'        => 2,
 				'group'       => 'meta-description',
+				'since'       => '1.0.0',
 			),
 			/**
 			 * category/tag prefixes remover
@@ -65,6 +65,7 @@ function iworks_simple_seo_improvements_options() {
 				'description'         => __( 'Turn it on to remove the category prefix.', 'simple-seo-improvements' ),
 				'flush_rewrite_rules' => true,
 				'group'               => 'prefixes',
+				'since'               => '1.0.0',
 			),
 			array(
 				'name'                => 'tag_no_slug',
@@ -76,6 +77,7 @@ function iworks_simple_seo_improvements_options() {
 				'description'         => __( 'Turn it on to remove the tag prefix.', 'simple-seo-improvements' ),
 				'flush_rewrite_rules' => true,
 				'group'               => 'prefixes',
+				'since'               => '1.0.0',
 			),
 			/**
 			 * Add social media
@@ -86,6 +88,7 @@ function iworks_simple_seo_improvements_options() {
 				'type'        => 'subheading',
 				'label'       => __( 'Social Media', 'simple-seo-improvements' ),
 				'description' => __( 'If you are using Facebook or Twitter analytic tools, enter the details below. Omitting them has no effect on how a shared web page appears on a Facebook timeline or Twitter feed.', 'simple-seo-improvements' ),
+				'since'       => '1.1.0',
 			),
 			array(
 				'name'              => 'fb:app_id',
@@ -93,6 +96,7 @@ function iworks_simple_seo_improvements_options() {
 				'th'                => __( 'Facebook app ID', 'simple-seo-improvements' ),
 				'sanitize_callback' => 'esc_html',
 				'description'       => __( 'A Facebook App ID is a unique number that identifies your app when you request ads from Audience Network.', 'simple-seo-improvements' ),
+				'since'             => '1.1.0',
 			),
 			array(
 				'name'              => 'twitter:site',
@@ -101,6 +105,7 @@ function iworks_simple_seo_improvements_options() {
 				'sanitize_callback' => 'esc_html',
 				'placeholder'       => _x( '@account_name', 'placeholder', 'simple-seo-improvements' ),
 				'description'       => __( '@username for the website used in the card footer.', 'simple-seo-improvements' ),
+				'since'             => '1.1.0',
 			),
 			/**
 			 * Other
@@ -110,6 +115,7 @@ function iworks_simple_seo_improvements_options() {
 			array(
 				'type'  => 'subheading',
 				'label' => __( 'Other', 'simple-seo-improvements' ),
+				'since' => '1.3.0',
 			),
 			array(
 				'name'    => 'post_types',
@@ -127,6 +133,7 @@ function iworks_simple_seo_improvements_options() {
 						'label' => __( 'Do not support post types.', 'simple-seo-improvements' ),
 					),
 				),
+				'since'   => '1.3.0',
 			),
 			array(
 				'name'        => 'other_archives',
@@ -145,6 +152,7 @@ function iworks_simple_seo_improvements_options() {
 					),
 				),
 				'description' => __( 'Date (day/month/year) and author archive.', 'simple-seo-improvements' ),
+				'since'       => '1.3.0',
 			),
 			/**
 			 * Other
@@ -191,6 +199,7 @@ function iworks_simple_seo_improvements_options() {
 			array(
 				'type'  => 'heading',
 				'label' => __( 'Robots', 'simple-seo-improvements' ),
+				'since' => '1.0.0',
 			),
 			/**
 			 * subheader for robots.txt
@@ -216,6 +225,7 @@ function iworks_simple_seo_improvements_options() {
 				'classes'           => array( 'switch-button' ),
 				'sanitize_callback' => 'absint',
 				'description'       => __( 'A robots.txt file tells search engine crawlers which URLs the crawler can access on your site.', 'simple-seo-improvements' ),
+				'since'             => '1.4.0',
 			),
 			/**
 			 * Disallow: for robots.txt
@@ -255,6 +265,7 @@ function iworks_simple_seo_improvements_options() {
 			array(
 				'type'  => 'subheading',
 				'label' => __( 'Bing', 'simple-seo-improvements' ),
+				'since' => '1.3.0',
 			),
 			array(
 				'name'              => 'indexnow_bing',
@@ -264,6 +275,7 @@ function iworks_simple_seo_improvements_options() {
 				'sanitize_callback' => 'absint',
 				'classes'           => array( 'switch-button' ),
 				'description'       => __( 'IndexNow is an easy way for websites owners to instantly inform search engines about latest content changes on their website. In its simplest form.', 'simple-seo-improvements' ),
+				'since'             => '1.3.0',
 			),
 			/**
 			 * Google
@@ -274,6 +286,7 @@ function iworks_simple_seo_improvements_options() {
 				'type'        => 'subheading',
 				'label'       => __( 'Google', 'simple-seo-improvements' ),
 				'description' => __( 'The robots meta tag lets you utilize a granular, page-specific approach to controlling how an individual page should be indexed and served to users in Google Search results.', 'simple-seo-improvements' ),
+				'since'       => '1.5.2',
 			),
 			/**
 			 * googlebot
@@ -288,6 +301,7 @@ function iworks_simple_seo_improvements_options() {
 				'classes'           => array( 'switch-button' ),
 				'sanitize_callback' => 'absint',
 				'description'       => __( 'To show a page in Google\'s web search results.', 'simple-seo-improvements' ),
+				'since'             => '1.5.2',
 			),
 			/**
 			 * googlebot-news
@@ -302,6 +316,7 @@ function iworks_simple_seo_improvements_options() {
 				'classes'           => array( 'switch-button' ),
 				'sanitize_callback' => 'absint',
 				'description'       => __( 'To show a page in Google\'s web search results, but not in Google News, use the googlebot-news meta tag', 'simple-seo-improvements' ),
+				'since'             => '1.5.2',
 			),
 			/**
 			 * max-snippet: [number]
@@ -315,6 +330,7 @@ function iworks_simple_seo_improvements_options() {
 				'default'           => -1,
 				'sanitize_callback' => 'intval',
 				'description'       => __( 'Use a maximum of [number] characters as a textual snippet for this search result. If you don\'t specify this rule, Google will choose the length of the snippet. Set -1 and Google will choose the snippet length that it believes is most effective to help users discover your content and direct users to your site. Set 0 - no snippet is to be shown. Equivalent to nosnippet.', 'simple-seo-improvements' ),
+				'since'             => '1.5.2',
 			),
 			/**
 			 * max-image-preview: [setting]
@@ -338,6 +354,7 @@ function iworks_simple_seo_improvements_options() {
 					),
 				),
 				'description' => __( 'Set the maximum size of an image preview for this page in a search results. If you don\'t specify the max-image-preview rule, Google may show an image preview of the default size.', 'simple-seo-improvements' ),
+				'since'       => '1.5.2',
 			),
 			/**
 			 * max-video-preview: [setting]
@@ -351,6 +368,7 @@ function iworks_simple_seo_improvements_options() {
 				'default'           => -1,
 				'sanitize_callback' => 'intval',
 				'description'       => __( 'This applies to all forms of search results (at Google: web search, Google Images, Google Videos, Discover, Assistant). This rule is ignored if no parseable [number] is specified.', 'simple-seo-improvements' ),
+				'since'             => '1.5.2',
 			),
 			/**
 			 * Block AI Crawlers Bots
@@ -562,6 +580,7 @@ function iworks_simple_seo_improvements_options() {
 				'type'        => 'heading',
 				'label'       => __( 'Custom Code', 'simple-seo-improvements' ),
 				'description' => __( 'Use these settings to insert code from Google Tag Manager, Google Analytics or webmaster tools verification.', 'simple-seo-improvements' ),
+				'since'       => '1.1.0',
 			),
 			array(
 				'name'              => 'html_head',
@@ -574,6 +593,7 @@ function iworks_simple_seo_improvements_options() {
 				),
 				'rows'              => 10,
 				'sanitize_callback' => 'iworks_seo_improvements_no_sanitization',
+				'since'             => '1.1.0',
 			),
 			array(
 				'name'              => 'html_body_start',
@@ -586,6 +606,7 @@ function iworks_simple_seo_improvements_options() {
 				),
 				'rows'              => 10,
 				'sanitize_callback' => 'iworks_seo_improvements_no_sanitization',
+				'since'             => '1.1.0',
 			),
 			array(
 				'name'              => 'html_body_end',
@@ -598,6 +619,27 @@ function iworks_simple_seo_improvements_options() {
 				),
 				'rows'              => 10,
 				'sanitize_callback' => 'iworks_seo_improvements_no_sanitization',
+				'since'             => '1.1.0',
+			),
+			/**
+			 * OpenSearch
+			 *
+			 * @since 2.0.0
+			 */
+			array(
+				'type'        => 'heading',
+				'label'       => __( 'OpenSearch', 'simple-seo-improvements' ),
+				'description' => __( 'OpenSearch is a collection of technologies that allow publishing search results in a format suitable for syndication and aggregation. It is a way for websites to publish search results in a format that can be used by search clients.', 'simple-seo-improvements' ),
+				'since'       => '2.0.0',
+			),
+			array(
+				'name'              => 'opensearch_on',
+				'type'              => 'checkbox',
+				'th'                => __( 'Enable OpenSearch', 'simple-seo-improvements' ),
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'since'             => '2.0.0',
 			),
 		),
 		'metaboxes'       => array(
@@ -606,12 +648,14 @@ function iworks_simple_seo_improvements_options() {
 				'callback' => 'iworks_iworks_seo_improvementss_options_need_assistance',
 				'context'  => 'side',
 				'priority' => 'default',
+				'since'    => '1.0.0',
 			),
 			'love'       => array(
 				'title'    => __( 'I love what I do!', 'simple-seo-improvements' ),
 				'callback' => 'iworks_iworks_seo_improvements_options_loved_this_plugin',
 				'context'  => 'side',
 				'priority' => 'low',
+				'since'    => '1.0.0',
 			),
 		),
 	);
@@ -620,14 +664,27 @@ function iworks_simple_seo_improvements_options() {
 	 */
 	$options['settings'] = array(
 		'robots' => array(
-			'noindex',
-			'nofollow',
-			'noimageindex',
-			'noarchive',
-			'nocache',
-			'nosnippet',
-			'notranslate',
-			'noyaca',
+			'noindex' => array(
+				'since' => '1.0.0',
+			),
+			'nofollow' => array(
+				'since' => '1.0.0',
+			),
+			'noimageindex' => array(
+				'since' => '1.0.0',
+			),
+			'noarchive' => array(
+				'since' => '1.0.0',
+			),
+			'nosnippet' => array(
+				'since' => '1.0.0',
+			),
+			'notranslate' => array(
+				'since' => '1.0.0',
+			),
+			'noyaca' => array(
+				'since' => '1.0.0',
+			),
 		),
 	);
 	return apply_filters( 'iworks_plugin_get_options', $options, 'simple-seo-improvements' );
@@ -757,4 +814,3 @@ function iworks_simple_seo_improvements_get_countries() {
 function iworks_seo_improvements_no_sanitization( $content ) {
 	return $content;
 }
-
