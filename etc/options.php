@@ -624,13 +624,13 @@ function iworks_simple_seo_improvements_options() {
 			/**
 			 * OpenSearch
 			 *
-			 * @since 2.0.0
+			 * @since 2.3.0
 			 */
 			array(
 				'type'        => 'heading',
 				'label'       => __( 'OpenSearch', 'simple-seo-improvements' ),
 				'description' => __( 'OpenSearch is a collection of technologies that allow publishing search results in a format suitable for syndication and aggregation. It is a way for websites to publish search results in a format that can be used by search clients.', 'simple-seo-improvements' ),
-				'since'       => '2.0.0',
+				'since'       => '2.3.0',
 			),
 			array(
 				'name'              => 'opensearch_on',
@@ -639,7 +639,7 @@ function iworks_simple_seo_improvements_options() {
 				'default'           => 1,
 				'sanitize_callback' => 'absint',
 				'classes'           => array( 'switch-button' ),
-				'since'             => '2.0.0',
+				'since'             => '2.3.0',
 			),
 		),
 		'metaboxes'       => array(
@@ -664,27 +664,13 @@ function iworks_simple_seo_improvements_options() {
 	 */
 	$options['settings'] = array(
 		'robots' => array(
-			'noindex' => array(
-				'since' => '1.0.0',
-			),
-			'nofollow' => array(
-				'since' => '1.0.0',
-			),
-			'noimageindex' => array(
-				'since' => '1.0.0',
-			),
-			'noarchive' => array(
-				'since' => '1.0.0',
-			),
-			'nosnippet' => array(
-				'since' => '1.0.0',
-			),
-			'notranslate' => array(
-				'since' => '1.0.0',
-			),
-			'noyaca' => array(
-				'since' => '1.0.0',
-			),
+			'noindex',
+			'nofollow',
+			'noimageindex',
+			'noarchive',
+			'nosnippet',
+			'notranslate',
+			'noyaca',
 		),
 	);
 	return apply_filters( 'iworks_plugin_get_options', $options, 'simple-seo-improvements' );

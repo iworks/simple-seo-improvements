@@ -60,12 +60,19 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 	 */
 	protected $robots_options = array();
 
+	/**
+	 * OpenSearch functionality handler.
+	 *
+	 * @since 2.3.0
+	 */
+	protected array $objects = array();
+
 	public function __construct() {
 		parent::__construct();
 		/**
 		 * settings
 		 */
-		$this->base    = dirname( dirname( __FILE__ ) );
+		$this->base    = dirname( __DIR__, 1 );
 		$this->dir     = basename( dirname( $this->base ) );
 		$this->version = 'PLUGIN_VERSION';
 		/**
@@ -108,18 +115,17 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		/**
 		 * Archives: day, month, year & author
 		 */
-		require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php';
-		new iworks_simple_seo_improvements_archives( $this );
-		/**
-		 * prefixes
-		 */
-		require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-prefixes.php';
-		new iworks_simple_seo_improvements_prefixes( $this );
-		/**
-		 * links
-		 */
-		require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-links.php';
-		new iworks_simple_seo_improvements_links( $this );
+		$classess = array(
+			'archives',
+			'opensearch',
+			'prefixes',
+			'links',
+		);
+		foreach ( $classess as $class ) {
+			require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-' . $class . '.php';
+			$classname                   = 'iworks_simple_seo_improvements_' . $class;
+			$this->objects[ $classname ] = new $classname( $this );
+		}
 		/**
 		 * iWorks Rate integration - change logo for rate
 		 */
@@ -226,7 +232,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 			$plugin = (array) $plugin;
 		}
 		if ( 'simple-seo-improvements' === $plugin['slug'] ) {
-			return plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . '/assets/images/logo.svg';
+			return plugin_dir_url( dirname( __DIR__, 1 ) ) . '/assets/images/logo.svg';
 		}
 		return $logo;
 	}
@@ -732,7 +738,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 	public function maybe_load_index_now() {
 		if ( ! empty( $this->options->get_option( 'indexnow_bing' ) ) ) {
 			$key = $this->get_indexnow_key();
-			require_once( $this->base . '/iworks/simple-seo-improvements/index-now/class-iworks-index-now-bing.php' );
+			require_once $this->base . '/iworks/simple-seo-improvements/index-now/class-iworks-index-now-bing.php';
 			new iworks_simple_seo_improvements_index_now_bing( $key );
 		}
 	}
@@ -744,7 +750,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		 */
 	public function maybe_load_robots_txt() {
 		if ( ! empty( $this->options->get_option( 'robots_txt' ) ) ) {
-			require_once( $this->base . '/iworks/simple-seo-improvements/class-iworks-robots-txt.php' );
+			require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-robots-txt.php';
 			new iworks_simple_seo_improvements_robots_txt();
 		}
 	}
@@ -1216,7 +1222,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		 */
 	public function action_init_register_iworks_rate() {
 		if ( ! class_exists( 'iworks_rate' ) ) {
-			include_once dirname( __FILE__ ) . '/rate/rate.php';
+			include_once __DIR__ . '/rate/rate.php';
 		}
 		do_action(
 			'iworks-register-plugin',
@@ -1225,6 +1231,4 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 			'simple-seo-improvements'
 		);
 	}
-
 }
-

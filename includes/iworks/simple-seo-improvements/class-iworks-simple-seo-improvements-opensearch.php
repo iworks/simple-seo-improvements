@@ -1,7 +1,26 @@
 <?php
 /**
+ * Class to handle OpenSearch functionality for the Simple SEO Improvements plugin.
+ *
+ * This class provides functionality to add OpenSearch support to a WordPress site,
+ * allowing browsers and other clients to discover the site's search functionality.
  *
  * @since 2.3.0
+ * @package Simple_SEO_Improvements
+ * @subpackage OpenSearch
+ * @category Core
+ */
+
+/**
+ * OpenSearch functionality handler.
+ *
+ * Handles the generation and serving of OpenSearch description documents,
+ * and adds necessary link tags to the site's header.
+ *
+ * @since 2.3.0
+ * @package Simple_SEO_Improvements
+ * @subpackage OpenSearch
+ * @category Core
  */
 require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php';
 
@@ -21,14 +40,70 @@ class iworks_simple_seo_improvements_opensearch extends iworks_simple_seo_improv
 	 */
 	private $meta_option_name_sort_menu_name = 'iworks-pwa-short-name';
 
-	public function __construct() {
+	/**
+	 * Class constructor.
+	 *
+	 * Sets up the OpenSearch functionality by initializing options and hooks.
+	 *
+	 * @since 2.3.0
+	 * @param object $iworks The main plugin instance.
+	 */
+	public function __construct( $iworks ) {
+		$this->iworks = $iworks;
 		parent::__construct();
+		/**
+		 * Options
+		 */
+		$this->options = get_iworks_simple_seo_improvements_options();
 		/**
 		 * WordPress Hooks
 		 */
 		add_action( 'parse_request', array( $this, 'parse_request' ) );
+		add_action( 'wp_head', array( $this, 'wp_head' ) );
 	}
 
+	/**
+	 * Check if OpenSearch is enabled.
+	 *
+	 * @since 2.3.0
+	 * @return bool True if OpenSearch is enabled, false otherwise.
+	 */
+	private function is_on() {
+		return $this->options->get_option( 'opensearch_on' );
+	}
+
+	/**
+	 * Get the URL for the OpenSearch XML file.
+	 *
+	 * @since 2.3.0
+	 * @return string Filtered OpenSearch XML URL.
+	 */
+	private function get_opensearch_xml_url() {
+		return apply_filters( 'iworks/simple-seo-improvements/opensearch_xml_url', home_url( '/opensearch.xml' ) );
+	}
+
+	/**
+	 * Output OpenSearch meta tag in the site header.
+	 *
+	 * @since 2.3.0
+	 * @return void
+	 */
+	public function wp_head() {
+		$link = $this->get_opensearch_xml_url();
+		if ( ! $link ) {
+			return;
+		}
+		?>
+		<link rel="search" type="application/opensearchdescription+xml" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" href="<?php echo esc_url( $link ); ?>" />
+		<?php
+	}
+
+	/**
+	 * Parse the current request to handle OpenSearch XML.
+	 *
+	 * @since 2.3.0
+	 * @return void
+	 */
 	public function parse_request() {
 		if (
 			! isset( $_SERVER['REQUEST_URI'] ) ) {
@@ -44,6 +119,12 @@ class iworks_simple_seo_improvements_opensearch extends iworks_simple_seo_improv
 		}
 	}
 
+	/**
+	 * Output the OpenSearch XML description document.
+	 *
+	 * @since 2.3.0
+	 * @return void
+	 */
 	private function print_opensearch_xml() {
 		header( 'Content-Type: application/opensearchdescription+xml; charset=' . get_option( 'blog_charset' ) );
 		echo '<?xml version="1.0" encoding="UTF-8"?>';
@@ -57,7 +138,13 @@ class iworks_simple_seo_improvements_opensearch extends iworks_simple_seo_improv
 		exit;
 	}
 
-
+	/**
+	 * Check if the current request is for the OpenSearch XML file.
+	 *
+	 * @since 2.3.0
+	 * @param string $uri The request URI to check.
+	 * @return bool True if the request is for OpenSearch XML, false otherwise.
+	 */
 	private function is_opensearch_xml_request( $uri ) {
 		if ( '/opensearch.xml' === $uri ) {
 			return true;
