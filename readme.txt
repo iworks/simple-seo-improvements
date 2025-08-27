@@ -110,6 +110,10 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.3.1 (2025-08-27) =
+* **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.7.
+* **Dependencies**: Updated the [iWorks Rate](https://github.com/iworks/iworks-rate) module to version 2.3.1.
+
 = 2.3.0 (2025-05-28) =
 * **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.6 and the [iWorks Rate](https://github.com/iworks/iworks-rate) module to version 2.3.0.
 
