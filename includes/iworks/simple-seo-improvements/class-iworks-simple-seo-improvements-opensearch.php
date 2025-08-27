@@ -50,11 +50,6 @@ class iworks_simple_seo_improvements_opensearch extends iworks_simple_seo_improv
 	 */
 	public function __construct( $iworks ) {
 		$this->iworks = $iworks;
-		parent::__construct();
-		/**
-		 * Options
-		 */
-		$this->options = get_iworks_simple_seo_improvements_options();
 		/**
 		 * WordPress Hooks
 		 */
@@ -69,6 +64,10 @@ class iworks_simple_seo_improvements_opensearch extends iworks_simple_seo_improv
 	 * @return bool True if OpenSearch is enabled, false otherwise.
 	 */
 	private function is_on() {
+		/**
+		 * Options
+		 */
+		$this->options = get_iworks_simple_seo_improvements_options();
 		return $this->options->get_option( 'opensearch_on' );
 	}
 

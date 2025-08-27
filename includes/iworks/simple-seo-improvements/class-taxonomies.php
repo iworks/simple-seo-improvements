@@ -30,8 +30,6 @@ require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php'
 
 class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improvements_base_abstract {
 
-	private $iworks;
-
 	public function __construct( $iworks ) {
 		$this->iworks = $iworks;
 		add_action( 'admin_init', array( $this, 'admin_init' ), PHP_INT_MAX );

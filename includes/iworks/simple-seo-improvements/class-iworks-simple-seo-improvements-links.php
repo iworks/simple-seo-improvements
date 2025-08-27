@@ -30,8 +30,6 @@ require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php'
 
 class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvements_base_abstract {
 
-	private $iworks;
-
 	private bool $run = false;
 
 	public function __construct( $iworks ) {
@@ -61,7 +59,7 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 			$this->run = true;
 		}
 		if ( $this->run && ! defined( 'HDOM_TYPE_ELEMENT' ) ) {
-			include_once dirname( dirname( dirname( __DIR__ ) ) ) . '/vendor/simple_html_dom.php';
+			include_once dirname( __DIR__, 3 ) . '/vendor/simple_html_dom.php';
 		}
 	}
 
@@ -158,5 +156,3 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 		return $content;
 	}
 }
-
-

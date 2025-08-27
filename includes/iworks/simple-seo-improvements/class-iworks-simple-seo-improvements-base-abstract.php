@@ -1,6 +1,5 @@
 <?php
 /*
-
 Copyright 2021-PLUGIN_TILL_YEAR Marcin Pietrzak (marcin@iworks.pl)
 
 this program is free software; you can redistribute it and/or modify
@@ -26,22 +25,83 @@ if ( class_exists( 'iworks_simple_seo_improvements_base_abstract' ) ) {
 	return;
 }
 
+/**
+ * Abstract base class for Simple SEO Improvements plugin.
+ *
+ * @package Simple_SEO_Improvements
+ * @subpackage Base
+ * @since 1.0.0
+ */
 
+/**
+ * Abstract base class that provides common functionality for SEO improvements.
+ *
+ * This class serves as a foundation for other SEO-related classes in the plugin,
+ * providing shared methods for handling meta data, nonce verification, and common utilities.
+ *
+ * @package Simple_SEO_Improvements
+ * @subpackage Base
+ * @abstract
+ */
 abstract class iworks_simple_seo_improvements_base_abstract {
 
-	private $nonce_name   = 'iworks_simple_seo_improvements_nonce';
+	/**
+	 * Nonce name for form validation.
+	 *
+	 * @var string
+	 */
+	private $nonce_name = 'iworks_simple_seo_improvements_nonce';
+
+	/**
+	 * Field name used in forms.
+	 *
+	 * @var string
+	 */
 	protected $field_name = 'iworks_simple_seo_improvements';
 
+	/**
+	 * Plugin options.
+	 *
+	 * @var mixed
+	 */
 	protected $options;
 
+	/**
+	 * Robots meta options.
+	 *
+	 * @var array
+	 */
 	protected $robots_options = array();
 
+	/**
+	 * Development mode flag.
+	 *
+	 * @var bool
+	 */
 	protected $dev = false;
 
+	/**
+	 * Main plugin instance.
+	 *
+	 * @var object
+	 */
+	protected $iworks;
+
+	/**
+	 * Add nonce field to forms.
+	 *
+	 * @since 1.0.0
+	 */
 	protected function add_nonce() {
 		wp_nonce_field( __CLASS__, $this->nonce_name );
 	}
 
+	/**
+	 * Verify nonce from form submission.
+	 *
+	 * @since 1.0.0
+	 * @return bool True if nonce is valid, false otherwise.
+	 */
 	protected function check_nonce() {
 		$value = filter_input( INPUT_POST, $this->nonce_name, FILTER_DEFAULT );
 		if ( ! empty( $value ) ) {
@@ -50,6 +110,13 @@ abstract class iworks_simple_seo_improvements_base_abstract {
 		return false;
 	}
 
+	/**
+	 * Sanitize string or array of strings.
+	 *
+	 * @since 1.0.0
+	 * @param mixed $data Data to sanitize.
+	 * @return mixed Sanitized data.
+	 */
 	private function filter_input_filter_sanitize_string( $data ) {
 		if ( is_array( $data ) ) {
 			foreach ( $data as &$one ) {
@@ -61,6 +128,12 @@ abstract class iworks_simple_seo_improvements_base_abstract {
 		return $data;
 	}
 
+	/**
+	 * Get and sanitize POST data.
+	 *
+	 * @since 1.0.0
+	 * @return array Sanitized POST data.
+	 */
 	protected function get_post_data() {
 		$data = array();
 		if ( isset( $_POST[ $this->field_name ] ) ) {
@@ -77,6 +150,14 @@ abstract class iworks_simple_seo_improvements_base_abstract {
 		return $data;
 	}
 
+	/**
+	 * Update post meta with proper handling of empty values.
+	 *
+	 * @since 1.0.0
+	 * @param int    $post_ID    Post ID.
+	 * @param string $meta_key   Meta key.
+	 * @param mixed  $meta_value Meta value.
+	 */
 	protected function update_single_post_meta( $post_ID, $meta_key, $meta_value ) {
 		if ( empty( $meta_value ) ) {
 			delete_post_meta( $post_ID, $meta_key );
@@ -88,6 +169,14 @@ abstract class iworks_simple_seo_improvements_base_abstract {
 		update_post_meta( $post_ID, $meta_key, $meta_value );
 	}
 
+	/**
+	 * Update user meta with proper handling of empty values.
+	 *
+	 * @since 1.0.0
+	 * @param int    $user_ID    User ID.
+	 * @param string $meta_key   Meta key.
+	 * @param mixed  $meta_value Meta value.
+	 */
 	protected function update_single_user_meta( $user_ID, $meta_key, $meta_value ) {
 		if ( empty( $meta_value ) ) {
 			delete_user_meta( $user_ID, $meta_key );
@@ -99,6 +188,14 @@ abstract class iworks_simple_seo_improvements_base_abstract {
 		update_user_meta( $user_ID, $meta_key, $meta_value );
 	}
 
+	/**
+	 * Update term meta with proper handling of empty values.
+	 *
+	 * @since 1.0.0
+	 * @param int    $term_ID    Term ID.
+	 * @param string $meta_key   Meta key.
+	 * @param mixed  $meta_value Meta value.
+	 */
 	protected function update_single_term_meta( $term_ID, $meta_key, $meta_value ) {
 		if ( empty( $meta_value ) ) {
 			delete_term_meta( $term_ID, $meta_key );
@@ -114,13 +211,15 @@ abstract class iworks_simple_seo_improvements_base_abstract {
 	 * Compress all whitespaces and trim string.
 	 *
 	 * @since 1.0.2
+	 * @param string $value String to process.
+	 * @return string Processed string with compressed whitespace.
 	 */
 	protected function compress_all_whitespaces( $value ) {
 		return trim( preg_replace( '/\s+/', ' ', $value ) );
 	}
 
 	/**
-	 * set robots options
+	 * Set robots options from plugin settings.
 	 *
 	 * @since 1.2.0
 	 */
@@ -137,6 +236,12 @@ abstract class iworks_simple_seo_improvements_base_abstract {
 		}
 	}
 
+	/**
+	 * Get common meta robots directives.
+	 *
+	 * @since 1.0.0
+	 * @return array Array of meta robots directives.
+	 */
 	protected function get_meta_robots_commons() {
 		$options = array();
 		/**
@@ -167,9 +272,11 @@ abstract class iworks_simple_seo_improvements_base_abstract {
 	}
 
 	/**
-	 * clear string
+	 * Clean and sanitize a string by removing HTML, extra whitespace, etc.
 	 *
 	 * @since 2.0.6
+	 * @param mixed $value Value to clean.
+	 * @return mixed Cleaned value.
 	 */
 	protected function clear_string( $value ) {
 		if ( ! is_string( $value ) ) {

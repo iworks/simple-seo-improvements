@@ -30,8 +30,6 @@ require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php'
 
 class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvements_base_abstract {
 
-	private $iworks;
-
 	public function __construct( $iworks ) {
 		$this->iworks = $iworks;
 		add_filter( 'simple_seo_improvements_wp_head', array( $this, 'filter_add_robots' ), 0 );
@@ -181,5 +179,3 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 		return $options;
 	}
 }
-
-

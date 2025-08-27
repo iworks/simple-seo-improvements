@@ -30,8 +30,6 @@ require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php'
 
 class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improvements_base_abstract {
 
-	private $iworks;
-
 	private $fields;
 
 	public function __construct( $iworks ) {
