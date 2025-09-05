@@ -46,7 +46,6 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 	 * @since 2.2.0
 	 */
 	public function action_init_set_options() {
-		$this->options = get_iworks_simple_seo_improvements_options();
 		$this->set_robots_options();
 	}
 
@@ -59,6 +58,7 @@ class iworks_simple_seo_improvements_archives extends iworks_simple_seo_improvem
 		if ( is_admin() ) {
 			return $content;
 		}
+		$this->check_option_object();
 		$type = $this->options->get_option( 'other_archives' );
 		if ( 'no' === $type ) {
 			return $content;

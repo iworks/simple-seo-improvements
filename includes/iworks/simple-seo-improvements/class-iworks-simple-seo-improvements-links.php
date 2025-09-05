@@ -50,7 +50,7 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 	 * @since 2.2.0
 	 */
 	public function action_init_set_options() {
-		$this->options = get_iworks_simple_seo_improvements_options();
+		$this->check_option_object();
 		if ( intval( $this->options->get_option( 'exli:rel:nofollow' ) ) ) {
 			$this->run = true;
 		} elseif ( intval( $this->options->get_option( 'exli:target:blank' ) ) ) {
@@ -103,6 +103,10 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 		if ( false === $html ) {
 			return $content;
 		}
+		/**
+		 * Options
+		 */
+		$this->check_option_object();
 		/**
 		 * get settings
 		 */

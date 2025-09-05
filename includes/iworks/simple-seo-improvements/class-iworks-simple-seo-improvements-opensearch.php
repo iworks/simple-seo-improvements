@@ -67,7 +67,7 @@ class iworks_simple_seo_improvements_opensearch extends iworks_simple_seo_improv
 		/**
 		 * Options
 		 */
-		$this->options = get_iworks_simple_seo_improvements_options();
+		$this->check_option_object();
 		return $this->options->get_option( 'opensearch_on' );
 	}
 

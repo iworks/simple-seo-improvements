@@ -28,6 +28,11 @@ if ( class_exists( 'iworks_simple_seo_improvements_json_ld' ) ) {
 
 require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php';
 
+/**
+ * JSON-LD data class.
+ *
+ * @since 1.5.7
+ */
 class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improvements_base_abstract {
 
 	/**
@@ -65,8 +70,14 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	 */
 	private $local_business_types = null;
 
+	/**
+	 * Class constructor.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param object $iworks The main plugin instance.
+	 */
 	public function __construct( $iworks ) {
-		$this->options = get_iworks_simple_seo_improvements_options();
 		/**
 		 * dev
 		 */
@@ -81,6 +92,15 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		add_filter( 'index_iworks_ssi_json_org_lb', array( $this, 'filter_index_iworks_ssi_json_org_lb' ), 10, 2 );
 	}
 
+	/**
+	 * Filter to modify the Local Business page selector in admin.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $select The HTML for the select element.
+	 * @param array  $option The option configuration array.
+	 * @return string Modified select HTML with view link.
+	 */
 	public function filter_index_iworks_ssi_json_org_lb( $select, $option = array() ) {
 		if (
 			empty( $option )
@@ -89,6 +109,10 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		) {
 			return $select;
 		}
+		/**
+		 * Options
+		 */
+		$this->check_option_object();
 		$local_business_page_id = intval( $this->options->get_option( $option['name'] ) );
 		if (
 			$local_business_page_id
@@ -109,14 +133,41 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		return $select;
 	}
 
+	/**
+	 * Get the nonce name for Local Business form.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return string The nonce name.
+	 */
 	private function get_local_business_nonce_name() {
+		/**
+		 * Options
+		 */
+		$this->check_option_object();
 		return $this->options->get_option_name( 'local_business_nonce_name' );
 	}
 
+	/**
+	 * Get the nonce action for Local Business form.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return string The nonce action.
+	 */
 	private function get_local_business_nonce_action() {
+		/**
+		 * Options
+		 */
+		$this->check_option_object();
 		return $this->options->get_option_name( 'local_business_nonce_action' );
 	}
 
+	/**
+	 * Initialize Local Business data structure.
+	 *
+	 * @since 2.0.0
+	 */
 	private function set_local_business_data() {
 		$this->local_business_fields = array(
 			'address'                   => array(
@@ -164,13 +215,15 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				),
 			),
 		);
-		$this->local_business_types  = apply_filters( 'iworks_simple_seo_improvements_get_lb_types', array() );
+		$this->local_business_types  = apply_filters( 'iworks/simple-seo-improvements/get_lb_types', array() );
 	}
 
 	/**
-	 * CollectionPage
+	 * Get the CollectionPage JSON-LD data.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The CollectionPage schema data.
 	 */
 	private function get_part_collection_page() {
 		global $wp;
@@ -194,22 +247,25 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			);
 		}
 		return apply_filters(
-			'iworks_simple_seo_improvements_json_ld::CollectionPage',
+			'iworks/simple-seo-improvements/json_ld/collection_page',
 			$data
 		);
 	}
 
 	/**
-	 * BreadcrumbList::Page::archive
+	 * Get archive page data for breadcrumb.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @param int $ID The post ID.
+	 * @return array|false Archive page data or false if not found.
 	 */
 	private function get_part_breadcrumb_list_page_archive( $ID ) {
 		$post_type = get_post_type( $ID );
 		$link      = get_post_type_archive_link( $post_type );
 		if ( $link ) {
 			$post_type_object = get_post_type_object( $post_type );
-			return  array(
+			return array(
 				'@type' => 'ListItem',
 				'name'  => $post_type_object->label,
 				'item'  => $link,
@@ -219,9 +275,13 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * BreadcrumbList::Page
+	 * Get page data for breadcrumb.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @param array $pages The current breadcrumb items.
+	 * @param int   $ID    The post ID.
+	 * @return array Modified breadcrumb items.
 	 */
 	private function get_part_breadcrumb_list_page( $pages, $ID ) {
 		$pages[] = array(
@@ -251,28 +311,32 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * BreadcrumbList::Author
+	 * Get author data for breadcrumb.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @param int $author_id The author ID.
+	 * @return array|false Author data or false if not found.
 	 */
 	private function get_part_breadcrumb_list_author( $author_id ) {
 		if ( $author_id ) {
 			$user = get_userdata( $author_id );
-			return
-				array(
-					'@type' => 'ListItem',
-					/* translators: archive name %s  */
-					'name'  => sprintf( esc_html__( 'Archives for %s', 'simple-seo-improvements' ), $user->display_name ),
-					'item'  => get_author_posts_url( $author_id ),
-				);
+			return array(
+				'@type' => 'ListItem',
+				/* translators: archive name %s  */
+				'name'  => sprintf( esc_html__( 'Archives for %s', 'simple-seo-improvements' ), $user->display_name ),
+				'item'  => get_author_posts_url( $author_id ),
+			);
 		}
 		return false;
 	}
 
 	/**
-	 * BreadcrumbList
+	 * Get the complete BreadcrumbList schema.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The BreadcrumbList schema data.
 	 */
 	private function get_part_breadcrumb_list() {
 		$data = array(
@@ -468,17 +532,24 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * WebSite
+	 * Get the WebSite schema data.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The WebSite schema data.
 	 */
 	private function get_part_web_site() {
+		$this->check_option_object();
 		$data = array(
 			'@type' => 'WebSite',
 			'@id'   => home_url( '/#website' ),
 			'url'   => home_url( '/' ),
 			'name'  => $this->clear_string( get_bloginfo( 'name' ) ),
 		);
+		/**
+		 * Options
+		 */
+		$this->check_option_object();
 		/**
 		 * Alternate website name
 		 */
@@ -506,9 +577,11 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * potentialAction: SearchAction
+	 * Get the SearchAction schema.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The SearchAction schema data.
 	 */
 	private function get_part_potential_action_search_action() {
 		return apply_filters(
@@ -525,9 +598,12 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * potentialAction: ReadAction
+	 * Get the ReadAction schema.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @param string $target The target URL for the read action.
+	 * @return array The ReadAction schema data.
 	 */
 	private function get_part_potential_action_read_action( $target ) {
 		return apply_filters(
@@ -542,9 +618,11 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * potentialAction: CommentAction
+	 * Get the CommentAction schema if comments are open.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The CommentAction schema data or empty array if comments are closed.
 	 */
 	private function get_part_potential_action_comment_action() {
 		if ( ! is_singular() ) {
@@ -566,9 +644,11 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * author
+	 * Get the author schema data.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The author schema data.
 	 */
 	private function get_part_author() {
 		global $post;
@@ -609,13 +689,14 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			'iworks_simple_seo_improvements_json_ld::author',
 			$data
 		);
-
 	}
 
 	/**
-	 * Article
+	 * Get the Article schema data.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The Article schema data.
 	 */
 	private function get_part_article() {
 		$data = array(
@@ -673,9 +754,11 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * thumbnail
+	 * Get the thumbnail schema data.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The thumbnail schema data.
 	 */
 	private function get_part_thumbnail() {
 		$data = array();
@@ -706,9 +789,11 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		);
 	}
 	/**
-	 * inLanguage
+	 * Get the language information.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array Language data.
 	 */
 	private function get_part_in_language() {
 		return array(
@@ -716,9 +801,11 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		);
 	}
 	/**
-	 * WebPage
+	 * Get the WebPage schema data.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The WebPage schema data.
 	 */
 	private function get_part_web_page() {
 		$data = array(
@@ -755,15 +842,19 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * ImageObject
+	 * Get the ImageObject schema data.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @param int    $attachment_id The attachment ID.
+	 * @param string $id            The image ID for the schema.
+	 * @return array The ImageObject schema data.
 	 */
 	private function get_part_image_object( $attachment_id, $id = '#primaryimage' ) {
 		$image = wp_get_attachment_image_src( $attachment_id, 'full' );
 		if ( empty( $image ) ) {
 			return array();
-		};
+		}
 		$data = array(
 			'@type'      => 'ImageObject',
 			'inLanguage' => $this->get_locale(),
@@ -792,13 +883,19 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * Organization
+	 * Get the Organization schema data.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The Organization schema data.
 	 */
 	private function get_part_organization() {
 		$data    = array();
 		$same_as = array();
+		/**
+		 * Options
+		 */
+		$this->check_option_object();
 		switch ( $this->options->get_option( 'json_type' ) ) {
 			case 'organization':
 				$data = array(
@@ -899,12 +996,18 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * PostalAddress
+	 * Get the PostalAddress schema data.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The PostalAddress schema data.
 	 */
 	private function get_part_postal_address() {
 		$data = array();
+		/**
+		 * Options
+		 */
+		$this->check_option_object();
 		/**
 		 * streetAddress
 		 */
@@ -955,22 +1058,24 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		 * filter & return
 		 */
 		return apply_filters(
-			'iworks_simple_seo_improvements_json_ld::Organization',
+			'iworks/simple-seo-improvements/json_ld::Organization',
 			$data
 		);
 	}
 
 	/**
-	 * LocalBusiness
+	 * Get the LocalBusiness schema data.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The LocalBusiness schema data.
 	 */
 	private function get_part_local_business() {
 		$this->set_local_business_data();
 		$value = get_post_meta( get_the_ID(), $this->meta_field_local_business, true );
 		if ( ! isset( $value['type'] ) ) {
 			return apply_filters(
-				'iworks_simple_seo_improvements_json_ld::LocalBusiness',
+				'iworks/simple-seo-improvements/json_ld::LocalBusiness',
 				array(),
 				get_the_ID()
 			);
@@ -1071,16 +1176,18 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		 * filter & return
 		 */
 		return apply_filters(
-			'iworks_simple_seo_improvements_json_ld::LocalBusiness',
+			'iworks/simple-seo-improvements/json_ld/local_business',
 			$data,
 			get_the_ID()
 		);
 	}
 
 	/**
-	 * get JSON-LD data
+	 * Get the complete JSON-LD data.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return array The complete JSON-LD data.
 	 */
 	private function get_data() {
 		if ( ! empty( $this->data ) ) {
@@ -1088,6 +1195,10 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		}
 		$this->data['@context'] = 'https://schema.org';
 		$this->data['@graph']   = array();
+		/**
+		 * Options
+		 */
+		$this->check_option_object();
 		/**
 		 * LocalBusiness
 		 */
@@ -1148,11 +1259,18 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		 * return
 		 */
 		return apply_filters(
-			'iworks_simple_seo_improvements_json_ld',
+			'iworks/simple-seo-improvements/json_ld',
 			$this->data
 		);
 	}
 
+	/**
+	 * Get the current locale in ISO format.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return string The locale in ISO format (e.g., en-US).
+	 */
 	private function get_locale() {
 		if ( ! empty( $this->locale ) ) {
 			return $this->locale;
@@ -1162,9 +1280,12 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * add json-ld to head
+	 * Generate and return the JSON-LD script tag.
 	 *
 	 * @since 1.5.7
+	 *
+	 * @param string $content The existing head content.
+	 * @return string The head content with JSON-LD script added.
 	 */
 	public function get_json_ld( $content ) {
 		$content .= '<script type="application/ld+json" id="simple-seo-improvements-json-ld">';
@@ -1175,11 +1296,11 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		}
 		$content .= json_encode(
 			apply_filters(
-				'iworks_simple_seo_improvements_json_ld::json_encode::json',
+				'iworks/simple-seo-improvements/json_ld::json_encode::json',
 				array_filter( $this->get_data() )
 			),
 			apply_filters(
-				'iworks_simple_seo_improvements_json_ld::json_encode::flags',
+				'iworks/simple-seo-improvements/json_ld::json_encode::flags',
 				$flags
 			)
 		);
@@ -1190,18 +1311,38 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * Mark selected LocalBusiness page.
+	 * Add a post state for the Local Business page in the pages list table.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @param array   $post_states An array of post display states.
+	 * @param WP_Post $post        The current post object.
+	 * @return array Modified post states.
 	 */
 	public function filter_display_post_states( $post_states, $post ) {
+		/**
+		 * Options
+		 */
+		$this->check_option_object();
 		if ( intval( $this->options->get_option( 'json_org_lb' ) ) === intval( $post->ID ) ) {
 			$post_states[] = esc_html__( 'Local Business Page', 'simple-seo-improvements' );
 		}
 		return $post_states;
 	}
 
+	/**
+	 * Check if a post is the designated Local Business page.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param int $post_id The post ID to check.
+	 * @return bool True if the post is the Local Business page, false otherwise.
+	 */
 	private function check_is_local_business_page( $post_id ) {
+		/**
+		 * Options
+		 */
+		$this->check_option_object();
 		$id = intval( $this->options->get_option( 'json_org_lb' ) );
 		if ( 0 === $id ) {
 			return false;
@@ -1210,7 +1351,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * Add entry edit metabox.
+	 * Add meta box for Local Business page settings.
 	 *
 	 * @since 1.0.0
 	 */
@@ -1222,6 +1363,10 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		) {
 			return;
 		}
+		/**
+		 * Options
+		 */
+		$this->check_option_object();
 		add_meta_box(
 			$this->options->get_option_name( 'localbusiness' ),
 			__( 'Simple SEO Improvements: LocalBusiness', 'simple-seo-improvements' ),
@@ -1230,6 +1375,14 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		);
 	}
 
+	/**
+	 * Get Local Business values for a post.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param int $ID The post ID.
+	 * @return array Local Business values.
+	 */
 	private function get_local_business_values( $ID ) {
 		$values = get_post_meta( $ID, $this->meta_field_local_business, true );
 		if ( empty( $values ) ) {
@@ -1255,9 +1408,16 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		return $values;
 	}
 
+	/**
+	 * Render the Local Business meta box.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param WP_Post $post The post object.
+	 */
 	public function meta_box_html_local_business( $post ) {
 		$this->set_local_business_data();
-		$file  = dirname( dirname( dirname( dirname( __FILE__ ) ) ) );
+		$file  = dirname( __DIR__, 3 );
 		$file .= '/assets/templates/meta-boxes/localbusiness.php';
 		$args  = array(
 			'name'   => $this->meta_field_local_business,
@@ -1272,6 +1432,15 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		load_template( $file, true, $args );
 	}
 
+	/**
+	 * Save Local Business meta box data.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param int      $post_id The post ID.
+	 * @param WP_Post  $post    The post object.
+	 * @param bool     $update  Whether this is an existing post being updated.
+	 */
 	public function action_save_post_local_business_fields( $post_id, $post, $update ) {
 		if ( ! $this->check_is_local_business_page( $post_id ) ) {
 			return;
@@ -1335,9 +1504,11 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	}
 
 	/**
-	 * product
+	 * Get the Product schema data.
 	 *
 	 * @since 2.0.5
+	 *
+	 * @return array The Product schema data.
 	 */
 	private function get_part_product() {
 		$data = array();
@@ -1348,15 +1519,17 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			$data = $this->get_part_product_woocommerce();
 		}
 		return apply_filters(
-			'iworks/simple_seo_improvements/json_ld/product',
+			'iworks/simple-seo-improvements/json_ld/product',
 			$data
 		);
 	}
 
 	/**
-	 * product
+	 * Get WooCommerce product schema data.
 	 *
 	 * @since 2.0.5
+	 *
+	 * @return array The WooCommerce product schema data.
 	 */
 	private function get_part_product_woocommerce() {
 		$product = wc_get_product( get_the_ID() );
@@ -1432,7 +1605,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 						);
 					}
 					$data['offers']['offers'][] = apply_filters(
-						'iworks/simple_seo_improvements/json_ld/product/variant/offer/woocommerce',
+						'iworks/simple-seo-improvements/json_ld/product/variant/offer/woocommerce',
 						$data_variant,
 						$variant
 					);
@@ -1534,10 +1707,9 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		 * return
 		 */
 		return apply_filters(
-			'iworks/simple_seo_improvements/json_ld/product/woocommerce',
+			'iworks/simple-seo-improvements/json_ld/product/woocommerce',
 			$data,
 			$product
 		);
 	}
 }
-

@@ -34,13 +34,22 @@ class iworks_simple_seo_improvements_base {
 	protected $base;
 	protected $dir;
 	protected $version;
+	protected $capability;
+	protected $post_type;
+
+	/**
+	 * options object
+	 *
+	 * @since 2.3.0
+	 */
+	protected $options;
 
 	public function __construct() {
 		/**
 		 * static settings
 		 */
 		$this->dev  = ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE ) ? '' : '.min';
-		$this->base = dirname( dirname( __FILE__ ) );
+		$this->base = dirname( __DIR__, 1 );
 		$this->dir  = basename( dirname( $this->base ) );
 	}
 
@@ -69,14 +78,29 @@ class iworks_simple_seo_improvements_base {
 		return $this->capability;
 	}
 
+	/**
+	 * slug name
+	 *
+	 * @since 1.0.0
+	 */
 	private function slug_name( $name ) {
 		return preg_replace( '/[_ ]+/', '-', strtolower( __CLASS__ . '_' . $name ) );
 	}
 
+	/**
+	 * get post meta
+	 *
+	 * @since 1.0.0
+	 */
 	public function get_post_meta( $post_id, $meta_key ) {
 		return get_post_meta( $post_id, $this->get_meta_name( $meta_key ), true );
 	}
 
+	/**
+	 * print table body
+	 *
+	 * @since 1.0.0
+	 */
 	protected function print_table_body( $post_id, $fields ) {
 		echo '<table class="widefat striped"><tbody>';
 		foreach ( $fields as $name => $data ) {
@@ -129,6 +153,11 @@ class iworks_simple_seo_improvements_base {
 		echo '</tbody></table>';
 	}
 
+	/**
+	 * get module file
+	 *
+	 * @since 1.0.0
+	 */
 	protected function get_module_file( $filename, $vendor = 'iworks' ) {
 		return realpath(
 			sprintf(
@@ -141,6 +170,11 @@ class iworks_simple_seo_improvements_base {
 		);
 	}
 
+	/**
+	 * HTML title
+	 *
+	 * @since 1.0.0
+	 */
 	protected function html_title( $text ) {
 		printf( '<h1 class="wp-heading-inline">%s</h1>', esc_html( $text ) );
 	}

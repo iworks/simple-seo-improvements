@@ -227,9 +227,7 @@ abstract class iworks_simple_seo_improvements_base_abstract {
 		if ( ! empty( $this->robots_options ) ) {
 			return;
 		}
-		if ( empty( $this->options ) ) {
-			$this->options = get_iworks_simple_seo_improvements_options();
-		}
+		$this->check_option_object();
 		$settings = $this->options->get_group( 'settings' );
 		if ( isset( $settings['robots'] ) ) {
 			$this->robots_options = $settings['robots'];
@@ -291,5 +289,17 @@ abstract class iworks_simple_seo_improvements_base_abstract {
 		$value = preg_replace( '/ +/', ' ', $value );
 		$value = trim( $value );
 		return $value;
+	}
+
+	/**
+	 * check option object
+	 *
+	 * @since 2.3.0
+	 */
+	protected function check_option_object() {
+		if ( is_a( $this->options, 'iworks_options' ) ) {
+			return;
+		}
+		$this->options = get_iworks_simple_seo_improvements_options();
 	}
 }

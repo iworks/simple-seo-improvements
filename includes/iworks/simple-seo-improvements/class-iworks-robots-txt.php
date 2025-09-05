@@ -36,6 +36,7 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 	}
 
 	public function filter_robots_txt_add( $robots, $public ) {
+		$this->check_option_object();
 		$this->set_robots_options();
 		$entries = apply_filters(
 			/**
@@ -106,6 +107,7 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 	 * @since 2.0.2
 	 */
 	public function filter_robots_txt_add_ai_bots( $robots, $public ) {
+		$this->check_option_object();
 		$options = array(
 			'ai_block_chatgpt' => array(
 				'GPTBot',
@@ -129,9 +131,6 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 				}
 			}
 		}
-
 		return $robots;
 	}
 }
-
-

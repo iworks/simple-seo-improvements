@@ -47,7 +47,7 @@ class iworks_simple_seo_improvements_prefixes extends iworks_simple_seo_improvem
 	 * @since 2.2.0
 	 */
 	public function action_init_set_options() {
-		$this->options = get_iworks_simple_seo_improvements_options();
+		$this->check_option_object();
 		/**
 		 * category_no_slug
 		 */
@@ -194,4 +194,3 @@ class iworks_simple_seo_improvements_prefixes extends iworks_simple_seo_improvem
 		exit();
 	}
 }
-

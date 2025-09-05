@@ -55,7 +55,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * @since 2.2.0
 	 */
 	public function action_init_set_options() {
-		$this->options = get_iworks_simple_seo_improvements_options();
+		$this->check_option_object();
 		$this->set_robots_options();
 	}
 
@@ -65,6 +65,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * @since 1.0.0
 	 */
 	private function get_data( $post_id, $mode = 'front' ) {
+		$this->check_option_object();
 		$data = wp_parse_args(
 			get_post_meta( $post_id, $this->field_name, true ),
 			array(
@@ -227,6 +228,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		if ( is_admin() || ! is_singular() ) {
 			return $content;
 		}
+		$this->check_option_object();
 		/**
 		 * Google
 		 */
@@ -269,6 +271,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * @since 1.0.0
 	 */
 	public function add_meta_boxes() {
+		$this->check_option_object();
 		$args       = apply_filters(
 			'iworks_simple_seo_improvements_get_post_types_args',
 			array(
