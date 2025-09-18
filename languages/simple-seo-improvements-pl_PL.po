@@ -1,12 +1,11 @@
-# Translation of Plugins - Simple SEO Improvements - Stable (latest release) in Polish
-# This file is distributed under the same license as the Plugins - Simple SEO Improvements - Stable (latest release) package.
+# Translation of Plugins - Simple SEO Improvements - Development (trunk) in Polish
+# This file is distributed under the same license as the Plugins - Simple SEO Improvements - Development (trunk) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Plugins - Simple SEO Improvements - Stable (latest "
-"release)\n"
+"Project-Id-Version: Plugins - Simple SEO Improvements - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-09-18 05:40:28+00:00\n"
-"PO-Revision-Date: 2025-09-05 08:18:34+0000\n"
+"POT-Creation-Date: 2025-09-18 08:24:34+00:00\n"
+"PO-Revision-Date: 2025-09-18 08:23:14+0000\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -234,14 +233,12 @@ msgstr ""
 "adresów URL w witrynie mogą uzyskać dostęp."
 
 #: etc/options.php:238
-#, fuzzy
 msgid "Disallow All"
-msgstr "Nie zezwalaj:"
+msgstr "W całości nie zezwalaj"
 
 #: etc/options.php:242
-#, fuzzy
 msgid "Disallow all."
-msgstr "Nie zezwalaj:"
+msgstr "W całości nie zezwalaj."
 
 #: etc/options.php:253
 msgid "Disallow:"
