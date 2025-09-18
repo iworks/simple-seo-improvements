@@ -110,6 +110,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.3.1 (2025-09-18) =
+* **Improvement**: The option to disallow all in robots.txt has been added.
+
 = 2.3.0 (2025-09-05) =
 * **Bugfix**: Fixed an issue where the `$options` object was not defined.
 * **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.7.

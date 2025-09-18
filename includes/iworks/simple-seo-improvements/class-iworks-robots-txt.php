@@ -30,13 +30,46 @@ require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php'
 
 class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improvements_base_abstract {
 
+	/**
+	 * Class constructor.
+	 *
+	 * @since 1.0.0
+	 */
 	public function __construct() {
 		add_filter( 'robots_txt', array( $this, 'filter_robots_txt_add' ), 11, 2 );
 		add_filter( 'robots_txt', array( $this, 'filter_robots_txt_add_ai_bots' ), 12, 2 );
+		add_filter( 'robots_txt', array( $this, 'filter_robots_txt_maybe_disallow_all' ), PHP_INT_MAX, 2 );
 	}
 
+	/**
+	 * Get header of robots.txt
+	 *
+	 * @since 2.3.1
+	 *
+	 * @return string The header of robots.txt.
+	 */
+	private function get_header_of_robots_txt() {
+		$robots  = '# PLUGIN_NAME PLUGIN_VERSION';
+		$robots .= PHP_EOL;
+		$robots .= '# PLUGIN_URI';
+		$robots .= PHP_EOL;
+		$robots .= PHP_EOL;
+		return $robots;
+	}
+
+	/**
+	 * Add robots.txt
+	 *
+	 * @param string $robots The robots.txt.
+	 * @param bool   $public Whether the site is public.
+	 *
+	 * @return string The robots.txt.
+	 */
 	public function filter_robots_txt_add( $robots, $public ) {
 		$this->check_option_object();
+		if ( $this->options->get_option( 'robots_txt_disallow_all' ) ) {
+			return $robots;
+		}
 		$this->set_robots_options();
 		$entries = apply_filters(
 			/**
@@ -78,13 +111,7 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 		/**
 		 * replace robots_txt
 		 */
-		$robots  = '';
-		$robots .= PHP_EOL;
-		$robots .= '# PLUGIN_NAME PLUGIN_VERSION';
-		$robots .= PHP_EOL;
-		$robots .= '# PLUGIN_URI';
-		$robots .= PHP_EOL;
-		$robots .= PHP_EOL;
+		$robots  = $this->get_header_of_robots_txt();
 		$robots .= 'User-agent: *';
 		$robots .= PHP_EOL;
 		foreach ( $entries as $key => $data ) {
@@ -108,6 +135,9 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 	 */
 	public function filter_robots_txt_add_ai_bots( $robots, $public ) {
 		$this->check_option_object();
+		if ( $this->options->get_option( 'robots_txt_disallow_all' ) ) {
+			return $robots;
+		}
 		$options = array(
 			'ai_block_chatgpt' => array(
 				'GPTBot',
@@ -130,6 +160,23 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 					$robots .= PHP_EOL;
 				}
 			}
+		}
+		return $robots;
+	}
+
+	/**
+	 * Disallow all
+	 *
+	 * @since 2.3.1
+	 */
+	public function filter_robots_txt_maybe_disallow_all( $robots, $public ) {
+		$this->check_option_object();
+		if ( $this->options->get_option( 'robots_txt_disallow_all' ) ) {
+			$robots  = $this->get_header_of_robots_txt();
+			$robots .= 'User-agent: *';
+			$robots .= PHP_EOL;
+			$robots .= 'Disallow: /';
+			$robots .= PHP_EOL;
 		}
 		return $robots;
 	}

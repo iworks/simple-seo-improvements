@@ -228,6 +228,21 @@ function iworks_simple_seo_improvements_options() {
 				'since'             => '1.4.0',
 			),
 			/**
+			 * Disallow ALL: for robots.txt
+			 *
+			 * @since 2.3.1
+			 */
+			array(
+				'name'              => 'robots_txt_disallow_all',
+				'type'              => 'checkbox',
+				'th'                => __( 'Disallow All', 'simple-seo-improvements' ),
+				'default'           => 0,
+				'classes'           => array( 'switch-button' ),
+				'sanitize_callback' => 'absint',
+				'description'       => __( 'Disallow all.', 'simple-seo-improvements' ),
+				'since'             => '2.3.1',
+			),
+			/**
 			 * Disallow: for robots.txt
 			 *
 			 * @since 1.5.5
