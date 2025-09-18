@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Simple SEO Improvements - Stable (latest "
 "release)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-09-05 08:21:35+00:00\n"
+"POT-Creation-Date: 2025-09-18 05:40:28+00:00\n"
 "PO-Revision-Date: 2023-11-01 10:54:33+0000\n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 msgid "Delete Local Business Type"
 msgstr ""
 
-#: assets/templates/meta-boxes/localbusiness.php:63 etc/options.php:449
+#: assets/templates/meta-boxes/localbusiness.php:63 etc/options.php:464
 msgid "Type"
 msgstr ""
 
@@ -218,65 +218,73 @@ msgstr ""
 "sökroboten kan komma åt på din webbplats."
 
 #: etc/options.php:238
-msgid "Disallow:"
+msgid "Disallow All"
 msgstr ""
 
-#: etc/options.php:241 etc/options.php:257
-msgid "Add one entry per line."
+#: etc/options.php:242
+msgid "Disallow all."
 msgstr ""
 
 #: etc/options.php:253
+msgid "Disallow:"
+msgstr ""
+
+#: etc/options.php:256 etc/options.php:272
+msgid "Add one entry per line."
+msgstr ""
+
+#: etc/options.php:268
 msgid "Allow:"
 msgstr ""
 
-#: etc/options.php:267
+#: etc/options.php:282
 msgid "Bing"
 msgstr ""
 
-#: etc/options.php:273
+#: etc/options.php:288
 msgid "IndexNow for Bing"
 msgstr "IndexNow för Bing"
 
-#: etc/options.php:277
+#: etc/options.php:292
 msgid ""
 "IndexNow is an easy way for websites owners to instantly inform search "
 "engines about latest content changes on their website. In its simplest form."
 msgstr ""
 
-#: etc/options.php:287
+#: etc/options.php:302
 msgid "Google"
 msgstr ""
 
-#: etc/options.php:288
+#: etc/options.php:303
 msgid ""
 "The robots meta tag lets you utilize a granular, page-specific approach to "
 "controlling how an individual page should be indexed and served to users in "
 "Google Search results."
 msgstr ""
 
-#: etc/options.php:299
+#: etc/options.php:314
 msgid "Show in Google"
 msgstr ""
 
-#: etc/options.php:303
+#: etc/options.php:318
 msgid "To show a page in Google's web search results."
 msgstr ""
 
-#: etc/options.php:314
+#: etc/options.php:329
 msgid "Show in Google News"
 msgstr ""
 
-#: etc/options.php:318
+#: etc/options.php:333
 msgid ""
 "To show a page in Google's web search results, but not in Google News, use "
 "the googlebot-news meta tag"
 msgstr ""
 
-#: etc/options.php:329
+#: etc/options.php:344
 msgid "Max Snippet"
 msgstr ""
 
-#: etc/options.php:332
+#: etc/options.php:347
 msgid ""
 "Use a maximum of [number] characters as a textual snippet for this search "
 "result. If you don't specify this rule, Google will choose the length of the "
@@ -285,185 +293,185 @@ msgid ""
 "your site. Set 0 - no snippet is to be shown. Equivalent to nosnippet."
 msgstr ""
 
-#: etc/options.php:343
+#: etc/options.php:358
 msgid "Max Image Preview"
 msgstr ""
 
-#: etc/options.php:347
+#: etc/options.php:362
 msgid "No image preview is to be shown."
 msgstr ""
 
-#: etc/options.php:350
+#: etc/options.php:365
 msgid "A default image preview may be shown."
 msgstr ""
 
-#: etc/options.php:353
+#: etc/options.php:368
 msgid "A larger image preview, up to the width of the viewport, may be shown."
 msgstr ""
 
-#: etc/options.php:356
+#: etc/options.php:371
 msgid ""
 "Set the maximum size of an image preview for this page in a search results. "
 "If you don't specify the max-image-preview rule, Google may show an image "
 "preview of the default size."
 msgstr ""
 
-#: etc/options.php:367
+#: etc/options.php:382
 msgid "Max Video Preview"
 msgstr ""
 
-#: etc/options.php:370
+#: etc/options.php:385
 msgid ""
 "This applies to all forms of search results (at Google: web search, Google "
 "Images, Google Videos, Discover, Assistant). This rule is ignored if no "
 "parseable [number] is specified."
 msgstr ""
 
-#: etc/options.php:380
+#: etc/options.php:395
 msgid "Block AI Crawlers Bots"
 msgstr ""
 
-#: etc/options.php:386
+#: etc/options.php:401
 msgid "ChatGPT"
 msgstr ""
 
-#: etc/options.php:395
+#: etc/options.php:410
 msgid "Google AI"
 msgstr ""
 
-#: etc/options.php:404
+#: etc/options.php:419
 msgid "CCBot"
 msgstr ""
 
-#: etc/options.php:417
+#: etc/options.php:432
 msgid "Structured Data"
 msgstr ""
 
-#: etc/options.php:418
+#: etc/options.php:433
 msgid ""
 "Structured data is a standardized format for providing information about a "
 "page and classifying the page content."
 msgstr ""
 
-#: etc/options.php:424
+#: etc/options.php:439
 msgid "Use Structured Data Markup"
 msgstr ""
 
-#: etc/options.php:432
+#: etc/options.php:447
 msgid "Site Representation"
 msgstr ""
 
-#: etc/options.php:438
+#: etc/options.php:453
 msgid "Alternate Website Name"
 msgstr ""
 
-#: etc/options.php:439
+#: etc/options.php:454
 msgid ""
 "Use the alternate website name for acronyms, or a shorter version of your "
 "website's name."
 msgstr ""
 
-#: etc/options.php:450
+#: etc/options.php:465
 msgid "Choose whether your site represents an organization or a person."
 msgstr ""
 
-#: etc/options.php:454
+#: etc/options.php:469
 msgid "Don't use organization/person structure data."
 msgstr ""
 
-#: etc/options.php:457
+#: etc/options.php:472
 msgid "Organization"
 msgstr ""
 
-#: etc/options.php:460
+#: etc/options.php:475
 msgid "Person"
 msgstr ""
 
-#: etc/options.php:468
+#: etc/options.php:483
 msgid "Organization name"
 msgstr ""
 
-#: etc/options.php:478
+#: etc/options.php:493
 msgid "Alternate organization name"
 msgstr ""
 
-#: etc/options.php:479
+#: etc/options.php:494
 msgid ""
 "Use the alternate organization name for acronyms, or a shorter version of "
 "your organization's name."
 msgstr ""
 
-#: etc/options.php:488
+#: etc/options.php:503
 msgid "Organization logo"
 msgstr ""
 
-#: etc/options.php:496
+#: etc/options.php:511
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:178
 msgid "Street Address"
 msgstr ""
 
-#: etc/options.php:505
+#: etc/options.php:520
 msgid "Address Locality"
 msgstr ""
 
-#: etc/options.php:514
+#: etc/options.php:529
 msgid "Address Region"
 msgstr ""
 
-#: etc/options.php:515
+#: etc/options.php:530
 msgid "E.g. state, voivodeship"
 msgstr ""
 
-#: etc/options.php:524
+#: etc/options.php:539
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:181
 msgid "Postal Code"
 msgstr ""
 
-#: etc/options.php:530
+#: etc/options.php:545
 msgid "Address Country"
 msgstr ""
 
-#: etc/options.php:538
+#: etc/options.php:553
 msgid "Local Buissnes Page"
 msgstr ""
 
-#: etc/options.php:539
+#: etc/options.php:554
 msgid ""
 "Select a page to fill local business (LocalBusiness) structured data. Edit "
 "selected page to add or change LocalBusiness data."
 msgstr ""
 
-#: etc/options.php:547
+#: etc/options.php:562
 msgid "Select User"
 msgstr ""
 
-#: etc/options.php:549
+#: etc/options.php:564
 msgid ""
 "You have selected the user admin as the person this site represents. Their "
 "user profile information will now be used in search results. Update their "
 "profile to make sure the information is correct."
 msgstr ""
 
-#: etc/options.php:556
+#: etc/options.php:571
 msgid "Personal logo or avatar"
 msgstr ""
 
-#: etc/options.php:564
+#: etc/options.php:579
 msgid "Other profiles"
 msgstr ""
 
-#: etc/options.php:565
+#: etc/options.php:580
 msgid ""
 "Tell us if you have any other profiles on the web that belong to your "
 "organization. This can be any number of profiles, like YouTube, LinkedIn, "
 "Pinterest, or even Wikipedia. Put one URL per line."
 msgstr ""
 
-#: etc/options.php:581
+#: etc/options.php:596
 msgid "Custom Code"
 msgstr "Anpassad kod"
 
-#: etc/options.php:582
+#: etc/options.php:597
 msgid ""
 "Use these settings to insert code from Google Tag Manager, Google Analytics "
 "or webmaster tools verification."
@@ -471,11 +479,11 @@ msgstr ""
 "Använd dessa inställningar för att infoga kod från Google Tag Manager, "
 "Google Analytics eller verifiering av verktyg för webbansvariga."
 
-#: etc/options.php:588
+#: etc/options.php:603
 msgid "Header Code"
 msgstr "Kod i sidhuvudet"
 
-#: etc/options.php:589
+#: etc/options.php:604
 msgid ""
 "Code entered in this box will be printed in the <code>&lt;head&gt;</code> "
 "section."
@@ -483,11 +491,11 @@ msgstr ""
 "Koden som skrivs in i denna ruta kommer att skrivas ut i sektionen "
 "<code>&lt;head&gt;</code>."
 
-#: etc/options.php:601
+#: etc/options.php:616
 msgid "Body Start"
 msgstr "Start av body"
 
-#: etc/options.php:602
+#: etc/options.php:617
 msgid ""
 "Code entered in this box will be printed after the opening <code>&lt;body&gt;"
 "</code> tag."
@@ -495,11 +503,11 @@ msgstr ""
 "Koden som anges i denna ruta kommer att skrivas ut efter den inledande "
 "<code>&lt;body&gt;</code>-taggen."
 
-#: etc/options.php:614
+#: etc/options.php:629
 msgid "Body End"
 msgstr "Slutet av body"
 
-#: etc/options.php:615
+#: etc/options.php:630
 msgid ""
 "Code entered in this box will be printed before the closing <code>&lt;/"
 "body&gt;</code> tag."
@@ -507,11 +515,11 @@ msgstr ""
 "Koden som skrivs in i denna ruta kommer att skrivas ut precis innan "
 "sektionen <code>&lt;/body&gt;</code> avslutas."
 
-#: etc/options.php:631
+#: etc/options.php:646
 msgid "OpenSearch"
 msgstr ""
 
-#: etc/options.php:632
+#: etc/options.php:647
 msgid ""
 "OpenSearch is a collection of technologies that allow publishing search "
 "results in a format suitable for syndication and aggregation. It is a way "
@@ -519,33 +527,33 @@ msgid ""
 "search clients."
 msgstr ""
 
-#: etc/options.php:638
+#: etc/options.php:653
 msgid "Enable OpenSearch"
 msgstr ""
 
-#: etc/options.php:647 etc/options.php:702
+#: etc/options.php:662 etc/options.php:717
 msgid "We are waiting for your message"
 msgstr "Vi ser fram emot ditt meddelande"
 
-#: etc/options.php:654
+#: etc/options.php:669
 msgid "I love what I do!"
 msgstr "Jag älskar det jag gör!"
 
-#: etc/options.php:686
+#: etc/options.php:701
 msgid "Below are some links to help spread this plugin to other users"
 msgstr ""
 "Nedan finns några länkar som hjälper till att sprida detta tillägg till "
 "andra användare"
 
-#: etc/options.php:688
+#: etc/options.php:703
 msgid "Give it a five stars on WordPress.org"
 msgstr "Ge det 5 stjärnor på WordPress.org"
 
-#: etc/options.php:689
+#: etc/options.php:704
 msgid "Link to it so others can easily find it"
 msgstr "Länka till det så att andra enkelt kan hitta det"
 
-#: etc/options.php:704
+#: etc/options.php:719
 msgid "WordPress Help Forum"
 msgstr "WordPress hjälpforum"
 
@@ -2561,12 +2569,12 @@ msgctxt "placeholder"
 msgid "@account_name"
 msgstr "@kontonamn"
 
-#: etc/options.php:689
+#: etc/options.php:704
 msgctxt "plugin home page on WordPress.org"
 msgid "https://wordpress.org/plugins/simple-seo-improvements/"
 msgstr "https://wordpress.org/plugins/simple-seo-improvements/"
 
-#: etc/options.php:704
+#: etc/options.php:719
 msgctxt "link to support forum on WordPress.org"
 msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
 msgstr "https://wordpress.org/support/plugin/simple-seo-improvements/"
