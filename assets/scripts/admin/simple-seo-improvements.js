@@ -1,6 +1,6 @@
-/*! Simple SEO Improvements - v2.3.1
+/*! Simple SEO Improvements - v2.3.2
  * http://iworks.pl/en/plugins/simple-seo-improvements/
- * Copyright (c) 2025; * Licensed GPLv2+
+ * Copyright (c) 2026; * Licensed GPLv2+
  */
 window.simple_seo_improvements = window.simple_seo_improvements || [];
 window.simple_seo_improvements.json_type_change = function(value) {

@@ -3,7 +3,7 @@
     "title": "Simple SEO Improvements",
     "description": "Simple SEO improvements - lightweight solution to power up your website.",
     "tagline": "Lightweight SEO solution to power up your website.",
-    "version": "2.3.1",
+    "version": "2.3.2",
     "homepage": "http://iworks.pl/en/plugins/simple-seo-improvements/",
     "author": [
         {
@@ -21,7 +21,7 @@
         "PHP": "8.0"
     },
     "tested": {
-        "WordPress": "6.8"
+        "WordPress": "7.0"
     },
     "devDependencies": {
         "grunt": "^1",
