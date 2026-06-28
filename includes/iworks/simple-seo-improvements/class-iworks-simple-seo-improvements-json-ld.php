@@ -36,37 +36,42 @@ require_once __DIR__ . '/class-iworks-simple-seo-improvements-base-abstract.php'
 class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improvements_base_abstract {
 
 	/**
-	 * JSON-LD data
+	 * JSON-LD data.
 	 *
 	 * @since 1.5.7
+	 * @var array
 	 */
 	private $data = array();
 
 	/**
-	 * locale
+	 * Locale.
 	 *
 	 * @since 2.0.0
+	 * @var string|null
 	 */
 	private $locale = null;
 
 	/**
-	 * LocalBusiness page meta name
+	 * LocalBusiness page meta name.
 	 *
 	 * @since 2.0.0
+	 * @var string
 	 */
 	private $meta_field_local_business = '_ssi_local_business';
 
 	/**
-	 * fields for LocalBusiness
+	 * Fields for LocalBusiness.
 	 *
 	 * @since 2.0.0
+	 * @var array|null
 	 */
 	private $local_business_fields = null;
 
 	/**
-	 * Types for LocalBusiness
+	 * Types for LocalBusiness.
 	 *
 	 * @since 2.0.0
+	 * @var array|null
 	 */
 	private $local_business_types = null;
 
@@ -167,6 +172,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	 * Initialize Local Business data structure.
 	 *
 	 * @since 2.0.0
+	 * @return void
 	 */
 	private function set_local_business_data() {
 		$this->local_business_fields = array(
@@ -215,7 +221,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				),
 			),
 		);
-		$this->local_business_types  = apply_filters( 'iworks/simple-seo-improvements/get_lb_types', array() );
+		$this->local_business_types  = apply_filters( 'iworks_simple_seo_improvements_get_lb_types', array() );
 	}
 
 	/**
@@ -1354,6 +1360,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	 * Add meta box for Local Business page settings.
 	 *
 	 * @since 1.0.0
+	 * @return void
 	 */
 	public function add_meta_box_for_local_business() {
 		if (
@@ -1414,6 +1421,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	 * @since 2.0.0
 	 *
 	 * @param WP_Post $post The post object.
+	 * @return void
 	 */
 	public function meta_box_html_local_business( $post ) {
 		$this->set_local_business_data();
@@ -1437,9 +1445,10 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param int      $post_id The post ID.
-	 * @param WP_Post  $post    The post object.
-	 * @param bool     $update  Whether this is an existing post being updated.
+	 * @param int     $post_id The post ID.
+	 * @param WP_Post $post    The post object.
+	 * @param bool    $update  Whether this is an existing post being updated.
+	 * @return void
 	 */
 	public function action_save_post_local_business_fields( $post_id, $post, $update ) {
 		if ( ! $this->check_is_local_business_page( $post_id ) ) {

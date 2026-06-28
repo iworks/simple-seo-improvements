@@ -57,7 +57,7 @@ Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.
 
 We'd love your help to make Simple SEO Improvements even better!
 
-1. **Report Bugs**: Found an issue? Report it by [creating a new topic](https://wordpress.org/support/plugin/simple-seo-improvements/)     in the plugin forum. Once verified, the issue will be tracked in GitHub for resolution.
+1. **Report Bugs**: Found an issue? Report it by [creating a new topic](https://wordpress.org/support/plugin/simple-seo-improvements/) in the plugin forum. Once verified, the issue will be tracked in GitHub for resolution.
 1. **Suggest New Features**: Have an idea for a new feature? Share it by creating a topic in the plugin forum to discuss its potential.
 1. **Submit Pull Requests**: If you're a developer, contribute by addressing [existing issues on GitHub](https://github.com/iworks/simple-seo-improvements/issues). Be sure to check our contributing [guide for developers](https://github.com/iworks/simple-seo-improvements/blob/master/contributing.md).
 
@@ -110,7 +110,10 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
-= 2.3.2 (2026-05-17 =
+= 2.3.3 (2026-06-28) =
+* **Bugfix**: Fixed an issue where the local business type was not being saved correctly. Props for [anoriell - Katarzyna Janoska](https://profiles.wordpress.org/anoriell/). [#20](https://github.com/iworks/simple-seo-improvements/issues/20).
+
+= 2.3.2 (2026-05-17) =
 * **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.1.0 and the [iWorks Rate](https://github.com/iworks/iworks-rate) module to version 2.3.2.
 
 = 2.3.1 (2025-09-18) =
@@ -122,12 +125,12 @@ Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.
 * **Dependencies**: Updated the [iWorks Rate](https://github.com/iworks/iworks-rate) module to version 2.3.1.
 
 = 2.2.9 (2025-05-09) =
-* Fixed an issue where the $content string was not parseable as HTML. Props for [anoriell - Katarzyna Janoska](https://profiles.wordpress.org/anoriell/).  [#17](https://github.com/iworks/simple-seo-improvements/issues/17).
+* **Bugfix**: Fixed an issue where the $content string was not parseable as HTML. Props for [anoriell - Katarzyna Janoska](https://profiles.wordpress.org/anoriell/). [#17](https://github.com/iworks/simple-seo-improvements/issues/17).
 
 = 2.2.8 (2025-05-07) =
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 3.0.0.
-* Fixed an issue with saving multiline text. [#16](https://github.com/iworks/simple-seo-improvements/issues/16).
-* Added the `www` prefix to site url during checking externals. [#14](https://github.com/iworks/simple-seo-improvements/issues/14).
+* **Bugfix**: Fixed an issue with saving multiline text. [#16](https://github.com/iworks/simple-seo-improvements/issues/16).
+* **Improvement**: Added the `www` prefix to site url during checking externals. [#14](https://github.com/iworks/simple-seo-improvements/issues/14).
 
 = 2.2.7 (2025-03-14) =
 * Removed the external class from internal links for improved consistency. Props for [Rafał Jendrzejewski](https://www.linkedin.com/in/rafaljendrzejewski/).
