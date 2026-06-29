@@ -17,6 +17,7 @@ module.exports = function(grunt) {
 
 	var buildtime = new Date().toISOString();
 	var buildyear = 1900 + new Date().getYear();
+	var buildtimestamp = new Date().getTime();
 
 	/**
 	 * excludes
@@ -89,6 +90,9 @@ module.exports = function(grunt) {
 			match: /AUTHOR_URI/g,
 			replace: '<%= pkg.author[0].uri %>'
 		}, {
+			match: /BUILDTIMESTAMP/g,
+			replace: buildtimestamp
+		}, {
 			match: /BUILDTIME/g,
 			replace: buildtime
 		}, {
@@ -119,6 +123,9 @@ module.exports = function(grunt) {
 			match: /PLUGIN_TAGLINE/g,
 			replace: '<%= pkg.tagline %>'
 		}, {
+			match: /PLUGIN_TAGS/g,
+			replace: '<%= pkg.tags.join(", ") %>'
+		}, {
 			match: /PLUGIN_TILL_YEAR/g,
 			replace: buildyear
 		}, {
@@ -141,6 +148,7 @@ module.exports = function(grunt) {
 		// Regex patterns to exclude from transation.
 		translation: {
 			ignore_files: [
+				'README.md',
 				'.git*',
 				'includes/external/.*', // External libraries.
 				'node_modules/.*',
@@ -165,8 +173,8 @@ module.exports = function(grunt) {
 				stripBanners: true,
 				banner: '/*! <%= pkg.title %> - v<%= pkg.version %>\n' +
 				' * <%= pkg.homepage %>\n' +
-				' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
-				' * Licensed GPLv2+\n' +
+					' * Copyright (c) <%= grunt.template.today("yyyy") %>\n' +
+					' * Licensed <%= pkg.license %>' +
 				' */\n'
 			},
 			scripts: {
@@ -213,7 +221,7 @@ module.exports = function(grunt) {
 				options: {
 					banner: '/*! <%= pkg.title %> - <%= pkg.version %>\n' +
 					' * <%= pkg.homepage %>\n' +
-					' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
+						' * Copyright (c) <%= grunt.template.today("yyyy") %>;\n' +
 					' * Licensed <%= pkg.license %>' +
 					' */\n',
 					mangle: {
@@ -299,8 +307,8 @@ module.exports = function(grunt) {
 						'x-poedit-keywordslist': true // Include a list of all possible gettext functions.
 					},
 					type: 'wp-plugin',
-					updateTimestamp: true,
-					updatePoFiles: true
+					updateTimestamp: true, // Whether the POT-Creation-Date should be updated without other changes.
+					updatePoFiles: true // Whether to update PO files in the same directory as the POT file.
 				}
 			}
 		},
@@ -378,7 +386,7 @@ module.exports = function(grunt) {
 
 		checktextdomain: {
 			options: {
-				text_domain: ['<%= pkg.name %>', 'IWORKS_RATE_TEXTDOMAIN', 'IWORKS_OPTIONS_TEXTDOMAIN'],
+				text_domain: ['<%= pkg.name %>', 'PLUGIN_NAME', 'IWORKS_RATE_TEXTDOMAIN', 'IWORKS_OPTIONS_TEXTDOMAIN'],
 				keywords: [ //List keyword specifications
 					'__:1,2d',
 					'_e:1,2d',
@@ -421,6 +429,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', ['clean:temp', 'concat', 'uglify']);
 	grunt.registerTask('js', ['concat', 'uglify']);
+	grunt.registerTask('css', ['sass', 'concat_css', 'cssmin']);
 	grunt.registerTask('i18n', ['checktextdomain', 'makepot']);
 
 	grunt.registerTask(
@@ -432,7 +441,7 @@ module.exports = function(grunt) {
 			'copy:wporg',
 			'replace',
 			'compress:wporg'
-		],
+		]
 	);
 	grunt.registerTask(
 		'build:github',
@@ -446,7 +455,7 @@ module.exports = function(grunt) {
 			'compress:github'
 		]
 	);
-	grunt.registerTask('release', ['build:wporg', 'build:github', 'notes' ]);
+	grunt.registerTask('release', ['build:wporg', 'build:github', 'notes']);
 	grunt.registerTask('test', ['phpunit', 'jshint', 'notes']);
 	grunt.util.linefeed = '\n';
 };

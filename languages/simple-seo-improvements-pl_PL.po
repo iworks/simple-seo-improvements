@@ -5,14 +5,16 @@ msgstr ""
 "Project-Id-Version: Plugins - Simple SEO Improvements - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
 "POT-Creation-Date: 2026-06-29 09:26:15+00:00\n"
-"PO-Revision-Date: 2025-09-18 08:23:14+0000\n"
+"PO-Revision-Date: 2026-06-29 11:34+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 "
 "&& (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
-"X-Generator: GlotPress/4.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: assets/templates/meta-boxes/localbusiness.php:55
 msgid "Delete Local Business Type"
@@ -366,19 +368,19 @@ msgstr ""
 
 #: etc/options.php:395
 msgid "AI"
-msgstr ""
+msgstr "AI"
 
 #: etc/options.php:401
 msgid "Apple"
-msgstr ""
+msgstr "Apple"
 
 #: etc/options.php:414
 msgid "Anthropic"
-msgstr ""
+msgstr "Anthropic"
 
 #: etc/options.php:427
 msgid "Bytespider"
-msgstr ""
+msgstr "Bytespider"
 
 #: etc/options.php:440
 msgid "CCBot"
@@ -390,24 +392,23 @@ msgstr "ChatGPT"
 
 #: etc/options.php:467
 msgid "Claude"
-msgstr ""
+msgstr "Claude"
 
 #: etc/options.php:481
 msgid "Cohere"
-msgstr ""
+msgstr "Cohere"
 
 #: etc/options.php:494
 msgid "Diffbot"
-msgstr ""
+msgstr "Diffbot"
 
 #: etc/options.php:507
-#, fuzzy
 msgid "Facebook"
-msgstr "Identyfikator aplikacji Facebooka"
+msgstr "Facebook"
 
 #: etc/options.php:520
 msgid "GPT Bot"
-msgstr ""
+msgstr "GPT Bot"
 
 #: etc/options.php:533
 msgid "Google AI"
@@ -415,11 +416,11 @@ msgstr "Google AI"
 
 #: etc/options.php:546
 msgid "OAI Search Bot"
-msgstr ""
+msgstr "OAI Search Bot"
 
 #: etc/options.php:559
 msgid "Perplexity Bot"
-msgstr ""
+msgstr "Perplexity Bot"
 
 #: etc/options.php:576
 msgid "Structured Data"
@@ -2280,6 +2281,8 @@ msgid ""
 "Option \"{option_name}\" has been updated. From \"{old_value}\" to "
 "\"{new_value}\"."
 msgstr ""
+"Opcja „{option_name}” została zaktualizowana. Z „{old_value}” na "
+"„{new_value}”."
 
 #: includes/iworks/options/options.php:247
 msgid "No Page Title"
@@ -2662,19 +2665,19 @@ msgstr "Czy dodać obrazki do WordPressowej mapy XML?"
 
 #. Plugin URI of the plugin/theme
 msgid "PLUGIN_URI"
-msgstr ""
+msgstr "PLUGIN_URI"
 
 #. Description of the plugin/theme
 msgid "PLUGIN_DESCRIPTION"
-msgstr ""
+msgstr "PLUGIN_DESCRIPTION"
 
 #. Author of the plugin/theme
 msgid "AUTHOR_NAME"
-msgstr ""
+msgstr "AUTHOR_NAME"
 
 #. Author URI of the plugin/theme
 msgid "AUTHOR_URI"
-msgstr ""
+msgstr "AUTHOR_URI"
 
 #: etc/options.php:106
 msgctxt "placeholder"

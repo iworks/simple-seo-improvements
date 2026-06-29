@@ -1,12 +1,23 @@
+# These are some examples of commonly ignored file patterns.
+# You should customize this list as applicable to your project.
 
-# ignore node dependency directories
+# Node artifact files
 node_modules/
+dist/
 
+# Compiled files
 .sass-cache
 package-lock.json
-release
 
-# ignore log files and databases
-*.log
-*.sql
-*.sqlite
+# Compiled CSS files, needed to release not in repository
+assets/styles/
+assets/scripts/admin/simple-seo-improvements*js
+
+# release
+release/
+
+# i18n
+languages/*.mo
+
+# tests
+tests/php/.phpunit.result.cache
