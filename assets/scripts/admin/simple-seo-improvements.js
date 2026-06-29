@@ -1,4 +1,4 @@
-/*! Simple SEO Improvements - v2.3.2
+/*! Simple SEO Improvements - v2.3.3
  * http://iworks.pl/en/plugins/simple-seo-improvements/
  * Copyright (c) 2026; * Licensed GPLv2+
  */
