@@ -1,11 +1,24 @@
 {
     "name": "simple-seo-improvements",
     "title": "Simple SEO Improvements",
-    "description": "Simple SEO improvements - lightweight solution to power up your website.",
     "tagline": "Lightweight SEO solution to power up your website.",
+    "description": "Simple SEO improvements - lightweight solution to power up your website.",
     "version": "2.3.3",
     "homepage": "http://iworks.pl/en/plugins/simple-seo-improvements/",
-    "author": [
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:iworks/simple-seo-improvements.git",
+        "website": "https://github.com/iworks/simple-seo-improvements"
+    },
+    "author": "iworks",
+    "tags": [
+        "google search console",
+        "json-ld",
+        "meta data",
+        "schema",
+        "seo"
+    ],
+    "contributors": [
         {
             "name": "Marcin Pietrzak",
             "email": "marcin@iworks.pl",
@@ -43,12 +56,6 @@
         "grunt-potomo": "^3",
         "grunt-replace": "^1",
         "grunt-wp-i18n": "^1"
-    },
-    "keywords": [],
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:iworks/simple-seo-improvements.git",
-        "website": "https://github.com/iworks/simple-seo-improvements"
     },
     "license": "GPL-3.0"
 }
