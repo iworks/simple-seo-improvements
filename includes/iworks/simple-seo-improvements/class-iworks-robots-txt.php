@@ -138,21 +138,17 @@ class iworks_simple_seo_improvements_robots_txt extends iworks_simple_seo_improv
 		if ( $this->options->get_option( 'robots_txt_disallow_all' ) ) {
 			return $robots;
 		}
-		$options = array(
-			'ai_block_chatgpt' => array(
-				'GPTBot',
-				'ChatGPT-User',
-			),
-			'ai_block_google'  => array(
-				'Google-Extended',
-			),
-			'ai_block_ccbot'   => array(
-				'CCBot',
-			),
-		);
-		foreach ( $options as $option_name => $bots ) {
-			if ( $this->options->get_option( $option_name ) ) {
-				foreach ( $bots as $bot ) {
+		$print_header = true;
+		$options      = $this->options->get_options_by_group( 'ai' );
+		foreach ( $options as $option ) {
+			if ( $this->options->get_option( $option['name'] ) ) {
+				foreach ( $option['bots'] as $bot ) {
+					if ( $print_header ) {
+						$robots      .= PHP_EOL;
+						$robots      .= '# Block AI Crawlers Bots';
+						$robots      .= PHP_EOL;
+						$print_header = false;
+					}
 					$robots .= PHP_EOL;
 					$robots .= sprintf( 'User-agent: %s', $bot );
 					$robots .= PHP_EOL;
