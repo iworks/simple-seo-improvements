@@ -110,6 +110,10 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.3.4 (2026-07-15) =
+* **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.1.1.
+* **Improved**: Handled `LocalBusiness type` as a string if it is a single-element array.
+
 = 2.3.3 (2026-06-29) =
 * **Bugfix**: Fixed an issue where the local business type was not being saved correctly. Props for [anoriell - Katarzyna Janoska](https://profiles.wordpress.org/anoriell/). [#20](https://github.com/iworks/simple-seo-improvements/issues/20).
 * **Improvement**: Extended support for blocking AI crawlers in robots.txt. Added the following AI bots to block: Anthropic AI, Bytespider, CCBot, ChatGPT-User, Claude Bot, Claude Web, Cohere AI, GPT Bot, OAI Search Bot, Perplexity Bot.

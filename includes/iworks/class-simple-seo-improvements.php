@@ -126,7 +126,6 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 			$classname                   = 'iworks_simple_seo_improvements_' . $class;
 			$this->objects[ $classname ] = new $classname( $this );
 		}
-		return;
 		/**
 		 * iWorks Rate integration - change logo for rate
 		 */

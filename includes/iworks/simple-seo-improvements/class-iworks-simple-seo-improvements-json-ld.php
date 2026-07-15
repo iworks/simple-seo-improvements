@@ -1086,6 +1086,9 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				get_the_ID()
 			);
 		}
+		if ( is_array( $value['type'] ) && 1 === sizeof( $value['type'] ) ) {
+			$value['type'] = array_shift( $value['type'] );
+		}
 		$data = array(
 			'@type' => $value['type'],
 			'@id'   => get_permalink(),
