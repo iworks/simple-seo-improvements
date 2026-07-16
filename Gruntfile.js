@@ -85,10 +85,10 @@ module.exports = function(grunt) {
 
 		replace_patterns: [{
 			match: /AUTHOR_NAME/g,
-			replace: '<%= pkg.author[0].name %>'
+			replace: '<%= pkg.contributors[0].name %>'
 		}, {
 			match: /AUTHOR_URI/g,
-			replace: '<%= pkg.author[0].uri %>'
+			replace: '<%= pkg.contributors[0].uri %>'
 		}, {
 			match: /BUILDTIMESTAMP/g,
 			replace: buildtimestamp
@@ -133,6 +133,9 @@ module.exports = function(grunt) {
 			replace: '<%= pkg.title %>'
 		}, {
 			match: /PLUGIN_URI/g,
+			replace: '<%= pkg.homepage %>'
+		}, {
+			match: /PLUGIN_URL/g,
 			replace: '<%= pkg.homepage %>'
 		}, {
 			match: /PLUGIN_VERSION/g,
