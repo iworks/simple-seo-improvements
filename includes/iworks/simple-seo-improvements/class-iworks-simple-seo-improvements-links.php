@@ -94,6 +94,9 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 		/**
 		 * try to parse `$content`
 		 */
+		if ( ! function_exists( 'str_get_html' ) ) {
+			include_once dirname( __DIR__, 3 ) . '/vendor/simple_html_dom.php';
+		}
 		$html = str_get_html( $content );
 		/**
 		 * check parsed string

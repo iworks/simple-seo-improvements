@@ -830,6 +830,8 @@ function iworks_simple_seo_improvements_options() {
 			'nosnippet',
 			'notranslate',
 			'noyaca',
+			'noai',
+			'noimageai',
 		),
 	);
 	return apply_filters( 'iworks_plugin_get_options', $options, 'simple-seo-improvements' );
