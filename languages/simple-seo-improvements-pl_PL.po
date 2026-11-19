@@ -58,10 +58,6 @@ msgstr "Użyj jako favicon"
 msgid "Home meta description"
 msgstr "Opis meta strony głównej."
 
-#: etc/options.php:46
-msgid "This field is avaialble only when your homepage show blog posts not as a page"
-msgstr "Pole jest dostępne tylko wtedy, kiedy strona główna pokazuje listę ostatnich wpisów i nie jest to strona."
-
 #: etc/options.php:61
 msgid "Remove category URL prefix"
 msgstr "Usuń prefiks adresu URL dla kategorii"
@@ -2511,9 +2507,6 @@ msgctxt "plugins support home"
 msgid "https://wordpress.org/support/plugin/%s"
 msgstr "https://wordpress.org/support/plugin/%s"
 
-#~ msgid "View Page: %s"
-#~ msgstr "Wyświetl stronę: %s"
-
 #~ msgid "Simple SEO improvements - lightweight solution to power up your website."
 #~ msgstr "Proste ulepszenia SEO - lekkie rozwiązanie, które ulepszy twoją witrynę."
 
@@ -2522,3 +2515,103 @@ msgstr "https://wordpress.org/support/plugin/%s"
 
 #~ msgid "http://iworks.pl/"
 #~ msgstr "http://iworks.pl/"
+
+#: etc/options.php:46
+msgid "This field is available only when your homepage show blog posts not as a page"
+msgstr "To pole jest dostępne tylko wtedy, gdy strona główna wyświetla wpisy na blogu, a nie jest statyczną stroną"
+
+#: etc/options.php:395
+msgid "Webmaster Tools"
+msgstr "Narzędzia dla webmasterów"
+
+#: etc/options.php:396
+msgid "Enter verification codes to confirm site ownership in webmaster tools of search engines. Leave empty to skip a given service."
+msgstr "Wprowadź kody weryfikacyjne, aby potwierdzić własność witryny w narzędziach dla webmasterów wyszukiwarek. Pozostaw puste, aby pominąć daną usługę."
+
+#: etc/options.php:402
+msgid "Google Search Console"
+msgstr "Google Search Console"
+
+#: etc/options.php:404
+msgid "verification code, e.g. Xk8d…"
+msgstr "kod weryfikacyjny, np. Xk8d…"
+
+#: etc/options.php:405
+msgid "Value of the <code>content</code> attribute of the google-site-verification meta tag."
+msgstr "Wartość atrybutu <code>content</code> znacznika meta google-site-verification."
+
+#: etc/options.php:411
+msgid "Bing Webmaster Tools"
+msgstr "Bing Webmaster Tools"
+
+#: etc/options.php:413
+msgid "verification code, e.g. 8A27F…"
+msgstr "kod weryfikacyjny, np. 8A27F…"
+
+#: etc/options.php:414
+msgid "Value of the <code>content</code> attribute of the msvalidate.01 meta tag."
+msgstr "Wartość atrybutu <code>content</code> znacznika meta msvalidate.01."
+
+#: etc/options.php:420
+msgid "Yandex Webmaster"
+msgstr "Yandex Webmaster"
+
+#: etc/options.php:422
+msgid "verification code, e.g. 4f09d…"
+msgstr "kod weryfikacyjny, np. 4f09d…"
+
+#: etc/options.php:423
+msgid "Value of the <code>content</code> attribute of the yandex-verification meta tag."
+msgstr "Wartość atrybutu <code>content</code> znacznika meta yandex-verification."
+
+#: etc/options.php:429
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: etc/options.php:431
+msgid "verification code, e.g. f939b…"
+msgstr "kod weryfikacyjny, np. f939b…"
+
+#: etc/options.php:432
+msgid "Value of the <code>content</code> attribute of the p:domain_verify meta tag."
+msgstr "Wartość atrybutu <code>content</code> znacznika meta p:domain_verify."
+
+#: includes/iworks/class-simple-seo-improvements.php:329
+msgid "HTML meta"
+msgstr "Meta HTML"
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:110
+msgid "Single Attachment Page Redirect"
+msgstr "Przekierowanie stron pojedynczych załączników"
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:111
+msgid "A single attachment page is a dedicated webpage automatically generated for an individual media file (such as an image, PDF, or video) uploaded to the Media Library."
+msgstr "Strona pojedynczego załącznika to osobna strona internetowa generowana automatycznie dla pojedynczego pliku multimedialnego (np. obrazu, pliku PDF lub wideo) przesłanego do biblioteki mediów."
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:116
+msgid "Redirect"
+msgstr "Przekierowanie"
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:120
+msgid "Redirect attachment pages to the page they were uploaded to (301)."
+msgstr "Przekierowuj strony załączników do strony, na której zostały przesłane (301)."
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:126
+msgid "Unattached attachments"
+msgstr "Załączniki niepowiązane"
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:130
+msgid "Nothing — leave unattached attachment pages as they are."
+msgstr "Nic nie rób — pozostaw strony niepowiązanych załączników bez zmian."
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:133
+msgid "Redirect to the main page."
+msgstr "Przekieruj na stronę główną."
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:136
+msgid "Choose what to do with attachment pages of files that are not attached to any content."
+msgstr "Wybierz, co zrobić ze stronami załączników plików, które nie są powiązane z żadną treścią."
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:132
+msgid "View Page: %s"
+msgstr "Zobacz stronę: %s"
