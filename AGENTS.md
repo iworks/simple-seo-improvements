@@ -27,7 +27,8 @@ placeholders (`PLUGIN_VERSION`, `PLUGIN_TITLE`, `PLUGIN_TILL_YEAR`, …).
 
 - All documentation and README in English.
 - `readme.txt` changelog section is edited only by the user — never touch it
-  unless the user explicitly asks.
+  unless the user explicitly asks (entries below 2.2.0 were moved to
+  `CHANGELOG.md`; keep new entries in `readme.txt`).
 - Never commit, push, amend or create PRs without an explicit request.
 - Naming: kebab-case files (`class-iworks-simple-seo-improvements-{name}.php`);
   PHP classes `iworks_simple_seo_improvements_` prefix, snake_case, lowercase.
