@@ -16,13 +16,13 @@
 
 ## Must
 
-| Feature                                                                               | Who has it                            | Notes                                                                                                                |
-| ------------------------------------------------------------------------------------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Custom canonical URL per post/term                                                    | SEOPress, TSF, SureRank, SiteSEO, SSP | Most glaring gap; simple to implement, universally expected                                                          |
-| Webmaster tools verification codes (GSC, Bing, Yandex, Pinterest) — **DONE in 2.4.0** | all 5                                 | Shipped: options `wmt_google`/`wmt_bing`/`wmt_yandex`/`wmt_pinterest`, meta tags in `filter_wp_head_add_html_head()` |
-| Attachment handling (redirect attachment pages to parent, noindex attachments) — **DONE in 2.4.0** | SEOPress, SureRank, TSF | Shipped: class `attachments`, options `atta_redirect`/`atta_noindex`, filter `iworks_simple_seo_improvements_attachments_redirect_unattached_home` |
-| Per-page-type default noindex (search, paged, empty categories, date archives)        | TSF, SSP                              | Anti-thin-content protection; canonical/noindex for `?paged=` exploits                                               |
-| Import/export settings + migration from Yoast/AIOSEO/Rank Math                        | SEOPress, SiteSEO, SureRank           | Barrier to entry for switchers; good ops anyway                                                                      |
+| Feature                                                                                             | Who has it                            | Notes                                                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ~~Custom canonical URL per post/term~~ — **declined**                                               | SEOPress, TSF, SureRank, SiteSEO, SSP | Decided against: WP core already prints a canonical for singular pages; per-term canonical is a niche case for a "simple" plugin                                                                                              |
+| Webmaster tools verification codes (GSC, Bing, Yandex, Pinterest) — **DONE in 2.4.0**               | all 5                                 | Shipped: options `wmt_google`/`wmt_bing`/`wmt_yandex`/`wmt_pinterest`, meta tags in `filter_wp_head_add_html_head()`                                                                                                          |
+| Attachment handling (redirect attachment pages to parent, noindex attachments) — **DONE in 2.4.0**  | SEOPress, SureRank, TSF               | Shipped: class `attachments`, options `atta_redirect` + `atta_redirect_unattached` (nothing/home), injected via `iworks/simple-seo-improvements/add_post_type_options/opts`; noindex covered by existing `attachment_noindex` |
+| Per-page-type default noindex (search, paged, empty categories, date archives) — **partially done** | TSF, SSP                              | Remaining gaps only: `is_search()` and empty term archives; singular/author/date/term coverage already exists                                                                                                                 |
+| Import/export settings + migration from Yoast/AIOSEO/Rank Math                                      | SEOPress, SiteSEO, SureRank           | Barrier to entry for switchers; good ops anyway                                                                                                                                                                               |
 
 ## OK
 
@@ -49,7 +49,7 @@
 | Color-coded SEO status column in post lists         | TSF, SureRank                    | Awareness without full content analysis                  |
 | Bulk edit / quick edit of SEO fields                | TSF, SEOPress                    |                                                          |
 | Multisite (network) support                         | SEOPress, TSF, SiteSEO           | Growing ask                                              |
-| Multilingual (WPML/Polylang) sitemap + hreflang     | SEOPress, TSF, SiteSEO, SureRank | Medium-high effort; do after canonical support exists    |
+| Multilingual (WPML/Polylang) sitemap + hreflang     | SEOPress, TSF, SiteSEO, SureRank | Medium-high effort                                       |
 
 ## Wish
 

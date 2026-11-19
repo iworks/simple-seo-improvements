@@ -88,6 +88,10 @@ class iworks_simple_seo_improvements_github extends iworks_simple_seo_improvemen
 		);
 		// Get the response from the API
 		$request = wp_remote_get( $request_uri );
+		// If the API response is an error, stop
+		if ( is_wp_error( $request ) ) {
+			return array();
+		}
 		// If the API response has an error code, stop
 		$response_codes = wp_remote_retrieve_response_code( $request );
 		if ( $response_codes < 200 || $response_codes >= 300 ) {

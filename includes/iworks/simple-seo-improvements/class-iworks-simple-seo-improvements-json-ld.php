@@ -1466,13 +1466,19 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		) ) {
 			return;
 		}
-		$value = $_POST[ $this->meta_field_local_business ];
+		$value = isset( $_POST[ $this->meta_field_local_business ] ) ? $_POST[ $this->meta_field_local_business ] : array();
+		if ( ! is_array( $value ) ) {
+			return;
+		}
 		$this->set_local_business_data();
 		$data = array();
 		/**
 		 * type
 		 */
 		$name = 'type';
+		if ( ! isset( $value[ $name ] ) || ! is_array( $value[ $name ] ) ) {
+			return;
+		}
 		foreach ( $value[ $name ] as $subkey ) {
 			if ( empty( $subkey ) ) {
 				continue;

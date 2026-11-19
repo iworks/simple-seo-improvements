@@ -62,7 +62,7 @@ class iworks_simple_seo_improvements_index_now_bing extends iworks_simple_seo_im
 		}
 		$uri = remove_query_arg( array_keys( $_GET ), $_SERVER['REQUEST_URI'] );
 		if ( '/' . $this->api_key_bing . '.txt' === $uri ) {
-			echo $this->api_key_bing;
+			echo esc_html( $this->api_key_bing );
 			exit;
 		}
 	}

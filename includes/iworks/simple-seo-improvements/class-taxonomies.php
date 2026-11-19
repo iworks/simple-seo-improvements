@@ -190,6 +190,9 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		if ( ! $this->check_nonce() ) {
 			return;
 		}
+		if ( ! current_user_can( 'edit_term', $term_id ) ) {
+			return;
+		}
 		$data = $this->get_post_data();
 		$this->update_single_term_meta( $term_id, $this->field_name, $data );
 	}

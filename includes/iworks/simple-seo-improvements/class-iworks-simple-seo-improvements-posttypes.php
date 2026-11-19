@@ -341,7 +341,13 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * @since 1.0.0
 	 */
 	public function save_data( $post_id ) {
+		if ( wp_is_post_revision( $post_id ) || wp_is_autosave( $post_id ) ) {
+			return;
+		}
 		if ( ! $this->check_nonce() ) {
+			return;
+		}
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return;
 		}
 		$data = $this->get_post_data();

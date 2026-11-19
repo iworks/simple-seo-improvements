@@ -43,7 +43,7 @@ function iworks_simple_seo_improvements_options() {
 				'name'        => 'home_meta_description',
 				'type'        => 'textarea',
 				'th'          => __( 'Home meta description', 'simple-seo-improvements' ),
-				'description' => __( 'This field is avaialble only when your homepage show blog posts not as a page', 'simple-seo-improvements' ),
+				'description' => __( 'This field is available only when your homepage show blog posts not as a page', 'simple-seo-improvements' ),
 				'classes'     => array(
 					'large-text',
 					'code',
@@ -1003,7 +1003,7 @@ function iworks_simple_seo_improvements_get_countries() {
 /**
  * custom avoid sanityzation
  *
- * @saince 2.2.4
+ * @since 2.2.4
  */
 function iworks_seo_improvements_no_sanitization( $content ) {
 	return $content;

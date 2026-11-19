@@ -115,14 +115,14 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		/**
 		 * Archives: day, month, year & author
 		 */
-		$classess = array(
+		$classes = array(
 			'archives',
 			'attachments',
 			'opensearch',
 			'prefixes',
 			'links',
 		);
-		foreach ( $classess as $class ) {
+		foreach ( $classes as $class ) {
 			require_once $this->base . '/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-' . $class . '.php';
 			$classname                   = 'iworks_simple_seo_improvements_' . $class;
 			$this->objects[ $classname ] = new $classname( $this );
