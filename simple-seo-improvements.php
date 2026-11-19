@@ -5,7 +5,7 @@
  * @package           PLUGIN_NAME
  * @author            AUTHOR_NAME
  * @copyright         2021-PLUGIN_TILL_YEAR Marcin Pietrzak
- * @license           GPL-2.0-or-later
+ * @license           GPL-3.0-or-later
  *
  * @wordpress-plugin
  * Plugin Name:       Simple SEO Improvements

@@ -39,6 +39,12 @@ class iworks_simple_seo_improvements_sitemap extends iworks_simple_seo_improveme
 		}
 	}
 
+	/**
+	 * Register the sitemap settings field on the Media settings page.
+	 *
+	 * @since 2.0.6
+	 * @return void
+	 */
 	public function admin_init() {
 		register_setting( 'media', $this->option_name, array( 'sanitize_callback' => 'wp_validate_boolean' ) );
 		add_settings_field(
@@ -50,6 +56,12 @@ class iworks_simple_seo_improvements_sitemap extends iworks_simple_seo_improveme
 		);
 
 	}
+	/**
+	 * Print the settings checkbox HTML.
+	 *
+	 * @since 2.0.6
+	 * @return void
+	 */
 	public function add_fields_html() {
 		echo '<label>';
 		printf(
@@ -61,6 +73,14 @@ class iworks_simple_seo_improvements_sitemap extends iworks_simple_seo_improveme
 		echo '</label>';
 	}
 
+	/**
+	 * Add the attachment post type to the sitemap post types.
+	 *
+	 * @since 2.0.6
+	 *
+	 * @param array $post_types Sitemap post types.
+	 * @return array Post types with attachments appended.
+	 */
 	public function add_attachments( $post_types ) {
 		$types = get_post_types( array( 'public' => true ), 'objects' );
 		if ( isset( $types['attachment'] ) ) {
@@ -69,6 +89,12 @@ class iworks_simple_seo_improvements_sitemap extends iworks_simple_seo_improveme
 		return $post_types;
 	}
 
+	/**
+	 * Register the attachments sitemap provider.
+	 *
+	 * @since 2.0.6
+	 * @return void
+	 */
 	public function init() {
 		include_once 'class-sitemaps-attachements.php';
 		$provider = new iworks_simple_seo_improvements_sitemaps_attachements;

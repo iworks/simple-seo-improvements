@@ -53,6 +53,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * set Options
 	 *
 	 * @since 2.2.0
+	 * @return void
 	 */
 	public function action_init_set_options() {
 		$this->check_option_object();
@@ -63,6 +64,10 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * get data
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param int    $post_id The post ID.
+	 * @param string $mode    Context: 'front' or 'admin'.
+	 * @return array Post SEO data.
 	 */
 	private function get_data( $post_id, $mode = 'front' ) {
 		$this->check_option_object();
@@ -130,9 +135,10 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	}
 
 	/**
-	 * check shuld we change?
+	 * check should we change anything?
 	 *
 	 * @since 1.0.0
+	 * @return bool True when front-end filters may run.
 	 */
 	private function should_we_change_anything() {
 		if ( is_admin() ) {
@@ -151,6 +157,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * get custom title from meta
 	 *
 	 * @since 1.0.1
+	 * @return string Custom title, empty when not set.
 	 */
 	private function get_custom_title_of_current_post() {
 		if ( ! $this->should_we_change_anything() ) {
@@ -173,6 +180,9 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * Change HTML title element
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param array $parts Document title parts.
+	 * @return array Modified title parts.
 	 */
 	public function change_wp_title( $parts ) {
 		if ( ! $this->should_we_change_anything() ) {
@@ -186,6 +196,14 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 		return $parts;
 	}
 
+	/**
+	 * Add custom meta description on singular views.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $content Head content so far.
+	 * @return string Content with the meta description appended.
+	 */
 	public function filter_add_meta_description( $content ) {
 		if ( ! $this->should_we_change_anything() ) {
 			return $content;
@@ -223,6 +241,9 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 *
 	 * @since 1.0.0
 	 * @since 1.2.0 become be a filter
+	 *
+	 * @param string $content Head content so far.
+	 * @return string Content with the robots meta appended.
 	 */
 	public function filter_add_robots( $content ) {
 		if ( is_admin() || ! is_singular() ) {
@@ -269,6 +290,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * Add entry edit metabox.
 	 *
 	 * @since 1.0.0
+	 * @return void
 	 */
 	public function add_meta_boxes() {
 		$this->check_option_object();
@@ -296,6 +318,9 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * entry metabox html content
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param WP_Post $post The post object.
+	 * @return void
 	 */
 	public function meta_box_html( $post ) {
 		$this->add_nonce();
@@ -338,7 +363,13 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	/**
 	 * save custom data
 	 *
+	 * Verifies the revision/autosave status, the nonce and the user
+	 * capability, then stores the sanitized POST data as post meta.
+	 *
 	 * @since 1.0.0
+	 *
+	 * @param int $post_id The post ID.
+	 * @return void
 	 */
 	public function save_data( $post_id ) {
 		if ( wp_is_post_revision( $post_id ) || wp_is_autosave( $post_id ) ) {
@@ -358,6 +389,9 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * Filter OG array from OG plugin
 	 *
 	 * @since 1.0.1
+	 *
+	 * @param array $og Open Graph array.
+	 * @return array Modified OG array.
 	 */
 	public function filter_og_array( $og ) {
 		$title = $this->get_custom_title_of_current_post();
@@ -390,6 +424,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 	 * get data
 	 *
 	 * @since 1.0.3
+	 * @return array Custom SEO data for the current view.
 	 */
 	private function get_custom_data() {
 		if ( is_home() ) {

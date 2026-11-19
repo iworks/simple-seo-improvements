@@ -53,6 +53,15 @@ class iworks_simple_seo_improvements_base {
 		$this->dir  = basename( dirname( $this->base ) );
 	}
 
+	/**
+	 * Get plugin version, or a cache-busting hash in dev mode.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string|null $file Optional file path (relative to plugin dir)
+	 *                      hashed for cache busting in dev mode.
+	 * @return string Version string, file md5, or random number in dev mode.
+	 */
 	public function get_version( $file = null ) {
 		if ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE ) {
 			if ( null != $file ) {
@@ -66,14 +75,34 @@ class iworks_simple_seo_improvements_base {
 		return $this->version;
 	}
 
+	/**
+	 * Build prefixed meta key name.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $name Unprefixed meta name.
+	 * @return string Prefixed, sanitized meta key.
+	 */
 	public function get_meta_name( $name ) {
 		return sprintf( '%s_%s', $this->meta_prefix, sanitize_title( $name ) );
 	}
 
+	/**
+	 * Get the module post type.
+	 *
+	 * @since 1.0.0
+	 * @return string Post type slug.
+	 */
 	public function get_post_type() {
 		return $this->post_type;
 	}
 
+	/**
+	 * Get the capability required for this module.
+	 *
+	 * @since 1.0.0
+	 * @return string Capability name.
+	 */
 	public function get_this_capability() {
 		return $this->capability;
 	}
@@ -82,6 +111,9 @@ class iworks_simple_seo_improvements_base {
 	 * slug name
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param string $name Name to slugify.
+	 * @return string Slug prefixed with the class name.
 	 */
 	private function slug_name( $name ) {
 		return preg_replace( '/[_ ]+/', '-', strtolower( __CLASS__ . '_' . $name ) );
@@ -91,6 +123,10 @@ class iworks_simple_seo_improvements_base {
 	 * get post meta
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param int    $post_id The post ID.
+	 * @param string $meta_key Unprefixed meta key.
+	 * @return mixed Meta value.
 	 */
 	public function get_post_meta( $post_id, $meta_key ) {
 		return get_post_meta( $post_id, $this->get_meta_name( $meta_key ), true );
@@ -100,6 +136,10 @@ class iworks_simple_seo_improvements_base {
 	 * print table body
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param int   $post_id The post ID.
+	 * @param array $fields  Field definitions: name => settings.
+	 * @return void
 	 */
 	protected function print_table_body( $post_id, $fields ) {
 		echo '<table class="widefat striped"><tbody>';
@@ -158,6 +198,10 @@ class iworks_simple_seo_improvements_base {
 	 * get module file
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param string $filename Module file name without extension.
+	 * @param string $vendor   Vendor directory name.
+	 * @return string|false Resolved file path, false when not found.
 	 */
 	protected function get_module_file( $filename, $vendor = 'iworks' ) {
 		return realpath(
@@ -175,6 +219,9 @@ class iworks_simple_seo_improvements_base {
 	 * HTML title
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param string $text Heading text.
+	 * @return void
 	 */
 	protected function html_title( $text ) {
 		printf( '<h1 class="wp-heading-inline">%s</h1>', esc_html( $text ) );

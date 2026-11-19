@@ -38,6 +38,12 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		add_filter( 'document_title_parts', array( $this, 'change_wp_title' ) );
 	}
 
+	/**
+	 * Register term meta fields UI for all public taxonomies.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	public function admin_init() {
 		$args       = apply_filters(
 			'iworks_simple_seo_improvements_get_taxonomies_args',
@@ -54,6 +60,14 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		}
 	}
 
+	/**
+	 * Get SEO data for a term, with fallbacks to term description.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int $term_id The term ID.
+	 * @return array Term SEO data: 'robots', 'title', 'description'.
+	 */
 	private function get_data( $term_id ) {
 		$description = get_term_meta( $term_id, 'custom_description', true );
 		if ( empty( $description ) ) {
@@ -77,6 +91,12 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		);
 	}
 
+	/**
+	 * Get HTML title label markup.
+	 *
+	 * @since 1.0.0
+	 * @return string Label HTML, escaped.
+	 */
 	private function get_title_label() {
 		return sprintf(
 			'<label for="iworks_simple_seo_improvements_html_title">%s</label>',
@@ -84,6 +104,14 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		);
 	}
 
+	/**
+	 * Get HTML title input markup.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $data Term SEO data.
+	 * @return string Input HTML, escaped.
+	 */
 	private function get_title_field( $data ) {
 		return sprintf(
 			'<input type="text" name="%s[title]" value="%s" id="iworks_simple_seo_improvements_html_title" class="large-text" autocomplete="off" />',
@@ -92,6 +120,12 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		);
 	}
 
+	/**
+	 * Get description label markup.
+	 *
+	 * @since 1.0.0
+	 * @return string Label HTML, escaped.
+	 */
 	private function get_description_label() {
 		return sprintf(
 			'<label for="iworks_simple_seo_improvements_html_description">%s</label>',
@@ -99,6 +133,14 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		);
 	}
 
+	/**
+	 * Get description textarea markup.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $data Term SEO data.
+	 * @return string Textarea HTML, escaped.
+	 */
 	private function get_description_field( $data ) {
 		return sprintf(
 			'<textarea rows=6" name="%s[description]" id="iworks_simple_seo_improvements_html_description" class="large-text" autocomplete="off">%s</textarea>',
@@ -107,6 +149,12 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		);
 	}
 
+	/**
+	 * Get robots label markup.
+	 *
+	 * @since 1.0.0
+	 * @return string Label HTML, escaped.
+	 */
 	private function get_robots_label() {
 		return sprintf(
 			'<label>%s</label>',
@@ -114,6 +162,14 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		);
 	}
 
+	/**
+	 * Get robots checkboxes markup.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $data Term SEO data.
+	 * @return string Checkbox list HTML, escaped.
+	 */
 	private function get_robots_field( $data ) {
 		$content = '<ul>';
 		$this->set_robots_options();
@@ -140,6 +196,14 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		return $content;
 	}
 
+	/**
+	 * Print SEO fields on the term add form.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $taxonomy The taxonomy slug.
+	 * @return void
+	 */
 	public function add_fields_to_add_form( $taxonomy ) {
 		$this->add_nonce();
 		$data = array(
@@ -163,6 +227,15 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		<?php
 	}
 
+	/**
+	 * Print SEO fields on the term edit form.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param WP_Term $tag      The term object.
+	 * @param string  $taxonomy The taxonomy slug.
+	 * @return void
+	 */
 	public function add_fields_to_edit_form( $tag, $taxonomy ) {
 		$data = $this->get_data( $tag->term_id );
 		?>
@@ -186,6 +259,18 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		<?php
 	}
 
+	/**
+	 * Save term SEO data after term create or edit.
+	 *
+	 * Verifies the nonce and the user capability, then stores the
+	 * sanitized POST data as term meta.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int $term_id The term ID.
+	 * @param int $tt_id   The term taxonomy ID.
+	 * @return void
+	 */
 	public function save_data( $term_id, $tt_id ) {
 		if ( ! $this->check_nonce() ) {
 			return;
@@ -197,6 +282,12 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		$this->update_single_term_meta( $term_id, $this->field_name, $data );
 	}
 
+	/**
+	 * Should front-end title/description/robots filters run?
+	 *
+	 * @since 1.0.0
+	 * @return bool True on a non-admin term archive.
+	 */
 	private function should_we_change_anything() {
 		if ( is_admin() ) {
 			return false;
@@ -204,6 +295,14 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		return is_tag() || is_category() || is_tax();
 	}
 
+	/**
+	 * Replace the document title on term archives with the custom value.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $parts Document title parts.
+	 * @return array Modified title parts.
+	 */
 	public function change_wp_title( $parts ) {
 		if ( ! $this->should_we_change_anything() ) {
 			return $parts;
@@ -222,6 +321,12 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		return $parts;
 	}
 
+	/**
+	 * Print the custom meta description on term archives.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	public function add_meta_description() {
 		if ( ! $this->should_we_change_anything() ) {
 			return;
@@ -247,6 +352,12 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		);
 	}
 
+	/**
+	 * Print the robots meta on term archives from per-term settings.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	public function add_robots() {
 		if ( is_admin() || ! is_tax() ) {
 			return;

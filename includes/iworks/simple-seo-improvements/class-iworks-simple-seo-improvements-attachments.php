@@ -48,6 +48,7 @@ class iworks_simple_seo_improvements_attachments extends iworks_simple_seo_impro
 	 * set Options
 	 *
 	 * @since 2.4.0
+	 * @return void
 	 */
 	public function action_init_set_options() {
 		$this->check_option_object();
@@ -57,9 +58,17 @@ class iworks_simple_seo_improvements_attachments extends iworks_simple_seo_impro
 	}
 
 	/**
-	 * redirect attachment pages to the attachment parent
+	 * Redirect attachment pages to the attachment parent.
+	 *
+	 * Unattached attachments follow the `atta_redirect_unattached` option
+	 * ('nothing' or 'home'), overridable by the
+	 * `iworks_simple_seo_improvements_attachments_unattached` filter.
 	 *
 	 * @since 2.4.0
+	 *
+	 * @param string $template The current template path.
+	 * @return string Unchanged template when no redirect applies; exits with
+	 *                a 301 redirect otherwise.
 	 */
 	public function filter_template_redirect( $template ) {
 		if ( ! is_attachment() ) {
@@ -97,9 +106,13 @@ class iworks_simple_seo_improvements_attachments extends iworks_simple_seo_impro
 	}
 
 	/**
-	 * Add attachment options to post type options
+	 * Add attachment options to post type options.
 	 *
 	 * @since 2.4.0
+	 *
+	 * @param array   $opts      Options for the post type settings section.
+	 * @param WP_Post_Type $post_type The post type object.
+	 * @return array Options with attachment redirect fields appended.
 	 */
 	public function filter_add_post_type_options( $opts, $post_type ) {
 		if ( 'attachment' !== $post_type->name ) {
