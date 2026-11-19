@@ -110,7 +110,7 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
-= 2.x.x (2026-xx-xx) =
+= 2.3.5 (unreleased) =
 * **Improvement**: Replaced the bundled Simple HTML DOM parser with the WordPress native `WP_HTML_Tag_Processor` (HTML API) for external link rewriting. The `vendor/` directory has been removed.
 * **Improvement**: Added `noai` and `noimageai` for HTML meta tags for content.
 * **Bugfix**: Fixed missing `str_get_html()` function.
