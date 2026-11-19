@@ -13,7 +13,7 @@ IndexNow, external-link rewriting, OpenSearch. Main file
 (single source of truth: `package.json` `"name"`).
 
 Source files contain **literal placeholders** (`PLUGIN_VERSION`,
-`PLUGIN_TILL_YEAR`, `PLUGIN_TITLE`, …) — replaced by Grunt at build time
+`PLUGIN_TILL_YEAR`, `PLUGIN_TITLE`, …) — replaced by the Bun bundler at build time
 (see `build.md`), never in the source.
 
 The version lives only in `package.json` (`"version"`); the main file header
@@ -43,13 +43,11 @@ and the version property use the `PLUGIN_VERSION` placeholder.
 ├── vendor/
 │   └── simple_html_dom.php         # Simple HTML DOM parser (links rewriting)
 ├── assets/
-│   ├── scss/                       # SCSS sources
 │   ├── scripts/src/admin/          # JS sources (options.js)
 │   ├── scripts/admin/              # Built JS (gitignored)
-│   ├── styles/                     # Compiled CSS (gitignored)
 │   └── templates/meta-boxes/       # localbusiness.php meta box
 ├── languages/                      # .pot + .po (+ .mo built, gitignored)
-├── Gruntfile.js                    # Build system — see build.md
+├── bundler/                        # Bun build system — see build.md
 ├── package.json                    # Version + release metadata (single source of truth)
 └── readme.txt                      # WordPress.org readme (placeholder-based)
 ```
@@ -57,23 +55,23 @@ and the version property use the `PLUGIN_VERSION` placeholder.
 ## Loading flow
 
 1. WordPress loads `simple-seo-improvements.php` (ABSPATH guard):
-   - requires `etc/options.php`, the vendored `iworks_options` class
-     (guarded by `class_exists`), and the main class (guarded);
-   - instantiates `iworks_simple_seo_improvements`;
-   - defines `get_iworks_simple_seo_improvements_options()` (global
-     `$iworks_simple_seo_improvements_options`, prefix `iworks_ssi_`,
-     option function name `iworks_simple_seo_improvements_options`) and
-     registers the activation hook (`$options->activate()`) and an empty
-     deactivation hook.
+    - requires `etc/options.php`, the vendored `iworks_options` class
+      (guarded by `class_exists`), and the main class (guarded);
+    - instantiates `iworks_simple_seo_improvements`;
+    - defines `get_iworks_simple_seo_improvements_options()` (global
+      `$iworks_simple_seo_improvements_options`, prefix `iworks_ssi_`,
+      option function name `iworks_simple_seo_improvements_options`) and
+      registers the activation hook (`$options->activate()`) and an empty
+      deactivation hook.
 2. `iworks_simple_seo_improvements::__construct()`:
-   - sets `$base`/`$dir`/`$version`/`$plugin_file`, filter
-     `simple-seo-improvements/is_active` → `__return_true`;
-   - hooks `init` (options + conditional loads: JSON-LD, IndexNow,
-     robots.txt, iWorks Rate), `admin_init`, `wp_head` (robots meta + custom
-     head), `wp_body_open`, `wp_footer`;
-   - loads feature classes directly (`require_once` + `new`): posttypes,
-     taxonomies, sitemap, then archives/opensearch/prefixes/links in a loop;
-   - checks for an active OG plugin and registers its integration filters.
+    - sets `$base`/`$dir`/`$version`/`$plugin_file`, filter
+      `simple-seo-improvements/is_active` → `__return_true`;
+    - hooks `init` (options + conditional loads: JSON-LD, IndexNow,
+      robots.txt, iWorks Rate), `admin_init`, `wp_head` (robots meta + custom
+      head), `wp_body_open`, `wp_footer`;
+    - loads feature classes directly (`require_once` + `new`): posttypes,
+      taxonomies, sitemap, then archives/opensearch/prefixes/links in a loop;
+    - checks for an active OG plugin and registers its integration filters.
 3. Classes access options via the global options object
    (`get_iworks_simple_seo_improvements_options()` / `check_option_object()`).
 
@@ -107,13 +105,16 @@ and the version property use the `PLUGIN_VERSION` placeholder.
 
 ## Assets layer
 
-- **JS**: `assets/scripts/src/admin/*.js` → concat + uglify →
+- **JS**: `assets/scripts/src/admin/*.js` → concat + terser →
   `assets/scripts/admin/simple-seo-improvements{,.min}.js`; enqueued on
   admin pages via `admin_init()` (handle with `$this->dev` suffix switch).
   Only settings UX today (toggles org vs. person JSON-LD fields).
-- **CSS**: `assets/scss/` → sass/compass → `assets/styles/` → concat + minify.
+- **No CSS build** — the plugin ships no SCSS sources; the bundler has no
+  CSS/sass stage (the old `assets/scss/` / `assets/styles/` pipeline was
+  removed with the grunt→bundler port).
+- Built via the Bun bundler (`bundler/`) — see `build.md`.
 - Compiled files are **gitignored** — never edit them; edit sources and
-  rebuild (`grunt` / `grunt css`).
+  rebuild (`bun run compile` / `bun run build`).
 - Templates: `assets/templates/meta-boxes/localbusiness.php` loaded for the
   LocalBusiness meta box (JSON-LD class); each directory also carries an
   `index.php` silence file.
@@ -122,8 +123,10 @@ and the version property use the `PLUGIN_VERSION` placeholder.
 
 - Textdomain: `simple-seo-improvements` — **literal** in sources, not a
   placeholder. `languages/simple-seo-improvements.pot` + `.po` (pl_PL,
-  sv_SE); `.mo` compiled by `grunt build:github` (potomo).
-- `grunt i18n` runs checktextdomain + makepot (grunt-wp-i18n).
+  sv_SE); `.mo` compiled only in `bun run build:github`.
+- `bun run make-pot` runs wp-cli `i18n make-pot` (creates the `.pot` and
+  updates every existing `.po`), with a metadata-only-change backup restore
+  to keep diffs clean.
 
 ## GitHub self-updater
 

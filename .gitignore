@@ -4,6 +4,9 @@
 # Node artifact files
 node_modules/
 dist/
+bun.lock
+bun.lockb
+wp-cli.phar
 
 # Compiled files
 .sass-cache
@@ -12,7 +15,6 @@ package-lock.json
 # Compiled CSS files, needed to release not in repository
 assets/styles/
 assets/scripts/admin/simple-seo-improvements*js
-
 # release
 release/
 

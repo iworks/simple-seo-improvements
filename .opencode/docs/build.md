@@ -1,88 +1,144 @@
-# Build — Grunt
+# Build — Bun bundler
 
-> Toolchain, tasks, pipeline, placeholders, release ZIPs, translations.
+> Toolchain, tasks, pipeline, placeholders, release ZIPs, translations, tests.
 > Read only when working on the build.
 
 ## Toolchain
 
-- **Grunt** (classic iWorks scaffold, `Gruntfile.js`) with
-  `load-grunt-tasks`; deps in `package.json` `devDependencies` (grunt-contrib
-  concat/uglify/copy/compress/cssmin/sass, grunt-replace, grunt-wp-i18n,
-  grunt-potomo, grunt-checktextdomain, grunt-phpunit). Install with
-  `npm install`.
-- PHP ≥ 8.0; wp-i18n tooling for i18n; PHPUnit for tests (no test dir is
-  wired in `phpunit.xml` by default — `grunt test` also runs jshint).
+- [Bun](https://bun.sh) + the `bundler/` scripts (ported from
+  `../dev-iworks-aquarium-log/bundler/`, CSS pipeline removed — this plugin
+  ships no CSS build). Entry point `bundler/index.js`,
+  config in `bundler/config.mjs`, pipeline in `bundler/pipelines.mjs`,
+  tool wrappers (terser, prettier) in `bundler/tools.mjs`,
+  ZIP staging in `makeZip.mjs`, i18n via wp-cli in `makePot.mjs`, Plugin
+  Check in `pluginCheck.mjs`.
+- Dependencies (in `package.json` `devDependencies`): `archiver`,
+  `prettier`, `terser`. Install with `bun install` (its `postinstall`
+  downloads `wp-cli.phar` for `make-pot`; a `wp` binary phar copy also works).
+- PHP ≥ 8.0; wp-cli for i18n. There is **no Gruntfile** anymore (removed;
+  grunt deps dropped from `package.json`).
+- Prettier reads `.editorconfig` (tabs for JS) — `bundler/tools.mjs` resolves
+  the config explicitly (`prettier.resolveConfig(..., { editorconfig: true })`)
+  and passes it to `prettier.format()` (the bare `editorconfig: true` format
+  option is not honored by prettier's API).
 
-## Tasks (`grunt ...`)
+## Tasks (`bun run ...`)
 
-| Command            | Description                                                        |
-| ------------------ | ------------------------------------------------------------------ |
-| `grunt` (default)  | `clean:temp` + `concat` + `uglify` (JS assets only)                |
-| `grunt js`         | concat + uglify                                                    |
-| `grunt css`        | sass + concat_css + cssmin                                         |
-| `grunt i18n`       | checktextdomain + makepot                                          |
-| `grunt build`      | default + i18n → wp.org flavor: clean, copy:wporg, replace, zip    |
-| `grunt build:github` | default + i18n + potomo → GitHub flavor copy + replace + zip     |
-| `grunt release`    | `build` (wporg) + `build:github` + `notes` (release notes)         |
-| `grunt test`       | phpunit + jshint + notes                                           |
-| `grunt notes`      | prints release notes                                               |
+| Command                | Description                                                                  |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| `bun run dev`          | watcher: prettier + recompile JS on change (no ZIP, no i18n)                 |
+| `bun run compile`      | one-shot JS compile (no prettier pass)                                       |
+| `bun run build`        | build:github, then build:wporg, then Plugin Check on the wp.org ZIP          |
+| `bun run build:wporg`  | production build → `release/wporg/simple-seo-improvements.zip`               |
+| `bun run build:github` | production build + `.mo` → `release/github/simple-seo-improvements.zip`      |
+| `bun run make-pot`     | translations only (`.pot` + `.po` update via wp-cli i18n)                    |
+| `bun run update-libs`  | git pull on the vendored iWorks libraries (`includes/iworks/{options,rate}`) |
+| `bun run check:pcp`    | Plugin Check on the built wp.org ZIP (`--skip-build`, `--ignore-warnings`)   |
+| `bun run test`         | PHPUnit (`tests/php/phpunit.xml`)                                            |
+| `bun run notes`        | release notes checklist (grunt parity)                                       |
 
 ## Asset pipeline
 
-- **JS**: `assets/scripts/src/admin/*.js` → concatenated to
-  `assets/scripts/admin/simple-seo-improvements.js` → uglified to `.min.js`.
-- **CSS**: `assets/scss/` → compass/sass → `assets/styles/` → concatenated +
-  minified (`.min.css`).
-- Compiled outputs are **gitignored** (`assets/styles/`,
-  `assets/scripts/admin/simple-seo-improvements*js`, `languages/*.mo`,
-  `.sass-cache/`, `release/`, `package-lock.json`) — never edit them.
+This plugin's asset surface is a single admin JS bundle. **There is no CSS
+build** — the plugin ships no SCSS sources and nothing compiled into
+`assets/styles/`; the bundler's CSS/sass stages were removed when porting.
+
+1. **prettier** (build modes only) — formats `assets/scripts/src/**/*.js`
+   and the bundler sources.
+2. **JS** — `assets/scripts/src/admin/*.js` →
+   `assets/scripts/admin/simple-seo-improvements.js` (sorted, banner
+   prepended) → terser minify (mangle reserves `jQuery`) to `.min.js`.
+   The output path matches what the main class enqueues
+   (`assets/scripts/admin/simple-seo-improvements{dev}.js` — see
+   `classes.md`).
+3. **i18n** — wp-cli `i18n make-pot` with `--ignore-domain` and
+   `--slug=simple-seo-improvements` → `languages/simple-seo-improvements.pot`,
+   `update-po` for every `.po`; `build:github` also runs `make-mo`.
+   A regenerated `.pot` that only changed volatile metadata is restored
+   from backup (keeps diffs clean). Unlike newer iWorks plugins, the
+   textdomain is the **literal** `'simple-seo-improvements'`, so a
+   domain-filtered extraction would work too — `--ignore-domain` is kept
+   for bundler parity.
+
+Compiled outputs (`assets/scripts/admin/simple-seo-improvements*js`, `languages/*.mo`) are gitignored — never edit them.
 
 ## Release ZIPs
 
-- **wp.org** (`grunt build`) → `release/wporg/{version}/{name}/` + ZIP.
-  Copy excludes (Gruntfile `excludeCopyFilesWPorg`) strip sources
-  (`assets/scss`, `assets/scripts/src`), `.github/`, `.git*` dotfiles,
-  `package.json`/lock files, `README.md`, `contributing.md`, `Gruntfile.js`,
-  `tests/`, and **the GitHub self-updater class** (wp.org releases must not
-  self-update from GitHub). `readme.txt` **is** included (required by wp.org).
-- **GitHub** (`grunt build:github`) → `release/github/{version}/{name}/`.
-  Includes `.po` files and compiles `.mo` (grunt-potomo). Pairs with the
-  GitHub self-updater class. Existing release dirs live under
-  `release/{github,wporg}/2.3.{2,3,4}/` (gitignored).
-- Placeholder **replace** (grunt-replace) runs on the staged copies only,
-  then `grunt-contrib-compress` zips.
+- **GitHub** (`bun run build:github`) → `release/github/{version}/{name}/`.
+  Built **first** in `bun run build`. Base excludes plus `readme.txt`;
+  `.po` **are** included and `.mo` are compiled. Pairs with the GitHub
+  self-updater class.
+- **wp.org** (`bun run build:wporg`) → `release/wporg/{version}/{name}/` →
+  `release/wporg/simple-seo-improvements.zip`. Built **second** in
+  `bun run build`. Copy rules live in
+  `bundler/config.mjs` `copyRules(flavor)` — ordered, **first match wins**
+  (grunt parity), the catch-all `{ glob: "**/*", include: true }` must stay
+  last. Base excludes: repo meta (`.git*`, `.github/`, `.editorconfig`,
+  `AGENTS.md`, `Gruntfile.js` (legacy), `bundler/`, `bun.lock*`,
+  `wp-cli.phar`, `package.json`, lock files, `README.md`, `LICENSE`,
+  `contributing.md`, tests, `release/`, `.opencode/`,
+  `.playwright-mcp/`, source maps, `o/`, legacy `**/img/src`,
+  `**/js/src`), asset sources (`assets/scripts/src`), the GitHub
+  self-updater class
+  (`includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-github.php`),
+  `languages/*.po|*.mo`. `readme.txt` **is** included (required by wp.org).
+  After staging, every directory without one gets an `index.php` silence
+  file (`// Silence is golden.`) — wp.org review requirement to prevent
+  directory listing; existing files are kept.
+- **Plugin Check (PCP)** — runs **inside `bun run build`** (third step,
+  against the fresh wp.org ZIP) and standalone via `bun run check:pcp`
+  (builds the wp.org ZIP first, skip with `--skip-build`). Stages the ZIP
+  into `wp-content/plugins/{name}-pcp/`, runs
+  `wp plugin check <dir> --slug={name} --format=csv` (`--slug` prevents
+  the i18n "expected <staging-slug>" noise), prints errors/warnings grouped
+  and removes the staging copy. Exits 1 on any ERROR (standalone mode and
+  at the end of `bun run build` — the ZIPs are still produced). Inside
+  `build` the check is **optional**: it is skipped with a warning when the
+  environment lacks `wp` CLI or the active `plugin-check` plugin. Needs
+  `unzip`; WP root is auto-detected as the repo's `../../../` (override
+  with `WP_ROOT`).
+- Placeholder **replace** runs on every staged text file (binary extensions
+  and `.mo` skipped, see `BINARY_EXTENSIONS`), then `archiver` zips the
+  staging directory (level 9, `{name}/` wrapper folder).
 
 ## Placeholders (release copies only)
 
-Replaced by Grunt from `package.json` + build time (Gruntfile
-`replace_patterns`): `PLUGIN_VERSION`, `PLUGIN_TITLE`, `PLUGIN_TAGS`,
-`PLUGIN_TAGLINE`, `PLUGIN_DESCRIPTION`, `PLUGIN_URI`, `AUTHOR_NAME`,
-`AUTHOR_URI`, `PLUGIN_REQUIRES_WORDPRESS`, `PLUGIN_REQUIRES_PHP`,
-`PLUGIN_TESTED_WORDPRESS`, `PLUGIN_TILL_YEAR`, `BUILDTIME`,
-`IWORKS_RATE_TEXTDOMAIN`, and the `^Version: .*$` header line (regex).
+`AUTHOR_NAME/URI/URL`, `BUILDTIMESTAMP`, `BUILDTIME`, `IWORKS_RATE_TEXTDOMAIN`,
+`IWORKS_OPTIONS_TEXTDOMAIN`, `PLUGIN_DESCRIPTION`, `PLUGIN_GITHUB_WEBSITE`,
+`PLUGIN_NAME`, `PLUGIN_REQUIRES_PHP`, `PLUGIN_REQUIRES_WORDPRESS`,
+`PLUGIN_TESTED_WORDPRESS`, `PLUGIN_TAGLINE`, `PLUGIN_TAGS`,
+`PLUGIN_TILL_YEAR`, `PLUGIN_TITLE`, `PLUGIN_URI`/`PLUGIN_URL` (from
+`pkg.homepage`), `PLUGIN_VERSION`, and the `^Version: .*$` header line —
+all sourced from `package.json` + build time (`bundler/config.mjs`
+`replacePatterns()`).
 
-Notes:
+Notes (grunt parity / differences from other iWorks plugins):
 
 - The **textdomain is the literal `'simple-seo-improvements'`** everywhere —
-  it is NOT a placeholder (unlike newer iWorks plugins that use
-  `'PLUGIN_NAME'`).
-- `PLUGIN_NAME` appears only in vendored/legacy strings such as the
-  robots.txt header comment (`# PLUGIN_NAME PLUGIN_VERSION` in
-  `class-iworks-robots-txt.php`).
-- Copyright years are baked in manually (`2021-PLUGIN_TILL_YEAR`).
+  it is NOT a placeholder. `PLUGIN_NAME` appears only in vendored/legacy
+  strings (e.g. the robots.txt header comment in `class-iworks-robots-txt.php`).
+- Copyright years are baked in manually (`2021-PLUGIN_TILL_YEAR`);
+  `CURRENT_YEAR` is not replaced at build.
 
 ## Tests
 
-- `grunt test` → phpunit + jshint. There is no full WordPress test harness
-  committed; `php -l` on changed files is the practical PHP check.
+- `bun run test` → `phpunit --configuration tests/php/phpunit.xml`. Needs a
+  WordPress test environment. jshint was dropped with Grunt; the bundler
+  runs prettier instead and `node --check` on the bundle works as a
+  smoke test.
 
 ## Runtime quirks / pitfalls (do not fix without approval)
 
-- `grunt build` is the **wp.org** build; `grunt build:github` is the GitHub
-  one (with `.mo`); `grunt release` does both. `grunt` alone only rebuilds JS.
-- Sass runs through `grunt-contrib-compass`/`grunt-contrib-sass` (Ruby
-  Sass-era config) — if the CSS build fails locally, compile SCSS manually
-  or use `sass` directly.
-- `grunt-contrib-uglify` output and concatenated files are committed-
-  ignored but expected by the runtime loader (`$this->dev` suffix switch);
-  a fresh checkout needs `grunt` before the admin JS works.
+- `bun run build:wporg` is the **wp.org** build; `bun run build` does both
+  flavors (there is no plain `build` that only compiles assets — use
+  `compile` for that).
+- The bundler concatenates full source files (prettier-formatted), so the
+  built bundles keep file docblocks; grunt's `stripBanners` removed them.
+- `build` runs the **prettier pass over the JS sources in place** — commit
+  any formatting churn it produces (or `git checkout --` the sources and
+  run `compile` instead when you do not want formatting churn).
+- wp-cli.phar is expected in the project root (`postinstall` downloads it;
+  `makePot.mjs` retries the download when missing).
+- The wp.org copy rules also keep the vendored submodules' `.scss` /
+  `common.js` sources under `includes/iworks/{options,rate}` (grunt copied
+  them too) — do not "clean them up" without checking a grunt-era ZIP first.

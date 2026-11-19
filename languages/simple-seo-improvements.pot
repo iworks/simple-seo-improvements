@@ -2,33 +2,52 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.3.4\n"
-"Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2026-07-16 08:10:51+00:00\n"
+"Project-Id-Version: Simple SEO Improvements PLUGIN_VERSION\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/simple-seo-improvements\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
-"Language-Team: iWorks <support@iworks.pl>\n"
-"Language: en\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Country: United States\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Bookmarks: \n"
-"X-Textdomain-Support: yes\n"
-"X-Generator: grunt-wp-i18n 1.0.3\n"
+"POT-Creation-Date: 2026-11-19T12:34:34+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+
+#. Plugin Name of the plugin
+#: simple-seo-improvements.php
+#: includes/iworks/class-simple-seo-improvements.php:642
+#: includes/iworks/class-simple-seo-improvements.php:649
+#: includes/iworks/class-simple-seo-improvements.php:1230
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:288
+msgid "Simple SEO Improvements"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: simple-seo-improvements.php
+msgid "PLUGIN_URI"
+msgstr ""
+
+#. Description of the plugin
+#: simple-seo-improvements.php
+msgid "PLUGIN_DESCRIPTION"
+msgstr ""
+
+#. Author of the plugin
+#: simple-seo-improvements.php
+msgid "AUTHOR_NAME"
+msgstr ""
+
+#. Author URI of the plugin
+#: simple-seo-improvements.php
+msgid "AUTHOR_URI"
+msgstr ""
 
 #: assets/templates/meta-boxes/localbusiness.php:55
 msgid "Delete Local Business Type"
 msgstr ""
 
-#: assets/templates/meta-boxes/localbusiness.php:63 etc/options.php:608
+#: assets/templates/meta-boxes/localbusiness.php:63
+#: etc/options.php:608
 msgid "Type"
 msgstr ""
 
@@ -69,9 +88,7 @@ msgid "Home meta description"
 msgstr ""
 
 #: etc/options.php:46
-msgid ""
-"This field is avaialble only when your homepage show blog posts not as a "
-"page"
+msgid "This field is avaialble only when your homepage show blog posts not as a page"
 msgstr ""
 
 #: etc/options.php:61
@@ -95,10 +112,7 @@ msgid "Social Media"
 msgstr ""
 
 #: etc/options.php:90
-msgid ""
-"If you are using Facebook or Twitter analytic tools, enter the details "
-"below. Omitting them has no effect on how a shared web page appears on a "
-"Facebook timeline or Twitter feed."
+msgid "If you are using Facebook or Twitter analytic tools, enter the details below. Omitting them has no effect on how a shared web page appears on a Facebook timeline or Twitter feed."
 msgstr ""
 
 #: etc/options.php:96
@@ -106,13 +120,16 @@ msgid "Facebook app ID"
 msgstr ""
 
 #: etc/options.php:98
-msgid ""
-"A Facebook App ID is a unique number that identifies your app when you "
-"request ads from Audience Network."
+msgid "A Facebook App ID is a unique number that identifies your app when you request ads from Audience Network."
 msgstr ""
 
 #: etc/options.php:104
 msgid "Twitter site"
+msgstr ""
+
+#: etc/options.php:106
+msgctxt "placeholder"
+msgid "@account_name"
 msgstr ""
 
 #: etc/options.php:107
@@ -169,9 +186,7 @@ msgid "Nofollow"
 msgstr ""
 
 #: etc/options.php:174
-msgid ""
-"The nofollow attribute in the &lt;a&gt; tag tells search engines not to "
-"follow the link or pass link authority to the destination."
+msgid "The nofollow attribute in the &lt;a&gt; tag tells search engines not to follow the link or pass link authority to the destination."
 msgstr ""
 
 #: etc/options.php:180
@@ -179,12 +194,7 @@ msgid "Open in new window"
 msgstr ""
 
 #: etc/options.php:184
-msgid ""
-"The target=\"_blank\" attribute is used in HTML to specify that a link "
-"should open in a new browser tab or window. By adding this attribute to a "
-"hyperlink (<a> tag), users can navigate to the linked page without leaving "
-"the current page. This is often used for external links, ensuring users can "
-"easily return to the original site."
+msgid "The target=\"_blank\" attribute is used in HTML to specify that a link should open in a new browser tab or window. By adding this attribute to a hyperlink (<a> tag), users can navigate to the linked page without leaving the current page. This is often used for external links, ensuring users can easily return to the original site."
 msgstr ""
 
 #: etc/options.php:190
@@ -202,10 +212,7 @@ msgid "Robots"
 msgstr ""
 
 #: etc/options.php:211
-msgid ""
-"A robots.txt is nothing but a text file instructs robots, such as search "
-"engine robots, how to crawl and index pages on their website. You can "
-"block/allow good or bad bots that follow your robots.txt file."
+msgid "A robots.txt is nothing but a text file instructs robots, such as search engine robots, how to crawl and index pages on their website. You can block/allow good or bad bots that follow your robots.txt file."
 msgstr ""
 
 #: etc/options.php:212
@@ -217,9 +224,7 @@ msgid "Improve robots.txt"
 msgstr ""
 
 #: etc/options.php:227
-msgid ""
-"A robots.txt file tells search engine crawlers which URLs the crawler can "
-"access on your site."
+msgid "A robots.txt file tells search engine crawlers which URLs the crawler can access on your site."
 msgstr ""
 
 #: etc/options.php:238
@@ -234,7 +239,8 @@ msgstr ""
 msgid "Disallow:"
 msgstr ""
 
-#: etc/options.php:256 etc/options.php:272
+#: etc/options.php:256
+#: etc/options.php:272
 msgid "Add one entry per line."
 msgstr ""
 
@@ -251,9 +257,7 @@ msgid "IndexNow for Bing"
 msgstr ""
 
 #: etc/options.php:292
-msgid ""
-"IndexNow is an easy way for websites owners to instantly inform search "
-"engines about latest content changes on their website. In its simplest form."
+msgid "IndexNow is an easy way for websites owners to instantly inform search engines about latest content changes on their website. In its simplest form."
 msgstr ""
 
 #: etc/options.php:302
@@ -261,10 +265,7 @@ msgid "Google"
 msgstr ""
 
 #: etc/options.php:303
-msgid ""
-"The robots meta tag lets you utilize a granular, page-specific approach to "
-"controlling how an individual page should be indexed and served to users in "
-"Google Search results."
+msgid "The robots meta tag lets you utilize a granular, page-specific approach to controlling how an individual page should be indexed and served to users in Google Search results."
 msgstr ""
 
 #: etc/options.php:314
@@ -280,9 +281,7 @@ msgid "Show in Google News"
 msgstr ""
 
 #: etc/options.php:333
-msgid ""
-"To show a page in Google's web search results, but not in Google News, use "
-"the googlebot-news meta tag"
+msgid "To show a page in Google's web search results, but not in Google News, use the googlebot-news meta tag"
 msgstr ""
 
 #: etc/options.php:344
@@ -290,13 +289,7 @@ msgid "Max Snippet"
 msgstr ""
 
 #: etc/options.php:347
-msgid ""
-"Use a maximum of [number] characters as a textual snippet for this search "
-"result. If you don't specify this rule, Google will choose the length of "
-"the snippet. Set -1 and Google will choose the snippet length that it "
-"believes is most effective to help users discover your content and direct "
-"users to your site. Set 0 - no snippet is to be shown. Equivalent to "
-"nosnippet."
+msgid "Use a maximum of [number] characters as a textual snippet for this search result. If you don't specify this rule, Google will choose the length of the snippet. Set -1 and Google will choose the snippet length that it believes is most effective to help users discover your content and direct users to your site. Set 0 - no snippet is to be shown. Equivalent to nosnippet."
 msgstr ""
 
 #: etc/options.php:358
@@ -316,10 +309,7 @@ msgid "A larger image preview, up to the width of the viewport, may be shown."
 msgstr ""
 
 #: etc/options.php:371
-msgid ""
-"Set the maximum size of an image preview for this page in a search results. "
-"If you don't specify the max-image-preview rule, Google may show an image "
-"preview of the default size."
+msgid "Set the maximum size of an image preview for this page in a search results. If you don't specify the max-image-preview rule, Google may show an image preview of the default size."
 msgstr ""
 
 #: etc/options.php:382
@@ -327,10 +317,7 @@ msgid "Max Video Preview"
 msgstr ""
 
 #: etc/options.php:385
-msgid ""
-"This applies to all forms of search results (at Google: web search, Google "
-"Images, Google Videos, Discover, Assistant). This rule is ignored if no "
-"parseable [number] is specified."
+msgid "This applies to all forms of search results (at Google: web search, Google Images, Google Videos, Discover, Assistant). This rule is ignored if no parseable [number] is specified."
 msgstr ""
 
 #: etc/options.php:395
@@ -394,9 +381,7 @@ msgid "Structured Data"
 msgstr ""
 
 #: etc/options.php:577
-msgid ""
-"Structured data is a standardized format for providing information about a "
-"page and classifying the page content."
+msgid "Structured data is a standardized format for providing information about a page and classifying the page content."
 msgstr ""
 
 #: etc/options.php:583
@@ -412,9 +397,7 @@ msgid "Alternate Website Name"
 msgstr ""
 
 #: etc/options.php:598
-msgid ""
-"Use the alternate website name for acronyms, or a shorter version of your "
-"website's name."
+msgid "Use the alternate website name for acronyms, or a shorter version of your website's name."
 msgstr ""
 
 #: etc/options.php:609
@@ -442,9 +425,7 @@ msgid "Alternate organization name"
 msgstr ""
 
 #: etc/options.php:638
-msgid ""
-"Use the alternate organization name for acronyms, or a shorter version of "
-"your organization's name."
+msgid "Use the alternate organization name for acronyms, or a shorter version of your organization's name."
 msgstr ""
 
 #: etc/options.php:647
@@ -482,9 +463,7 @@ msgid "Local Buissnes Page"
 msgstr ""
 
 #: etc/options.php:698
-msgid ""
-"Select a page to fill local business (LocalBusiness) structured data. Edit "
-"selected page to add or change LocalBusiness data."
+msgid "Select a page to fill local business (LocalBusiness) structured data. Edit selected page to add or change LocalBusiness data."
 msgstr ""
 
 #: etc/options.php:706
@@ -492,10 +471,7 @@ msgid "Select User"
 msgstr ""
 
 #: etc/options.php:708
-msgid ""
-"You have selected the user admin as the person this site represents. Their "
-"user profile information will now be used in search results. Update their "
-"profile to make sure the information is correct."
+msgid "You have selected the user admin as the person this site represents. Their user profile information will now be used in search results. Update their profile to make sure the information is correct."
 msgstr ""
 
 #: etc/options.php:715
@@ -507,10 +483,7 @@ msgid "Other profiles"
 msgstr ""
 
 #: etc/options.php:724
-msgid ""
-"Tell us if you have any other profiles on the web that belong to your "
-"organization. This can be any number of profiles, like YouTube, LinkedIn, "
-"Pinterest, or even Wikipedia. Put one URL per line."
+msgid "Tell us if you have any other profiles on the web that belong to your organization. This can be any number of profiles, like YouTube, LinkedIn, Pinterest, or even Wikipedia. Put one URL per line."
 msgstr ""
 
 #: etc/options.php:740
@@ -518,9 +491,7 @@ msgid "Custom Code"
 msgstr ""
 
 #: etc/options.php:741
-msgid ""
-"Use these settings to insert code from Google Tag Manager, Google Analytics "
-"or webmaster tools verification."
+msgid "Use these settings to insert code from Google Tag Manager, Google Analytics or webmaster tools verification."
 msgstr ""
 
 #: etc/options.php:747
@@ -528,9 +499,7 @@ msgid "Header Code"
 msgstr ""
 
 #: etc/options.php:748
-msgid ""
-"Code entered in this box will be printed in the <code>&lt;head&gt;</code> "
-"section."
+msgid "Code entered in this box will be printed in the <code>&lt;head&gt;</code> section."
 msgstr ""
 
 #: etc/options.php:760
@@ -538,9 +507,7 @@ msgid "Body Start"
 msgstr ""
 
 #: etc/options.php:761
-msgid ""
-"Code entered in this box will be printed after the opening "
-"<code>&lt;body&gt;</code> tag."
+msgid "Code entered in this box will be printed after the opening <code>&lt;body&gt;</code> tag."
 msgstr ""
 
 #: etc/options.php:773
@@ -548,9 +515,7 @@ msgid "Body End"
 msgstr ""
 
 #: etc/options.php:774
-msgid ""
-"Code entered in this box will be printed before the closing "
-"<code>&lt;/body&gt;</code> tag."
+msgid "Code entered in this box will be printed before the closing <code>&lt;/body&gt;</code> tag."
 msgstr ""
 
 #: etc/options.php:790
@@ -558,18 +523,15 @@ msgid "OpenSearch"
 msgstr ""
 
 #: etc/options.php:791
-msgid ""
-"OpenSearch is a collection of technologies that allow publishing search "
-"results in a format suitable for syndication and aggregation. It is a way "
-"for websites to publish search results in a format that can be used by "
-"search clients."
+msgid "OpenSearch is a collection of technologies that allow publishing search results in a format suitable for syndication and aggregation. It is a way for websites to publish search results in a format that can be used by search clients."
 msgstr ""
 
 #: etc/options.php:797
 msgid "Enable OpenSearch"
 msgstr ""
 
-#: etc/options.php:806 etc/options.php:861
+#: etc/options.php:806
+#: etc/options.php:863
 msgid "We are waiting for your message"
 msgstr ""
 
@@ -577,19 +539,29 @@ msgstr ""
 msgid "I love what I do!"
 msgstr ""
 
-#: etc/options.php:845
+#: etc/options.php:847
 msgid "Below are some links to help spread this plugin to other users"
 msgstr ""
 
-#: etc/options.php:847
+#: etc/options.php:849
 msgid "Give it a five stars on WordPress.org"
 msgstr ""
 
-#: etc/options.php:848
+#: etc/options.php:850
+msgctxt "plugin home page on WordPress.org"
+msgid "https://wordpress.org/plugins/simple-seo-improvements/"
+msgstr ""
+
+#: etc/options.php:850
 msgid "Link to it so others can easily find it"
 msgstr ""
 
-#: etc/options.php:863
+#: etc/options.php:865
+msgctxt "link to support forum on WordPress.org"
+msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
+msgstr ""
+
+#: etc/options.php:865
 msgid "WordPress Help Forum"
 msgstr ""
 
@@ -608,34 +580,29 @@ msgid "Any post type archive"
 msgstr ""
 
 #: includes/iworks/class-simple-seo-improvements.php:331
-msgid ""
-"Allow to set for entries separately. Settings will apply as default for new "
-"entries."
+msgid "Allow to set for entries separately. Settings will apply as default for new entries."
 msgstr ""
 
 #: includes/iworks/class-simple-seo-improvements.php:334
 msgid "Force setting to all entries"
 msgstr ""
 
+#. translators: %s robots option
+#. translators: %s robot option name
+#. translators: %s robot ooption name
 #: includes/iworks/class-simple-seo-improvements.php:349
 #: includes/iworks/class-simple-seo-improvements.php:381
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:171
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:322
 #: includes/iworks/simple-seo-improvements/class-taxonomies.php:133
-#. translators: %s robots option
-#. translators: %s robot option name
-#. translators: %s robot ooption name
-#. translators: %s robots option
+#, php-format
 msgid "Add \"%s\"."
 msgstr ""
 
-#: includes/iworks/class-simple-seo-improvements.php:367
 #. translators: %s archive name
+#: includes/iworks/class-simple-seo-improvements.php:367
+#, php-format
 msgid "Add meta tags for %s."
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "Simple SEO Improvements"
 msgstr ""
 
 #: includes/iworks/class-simple-seo-improvements.php:782
@@ -2220,9 +2187,7 @@ msgid "Zimbabwe"
 msgstr ""
 
 #: includes/iworks/options/includes/class-iworks-options-logger.php:99
-msgid ""
-"Option \"{option_name}\" has been updated. From \"{old_value}\" to "
-"\"{new_value}\"."
+msgid "Option \"{option_name}\" has been updated. From \"{old_value}\" to \"{new_value}\"."
 msgstr ""
 
 #: includes/iworks/options/options.php:247
@@ -2280,9 +2245,24 @@ msgstr ""
 msgid "Provide us a coffee"
 msgstr ""
 
-#: includes/iworks/rate/rate.php:626
 #. translators: %s: plugin id
+#: includes/iworks/rate/rate.php:626
+#, php-format
 msgid "There is no plugin with id: %s."
+msgstr ""
+
+#. translators: %s: plugin slug
+#: includes/iworks/rate/rate.php:649
+#, php-format
+msgctxt "plugins home"
+msgid "https://wordpress.org/plugins/%s"
+msgstr ""
+
+#. translators: %s: plugin slug
+#: includes/iworks/rate/rate.php:656
+#, php-format
+msgctxt "plugins support home"
+msgid "https://wordpress.org/support/plugin/%s"
 msgstr ""
 
 #: includes/iworks/rate/rate.php:800
@@ -2303,20 +2283,12 @@ msgid "🎉 Happy Anniversary! 🎉"
 msgstr ""
 
 #: includes/iworks/rate/templates/happy-anniversary/anniversary.php:21
-msgid ""
-"Wow, it’s already been a whole year since you’ve been using our "
-"plugin—thank you so much for being part of our journey! We truly appreciate "
-"your support and hope the plugin has made your work easier and more "
-"enjoyable."
+msgid "Wow, it’s already been a whole year since you’ve been using our plugin—thank you so much for being part of our journey! We truly appreciate your support and hope the plugin has made your work easier and more enjoyable."
 msgstr ""
 
 #: includes/iworks/rate/templates/happy-anniversary/anniversary.php:22
 #: includes/iworks/rate/templates/happy-anniversary/first-year.php:24
-msgid ""
-"If you’ve found our plugin helpful and would like to support its continued "
-"development, we’d be incredibly grateful if you’d consider buying us a "
-"coffee. Every little bit helps us keep improving and adding new features "
-"for awesome users like you!"
+msgid "If you’ve found our plugin helpful and would like to support its continued development, we’d be incredibly grateful if you’d consider buying us a coffee. Every little bit helps us keep improving and adding new features for awesome users like you!"
 msgstr ""
 
 #: includes/iworks/rate/templates/happy-anniversary/anniversary.php:23
@@ -2345,39 +2317,33 @@ msgid "Plugin Author"
 msgstr ""
 
 #: includes/iworks/rate/templates/happy-anniversary/first-year.php:23
-msgid ""
-"Wow, it’s already been a whole year since you started using our "
-"plugin—thank you so much for being part of our journey! We hope it’s made "
-"your work easier and more enjoyable."
+msgid "Wow, it’s already been a whole year since you started using our plugin—thank you so much for being part of our journey! We hope it’s made your work easier and more enjoyable."
 msgstr ""
 
 #: includes/iworks/rate/templates/plugins/og.php:4
 msgid "Would you like to boost your website sharing abilities?"
 msgstr ""
 
-#: includes/iworks/rate/templates/plugins/og.php:9
 #. translators: %s is a plugin name with url
+#: includes/iworks/rate/templates/plugins/og.php:9
+#, php-format
 msgid "Don't wait, install plugin %s!"
 msgstr ""
 
 #: includes/iworks/rate/templates/plugins/og.php:20
-#. translators: %s is a plugin wp home name, %s plugin name
 msgid "Install"
 msgstr ""
 
-#: includes/iworks/rate/templates/thanks.php:23
 #. translators: %s is a plugin name wrapped by strong html tag
+#: includes/iworks/rate/templates/thanks.php:23
+#, php-format
 msgid "Thank you for using our plugin %s!"
 msgstr ""
 
-#: includes/iworks/rate/templates/thanks.php:31
 #. translators: %1$s: open anchor tag, %2$s: close anchor tag
-msgid ""
-"Please let us know what you think about our plugin. It is important that we "
-"can develop this tool. Thank you for all the ratings, reviews and donates. "
-"If you have a technical problem, please before you add a review %1$scheck "
-"our FAQ%2$s or contact us if you did not find help there. We will try to "
-"help you!"
+#: includes/iworks/rate/templates/thanks.php:31
+#, php-format
+msgid "Please let us know what you think about our plugin. It is important that we can develop this tool. Thank you for all the ratings, reviews and donates. If you have a technical problem, please before you add a review %1$scheck our FAQ%2$s or contact us if you did not find help there. We will try to help you!"
 msgstr ""
 
 #: includes/iworks/rate/templates/thanks.php:35
@@ -2395,15 +2361,11 @@ msgid "I added review, do not show again"
 msgstr ""
 
 #: includes/iworks/rate/templates/widgets/donate.php:2
-msgid ""
-"However, working on plugins and technical support requires many hours of "
-"work. If you want to appreciate it, you can provide me a coffee."
+msgid "However, working on plugins and technical support requires many hours of work. If you want to appreciate it, you can provide me a coffee."
 msgstr ""
 
 #: includes/iworks/rate/templates/widgets/donate.php:3
-msgid ""
-"If every plugin user did it, I could devote myself fully to working on this "
-"plugin. Thanks everyone!"
+msgid "If every plugin user did it, I could devote myself fully to working on this plugin. Thanks everyone!"
 msgstr ""
 
 #: includes/iworks/rate/templates/widgets/donate.php:4
@@ -2411,26 +2373,17 @@ msgid "Provide me a coffee"
 msgstr ""
 
 #: includes/iworks/rate/templates/widgets/support.php:4
-msgid ""
-"Do you have a technical problem? Please contact us. We will be happy to "
-"help you. Or maybe you have an idea for a new feature? Please let us know "
-"about it by filling the support form. We will try to add it!"
+msgid "Do you have a technical problem? Please contact us. We will be happy to help you. Or maybe you have an idea for a new feature? Please let us know about it by filling the support form. We will try to add it!"
 msgstr ""
 
+#. translators: %1$s: open anchor tag, %2$s: close anchor tag, %3$s: open anchor tag, %4$s: close anchor tag
 #: includes/iworks/rate/templates/widgets/support.php:11
-#. translators: %1$s: open anchor tag, %2$s: close anchor tag, %3$s: open
-#. anchor tag, %4$s: close anchor tag
-msgid ""
-"Please %1$scheck our FAQ%2$s before adding a thread with technical problem. "
-"If you do not find help there, %3$scheck support forum%4$s for similar "
-"problems."
+#, php-format
+msgid "Please %1$scheck our FAQ%2$s before adding a thread with technical problem. If you do not find help there, %3$scheck support forum%4$s for similar problems."
 msgstr ""
 
 #: includes/iworks/rate/templates/widgets/support.php:26
-msgid ""
-"Do you like our plugin? Could you rate him? Please let us know what you "
-"think about our plugin. It is important that we can develop this tool. "
-"Thank you for all the ratings, reviews and donates."
+msgid "Do you like our plugin? Could you rate him? Please let us know what you think about our plugin. It is important that we can develop this tool. Thank you for all the ratings, reviews and donates."
 msgstr ""
 
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:137
@@ -2449,8 +2402,13 @@ msgstr ""
 msgid "Use these settings to controll day, month & year archive."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:181
 #. translators: title of a page %s
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:132
+#, php-format
+msgid "View Page: %s"
+msgstr ""
+
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:181
 msgid "Address"
 msgstr ""
 
@@ -2518,12 +2476,12 @@ msgstr ""
 msgid "Sunday"
 msgstr ""
 
+#. translators: archive name %s
+#. translators: %s archive name
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:333
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:455
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:477
-#. translators: archive name %s
-#. translators: %s archive name
-#. translators: %s archive name
+#, php-format
 msgid "Archives for %s"
 msgstr ""
 
@@ -2531,13 +2489,15 @@ msgstr ""
 msgid "Home Page"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:401
 #. translators: %s  search query
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:401
+#, php-format
 msgid "Search Results for: %s"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:444
 #. translators: %s archive name
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-json-ld.php:444
+#, php-format
 msgid "Archives for %d"
 msgstr ""
 
@@ -2573,47 +2533,4 @@ msgstr ""
 
 #: includes/iworks/simple-seo-improvements/class-sitemap.php:60
 msgid "Add images to WordPress Sitemap XML?"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "PLUGIN_URI"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid "PLUGIN_DESCRIPTION"
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "AUTHOR_NAME"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "AUTHOR_URI"
-msgstr ""
-
-#: etc/options.php:106
-msgctxt "placeholder"
-msgid "@account_name"
-msgstr ""
-
-#: etc/options.php:848
-msgctxt "plugin home page on WordPress.org"
-msgid "https://wordpress.org/plugins/simple-seo-improvements/"
-msgstr ""
-
-#: etc/options.php:863
-msgctxt "link to support forum on WordPress.org"
-msgid "https://wordpress.org/support/plugin/simple-seo-improvements/"
-msgstr ""
-
-#: includes/iworks/rate/rate.php:649
-#. translators: %s: plugin slug
-msgctxt "plugins home"
-msgid "https://wordpress.org/plugins/%s"
-msgstr ""
-
-#: includes/iworks/rate/rate.php:656
-#. translators: %s: plugin slug
-msgctxt "plugins support home"
-msgid "https://wordpress.org/support/plugin/%s"
 msgstr ""
