@@ -40,8 +40,6 @@ and the version property use the `PLUGIN_VERSION` placeholder.
 │       │   └── index-now/           # IndexNow base + Bing + Seznam
 │       ├── options/                 # vendored iWorks Options (submodule)
 │       └── rate/                    # vendored iWorks Rate (submodule)
-├── vendor/
-│   └── simple_html_dom.php         # Simple HTML DOM parser (links rewriting)
 ├── assets/
 │   ├── scripts/src/admin/          # JS sources (options.js)
 │   ├── scripts/admin/              # Built JS (gitignored)
@@ -137,11 +135,13 @@ releases API / update transients. **Excluded from the WordPress.org ZIP**.
 ## PHP dependencies
 
 - No Composer. Requires (from `package.json`, replaced into headers at
-  build): WordPress ≥ 6.0, PHP ≥ 8.0, tested up to 7.0.
+  build): WordPress ≥ 6.0, PHP ≥ 8.0, tested up to 7.0. The links feature
+  additionally needs **WP 6.2+** (`WP_HTML_Tag_Processor`) and is skipped
+  gracefully on 6.0/6.1.
 - Vendored code: `includes/iworks/options/` and `includes/iworks/rate/`
-  (both **git submodules** pointing at iWorks GitHub repos) and
-  `vendor/simple_html_dom.php`. Treat all as vendor — do not refactor their
-  internals; update via `git submodule update --remote` when asked.
+  (both **git submodules** pointing at iWorks GitHub repos). Treat as
+  vendor — do not refactor their internals; update via
+  `git submodule update --remote` when asked.
 
 ## General conventions
 

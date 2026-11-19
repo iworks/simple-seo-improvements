@@ -58,9 +58,6 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 		} elseif ( ! empty( $this->options->get_option( 'exli:class' ) ) ) {
 			$this->run = true;
 		}
-		if ( $this->run && ! defined( 'HDOM_TYPE_ELEMENT' ) ) {
-			include_once dirname( __DIR__, 3 ) . '/vendor/simple_html_dom.php';
-		}
 	}
 
 	/**
@@ -69,7 +66,7 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 	 * @since 2.2.0
 	 */
 	private function get_domain_regexp() {
-		$data = parse_url( get_site_url() );
+		$data = wp_parse_url( get_site_url() );
 		if ( preg_match( '/^www\./', $data['host'] ) ) {
 			return sprintf( '@https?://%s@', $data['host'] );
 		}
@@ -78,6 +75,9 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 
 	/**
 	 * replace
+	 *
+	 * Uses the WP HTML API (`WP_HTML_Tag_Processor`, WP 6.2+) instead of
+	 * the bundled Simple HTML DOM parser.
 	 *
 	 * @since 2.2.0
 	 */
@@ -92,18 +92,10 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 			return $content;
 		}
 		/**
-		 * try to parse `$content`
+		 * WP HTML API is available since WordPress 6.2; the plugin
+		 * requires 6.0, so bail out on older installs.
 		 */
-		if ( ! function_exists( 'str_get_html' ) ) {
-			include_once dirname( __DIR__, 3 ) . '/vendor/simple_html_dom.php';
-		}
-		$html = str_get_html( $content );
-		/**
-		 * check parsed string
-		 *
-		 * @since 2.2.9
-		 */
-		if ( false === $html ) {
+		if ( ! class_exists( 'WP_HTML_Tag_Processor' ) ) {
 			return $content;
 		}
 		/**
@@ -118,20 +110,16 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 		$set_target_blank = 0 < intval( $this->options->get_option( 'exli:target:blank' ) );
 		$domain_regexp    = $this->get_domain_regexp();
 		/**
-		 * find links
+		 * parse & update links
 		 */
-		$elements = $html->find( 'a' );
-		if ( empty( $elements ) || ! is_array( $elements ) ) {
-			return $content;
-		}
-		/**
-		 * parse & maybe add class
-		 */
-		foreach ( $elements as $one ) {
+		$html    = new WP_HTML_Tag_Processor( $content );
+		$changed = false;
+		while ( $html->next_tag( array( 'tag_name' => 'a' ) ) ) {
 			/**
 			 * check exists href
 			 */
-			if ( ! isset( $one->href ) ) {
+			$href = $html->get_attribute( 'href' );
+			if ( ! is_string( $href ) || '' === $href ) {
 				continue;
 			}
 			/**
@@ -139,27 +127,38 @@ class iworks_simple_seo_improvements_links extends iworks_simple_seo_improvement
 			 *
 			 * @since 2.2.6
 			 */
-			if ( ! preg_match( '/^http/', $one->href ) ) {
+			if ( ! preg_match( '/^http/', $href ) ) {
 				continue;
 			}
 			/**
 			 * check domain
 			 */
-			if ( preg_match( $domain_regexp, $one->href ) ) {
+			if ( preg_match( $domain_regexp, $href ) ) {
 				continue;
 			}
-			$re = $one->__toString();
+			/**
+			 * maybe add class
+			 */
 			if ( ! empty( $class ) ) {
-				$one->addClass( $class );
+				$html->add_class( $class );
 			}
-			if ( $set_rel_nofollow && ! isset( $one->rel ) ) {
-				$one->setAttribute( 'rel', 'nofollow' );
+			/**
+			 * maybe set rel
+			 */
+			if ( $set_rel_nofollow && ! $html->get_attribute( 'rel' ) ) {
+				$html->set_attribute( 'rel', 'nofollow' );
 			}
-			if ( $set_target_blank && ! isset( $one->target ) ) {
-				$one->setAttribute( 'target', 'blank' );
+			/**
+			 * maybe set target
+			 */
+			if ( $set_target_blank && ! $html->get_attribute( 'target' ) ) {
+				$html->set_attribute( 'target', 'blank' );
 			}
-			$content = str_replace( $re, $one->__toString(), $content );
+			$changed = true;
 		}
-		return $content;
+		if ( ! $changed ) {
+			return $content;
+		}
+		return $html->get_updated_html();
 	}
 }

@@ -57,22 +57,22 @@ $fields )` (admin meta-field rows), `get_module_file()`, `html_title( $text )`.
 - `__construct()` (line 70): sets `$base`, `$dir`, `$version`, `$plugin_file`,
   registers the filter `simple-seo-improvements/is_active` → `__return_true`,
   then hooks:
-  - `init` → `action_init_set_options()` (conditional class loading, incl.
-    JSON-LD), `maybe_load_index_now()` (line 738, key gen `get_indexnow_key()`
-    line 724), `maybe_load_robots_txt()` (line 751 → `iworks_robots_txt`),
-    `action_init_register_iworks_rate()` (priority `PHP_INT_MAX`);
-  - `admin_init` → `admin_init()` (enqueues
-    `assets/scripts/admin/simple-seo-improvements{dev}.js`, line 202);
-  - `wp_head` → `add_robots()` (line 402: builds `<meta name="robots">` from
-    per-post-type/archive options) and `filter_wp_head_add_html_head()`
-    (line 472, priority 0);
-  - `wp_body_open` / `wp_footer` → custom body-start/body-end code
-    (lines 613 / 626);
-  - `iworks_plugin_get_options` filters → dynamic settings UI
-    (`filter_add_post_types_options()`, line 243: per-post-type `mode`
-    allow/force + robots checkboxes + `*_archive_*` options; skips the
-    meta-description group when the front page is static; and
-    `filter_maybe_add_advertising()`, line 661).
+    - `init` → `action_init_set_options()` (conditional class loading, incl.
+      JSON-LD), `maybe_load_index_now()` (line 738, key gen `get_indexnow_key()`
+      line 724), `maybe_load_robots_txt()` (line 751 → `iworks_robots_txt`),
+      `action_init_register_iworks_rate()` (priority `PHP_INT_MAX`);
+    - `admin_init` → `admin_init()` (enqueues
+      `assets/scripts/admin/simple-seo-improvements{dev}.js`, line 202);
+    - `wp_head` → `add_robots()` (line 402: builds `<meta name="robots">` from
+      per-post-type/archive options) and `filter_wp_head_add_html_head()`
+      (line 472, priority 0);
+    - `wp_body_open` / `wp_footer` → custom body-start/body-end code
+      (lines 613 / 626);
+    - `iworks_plugin_get_options` filters → dynamic settings UI
+      (`filter_add_post_types_options()`, line 243: per-post-type `mode`
+      allow/force + robots checkboxes + `*_archive_*` options; skips the
+      meta-description group when the front page is static; and
+      `filter_maybe_add_advertising()`, line 661).
 - Loads feature classes directly (`require_once` + `new`, passing `$this`):
   `posttypes` (103), `taxonomies` (108), `sitemap` (113), then a loop over
   `archives`, `opensearch`, `prefixes`, `links` (118–128) storing instances
@@ -113,8 +113,9 @@ Every file: ABSPATH guard + own `require_once` of
   `/category/` and `/tag/` URL prefixes (options `category_no_slug`,
   `tag_no_slug`).
 - **`class-iworks-simple-seo-improvements-links.php`** — rewrites external
-  links in content using **Simple HTML DOM** (`vendor/simple_html_dom.php`):
-  adds `rel="nofollow"`, `target="_blank"`, CSS class (options
+  links in content using **`WP_HTML_Tag_Processor`** (WP HTML API, WP 6.2+;
+  skipped gracefully on older installs): adds `rel="nofollow"`,
+  `target="_blank"`, CSS class (options
   `exli:rel:nofollow`, `exli:target:blank`, `exli:class`).
 - **`class-iworks-simple-seo-improvements-opensearch.php`** — OpenSearch
   description document (option `opensearch_on`).
@@ -146,7 +147,6 @@ filter.
   `iworks_ssi_` prefix. Separate git repo — treat as vendor, do not refactor.
 - `rate/` — iWorks Rate v2.3.2: rate-it / admin notices, anniversary
   templates, dashboard widgets. Separate git repo — vendor.
-- `vendor/simple_html_dom.php` — Simple HTML DOM parser (used by `links`).
 
 ## Adding a new class
 
