@@ -117,6 +117,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		 */
 		$classess = array(
 			'archives',
+			'attachments',
 			'opensearch',
 			'prefixes',
 			'links',
@@ -313,7 +314,7 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		foreach ( $post_types as $post_type_slug => $post_type ) {
 			/**
 			 *  settings for attachements
-		 */
+			*/
 			$is_attachment = 'attachment' === $post_type->name;
 			/**
 			 * $opts
@@ -321,6 +322,11 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 			$opts[] = array(
 				'type'  => 'heading',
 				'label' => $post_type->label,
+			);
+			$opts = apply_filters( 'iworks/simple-seo-improvements/add_post_type_options/opts', $opts, $post_type );
+			$opts[] = array(
+				'type'  => 'subheading',
+				'label' => __( 'HTML meta', 'simple-seo-improvements' ),
 			);
 			$opts[] = array(
 				'name'    => sprintf( '%s_mode', $post_type->name ),

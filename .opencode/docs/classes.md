@@ -15,6 +15,7 @@ iworks_simple_seo_improvements_base_abstract         (abstract, simple-seo-impro
 ├── iworks_simple_seo_improvements_taxonomies        (loader)
 ├── iworks_simple_seo_improvements_sitemap           (+ class-sitemaps-attachements.php)
 ├── iworks_simple_seo_improvements_archives          (author/date robots)
+├── iworks_simple_seo_improvements_attachments       (attachment redirect/noindex)
 ├── iworks_simple_seo_improvements_opensearch
 ├── iworks_simple_seo_improvements_prefixes          (category/tag URL prefix removal)
 ├── iworks_simple_seo_improvements_links             (external links: nofollow/target/class)
@@ -119,6 +120,18 @@ Every file: ABSPATH guard + own `require_once` of
   `exli:rel:nofollow`, `exli:target:blank`, `exli:class`).
 - **`class-iworks-simple-seo-improvements-opensearch.php`** — OpenSearch
   description document (option `opensearch_on`).
+- **`class-iworks-simple-seo-improvements-attachments.php`** — attachment
+  page redirect (options `atta_redirect`, `atta_redirect_unattached`,
+  injected into the attachment post-type settings section via the
+  `iworks/simple-seo-improvements/add_post_type_options/opts` filter):
+  301-redirects attachment pages to the parent post via
+  `template_redirect`; unattached attachments follow
+  `atta_redirect_unattached` (`nothing` — leave as-is, `home` — redirect to
+  the main page; filter
+  `iworks_simple_seo_improvements_attachments_unattached` overrides the
+  value). Attachment noindex is handled by the standard per-post-type
+  robots options (`attachment_noindex`, default on, `attachment_mode`
+  `force`) — not by this class.
 - **Webmaster Tools verification** (in the main class,
   `filter_wp_head_add_html_head()`) — prints `<meta name="…">` verification
   tags from options `wmt_google` (`google-site-verification`),
