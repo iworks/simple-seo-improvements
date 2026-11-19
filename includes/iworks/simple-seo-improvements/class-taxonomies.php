@@ -57,7 +57,7 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 	private function get_data( $term_id ) {
 		$description = get_term_meta( $term_id, 'custom_description', true );
 		if ( empty( $description ) ) {
-			$description = html_entity_decode( strip_tags( term_description() ) );
+			$description = html_entity_decode( wp_strip_all_tags( term_description() ) );
 		}
 		$data = get_term_meta( $term_id, $this->field_name, true );
 		if ( ! empty( $data ) && is_array( $data ) ) {
@@ -149,16 +149,16 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		);
 		?>
 <div class="form-field">
-		<?php echo $this->get_title_label(); ?>
-		<?php echo $this->get_title_field( $data ); ?>
+		<?php echo wp_kses_post( $this->get_title_label() ); ?>
+		<?php echo wp_kses_post( $this->get_title_field( $data ) ); ?>
 </div>
 <div class="form-field">
-		<?php echo $this->get_description_label(); ?>
-		<?php echo $this->get_description_field( $data ); ?>
+		<?php echo wp_kses_post( $this->get_description_label() ); ?>
+		<?php echo wp_kses_post( $this->get_description_field( $data ) ); ?>
 </div>
 <div class="form-field">
-		<?php echo $this->get_robots_label(); ?>
-		<?php echo $this->get_robots_field( $data ); ?>
+		<?php echo wp_kses_post( $this->get_robots_label() ); ?>
+		<?php echo wp_kses_post( $this->get_robots_field( $data ) ); ?>
 </div>
 		<?php
 	}
@@ -167,21 +167,21 @@ class iworks_simple_seo_improvements_taxonomies extends iworks_simple_seo_improv
 		$data = $this->get_data( $tag->term_id );
 		?>
 <tr class="form-field">
-	<th scope="row" valign="top"><?php echo $this->get_title_label(); ?></th>
+	<th scope="row" valign="top"><?php echo wp_kses_post( $this->get_title_label() ); ?></th>
 	<td>
 		<?php
-		echo $this->get_title_field( $data );
+		echo wp_kses_post( $this->get_title_field( $data ) );
 		$this->add_nonce();
 		?>
 	</td>
 </tr>
 <tr class="form-field">
-	<th scope="row" valign="top"><?php echo $this->get_description_label(); ?></th>
-	<td><?php echo $this->get_description_field( $data ); ?></td>
+	<th scope="row" valign="top"><?php echo wp_kses_post( $this->get_description_label() ); ?></th>
+	<td><?php echo wp_kses_post( $this->get_description_field( $data ) ); ?></td>
 </tr>
 <tr class="form-field">
-	<th scope="row" valign="top"><?php echo $this->get_robots_label(); ?></th>
-	<td><?php echo $this->get_robots_field( $data ); ?></td>
+	<th scope="row" valign="top"><?php echo wp_kses_post( $this->get_robots_label() ); ?></th>
+	<td><?php echo wp_kses_post( $this->get_robots_field( $data ) ); ?></td>
 </tr>
 		<?php
 	}

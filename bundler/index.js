@@ -221,11 +221,15 @@ const modes = {
 	build: async () => {
 		await build("github");
 		await build("wporg");
-		const code = await pluginCheck({ skipBuild: true, optional: true });
+		const code = await pluginCheck({
+			skipBuild: true,
+			optional: true,
+			quiet: true,
+		});
 		log(
 			code === 0
 				? "BUILD OK (all flavors + pcp)"
-				: "BUILD FAILED (pcp errors) — see the Plugin Check report above",
+				: "BUILD FAILED (pcp errors) — see pcp-check.log",
 			code === 0 ? "s" : "e",
 		);
 		if (code !== 0) {

@@ -202,7 +202,8 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 			'simple-seo-improvements-admin',
 			plugins_url( 'assets/scripts/admin/simple-seo-improvements' . $this->dev . '.js', $this->base ),
 			array(),
-			$this->get_version()
+			$this->get_version(),
+			true
 		);
 	}
 
@@ -590,7 +591,9 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		if ( empty( $content ) ) {
 			return;
 		}
-		echo $this->wrap_code_in_comments( $content );
+		$html = $this->wrap_code_in_comments( wp_kses_post( $content ) );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom Code feature: admin-provided HTML, by design.
+		echo $html;
 	}
 
 		/**
@@ -644,7 +647,9 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		if ( empty( $value ) ) {
 			return;
 		}
-		echo $this->wrap_code_in_comments( $value );
+		$html = $this->wrap_code_in_comments( wp_kses_post( $value ) );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom Code feature: admin-provided HTML, by design.
+		echo $html;
 	}
 
 		/**
@@ -657,7 +662,9 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		if ( empty( $value ) ) {
 			return;
 		}
-		echo $this->wrap_code_in_comments( $value );
+		$html = $this->wrap_code_in_comments( wp_kses_post( $value ) );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom Code feature: admin-provided HTML, by design.
+		echo $html;
 	}
 
 		/**

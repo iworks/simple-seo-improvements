@@ -16,12 +16,24 @@
  */
 
 import { join, resolve, dirname } from "node:path";
-import { existsSync, mkdirSync, rmSync, readdirSync } from "node:fs";
+import {
+    existsSync,
+    mkdirSync,
+    readFileSync,
+    rmSync,
+    readdirSync,
+    writeFileSync,
+} from "node:fs";
 import { log, executionTime } from "./consoleHelpers.mjs";
 import { spawnAsync } from "./spawnAsync.mjs";
 import { config } from "./config.mjs";
 
 const root = resolve(dirname(new URL(import.meta.url).pathname), "..");
+
+// Plugin version from package.json (single source of truth).
+const { version } = JSON.parse(
+    readFileSync(join(root, "package.json"), "utf8"),
+);
 
 // WordPress root: repo lives in wp-content/plugins/{dir}.
 const wpRoot = process.env.WP_ROOT || join(root, "..", "..", "..");
@@ -132,9 +144,11 @@ function parseCsv(csv) {
  * Run the check on the staged copy and clean up.
  *
  * @param {boolean} ignoreWarnings Skip warnings from the report.
+ * @param {boolean} quiet Print a summary + assessment table instead of the
+ *   full listing (used inside `bun run build`).
  * @return {Promise<{errors: number, warnings: number}>}
  */
-async function runCheck(ignoreWarnings) {
+async function runCheck(ignoreWarnings, quiet = false) {
     const args = [
         "plugin",
         "check",
@@ -150,6 +164,34 @@ async function runCheck(ignoreWarnings) {
     const rows = parseCsv(result.stdout);
     const errors = rows.filter((r) => r.type === "ERROR");
     const warnings = rows.filter((r) => r.type === "WARNING");
+
+    // Full report to pcp-check.log.
+    const logLines = [
+        "# Plugin Check (PCP) report",
+        `# plugin: ${config.name} ${version}`,
+        `# date:   ${new Date().toISOString()}`,
+        `# errors: ${errors.length}, warnings: ${warnings.length}`,
+        "",
+        ...rows.map(
+            (r) => `${r.type}\t${r.file}:${r.line}\t${r.code}\t${r.message}`,
+        ),
+        "",
+    ];
+    writeFileSync(join(root, "pcp-check.log"), logLines.join("\n"));
+
+    if (quiet) {
+        if (!rows.length) {
+            log("Plugin Check passed — no errors, no warnings.", "s");
+        } else {
+            log(
+                `Plugin Check: ${errors.length} error(s), ${warnings.length} warning(s) — full report in pcp-check.log`,
+                errors.length ? "e" : "s",
+            );
+            console.log(pcpTable(rows));
+        }
+        return { errors: errors.length, warnings: warnings.length };
+    }
+
     for (const kind of [
         ["ERROR", errors],
         ["WARNING", warnings],
@@ -169,11 +211,122 @@ async function runCheck(ignoreWarnings) {
         log("Plugin Check passed — no errors, no warnings.", "s");
     } else {
         log(
-            `\nPlugin Check: ${errors.length} error(s), ${warnings.length} warning(s)`,
+            `\nPlugin Check: ${errors.length} error(s), ${warnings.length} warning(s) — full report in pcp-check.log`,
             errors.length ? "e" : "s",
         );
     }
     return { errors: errors.length, warnings: warnings.length };
+}
+
+/**
+ * Human-friendly short label for a PCP warning code.
+ *
+ * @param {string} code Raw check code.
+ * @return {string} Short label.
+ */
+function pcpCodeLabel(code) {
+    const labels = {
+        "WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound":
+            "Dynamic hook name",
+        "WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound":
+            "Non-prefixed hook name",
+        "WordPress.NamingConventions.PrefixAllGlobals.InvalidPrefixPassed":
+            "Invalid prefix (false positive)",
+        "WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound":
+            "Core constant (by design)",
+        "WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound":
+            "Non-prefixed global variable",
+        "WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound":
+            "Non-prefixed function name",
+        "WordPress.Security.NonceVerification.Recommended":
+            "No nonce verification",
+        "WordPress.Security.ValidatedSanitizedInput.MissingUnslash":
+            "Input not unslashed",
+        "WordPress.Security.ValidatedSanitizedInput.InputNotSanitized":
+            "Input not sanitized",
+        "WordPress.Security.ValidatedSanitizedInput.InputNotValidated":
+            "Input not validated",
+        "WordPress.Security.EscapeOutput.OutputNotEscaped":
+            "Output not escaped",
+        "WordPress.Security.EscapeOutput.UnsafePrintingFunction":
+            "Unsafe printing function",
+        "WordPress.WP.I18n.TextDomainMismatch": "Text domain mismatch",
+        "WordPress.WP.I18n.MissingArgDomain": "Missing text domain",
+        "WordPress.WP.I18n.NonSingularStringLiteralText":
+            "Non-literal i18n string",
+        "WordPress.WP.AlternativeFunctions.strip_tags_strip_tags":
+            "strip_tags() discouraged",
+        "WordPress.DB.DirectDatabaseQuery.DirectQuery": "Direct DB query",
+        "WordPress.DB.DirectDatabaseQuery.NoCaching":
+            "DB query without caching",
+        "WordPress.DB.SlowDBQuery.slow_db_query_meta_query": "Slow meta_query",
+        "WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude":
+            "Exclusionary query param",
+        "PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound":
+            "Discouraged load_plugin_textdomain",
+    };
+    return labels[code] ?? code.split(".").pop() ?? code;
+}
+
+/**
+ * Assessment for a PCP finding: upstream submodule items are deferred,
+ * core-hook names are accepted (WordPress core API surface), the rest are
+ * judged per-code.
+ *
+ * @param {object} row Parsed report row.
+ * @param {string} row.file File path from the report.
+ * @param {string} row.code Raw check code.
+ * @return {string} Assessment.
+ */
+function pcpAssessment(row) {
+    if (row.file.startsWith("includes/iworks/options/")) {
+        return "upstream (iworks/options)";
+    }
+    if (row.file.startsWith("includes/iworks/rate/")) {
+        return "upstream (iworks/rate)";
+    }
+    const byCode = {
+        "WordPress.NamingConventions.PrefixAllGlobals.InvalidPrefixPassed":
+            "accepted (false positive)",
+        "WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound":
+            "accepted (core hook names)",
+        "WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound":
+            "accepted (core hook names)",
+        "WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound":
+            "accepted (intentional)",
+        "WordPress.WP.I18n.TextDomainMismatch": "accepted (staging slug)",
+        "WordPress.Security.NonceVerification.Recommended": "review",
+    };
+    return byCode[row.code] ?? "review";
+}
+
+/**
+ * Render an ASCII table with columns: location, warning, assessment.
+ *
+ * @param {Array<{file: string, line: string, code: string}>} rows Parsed rows.
+ * @return {string} Rendered table.
+ */
+function pcpTable(rows) {
+    const cells = rows.map((r) => [
+        `${r.file}${r.line ? `:${r.line}` : ""}`,
+        pcpCodeLabel(r.code),
+        pcpAssessment(r),
+    ]);
+    const headers = ["location", "warning", "assessment"];
+    const widths = headers.map((h, i) =>
+        Math.max(h.length, ...cells.map((c) => c[i].length)),
+    );
+    const line = (l, m, r) =>
+        l + widths.map((w) => "─".repeat(w + 2)).join(m) + r;
+    const row = (c) =>
+        "│ " + c.map((v, i) => v.padEnd(widths[i])).join(" │ ") + " │";
+    return [
+        line("┌", "┬", "┐"),
+        row(headers),
+        line("├", "┼", "┤"),
+        ...cells.map(row),
+        line("└", "┴", "┘"),
+    ].join("\n");
 }
 
 /**
@@ -215,12 +368,15 @@ async function checkPrerequisites() {
  * @param {boolean} options.ignoreWarnings Only fail on errors.
  * @param {boolean} options.optional Skip silently when the environment has
  *   no `wp` CLI or the plugin-check plugin (used inside `bun run build`).
+ * @param {boolean} options.quiet Print summary + table instead of full
+ *   listing (used inside `bun run build`).
  * @return {Promise<number>} Exit code (0 = clean).
  */
 export async function pluginCheck({
     skipBuild = false,
     ignoreWarnings = false,
     optional = false,
+    quiet = false,
 } = {}) {
     if (optional && !(await checkPrerequisites())) {
         log(
@@ -239,7 +395,7 @@ export async function pluginCheck({
     let result = { errors: 0, warnings: 0 };
     await executionTime("pcp", async () => {
         await stage();
-        result = await runCheck(ignoreWarnings);
+        result = await runCheck(ignoreWarnings, quiet);
     });
     rmSync(stagingDir, { recursive: true, force: true });
     return result.errors ? 1 : 0;

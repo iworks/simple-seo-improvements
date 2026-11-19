@@ -3,7 +3,7 @@
     "title": "Simple SEO Improvements",
     "tagline": "Lightweight SEO solution to power up your website.",
     "description": "Simple SEO improvements - lightweight solution to power up your website.",
-    "version": "2.3.4",
+    "version": "2.3.5",
     "homepage": "http://iworks.pl/en/plugins/simple-seo-improvements/",
     "repository": {
         "type": "git",
@@ -34,7 +34,7 @@
         "PHP": "8.0"
     },
     "tested": {
-        "WordPress": "7.0"
+        "WordPress": "7.1"
     },
     "scripts": {
         "dev": "bun bundler/index.js",
@@ -53,6 +53,6 @@
         "prettier": "^3",
         "terser": "^5"
     },
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-or-later",
     "postinstall": "curl -sSfL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o wp-cli.phar || echo 'wp-cli.phar download failed - make-pot will retry it'"
 }

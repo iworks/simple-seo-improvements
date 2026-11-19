@@ -27,29 +27,32 @@ You can prevent the indexing of unwanted pages, such as attachment pages, while 
 = Key Features =
 
 * Add a Facebook application ID.
-* Integrate IndexNow for Bing.
-* Add a X site tag.
+* Add a Twitter (X) site tag.
+* Add webmaster tools verification codes (Google Search Console, Bing, Yandex, Pinterest).
+* Add structured data (JSON-LD) for articles and LocalBusiness.
+* Add rel="nofollow" to external links.
+* Add target="_blank" to external links.
+* Add own CSS classes to external links.
+* Apply meta robots to all post types (posts, pages, and media).
+* Block AI crawlers in robots.txt (ChatGPT, Claude, CCBot, Bytespider, and more).
+* Configure "Max Image Preview" settings.
+* Control meta robots for author archives.
+* Customize meta robots for individual entries.
+* Include meta descriptions for each entry.
+* Add meta descriptions for the homepage when displaying posts.
 * Insert custom HTML code after the &lt;BODY&gt; tag.
 * Insert custom HTML code before the &lt;/BODY&gt; tag.
 * Insert custom HTML code in the &lt;HEAD&gt; section.
-* Set a default og:image for the site.
-* Set a unique HTML title for individual entries.
-* Add meta descriptions for the homepage when displaying posts.
-* Include meta descriptions for each entry.
-* Apply meta robots to all post types (posts, pages, and media).
-* Include meta robots for all custom post types.
-* Customize meta robots for individual entries.
-* Control meta robots for author archives.
+* Integrate IndexNow for Bing.
+* Integrate OpenSearch for the site.
 * Manage meta robots for date archives.
+* Redirect attachment pages to their parent (or the main page).
 * Remove category prefixes from URLs.
 * Remove tag prefixes from URLs.
-* Configure "Max Image Preview" settings.
+* Set a default og:image for the site.
 * Set "Max Snippet" options.
 * Set "Max Video Preview" options.
-* Add structured data.
-* Add rel="nofollow" to externals links.
-* Add target="blank" to externals links.
-* Add own CSS classes to externals links.
+* Set a unique HTML title for individual entries.
 
 Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
@@ -73,7 +76,7 @@ There are 3 ways to install this plugin:
 1. Click to install
 1. Activate the plugin
 1. A new box `Simple SEO Improvements` will appear in the entry and taxonomy screen
-1. A new menu `SEO Improvements` in `Appearance` will appear in your Admin Settings Menu
+1. A new menu `SEO Improvements` in `Settings` will appear in your Admin menu
 
 = 2. The easy way =
 1. Download the plugin (.zip file) on the right column of this page
@@ -82,21 +85,19 @@ There are 3 ways to install this plugin:
 1. Upload the .zip file you just downloaded
 1. Activate the plugin
 1. A new box `Simple SEO Improvements` will appear in the entry and taxonomy screen
-1. A new menu `SEO Improvements` in `Appearance` will appear in your Admin Settings Menu
+1. A new menu `SEO Improvements` in `Settings` will appear in your Admin menu
 
 = 3. The old and reliable way (FTP) =
 1. Upload the `Simple SEO Improvements` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. A new box `Simple SEO Improvements` will appear in the entry and taxonomy screen
-1. A new menu `SEO Improvements` in `Appearance` will appear in your Admin Settings Menu
+1. A new menu `SEO Improvements` in `Settings` will appear in your Admin menu
 
 == Frequently Asked Questions ==
 
 = Why should I change the title? =
 
-I'm not sure... but we have to do it sometimes.
-
-= I have a problem with the plugin, or I want to suggest a feature. Where can I do this? =
+I'm not sure... but we have to do it sometimes.= I have a problem with the plugin, or I want to suggest a feature. Where can I do this? =
 
 You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-seo-improvements/#new-topic-0), but please add your ticket to [Github Issues](https://github.com/iworks/simple-seo-improvements/issues/new).
 
@@ -110,12 +111,20 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
-= 2.3.5 (unreleased) =
+= 2.3.5 (2026-11-19) =
 * **Improvement**: Replaced the bundled Simple HTML DOM parser with the WordPress native `WP_HTML_Tag_Processor` (HTML API) for external link rewriting. The `vendor/` directory has been removed.
 * **Improvement**: Added webmaster tools verification codes (Google Search Console, Bing, Yandex, Pinterest).
 * **Improvement**: Added attachment page handling: 301 redirect to the parent page, with an option for unattached files (leave as-is or redirect to the main page) and the `noindex` robots meta tag.
 * **Improvement**: Added `noai` and `noimageai` for HTML meta tags for content.
+* **Improvement**: Added Polish translations for new options.
+* **Improvement**: Tested up to WordPress 7.1.
+* **Security**: Added capability checks to post, term, and LocalBusiness meta saving.
+* **Security**: Added revision and autosave guards when saving post meta.
+* **Security**: Added output escaping for the IndexNow key and an error guard for the GitHub update check.
+* **Security**: Escaped meta box, template, and OpenSearch XML output; sanitized the sitemap setting registration.
 * **Bugfix**: Fixed missing `str_get_html()` function.
+* **Maintenance**: Unified license declaration to GPL v3 or later in the plugin header.
+* **Maintenance**: Renamed the `simple_seo_improvements_robots_txt_allow` / `simple_seo_improvements_robots_txt_disallow` functions and hooks to the `iworks_` prefix; old names keep working as deprecated aliases.
 
 = 2.3.4 (2026-07-15) =
 * **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.1.1.

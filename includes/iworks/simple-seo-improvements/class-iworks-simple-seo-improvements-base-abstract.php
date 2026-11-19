@@ -143,7 +143,7 @@ abstract class iworks_simple_seo_improvements_base_abstract {
 			switch ( $key ) {
 				case 'description':
 				case 'title':
-					$data[ $key ] = strip_tags( $value );
+					$data[ $key ] = wp_strip_all_tags( $value );
 					break;
 			}
 		}

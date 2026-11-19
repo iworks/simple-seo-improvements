@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
 function iworks_simple_seo_improvements_options() {
 	$options = array();
@@ -252,7 +255,7 @@ function iworks_simple_seo_improvements_options() {
 				'type'        => 'textarea',
 				'th'          => __( 'Disallow:', 'simple-seo-improvements' ),
 				'classes'     => array( 'large-text code' ),
-				'default'     => simple_seo_improvements_robots_txt_disallow(),
+				'default'     => iworks_simple_seo_improvements_robots_txt_disallow(),
 				'description' => __( 'Add one entry per line.', 'simple-seo-improvements' ),
 				'rows'        => 10,
 				'since'       => '1.5.5',
@@ -268,7 +271,7 @@ function iworks_simple_seo_improvements_options() {
 				'th'          => __( 'Allow:', 'simple-seo-improvements' ),
 				'classes'     => array( 'large-text code' ),
 				'rows'        => 10,
-				'default'     => simple_seo_improvements_robots_txt_allow(),
+				'default'     => iworks_simple_seo_improvements_robots_txt_allow(),
 				'description' => __( 'Add one entry per line.', 'simple-seo-improvements' ),
 				'since'       => '1.5.5',
 			),
@@ -887,14 +890,14 @@ function iworks_simple_seo_improvements_options() {
 function iworks_iworks_seo_improvements_options_loved_this_plugin( $iworks_iworks_seo_improvements ) {
 	$content = apply_filters( 'iworks_rate_love', '', 'simple-seo-improvements' );
 	if ( ! empty( $content ) ) {
-		echo $content;
+		echo wp_kses_post( $content );
 		return;
 	}
 	?>
-<p><?php _e( 'Below are some links to help spread this plugin to other users', 'simple-seo-improvements' ); ?></p>
+<p><?php esc_html_e( 'Below are some links to help spread this plugin to other users', 'simple-seo-improvements' ); ?></p>
 <ul>
-	<li><a href="https://wordpress.org/support/plugin/simple-seo-improvements/reviews/#new-post"><?php _e( 'Give it a five stars on WordPress.org', 'simple-seo-improvements' ); ?></a></li>
-	<li><a href="<?php _ex( 'https://wordpress.org/plugins/simple-seo-improvements/', 'plugin home page on WordPress.org', 'simple-seo-improvements' ); ?>"><?php _e( 'Link to it so others can easily find it', 'simple-seo-improvements' ); ?></a></li>
+	<li><a href="https://wordpress.org/support/plugin/simple-seo-improvements/reviews/#new-post"><?php esc_html_e( 'Give it a five stars on WordPress.org', 'simple-seo-improvements' ); ?></a></li>
+	<li><a href="<?php echo esc_url( _x( 'https://wordpress.org/plugins/simple-seo-improvements/', 'plugin home page on WordPress.org', 'simple-seo-improvements' ) ); ?>"><?php esc_html_e( 'Link to it so others can easily find it', 'simple-seo-improvements' ); ?></a></li>
 </ul>
 	<?php
 }
@@ -902,14 +905,14 @@ function iworks_iworks_seo_improvements_options_loved_this_plugin( $iworks_iwork
 function iworks_iworks_seo_improvementss_options_need_assistance( $iworks_iworks_seo_improvementss ) {
 	$content = apply_filters( 'iworks_rate_assistance', '', 'simple-seo-improvements' );
 	if ( ! empty( $content ) ) {
-		echo $content;
+		echo wp_kses_post( $content );
 		return;
 	}
 
 	?>
-<p><?php _e( 'We are waiting for your message', 'simple-seo-improvements' ); ?></p>
+<p><?php esc_html_e( 'We are waiting for your message', 'simple-seo-improvements' ); ?></p>
 <ul>
-	<li><a href="<?php _ex( 'https://wordpress.org/support/plugin/simple-seo-improvements/', 'link to support forum on WordPress.org', 'simple-seo-improvements' ); ?>"><?php _e( 'WordPress Help Forum', 'simple-seo-improvements' ); ?></a></li>
+	<li><a href="<?php echo esc_url( _x( 'https://wordpress.org/support/plugin/simple-seo-improvements/', 'link to support forum on WordPress.org', 'simple-seo-improvements' ) ); ?>"><?php esc_html_e( 'WordPress Help Forum', 'simple-seo-improvements' ); ?></a></li>
 </ul>
 	<?php
 }
@@ -919,11 +922,11 @@ function iworks_iworks_seo_improvementss_options_need_assistance( $iworks_iworks
  *
  * @since 1.5.5
  */
-function simple_seo_improvements_robots_txt_allow() {
+function iworks_simple_seo_improvements_robots_txt_allow() {
 	return implode(
 		PHP_EOL,
 		apply_filters(
-			'simple_seo_improvements_robots_txt_allow',
+			'iworks_simple_seo_improvements_robots_txt_allow',
 			array(
 				'/*/*.css',
 				'/files/*',
@@ -944,11 +947,11 @@ function simple_seo_improvements_robots_txt_allow() {
  *
  * @since 1.5.5
  */
-function simple_seo_improvements_robots_txt_disallow() {
+function iworks_simple_seo_improvements_robots_txt_disallow() {
 	return implode(
 		PHP_EOL,
 		apply_filters(
-			'simple_seo_improvements_robots_txt_disallow',
+			'iworks_simple_seo_improvements_robots_txt_disallow',
 			array(
 				'*?attachment_id=',
 				'/category/*/feed',
@@ -1019,4 +1022,26 @@ function iworks_seo_improvements_no_sanitization( $content ) {
  */
 function iworks_ssi_sanitize_wmt_code( $value ) {
 	return preg_replace( '/[^A-Za-z0-9_-]/', '', (string) $value );
+}
+
+/**
+ * deprecated alias for iworks_simple_seo_improvements_robots_txt_allow()
+ *
+ * @since 2.3.5
+ * @deprecated 2.3.5 Use iworks_simple_seo_improvements_robots_txt_allow().
+ */
+function simple_seo_improvements_robots_txt_allow() {
+	_deprecated_function( __FUNCTION__, '2.3.5', 'iworks_simple_seo_improvements_robots_txt_allow' );
+	return iworks_simple_seo_improvements_robots_txt_allow();
+}
+
+/**
+ * deprecated alias for iworks_simple_seo_improvements_robots_txt_disallow()
+ *
+ * @since 2.3.5
+ * @deprecated 2.3.5 Use iworks_simple_seo_improvements_robots_txt_disallow().
+ */
+function simple_seo_improvements_robots_txt_disallow() {
+	_deprecated_function( __FUNCTION__, '2.3.5', 'iworks_simple_seo_improvements_robots_txt_disallow' );
+	return iworks_simple_seo_improvements_robots_txt_disallow();
 }

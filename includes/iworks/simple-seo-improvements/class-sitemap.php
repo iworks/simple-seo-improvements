@@ -40,7 +40,7 @@ class iworks_simple_seo_improvements_sitemap extends iworks_simple_seo_improveme
 	}
 
 	public function admin_init() {
-		register_setting( 'media', $this->option_name );
+		register_setting( 'media', $this->option_name, array( 'sanitize_callback' => 'wp_validate_boolean' ) );
 		add_settings_field(
 			$this->option_name,
 			__( 'Sitemap XML', 'simple-seo-improvements' ),

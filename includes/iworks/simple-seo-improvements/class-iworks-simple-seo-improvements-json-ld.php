@@ -126,12 +126,10 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			$select .= sprintf(
 				' <a href="%s" target="_blank">%s</a>',
 				esc_url( get_permalink( $local_business_page_id ) ),
-				esc_html__(
-					sprintf(
-						/* translators: title of a page %s  */
-						__( 'View Page: %s', 'simple-seo-improvements' ),
-						esc_html( get_the_title( $local_business_page_id ) )
-					)
+				sprintf(
+					/* translators: title of a page %s  */
+					esc_html__( 'View Page: %s', 'simple-seo-improvements' ),
+					esc_html( get_the_title( $local_business_page_id ) )
 				)
 			);
 		}
@@ -352,7 +350,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				array(
 					'@type'    => 'ListItem',
 					'position' => 1,
-					'name'     => strip_tags( __( 'Home Page', 'simple-seo-improvements' ) ),
+					'name'     => wp_strip_all_tags( __( 'Home Page', 'simple-seo-improvements' ) ),
 					'item'     => home_url(),
 				),
 			),
@@ -384,7 +382,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			$data['itemListElement'][] = array(
 				'@type'    => 'ListItem',
 				'position' => sizeof( $data['itemListElement'] ) + 1,
-				'name'     => strip_tags( single_term_title( '', false ) ),
+				'name'     => wp_strip_all_tags( single_term_title( '', false ) ),
 				'item'     => get_term_link( get_queried_object()->term_id ),
 			);
 		}
@@ -398,7 +396,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 				'@type'    => 'ListItem',
 				'position' => sizeof( $data['itemListElement'] ) + 1,
 				/* translators: %s  search query */
-				'name'     => sprintf( __( 'Search Results for: %s', 'simple-seo-improvements' ), strip_tags( get_query_var( 's' ) ) ),
+				'name'     => sprintf( __( 'Search Results for: %s', 'simple-seo-improvements' ), wp_strip_all_tags( get_query_var( 's' ) ) ),
 				'item'     => '',
 			);
 		}
@@ -711,7 +709,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			'isPartOf'     => array(
 				'@id' => get_permalink(),
 			),
-			'wordCount'    => str_word_count( strip_tags( get_the_content() ) ),
+			'wordCount'    => str_word_count( wp_strip_all_tags( get_the_content() ) ),
 			'headline'     => $this->clear_string( get_the_title() ),
 			'commentCount' => intval( get_comments_number( get_the_ID() ) ),
 		);
@@ -1461,12 +1459,12 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 			return;
 		}
 		if ( ! wp_verify_nonce(
-			$_POST[ $this->get_local_business_nonce_name() ],
+			wp_unslash( $_POST[ $this->get_local_business_nonce_name() ] ),
 			$this->get_local_business_nonce_action()
 		) ) {
 			return;
 		}
-		$value = isset( $_POST[ $this->meta_field_local_business ] ) ? $_POST[ $this->meta_field_local_business ] : array();
+		$value = isset( $_POST[ $this->meta_field_local_business ] ) ? wp_unslash( $_POST[ $this->meta_field_local_business ] ) : array();
 		if ( ! is_array( $value ) ) {
 			return;
 		}
@@ -1557,7 +1555,7 @@ class iworks_simple_seo_improvements_json_ld extends iworks_simple_seo_improveme
 		/**
 		 * commons
 		 */
-		$price_valid_until = date( 'Y-m-01', strtotime( '+1 year' ) );
+		$price_valid_until = gmdate( 'Y-m-01', strtotime( '+1 year' ) );
 		$sku               = $product->get_sku();
 		if ( empty( $sku ) ) {
 			$sku = get_post_field( 'post_name', get_post() );

@@ -39,7 +39,7 @@ function local_business_type_one_row( $args = array() ) {
 		)
 	);
 	echo '<tr><td>';
-	printf( '<select name="%s[type][]">', $attr['name'] );
+	printf( '<select name="%s[type][]">', esc_attr( $attr['name'] ) );
 	foreach ( $options as $option_value => $option_label ) {
 		printf(
 			'<option value="%s" %s>%s</option>',
@@ -91,7 +91,7 @@ foreach ( $values as $one ) {
 foreach ( $args['fields'] as $group ) {
 	?>
 <div>
-	<h3><?php echo $group['label']; ?></h3>
+	<h3><?php echo esc_html( $group['label'] ); ?></h3>
 </div>
 <table class="form-table" role="presentation"><tbody>
 	<?php
@@ -155,9 +155,9 @@ foreach ( $args['fields'] as $group ) {
 ?>
 <script type="text/html" id="tmpl-local-business-type">
 <?php
-echo local_business_type_one_row(
+local_business_type_one_row(
 	array(
-		'name' => $args['name'],
+		'name' => esc_attr( $args['name'] ),
 	)
 );
 ?>

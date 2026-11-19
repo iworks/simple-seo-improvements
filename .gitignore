@@ -21,5 +21,8 @@ release/
 # i18n
 languages/*.mo
 
+# Plugin Check report
+pcp-check.log
+
 # tests
 tests/php/.phpunit.result.cache

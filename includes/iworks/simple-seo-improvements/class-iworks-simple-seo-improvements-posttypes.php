@@ -320,7 +320,7 @@ class iworks_simple_seo_improvements_posttypes extends iworks_simple_seo_improve
 				sprintf(
 					/* translators: %s robot ooption name */
 					esc_html__( 'Add "%s".', 'simple-seo-improvements' ),
-					$key
+					esc_html( $key )
 				)
 			);
 			echo '</label></li>';
