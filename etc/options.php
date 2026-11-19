@@ -386,6 +386,53 @@ function iworks_simple_seo_improvements_options() {
 				'since'             => '1.5.2',
 			),
 			/**
+			 * Webmaster Tools verification
+			 *
+			 * @since 2.4.0
+			 */
+			array(
+				'type'        => 'subheading',
+				'label'       => __( 'Webmaster Tools', 'simple-seo-improvements' ),
+				'description' => __( 'Enter verification codes to confirm site ownership in webmaster tools of search engines. Leave empty to skip a given service.', 'simple-seo-improvements' ),
+				'since'       => '2.4.0',
+			),
+			array(
+				'name'              => 'wmt_google',
+				'type'              => 'text',
+				'th'                => __( 'Google Search Console', 'simple-seo-improvements' ),
+				'sanitize_callback' => 'iworks_ssi_sanitize_wmt_code',
+				'placeholder'       => _x( 'verification code, e.g. Xk8d…', 'placeholder', 'simple-seo-improvements' ),
+				'description'       => __( 'Value of the <code>content</code> attribute of the google-site-verification meta tag.', 'simple-seo-improvements' ),
+				'since'             => '2.4.0',
+			),
+			array(
+				'name'              => 'wmt_bing',
+				'type'              => 'text',
+				'th'                => __( 'Bing Webmaster Tools', 'simple-seo-improvements' ),
+				'sanitize_callback' => 'iworks_ssi_sanitize_wmt_code',
+				'placeholder'       => _x( 'verification code, e.g. 8A27F…', 'placeholder', 'simple-seo-improvements' ),
+				'description'       => __( 'Value of the <code>content</code> attribute of the msvalidate.01 meta tag.', 'simple-seo-improvements' ),
+				'since'             => '2.4.0',
+			),
+			array(
+				'name'              => 'wmt_yandex',
+				'type'              => 'text',
+				'th'                => __( 'Yandex Webmaster', 'simple-seo-improvements' ),
+				'sanitize_callback' => 'iworks_ssi_sanitize_wmt_code',
+				'placeholder'       => _x( 'verification code, e.g. 4f09d…', 'placeholder', 'simple-seo-improvements' ),
+				'description'       => __( 'Value of the <code>content</code> attribute of the yandex-verification meta tag.', 'simple-seo-improvements' ),
+				'since'             => '2.4.0',
+			),
+			array(
+				'name'              => 'wmt_pinterest',
+				'type'              => 'text',
+				'th'                => __( 'Pinterest', 'simple-seo-improvements' ),
+				'sanitize_callback' => 'iworks_ssi_sanitize_wmt_code',
+				'placeholder'       => _x( 'verification code, e.g. f939b…', 'placeholder', 'simple-seo-improvements' ),
+				'description'       => __( 'Value of the <code>content</code> attribute of the p:domain_verify meta tag.', 'simple-seo-improvements' ),
+				'since'             => '2.4.0',
+			),
+			/**
 			 * Block AI Crawlers Bots
 			 *
 			 * @since 2.0.2
@@ -960,4 +1007,16 @@ function iworks_simple_seo_improvements_get_countries() {
  */
 function iworks_seo_improvements_no_sanitization( $content ) {
 	return $content;
+}
+
+/**
+ * sanitize webmaster tools verification code
+ *
+ * Verification codes are alphanumeric strings (sometimes with dashes or
+ * underscores) printed into a meta tag attribute; strip anything else.
+ *
+ * @since 2.4.0
+ */
+function iworks_ssi_sanitize_wmt_code( $value ) {
+	return preg_replace( '/[^A-Za-z0-9_-]/', '', (string) $value );
 }

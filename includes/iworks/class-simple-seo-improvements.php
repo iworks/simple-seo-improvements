@@ -514,6 +514,29 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 			}
 		}
 		/**
+		 * Webmaster Tools verification codes
+		 *
+		 * @since 2.4.0
+	 */
+		$wmt = array(
+			'wmt_google'    => 'google-site-verification',
+			'wmt_bing'      => 'msvalidate.01',
+			'wmt_yandex'    => 'yandex-verification',
+			'wmt_pinterest' => 'p:domain_verify',
+		);
+		foreach ( $wmt as $option_name => $meta_name ) {
+			$value = $this->options->get_option( $option_name );
+			if ( empty( $value ) ) {
+				continue;
+			}
+			$content .= sprintf(
+				'<meta name="%s" content="%s">%s',
+				esc_attr( $meta_name ),
+				esc_attr( $value ),
+				PHP_EOL
+			);
+		}
+		/**
 		 * og:image
 		 */
 		if ( ! $this->is_og_installed ) {

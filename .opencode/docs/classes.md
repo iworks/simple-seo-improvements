@@ -119,6 +119,12 @@ Every file: ABSPATH guard + own `require_once` of
   `exli:rel:nofollow`, `exli:target:blank`, `exli:class`).
 - **`class-iworks-simple-seo-improvements-opensearch.php`** — OpenSearch
   description document (option `opensearch_on`).
+- **Webmaster Tools verification** (in the main class,
+  `filter_wp_head_add_html_head()`) — prints `<meta name="…">` verification
+  tags from options `wmt_google` (`google-site-verification`),
+  `wmt_bing` (`msvalidate.01`), `wmt_yandex` (`yandex-verification`),
+  `wmt_pinterest` (`p:domain_verify`); values sanitized by
+  `iworks_ssi_sanitize_wmt_code()` in `etc/options.php`.
 - **`class-sitemap.php`** + **`class-sitemaps-attachements.php`** —
   attachments-only (images) sitemap for WP native sitemaps.
 - **`class-iworks-robots-txt.php`** — builds robots.txt from options:

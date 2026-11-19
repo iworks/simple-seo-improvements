@@ -18,6 +18,7 @@ placeholders (`PLUGIN_VERSION`, `PLUGIN_TITLE`, `PLUGIN_TILL_YEAR`, …).
 | Main class, feature classes, JSON-LD, post types, taxonomies, new class | `.opencode/docs/classes.md`                         |
 | Bun build, release ZIPs, placeholders, translations (.pot/.po)          | `.opencode/docs/build.md`                           |
 | Loading flow, assets, i18n, options framework, project conventions      | `.opencode/docs/project.md`                         |
+| Planned features (must/ok/nice/wish tiers from wp.org seo-tag survey)   | `.opencode/docs/feature-roadmap.md`                 |
 | After any task that changed code                                        | skill `verify` (`.opencode/skills/verify/SKILL.md`) |
 
 - Read ONLY the docs relevant to the current task — do not load everything upfront.

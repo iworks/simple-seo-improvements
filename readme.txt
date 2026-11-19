@@ -112,6 +112,7 @@ Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.
 
 = 2.3.5 (unreleased) =
 * **Improvement**: Replaced the bundled Simple HTML DOM parser with the WordPress native `WP_HTML_Tag_Processor` (HTML API) for external link rewriting. The `vendor/` directory has been removed.
+* **Improvement**: Added webmaster tools verification codes (Google Search Console, Bing, Yandex, Pinterest).
 * **Improvement**: Added `noai` and `noimageai` for HTML meta tags for content.
 * **Bugfix**: Fixed missing `str_get_html()` function.
 
