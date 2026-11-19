@@ -17,8 +17,8 @@
  * Author:            AUTHOR_NAME
  * Author URI:        AUTHOR_URI
  * Text Domain:       simple-seo-improvements
- * License:           GPL v2 or later
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:           GPL v3 or later
+ * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
 if ( ! defined( 'WPINC' ) ) {
@@ -28,8 +28,8 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * static options
  */
-$base     = dirname( __FILE__ );
-$includes = $base . '/includes';
+$iworks_simple_seo_improvements_base     = dirname( __FILE__ );
+$iworks_simple_seo_improvements_includes = $iworks_simple_seo_improvements_base . '/includes';
 
 
 /**
@@ -37,20 +37,20 @@ $includes = $base . '/includes';
  *
  * @since 1.0.6
  */
-include_once $base . '/etc/options.php';
+include_once $iworks_simple_seo_improvements_base . '/etc/options.php';
 
 /**
  * @since 1.0.6
  */
 if ( ! class_exists( 'iworks_options' ) ) {
-	include_once $includes . '/iworks/options/options.php';
+	include_once $iworks_simple_seo_improvements_includes . '/iworks/options/options.php';
 }
 
 /**
  * require: Iworkssimple-seo-improvements Class
  */
 if ( ! class_exists( 'iworks_simple_seo_improvements' ) ) {
-	require_once $includes . '/iworks/class-simple-seo-improvements.php';
+	require_once $iworks_simple_seo_improvements_includes . '/iworks/class-simple-seo-improvements.php';
 }
 new iworks_simple_seo_improvements();
 
