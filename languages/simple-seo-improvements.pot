@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-19T19:07:47+00:00\n"
+"POT-Creation-Date: 2026-11-19T19:23:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 
@@ -18,7 +18,7 @@ msgstr ""
 #: includes/iworks/class-simple-seo-improvements.php:678
 #: includes/iworks/class-simple-seo-improvements.php:685
 #: includes/iworks/class-simple-seo-improvements.php:1266
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:288
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:310
 msgid "Simple SEO Improvements"
 msgstr ""
 
@@ -206,8 +206,8 @@ msgid "Separate classes by space, leave empty to no changes."
 msgstr ""
 
 #: etc/options.php:204
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:309
-#: includes/iworks/simple-seo-improvements/class-taxonomies.php:113
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:334
+#: includes/iworks/simple-seo-improvements/class-taxonomies.php:161
 msgid "Robots"
 msgstr ""
 
@@ -657,8 +657,8 @@ msgstr ""
 #: includes/iworks/class-simple-seo-improvements.php:356
 #: includes/iworks/class-simple-seo-improvements.php:388
 #: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-archives.php:171
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:322
-#: includes/iworks/simple-seo-improvements/class-taxonomies.php:133
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:347
+#: includes/iworks/simple-seo-improvements/class-taxonomies.php:189
 #, php-format
 msgid "Add \"%s\"."
 msgstr ""
@@ -2466,35 +2466,35 @@ msgstr ""
 msgid "Use these settings to controll day, month & year archive."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:110
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:123
 msgid "Single Attachment Page Redirect"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:111
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:124
 msgid "A single attachment page is a dedicated webpage automatically generated for an individual media file (such as an image, PDF, or video) uploaded to the Media Library."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:116
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:129
 msgid "Redirect"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:120
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:133
 msgid "Redirect attachment pages to the page they were uploaded to (301)."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:126
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:139
 msgid "Unattached attachments"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:130
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:143
 msgid "Nothing — leave unattached attachment pages as they are."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:133
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:146
 msgid "Redirect to the main page."
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:136
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-attachments.php:149
 msgid "Choose what to do with attachment pages of files that are not attached to any content."
 msgstr ""
 
@@ -2613,20 +2613,20 @@ msgstr ""
 msgid "Simple SEO Improvements: LocalBusiness"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:305
-#: includes/iworks/simple-seo-improvements/class-taxonomies.php:83
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:330
+#: includes/iworks/simple-seo-improvements/class-taxonomies.php:103
 msgid "HTML Title"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:332
-#: includes/iworks/simple-seo-improvements/class-taxonomies.php:98
+#: includes/iworks/simple-seo-improvements/class-iworks-simple-seo-improvements-posttypes.php:357
+#: includes/iworks/simple-seo-improvements/class-taxonomies.php:132
 msgid "HTML description"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-sitemap.php:46
+#: includes/iworks/simple-seo-improvements/class-sitemap.php:52
 msgid "Sitemap XML"
 msgstr ""
 
-#: includes/iworks/simple-seo-improvements/class-sitemap.php:60
+#: includes/iworks/simple-seo-improvements/class-sitemap.php:72
 msgid "Add images to WordPress Sitemap XML?"
 msgstr ""
