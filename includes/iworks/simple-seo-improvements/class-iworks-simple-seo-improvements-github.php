@@ -27,8 +27,29 @@ require_once( dirname( __DIR__ ) . '/class-simple-seo-improvements-base.php' );
 
 class iworks_simple_seo_improvements_github extends iworks_simple_seo_improvements_base {
 
+	/**
+	 * Repository name
+	 *
+	 * @since 1.0.0
+	 */
 	private string $repository = 'iworks/simple-seo-improvements';
+	/**
+	 * Plugin base name
+	 *
+	 * @since 1.0.0
+	 */
 	private string $basename   = 'simple-seo-improvements';
+	/**
+	 * Plugin file name
+	 *
+	 * @since 1.0.0
+	 */
+	private string $plugin_file = 'simple-seo-improvements.php';
+	/**
+	 * Github Response
+	 *
+	 * @since 1.0.0
+	 */
 	private $github_response;
 
 	public function __construct() {
