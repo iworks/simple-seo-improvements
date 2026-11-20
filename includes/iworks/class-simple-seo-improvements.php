@@ -591,9 +591,8 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		if ( empty( $content ) ) {
 			return;
 		}
-		$html = $this->wrap_code_in_comments( wp_kses_post( $content ) );
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom Code feature: admin-provided HTML, by design.
-		echo $html;
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Content is built by this plugin (escaped at composition) and may include the JSON-LD <script> tag, which wp_kses_post() would strip. The Custom Code option is admin-provided by design.
+		echo $this->wrap_code_in_comments( $content );
 	}
 
 		/**
@@ -647,9 +646,8 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		if ( empty( $value ) ) {
 			return;
 		}
-		$html = $this->wrap_code_in_comments( wp_kses_post( $value ) );
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom Code feature: admin-provided HTML, by design.
-		echo $html;
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom Code feature: admin-provided HTML/JS snippets (GA/GTM), by design; wp_kses_post() would strip <script>.
+		echo $this->wrap_code_in_comments( $value );
 	}
 
 		/**
@@ -662,9 +660,8 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 		if ( empty( $value ) ) {
 			return;
 		}
-		$html = $this->wrap_code_in_comments( wp_kses_post( $value ) );
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom Code feature: admin-provided HTML, by design.
-		echo $html;
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Custom Code feature: admin-provided HTML/JS snippets (GA/GTM), by design; wp_kses_post() would strip <script>.
+		echo $this->wrap_code_in_comments( $value );
 	}
 
 		/**

@@ -111,6 +111,10 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.3.6 (2026-11-20) =
+* **Bugfix**: Fixed missing `<script>` wrapper for the JSON-LD output caused by over-eager sanitization.
+* **Bugfix**: Fixed Custom Code body snippets being sanitized, which stripped `<script>` tags.
+
 = 2.3.5 (2026-11-19) =
 * **Improvement**: Replaced the bundled Simple HTML DOM parser with the WordPress native `WP_HTML_Tag_Processor` (HTML API) for external link rewriting. The `vendor/` directory has been removed.
 * **Improvement**: Added webmaster tools verification codes (Google Search Console, Bing, Yandex, Pinterest).
