@@ -485,7 +485,10 @@ class iworks_simple_seo_improvements extends iworks_simple_seo_improvements_base
 	 */
 		$attachment_id = $this->options->get_option( 'default_image' );
 		if ( ! empty( $attachment_id ) && $this->options->get_option( 'use_as_favicon' ) ) {
-			$url       = wp_make_link_relative( wp_get_attachment_image_url( $attachment_id, 'full' ) );
+			$url = wp_make_link_relative( wp_get_attachment_image_url( $attachment_id, 'full' ) );
+			if ( empty( $url ) ) {
+				return;
+			}
 			$mime_type = get_post_mime_type( $attachment_id );
 			foreach ( array( 'icon', 'shortcut icon' ) as $key ) {
 				printf(
