@@ -109,6 +109,12 @@ function sanitize_title( $title ) {
 function sanitize_text_field( $str ) {
 	return trim( preg_replace( '/[\\r\\n\\t ]+/', ' ', wp_strip_all_tags( $str ) ) );
 }
+function sanitize_textarea_field( $str ) {
+	// like WP core: strip tags, keep line endings, collapse horizontal whitespace only.
+	$str = wp_strip_all_tags( $str );
+	$str = preg_replace( '/[ \t]+/', ' ', $str );
+	return trim( $str );
+}
 function is_admin() {
 	return false;
 }

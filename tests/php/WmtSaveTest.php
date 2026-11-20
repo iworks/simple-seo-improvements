@@ -92,6 +92,28 @@ final class WmtSaveTest extends TestCase {
 		$this->assertSame( 'scriptalertdocumentcookiescript', $stored );
 	}
 
+	/**
+	 * Regression: robots.txt textareas must keep line endings on save.
+	 *
+	 * The options framework defaults textareas to sanitize_text_field, which
+	 * converts newlines to spaces and destroyed the one-entry-per-line format.
+	 * Both robots textareas must declare sanitize_textarea_field instead.
+	 */
+	public function test_robots_textareas_preserve_line_endings_on_save() {
+		foreach ( array( 'robots_txt_allow', 'robots_txt_disallow' ) as $name ) {
+			$config = $this->get_wmt_config( $name );
+			$this->assertNotNull( $config, "{$name} missing from options config" );
+			$this->assertSame(
+				'sanitize_textarea_field',
+				isset( $config['sanitize_callback'] ) ? $config['sanitize_callback'] : null,
+				"{$name} must use sanitize_textarea_field (sanitize_text_field destroys newlines)"
+			);
+			// Behavior: newlines survive the sanitizer.
+			$saved = call_user_func( $config['sanitize_callback'], "/a/*\r\n/b/*\n/c/*" );
+			$this->assertSame( "/a/*\r\n/b/*\n/c/*", $saved, "{$name}: line endings lost on save" );
+		}
+	}
+
 	public function test_save_empty_code_stores_empty() {
 		$stored = $this->save_code( 'wmt_google', '   ' );
 		$this->assertSame( '', $stored );

@@ -29,8 +29,8 @@ final class XssConfigFieldsTest extends TestCase {
 	public static function configFieldsProvider(): array {
 		return array(
 			'home_meta_description' => array( 'home_meta_description', 'sanitize_text_field' ),
-			'robots_txt_disallow'   => array( 'robots_txt_disallow', 'sanitize_text_field' ),
-			'robots_txt_allow'      => array( 'robots_txt_allow', 'sanitize_text_field' ),
+			'robots_txt_disallow'   => array( 'robots_txt_disallow', 'sanitize_textarea_field' ),
+			'robots_txt_allow'      => array( 'robots_txt_allow', 'sanitize_textarea_field' ),
 			'wmt_google'            => array( 'wmt_google', 'iworks_ssi_sanitize_wmt_code' ),
 			'wmt_bing'              => array( 'wmt_bing', 'iworks_ssi_sanitize_wmt_code' ),
 			'wmt_yandex'            => array( 'wmt_yandex', 'iworks_ssi_sanitize_wmt_code' ),

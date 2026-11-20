@@ -83,6 +83,9 @@ class FakeOptions {
 	public function get_option( $name ) {
 		return isset( $this->values[ $name ] ) ? $this->values[ $name ] : '';
 	}
+	public function get_group( $name ) {
+		return array();
+	}
 }
 
 final class SiteIconTest extends TestCase {

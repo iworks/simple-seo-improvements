@@ -251,9 +251,10 @@ function iworks_simple_seo_improvements_options() {
 			 * @since 1.5.5
 			 */
 			array(
-				'name'        => 'robots_txt_disallow',
-				'type'        => 'textarea',
-				'th'          => __( 'Disallow:', 'simple-seo-improvements' ),
+				'name'              => 'robots_txt_disallow',
+				'type'              => 'textarea',
+				'sanitize_callback' => 'sanitize_textarea_field',
+				'th'                => __( 'Disallow:', 'simple-seo-improvements' ),
 				'classes'     => array( 'large-text code' ),
 				'default'     => iworks_simple_seo_improvements_robots_txt_disallow(),
 				'description' => __( 'Add one entry per line.', 'simple-seo-improvements' ),
@@ -266,9 +267,10 @@ function iworks_simple_seo_improvements_options() {
 			 * @since 1.5.5
 			 */
 			array(
-				'name'        => 'robots_txt_allow',
-				'type'        => 'textarea',
-				'th'          => __( 'Allow:', 'simple-seo-improvements' ),
+				'name'              => 'robots_txt_allow',
+				'type'              => 'textarea',
+				'sanitize_callback' => 'sanitize_textarea_field',
+				'th'                => __( 'Allow:', 'simple-seo-improvements' ),
 				'classes'     => array( 'large-text code' ),
 				'rows'        => 10,
 				'default'     => iworks_simple_seo_improvements_robots_txt_allow(),
