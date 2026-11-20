@@ -9,6 +9,7 @@
  * @package simple-seo-improvements
  */
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/bootstrap.php';
@@ -82,9 +83,11 @@ final class SaveDataTest extends TestCase {
 	private $posttypes;
 
 	protected function setUp(): void {
-		global $test_post_meta, $test_valid_nonce;
+		global $test_post_meta, $test_valid_nonce, $test_is_revision, $test_is_autosave;
 		$test_post_meta   = array();
 		$test_valid_nonce = true;
+		$test_is_revision = false;
+		$test_is_autosave = false;
 		$_POST            = array();
 		$this->posttypes  = new SaveDataExposed();
 	}
@@ -160,5 +163,68 @@ final class SaveDataTest extends TestCase {
 		$this->simulate_save( 707, array( 'title' => 'nope' ) );
 		global $test_post_meta;
 		$this->assertArrayNotHasKey( 707, $test_post_meta );
+	}
+
+	/**
+	 * Update: saving again over an existing value replaces the meta.
+	 */
+	#[DataProvider( 'postTypeIdsProvider' )]
+	public function test_update_replaces_existing_meta( $post_id, $label ) {
+		$this->simulate_save( $post_id, array( 'title' => 'first', 'description' => 'one' ) );
+		$this->simulate_save( $post_id, array( 'title' => 'second', 'description' => 'two' ) );
+		global $test_post_meta;
+		$this->assertSame(
+			array( 'title' => 'second', 'description' => 'two' ),
+			$test_post_meta[ $post_id ]['iworks_simple_seo_improvements'],
+			"meta should be replaced on update for: {$label}"
+		);
+		// exactly one meta entry — no duplicates on update.
+		$this->assertCount( 1, $test_post_meta[ $post_id ] );
+	}
+
+	/**
+	 * Delete: when the form posts NO plugin fields at all, get_post_data()
+	 * returns an empty array and update_single_post_meta() deletes any
+	 * existing meta. (Note: all-empty-string fields are stored, not deleted —
+	 * an array with keys is not empty(). The plugin registers no delete_post
+	 * hook; on real post deletion WP core removes its meta automatically.)
+	 */
+	#[DataProvider( 'postTypeIdsProvider' )]
+	public function test_delete_clears_meta_when_no_fields_posted( $post_id, $label ) {
+		global $test_post_meta;
+		// create meta first.
+		$this->simulate_save( $post_id, array( 'title' => 'doomed', 'description' => 'gone' ) );
+		$this->assertArrayHasKey( 'iworks_simple_seo_improvements', $test_post_meta[ $post_id ] );
+		// simulate a save event with no plugin form data (e.g. bulk edit, quick edit).
+		unset( $_POST['iworks_simple_seo_improvements'] );
+		$this->posttypes->save_data( $post_id );
+		$this->assertArrayNotHasKey(
+			'iworks_simple_seo_improvements',
+			$test_post_meta[ $post_id ] ?? array(),
+			"meta should be deleted for: {$label}"
+		);
+	}
+
+	/**
+	 * Delete: clearing only some fields keeps the meta with remaining values.
+	 */
+	#[DataProvider( 'postTypeIdsProvider' )]
+	public function test_partial_clear_keeps_remaining_values( $post_id, $label ) {
+		$this->simulate_save( $post_id, array( 'title' => 'keep title', 'description' => 'drop me' ) );
+		$this->simulate_save( $post_id, array( 'title' => 'keep title', 'description' => '' ) );
+		global $test_post_meta;
+		$this->assertSame(
+			array( 'title' => 'keep title', 'description' => '' ),
+			$test_post_meta[ $post_id ]['iworks_simple_seo_improvements'],
+			"partial clear should keep meta for: {$label}"
+		);
+	}
+
+	public static function postTypeIdsProvider(): array {
+		return array(
+			'post'       => array( 1001, 'post' ),
+			'page'       => array( 1002, 'page' ),
+			'attachment' => array( 1003, 'image attachment' ),
+		);
 	}
 }

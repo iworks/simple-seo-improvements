@@ -138,14 +138,33 @@ Notes (grunt parity / differences from other iWorks plugins):
     - `WmtSanitizerTest.php` — `iworks_ssi_sanitize_wmt_code` allowlist
       `[A-Za-z0-9_-]`, null/int coercion, injection attempts (it does not parse
       HTML; output safety relies on `esc_attr` at print time).
+    - `WmtSaveTest.php` — webmaster tools key saving for all 4 services
+      (google/bing/yandex/pinterest): option config declares the
+      `iworks_ssi_sanitize_wmt_code` sanitize_callback, simulated save
+      (sanitize → store → `get_option` roundtrip), injection stripping,
+      empty-value handling.
+    - `XssConfigFieldsTest.php` — XSS injection against every free-text
+      config field: 9 classic payloads (script/img/svg/iframe/
+      attribute-break/javascript:-URI/encoded/style) run through each
+      field's real `sanitize_callback`; WMT fields pinned to the
+      `[A-Za-z0-9_-]` allowlist; default fields pinned to
+      `sanitize_text_field` (no raw `<` may survive); benign values must
+      pass unmangled; metabox title/description strip tags; output layer
+      (`esc_attr`) neutralizes quotes so stored payloads cannot break the
+      meta attribute context. Custom Code fields (html_head/body) are
+      intentionally excluded — raw admin HTML by design.
     - `OptionsConfigTest.php` — robots.txt allow defaults (expected paths,
       newline separation), deprecated robots aliases return identical values,
       `iworks_seo_improvements_no_sanitization` passthrough.
-    - `SaveDataTest.php` — `save_data()` for post, page and attachment IDs:
-      meta written with sanitized title/description, empty-field behavior
-      (meta updated with empty strings, not deleted), and guards skipping the
-      save (revision, autosave, invalid nonce). Uses an in-memory meta store;
-      `check_nonce()` is stubbed because `filter_input()` sees no CLI input.
+        - `SaveDataTest.php` — `save_data()` for post, page and attachment IDs:
+          meta written with sanitized title/description, empty-field behavior
+          (all-empty fields are stored, not deleted), delete semantics (a save
+          event with no form data deletes existing meta — the empty→delete path;
+          WP core removes meta on real post deletion), update replaces existing
+          meta without duplicating, partial clear keeps remaining values, and
+          guards skipping the save (revision, autosave, invalid nonce). Uses an
+          in-memory meta store; `check_nonce()` is stubbed because
+          `filter_input()` sees no CLI input. Data-driven via `#[DataProvider]`.
 - Not covered (needs a WP integration environment): JSON-LD
   output, robots.txt hooking, admin pages. jshint was dropped with Grunt; the
   bundler runs prettier instead and `node --check` on the bundle works as a
