@@ -190,8 +190,13 @@ async function updateLibs() {
  */
 async function test() {
 	const result = await spawnAsync(
-		"phpunit",
-		["--configuration", "tests/php/phpunit.xml", "--colors=always"],
+		"vendor/bin/phpunit",
+		[
+			"--configuration",
+			"tests/php/phpunit.xml",
+			"--testdox",
+			"--colors=always",
+		],
 		"PHPUnit",
 		false,
 	);
@@ -200,7 +205,7 @@ async function test() {
 	}
 	if (result.code !== 0) {
 		log(
-			"If phpunit is not installed, set up a WordPress test environment (see tests/php/bootstrap.php).",
+			"If phpunit is not installed, run `composer install` (phpunit ^11 is a dev dependency).",
 			"w",
 		);
 		process.exit(result.code);

@@ -122,13 +122,39 @@ Notes (grunt parity / differences from other iWorks plugins):
 
 ## Tests
 
-- `bun run test` → `phpunit --configuration tests/php/phpunit.xml`. Needs a
-  WordPress test environment. jshint was dropped with Grunt; the bundler
-  runs prettier instead and `node --check` on the bundle works as a
+- `bun run test` → `vendor/bin/phpunit --configuration tests/php/phpunit.xml`
+  (phpunit ^11 via Composer, dev dependency). Runs **without** a WordPress
+  install: `tests/php/bootstrap.php` loads the plugin's pure PHP classes with a
+  minimal set of WP function stubs.
+- Covered (unit tests in `tests/php/`):
+    - `BaseAbstractTest.php` — base-abstract helpers: `compress_all_whitespaces`
+      (whitespace collapsing), `clear_string` (HTML stripping + whitespace
+      compression, non-string passthrough), `get_post_data` (title/description
+      sanitized via `wp_strip_all_tags` — script/style content removed entirely,
+      other fields untouched, empty `$_POST` → empty array), field name value.
+    - `BaseClassTest.php` — `get_meta_name` (prefix + `sanitize_title`
+      slugification, including the underscore-stripping quirk), `get_version`
+      behavior in normal and `IWORKS_DEV_MODE` modes.
+    - `WmtSanitizerTest.php` — `iworks_ssi_sanitize_wmt_code` allowlist
+      `[A-Za-z0-9_-]`, null/int coercion, injection attempts (it does not parse
+      HTML; output safety relies on `esc_attr` at print time).
+    - `OptionsConfigTest.php` — robots.txt allow defaults (expected paths,
+      newline separation), deprecated robots aliases return identical values,
+      `iworks_seo_improvements_no_sanitization` passthrough.
+    - `SaveDataTest.php` — `save_data()` for post, page and attachment IDs:
+      meta written with sanitized title/description, empty-field behavior
+      (meta updated with empty strings, not deleted), and guards skipping the
+      save (revision, autosave, invalid nonce). Uses an in-memory meta store;
+      `check_nonce()` is stubbed because `filter_input()` sees no CLI input.
+- Not covered (needs a WP integration environment): JSON-LD
+  output, robots.txt hooking, admin pages. jshint was dropped with Grunt; the
+  bundler runs prettier instead and `node --check` on the bundle works as a
   smoke test.
 
 ## Runtime quirks / pitfalls (do not fix without approval)
 
+- Copy rules in `bundler/config.mjs` also exclude composer artifacts
+  (`composer.json`, `composer.lock`, `vendor/**`) — dev-only, never shipped.
 - `bun run build:wporg` is the **wp.org** build; `bun run build` does both
   flavors (there is no plain `build` that only compiles assets — use
   `compile` for that).

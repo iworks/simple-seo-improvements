@@ -26,3 +26,7 @@ pcp-check.log
 
 # tests
 tests/php/.phpunit.result.cache
+
+# Composer
+dev-vendor/
+vendor/
