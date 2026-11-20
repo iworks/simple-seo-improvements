@@ -115,6 +115,61 @@ final class WmtSaveTest extends TestCase {
 	}
 
 	/**
+	 * Regression: no output must be produced for empty WMT fields.
+	 *
+	 * The head builder skips every service whose option is empty — no empty
+	 * <meta name="google-site-verification" content=""> tags.
+	 */
+	public function test_no_output_for_empty_wmt_fields() {
+		global $test_post_meta, $test_attachments;
+		$test_post_meta   = array();
+		$test_attachments = array();
+
+		$exposed = new HeadOutputExposed();
+		// All WMT options unset → FakeOptions returns '' → all skipped.
+		$html = $exposed->expose_favicon( 0, 0 );
+		foreach ( array( 'google-site-verification', 'msvalidate.01', 'yandex-verification', 'p:domain_verify' ) as $meta_name ) {
+			$this->assertStringNotContainsString(
+				$meta_name,
+				$html,
+				"empty wmt field still produced a meta tag for {$meta_name}"
+			);
+		}
+	}
+
+	/**
+	 * Only services with a non-empty saved code produce meta tags.
+	 */
+	public function test_only_non_empty_wmt_fields_produce_output() {
+		$exposed = new HeadOutputExposed();
+		$prop    = new ReflectionProperty( 'iworks_simple_seo_improvements', 'options' );
+		$fakes   = $prop->getValue( $exposed );
+		$fakes->values['wmt_google'] = 'AbC-123';
+		$prop->setValue( $exposed, $fakes );
+		// bing/yandex/pinterest left empty.
+		$html = $exposed->expose_favicon( 0, 0 );
+		$this->assertStringContainsString( '<meta name="google-site-verification" content="AbC-123">', $html );
+		$this->assertStringNotContainsString( 'msvalidate.01', $html );
+		$this->assertStringNotContainsString( 'yandex-verification', $html );
+		$this->assertStringNotContainsString( 'p:domain_verify', $html );
+	}
+
+	/**
+	 * A whitespace-only code sanitizes to '' and therefore produces no output.
+	 */
+	public function test_whitespace_only_code_produces_no_output() {
+		$this->assertSame( '', iworks_ssi_sanitize_wmt_code( '   ' ) );
+		$exposed = new HeadOutputExposed();
+		// simulating a save that stored the sanitized '' value:
+		$prop    = new ReflectionProperty( 'iworks_simple_seo_improvements', 'options' );
+		$fakes   = $prop->getValue( $exposed );
+		$fakes->values['wmt_google'] = iworks_ssi_sanitize_wmt_code( '   ' );
+		$prop->setValue( $exposed, $fakes );
+		$html = $exposed->expose_favicon( 0, 0 );
+		$this->assertStringNotContainsString( 'google-site-verification', $html );
+	}
+
+	/**
 	 * Regression: every multi-line textarea must use sanitize_textarea_field.
 	 * Covers json_other (sameAs, one URL per line) and home_meta_description.
 	 */

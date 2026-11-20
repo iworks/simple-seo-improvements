@@ -34,4 +34,25 @@ final class WmtSanitizerTest extends TestCase {
 	public function test_empty_string() {
 		$this->assertSame( '', iworks_ssi_sanitize_wmt_code( '' ) );
 	}
+
+	/**
+	 * Leading and trailing whitespace is stripped by the allowlist regex
+	 * (spaces are not in [A-Za-z0-9_-]), so pasted codes with surrounding
+	 * spaces save cleanly.
+	 */
+	public function test_leading_trailing_whitespace_stripped() {
+		$this->assertSame( 'Xk8dF9-_', iworks_ssi_sanitize_wmt_code( 'Xk8dF9-_   ' ) );
+		$this->assertSame( 'code123', iworks_ssi_sanitize_wmt_code( '   code123' ) );
+		$this->assertSame( 'code123', iworks_ssi_sanitize_wmt_code( " \t code123 \t\n " ) );
+	}
+
+	/**
+	 * Interior whitespace is removed too (codes never contain spaces), so a
+	 * line-wrapped paste collapses to the actual code.
+	 */
+	public function test_interior_whitespace_removed() {
+		$this->assertSame( 'Xk9', iworks_ssi_sanitize_wmt_code( 'Xk 9' ) );
+		$this->assertSame( 'Xk9', iworks_ssi_sanitize_wmt_code( "Xk\t9" ) );
+		$this->assertSame( 'Xk9', iworks_ssi_sanitize_wmt_code( "Xk\n9" ) );
+	}
 }
