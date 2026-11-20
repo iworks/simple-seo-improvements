@@ -91,7 +91,8 @@ Compiled outputs (`assets/scripts/admin/simple-seo-improvements*js`, `languages/
   into `wp-content/plugins/{name}-pcp/`, runs
   `wp plugin check <dir> --slug={name} --format=csv` (`--slug` prevents
   the i18n "expected <staging-slug>" noise), prints errors/warnings grouped
-  and removes the staging copy. Exits 1 on any ERROR. It is skipped with
+  (full messages) followed by a summary table (file, code label,
+  assessment), and removes the staging copy. Exits 1 on any ERROR. It is skipped with
   a warning when the environment lacks `wp` CLI or the active
   `plugin-check` plugin. Needs
   `unzip`; WP root is auto-detected as the repo's `../../../` (override
