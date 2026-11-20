@@ -43,9 +43,10 @@ function iworks_simple_seo_improvements_options() {
 				'since'             => '1.0.0',
 			),
 			array(
-				'name'        => 'home_meta_description',
-				'type'        => 'textarea',
-				'th'          => __( 'Home meta description', 'simple-seo-improvements' ),
+				'name'              => 'home_meta_description',
+				'type'              => 'textarea',
+				'sanitize_callback' => 'sanitize_textarea_field',
+				'th'                => __( 'Home meta description', 'simple-seo-improvements' ),
 				'description' => __( 'This field is available only when your homepage show blog posts not as a page', 'simple-seo-improvements' ),
 				'classes'     => array(
 					'large-text',
@@ -770,9 +771,10 @@ function iworks_simple_seo_improvements_options() {
 				'since'             => '2.0.0',
 			),
 			array(
-				'name'        => 'json_other',
-				'type'        => 'textarea',
-				'th'          => __( 'Other profiles', 'simple-seo-improvements' ),
+				'name'              => 'json_other',
+				'type'              => 'textarea',
+				'sanitize_callback' => 'sanitize_textarea_field',
+				'th'                => __( 'Other profiles', 'simple-seo-improvements' ),
 				'description' => __( 'Tell us if you have any other profiles on the web that belong to your organization. This can be any number of profiles, like YouTube, LinkedIn, Pinterest, or even Wikipedia. Put one URL per line.', 'simple-seo-improvements' ),
 				'classes'     => array(
 					'large-text',

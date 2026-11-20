@@ -114,6 +114,7 @@ Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.
 = 2.3.8 =
 * **Bugfix**: Fixed empty `<link rel="icon">` tags being printed when the default site icon attachment was missing or broken.
 * **Bugfix**: Fixed robots.txt Allow/Disallow options losing line breaks when saved (`sanitize_text_field` was applied instead of `sanitize_textarea_field`), which merged all entries into one invalid line.
+* **Bugfix**: Fixed the "Other profiles" (sameAs) and "Home meta description" textareas losing line breaks when saved.
 * **Improvement**: Added a unit test suite (139 tests) covering sanitization, save flows, and XSS resistance of config fields.
 
 = 2.3.7 (2026-11-20) =

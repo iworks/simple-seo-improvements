@@ -9,7 +9,7 @@
  * Known, intentional exceptions (not tested here, by design):
  * - html_head / html_body_start / html_body_end are the "Custom Code"
  *   feature: admin-provided raw HTML/JS, output unescaped.
- * - json_other (sameAs) is stored via default sanitize_text_field too.
+ * - json_other (sameAs) keeps line endings via sanitize_textarea_field.
  *
  * @package simple-seo-improvements
  */
@@ -28,9 +28,10 @@ final class XssConfigFieldsTest extends TestCase {
 	 */
 	public static function configFieldsProvider(): array {
 		return array(
-			'home_meta_description' => array( 'home_meta_description', 'sanitize_text_field' ),
 			'robots_txt_disallow'   => array( 'robots_txt_disallow', 'sanitize_textarea_field' ),
 			'robots_txt_allow'      => array( 'robots_txt_allow', 'sanitize_textarea_field' ),
+			'json_other'            => array( 'json_other', 'sanitize_textarea_field' ),
+			'home_meta_description' => array( 'home_meta_description', 'sanitize_textarea_field' ),
 			'wmt_google'            => array( 'wmt_google', 'iworks_ssi_sanitize_wmt_code' ),
 			'wmt_bing'              => array( 'wmt_bing', 'iworks_ssi_sanitize_wmt_code' ),
 			'wmt_yandex'            => array( 'wmt_yandex', 'iworks_ssi_sanitize_wmt_code' ),
@@ -42,7 +43,6 @@ final class XssConfigFieldsTest extends TestCase {
 			'json_org_pa_l'         => array( 'json_org_pa_l', 'sanitize_text_field' ),
 			'json_org_pa_r'         => array( 'json_org_pa_r', 'sanitize_text_field' ),
 			'json_org_pa_pc'        => array( 'json_org_pa_pc', 'sanitize_text_field' ),
-			'json_other'            => array( 'json_other', 'sanitize_text_field' ),
 		);
 	}
 
@@ -104,7 +104,8 @@ final class XssConfigFieldsTest extends TestCase {
 	 */
 	#[DataProvider( 'xssPayloadsProvider' )]
 	public function test_single_payload_stripped_by_default_fields( $payload ) {
-		// Default-sanitized fields (framework fallback).
+		// Fields using sanitize_text_field (framework fallback) and
+		// sanitize_textarea_field (multi-line) — callbacks resolved from config.
 		foreach ( array(
 			'home_meta_description',
 			'robots_txt_disallow',

@@ -114,6 +114,22 @@ final class WmtSaveTest extends TestCase {
 		}
 	}
 
+	/**
+	 * Regression: every multi-line textarea must use sanitize_textarea_field.
+	 * Covers json_other (sameAs, one URL per line) and home_meta_description.
+	 */
+	public function test_all_multiline_textareas_preserve_line_endings_on_save() {
+		foreach ( array( 'json_other', 'home_meta_description' ) as $name ) {
+			$config = $this->get_wmt_config( $name );
+			$this->assertNotNull( $config, "{$name} missing from options config" );
+			$this->assertSame(
+				'sanitize_textarea_field',
+				isset( $config['sanitize_callback'] ) ? $config['sanitize_callback'] : null,
+				"{$name} must use sanitize_textarea_field (sanitize_text_field destroys newlines)"
+			);
+		}
+	}
+
 	public function test_save_empty_code_stores_empty() {
 		$stored = $this->save_code( 'wmt_google', '   ' );
 		$this->assertSame( '', $stored );
