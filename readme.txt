@@ -111,6 +111,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.3.7 (2026-11-20) =
+* **Bugfix**: Fixed a fatal error when saving posts (`wp_is_autosave()` did not exist).
+
 = 2.3.6 (2026-11-20) =
 * **Bugfix**: Fixed missing `<script>` wrapper for the JSON-LD output caused by over-eager sanitization.
 * **Bugfix**: Fixed Custom Code body snippets being sanitized, which stripped `<script>` tags.
