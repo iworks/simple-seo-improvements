@@ -192,6 +192,8 @@ async function runCheck(ignoreWarnings, quiet = false) {
         return { errors: errors.length, warnings: warnings.length };
     }
 
+    // Keep the detailed grouped listing (full messages are verbose; the
+    // summary table at the end gives the at-a-glance view).
     for (const kind of [
         ["ERROR", errors],
         ["WARNING", warnings],
@@ -209,12 +211,14 @@ async function runCheck(ignoreWarnings, quiet = false) {
     }
     if (!rows.length) {
         log("Plugin Check passed — no errors, no warnings.", "s");
-    } else {
-        log(
-            `\nPlugin Check: ${errors.length} error(s), ${warnings.length} warning(s) — full report in pcp-check.log`,
-            errors.length ? "e" : "s",
-        );
+        return { errors: 0, warnings: 0 };
     }
+    // Nice summary table (same as quiet mode).
+    console.log(pcpTable(rows));
+    log(
+        `Plugin Check: ${errors.length} error(s), ${warnings.length} warning(s) — full report in pcp-check.log`,
+        errors.length ? "e" : "s",
+    );
     return { errors: errors.length, warnings: warnings.length };
 }
 

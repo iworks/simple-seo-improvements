@@ -28,7 +28,7 @@
 | ---------------------- | ---------------------------------------------------------------------------- |
 | `bun run dev`          | watcher: prettier + recompile JS on change (no ZIP, no i18n)                 |
 | `bun run compile`      | one-shot JS compile (no prettier pass)                                       |
-| `bun run build`        | build:github, then build:wporg, then Plugin Check on the wp.org ZIP          |
+| `bun run build`        | PHPUnit first, then build:github, then build:wporg (no PCP)                  |
 | `bun run build:wporg`  | production build → `release/wporg/simple-seo-improvements.zip`               |
 | `bun run build:github` | production build + `.mo` → `release/github/simple-seo-improvements.zip`      |
 | `bun run make-pot`     | translations only (`.pot` + `.po` update via wp-cli i18n)                    |
@@ -85,16 +85,15 @@ Compiled outputs (`assets/scripts/admin/simple-seo-improvements*js`, `languages/
   After staging, every directory without one gets an `index.php` silence
   file (`// Silence is golden.`) — wp.org review requirement to prevent
   directory listing; existing files are kept.
-- **Plugin Check (PCP)** — runs **inside `bun run build`** (third step,
-  against the fresh wp.org ZIP) and standalone via `bun run check:pcp`
-  (builds the wp.org ZIP first, skip with `--skip-build`). Stages the ZIP
+- **Plugin Check (PCP)** — **not part of `bun run build`** (removed from
+  the build flow; run it separately via `bun run check:pcp`, which builds
+  the wp.org ZIP first, skip with `--skip-build`). Stages the ZIP
   into `wp-content/plugins/{name}-pcp/`, runs
   `wp plugin check <dir> --slug={name} --format=csv` (`--slug` prevents
   the i18n "expected <staging-slug>" noise), prints errors/warnings grouped
-  and removes the staging copy. Exits 1 on any ERROR (standalone mode and
-  at the end of `bun run build` — the ZIPs are still produced). Inside
-  `build` the check is **optional**: it is skipped with a warning when the
-  environment lacks `wp` CLI or the active `plugin-check` plugin. Needs
+  and removes the staging copy. Exits 1 on any ERROR. It is skipped with
+  a warning when the environment lacks `wp` CLI or the active
+  `plugin-check` plugin. Needs
   `unzip`; WP root is auto-detected as the repo's `../../../` (override
   with `WP_ROOT`).
 - Placeholder **replace** runs on every staged text file (binary extensions

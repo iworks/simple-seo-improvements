@@ -5,7 +5,7 @@
  * Modes:
  *   dev (default) — watcher, compile on change (no ZIP, no i18n)
  *   compile       — one-shot asset compile (old `grunt` default task)
- *   build         — build:github, then build:wporg, then Plugin Check (PCP)
+ *   build         — PHPUnit first, then build:github + build:wporg
  *   build:wporg   — production build → release/wporg/{name}.zip
  *   build:github  — production build + .mo → release/github/{name}.zip
  *   make-pot      — translations only (.pot + .po update)
@@ -224,22 +224,10 @@ const modes = {
 			compileAssets({ maps: true, strip: false, format: false }),
 		),
 	build: async () => {
+		await test();
 		await build("github");
 		await build("wporg");
-		const code = await pluginCheck({
-			skipBuild: true,
-			optional: true,
-			quiet: true,
-		});
-		log(
-			code === 0
-				? "BUILD OK (all flavors + pcp)"
-				: "BUILD FAILED (pcp errors) — see pcp-check.log",
-			code === 0 ? "s" : "e",
-		);
-		if (code !== 0) {
-			process.exit(code);
-		}
+		log("BUILD OK (tests + all flavors)", "s");
 	},
 	"build:wporg": () => build("wporg"),
 	"build:github": () => build("github"),
