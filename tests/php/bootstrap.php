@@ -126,6 +126,10 @@ function home_url( $path = '' ) {
 	return 'https://example.test' . $path;
 }
 function get_post_mime_type( $id ) {
+	global $test_attachments;
+	if ( isset( $test_attachments[ $id ]['mime'] ) ) {
+		return $test_attachments[ $id ]['mime'];
+	}
 	return 'image/png';
 }
 function wp_make_link_relative( $url ) {

@@ -111,6 +111,10 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-s
 
 Project maintained on GitHub at [iworks/simple-seo-improvements](https://github.com/iworks/simple-seo-improvements).
 
+= 2.3.8 =
+* **Bugfix**: Fixed empty `<link rel="icon">` tags being printed when the default site icon attachment was missing or broken.
+* **Improvement**: Added a unit test suite (116 tests) covering sanitization, save flows, and XSS resistance of config fields.
+
 = 2.3.7 (2026-11-20) =
 * **Bugfix**: Fixed a fatal error when saving posts (`wp_is_autosave()` did not exist).
 
