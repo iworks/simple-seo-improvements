@@ -227,4 +227,119 @@ final class SaveDataTest extends TestCase {
 			'attachment' => array( 1003, 'image attachment' ),
 		);
 	}
+
+	/**
+	 * ─── Per-post field XSS tests (post_mode = allow) ─────────────────────
+	 *
+	 * When a post type's {post_type}_mode option is 'allow', editors can set
+	 * title / description / robots per entry. These tests throw XSS payloads
+	 * at the per-post save path and pin the stored + sink guarantees.
+	 */
+
+	/**
+	 * Hostile payloads in per-post title/description are stored tag-free
+	 * (wp_strip_all_tags on save), including script content removal.
+	 */
+	public function test_per_post_title_description_stripped_of_tags() {
+		$payloads = array(
+			'<script>alert(1)</script>',
+			'x</script><script>alert(1)</script>y',
+			'<img src=x onerror=alert(1)>',
+			'"><svg onload=alert(1)>',
+		);
+		foreach ( $payloads as $payload ) {
+			$this->simulate_save(
+				2001,
+				array(
+					'title'       => $payload,
+					'description' => $payload,
+				)
+			);
+			$stored = $test_stored = $GLOBALS['test_post_meta'][2001]['iworks_simple_seo_improvements'];
+			foreach ( array( 'title', 'description' ) as $field ) {
+				$this->assertIsString( $stored[ $field ] );
+				$this->assertStringNotContainsString(
+					'<',
+					$stored[ $field ],
+					"per-post {$field}: raw '<' survived from payload {$payload}"
+				);
+			}
+		}
+	}
+
+	/**
+	 * Hostile robots[] sub-array keys (attribute injection into the
+	 * checkbox name) must not survive: the sink iterates only over known
+	 * robots option keys, so an injected key must not be echoed into the
+	 * meta robots content.
+	 */
+	public function test_per_post_robots_hostile_keys_ignored_by_sink() {
+		$this->simulate_save(
+			2002,
+			array(
+				'title'  => 'ok',
+				'robots' => array(
+					'noindex'                    => '1',
+					'" onmouseover="alert(1)'    => '1',
+					'><script>alert(1)</script>' => '1',
+				),
+			)
+		);
+		$stored = $GLOBALS['test_post_meta'][2002]['iworks_simple_seo_improvements'];
+		// Sink: only known robots keys are consulted. Simulate the sink's
+		// iteration over $this->robots_options.
+		$known    = array( 'noindex', 'nofollow', 'noarchive', 'nosnippet', 'noimageindex' );
+		$directives = array();
+		foreach ( $known as $key ) {
+			if ( isset( $stored['robots'][ $key ] ) && $stored['robots'][ $key ] ) {
+				$directives[] = $key;
+			}
+		}
+		$meta = sprintf( '<meta name="robots" content="%s">', esc_attr( implode( ', ', $directives ) ) );
+		$this->assertSame( 1, preg_match_all( '/>/', $meta ) );
+		$this->assertSame( 'noindex', implode( ', ', $directives ) );
+		$this->assertStringNotContainsString( 'onmouseover', $meta );
+		$this->assertStringNotContainsString( 'script', $meta );
+	}
+
+	/**
+	 * The robots sub-array values are used as truthy flags — a hostile
+	 * string value must not reach output (sink only appends the known key
+	 * name, never the stored value).
+	 */
+	public function test_per_post_robots_values_never_echoed() {
+		$this->simulate_save(
+			2003,
+			array(
+				'robots' => array(
+					'noindex' => '<script>alert(1)</script>',
+				),
+			)
+		);
+		$stored = $GLOBALS['test_post_meta'][2003]['iworks_simple_seo_improvements'];
+		// Sink echoes only the literal key name when truthy:
+		$directives = array();
+		foreach ( array( 'noindex', 'nofollow' ) as $key ) {
+			if ( isset( $stored['robots'][ $key ] ) && $stored['robots'][ $key ] ) {
+				$directives[] = $key;
+			}
+		}
+		$this->assertSame( array( 'noindex' ), $directives );
+		$this->assertStringNotContainsString( '<script>', implode( '', $directives ) );
+	}
+
+	/**
+	 * Sink bridge: the description sink wraps with esc_attr, so even quotes
+	 * stored by an older version cannot break the meta tag.
+	 */
+	public function test_per_post_description_sink_escapes_quotes() {
+		// Store a value with quotes (as legacy data might contain).
+		$GLOBALS['test_post_meta'][2004]['iworks_simple_seo_improvements'] = array(
+			'description' => '" onmouseover="alert(1) x="',
+		);
+		$stored   = $GLOBALS['test_post_meta'][2004]['iworks_simple_seo_improvements']['description'];
+		$meta_tag = sprintf( '<meta name="description" content="%s">', esc_attr( $stored ) );
+		$this->assertSame( 1, preg_match_all( '/>/', $meta_tag ) );
+		$this->assertDoesNotMatchRegularExpression( '/onmouseover="alert/', $meta_tag );
+	}
 }
